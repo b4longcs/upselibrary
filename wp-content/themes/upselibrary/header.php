@@ -35,7 +35,7 @@ if (is_page('up-school-of-economics')) {
     <?php wp_head(); ?>
 </head>
 <body>
-<header>
+<header id="main-header">
     <div class="header-text d-flex justify-content-center align-center pb-3 pt-3 text-white">
         <p>The UPSE Library is open from 8:00 AM to 7:00 PM (Monday to Friday).</p>
     </div>
@@ -52,7 +52,7 @@ if (is_page('up-school-of-economics')) {
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/menu.svg" alt="Logo">
                 </label>
                 <label id="overlay" for="sidebar-active"></label>
-                <div class="links-container">
+                <div class="links-container"> 
                     <label for="sidebar-active" class="close-btn">
                         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/close.svg" alt="Logo">
                     </label>
@@ -60,71 +60,53 @@ if (is_page('up-school-of-economics')) {
                         <label class="menu-label">home</label>
                     </a> 
                     <a class="gen-btn" href="#">
-                        <input type="radio" id="about-toggle" name="menu-toggle" class="menu-toggle">
-                        <label for="about-toggle" class="menu-label">about</label>
-
-                        <div class="sub-menu">
+                        <label class="menu-label" data-menu="about" aria-expanded="false">about
+                            <img class="menu-arrow" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-up.svg" alt="toggle arrow">
+                        </label>
+                        <div class="sub-menu" data-submenu="about">
                             <ul>
                                 <li><p>test</p></li>
                                 <li><p>test</p></li>
                                 <li><p>test</p></li>
                             </ul>
-                        </div>       
+                        </div>
                     </a>
                     <a class="gen-btn" href="#">
-                        <input type="radio" id="serv-toggle" name="menu-toggle" class="menu-toggle">
-                        <label for="serv-toggle" class="menu-label">services</label>
-                        
-                        <div class="sub-menu">
+                        <label class="menu-label" data-menu="services" aria-expanded="false">services
+                            <img class="menu-arrow" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-up.svg" alt="toggle arrow">
+                        </label>
+                        <div class="sub-menu" data-submenu="services">
                             <ul>
                                 <li><p>test</p></li>
                                 <li><p>test</p></li>
                                 <li><p>test</p></li>
                             </ul>
-                        </div>       
+                        </div>
                     </a>
                     <a class="gen-btn" href="#">
-                        <input type="radio" id="res-toggle" name="menu-toggle" class="menu-toggle">
-                        <label for="res-toggle" class="menu-label">resources</label>
-                        
-                        <div class="sub-menu">
+                        <label class="menu-label" data-menu="resources" aria-expanded="false">resources
+                            <img class="menu-arrow" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-up.svg" alt="toggle arrow">
+                        </label>
+                        <div class="sub-menu" data-submenu="resources">
                             <ul>
                                 <li><p>test</p></li>
                                 <li><p>test</p></li>
                                 <li><p>test</p></li>
                             </ul>
-                        </div>       
-                    </a>
-                    
-                    <a class="gen-btn" href="#">
-                        <label class="menu-label">spaces</label>
+                        </div>
                     </a>
                     <a class="gen-btn" href="#">
-                        <label class="menu-label">visitor</label>
+                        <label class="menu-label" data-menu="spaces">spaces</label>
+                    </a>
+                    <a class="gen-btn" href="#">
+                        <label class="menu-label" data-menu="visitor">visitor</label>
                     </a>
                 </div>
             </div>
         </div>
     </nav>
     <style>
-        @media(max-width: 1024px){
-            .links-container {
-                flex-direction: column;
-                align-items: flex-end;
-                position: fixed;
-                top: 0;
-                right: -100%;
-                z-index: 10;
-                width: 380px;
-                background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-bg.jpg');
-                background-position: right bottom;
-                background-size: cover;
-                background-repeat: no-repeat;
-                box-shadow: -5px 0 5px rgba(0, 0, 0, 0.05);
-                transition: 0.45s ease-out;
-                
-            }
-        }
+        @media(max-width:1024px){.links-container{flex-direction:column;align-items:flex-end;position:fixed;top:0;right:-100%;z-index:10;width:380px;background-image:url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-bg.jpg');background-position:right bottom;background-size:cover;background-repeat:no-repeat;box-shadow:-5px 0 5px rgba(0,0,0,0.05);transition:0.45s ease-out;}}
     </style>
 </header>
 
