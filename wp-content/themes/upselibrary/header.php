@@ -35,79 +35,58 @@ if (is_page('up-school-of-economics')) {
     <?php wp_head(); ?>
 </head>
 <body>
-<header id="main-header">
-    <div class="header-text d-flex justify-content-center align-center pb-3 pt-3 text-white">
-        <p>The UPSE Library is open from 8:00 AM to 7:00 PM (Monday to Friday).</p>
-    </div>
-    <nav class="container pt-3 pb-3">
-        <div class="nav-container d-flex justify-content-between align-content-around">
-            <div class="logo">
-                <a href="<?php echo home_url(); ?>">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Logo">
-                </a>
-            </div>  
-            <div class="nav-menu">
-                <input type="checkbox" id="sidebar-active">
-                <label for="sidebar-active" class="open-btn">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/menu.svg" alt="Logo">
-                </label>
-                <label id="overlay" for="sidebar-active"></label>
-                <div class="links-container"> 
-                    <label for="sidebar-active" class="close-btn">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/close.svg" alt="Logo">
-                    </label>
-                    <a class="gen-btn" href="<?php echo home_url(); ?>">
-                        <label class="menu-label">home</label>
-                    </a> 
-                    <a class="gen-btn" href="#">
-                        <label class="menu-label" data-menu="about" aria-expanded="false">about
-                            <img class="menu-arrow" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-up.svg" alt="toggle arrow">
-                        </label>
-                        <div class="sub-menu" data-submenu="about">
-                            <ul>
-                                <li><p>test</p></li>
-                                <li><p>test</p></li>
-                                <li><p>test</p></li>
-                            </ul>
-                        </div>
-                    </a>
-                    <a class="gen-btn" href="#">
-                        <label class="menu-label" data-menu="services" aria-expanded="false">services
-                            <img class="menu-arrow" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-up.svg" alt="toggle arrow">
-                        </label>
-                        <div class="sub-menu" data-submenu="services">
-                            <ul>
-                                <li><p>test</p></li>
-                                <li><p>test</p></li>
-                                <li><p>test</p></li>
-                            </ul>
-                        </div>
-                    </a>
-                    <a class="gen-btn" href="#">
-                        <label class="menu-label" data-menu="resources" aria-expanded="false">resources
-                            <img class="menu-arrow" src="<?php echo get_template_directory_uri(); ?>/assets/images/arrow-up.svg" alt="toggle arrow">
-                        </label>
-                        <div class="sub-menu" data-submenu="resources">
-                            <ul>
-                                <li><p>test</p></li>
-                                <li><p>test</p></li>
-                                <li><p>test</p></li>
-                            </ul>
-                        </div>
-                    </a>
-                    <a class="gen-btn" href="#">
-                        <label class="menu-label" data-menu="spaces">spaces</label>
-                    </a>
-                    <a class="gen-btn" href="#">
-                        <label class="menu-label" data-menu="visitor">visitor</label>
-                    </a>
-                </div>
-            </div>
+<header class="header-sticky">
+  <div class="header-text">
+    <p>The UPSE Library is open from 8:00 AM to 7:00 PM (Monday to Friday).</p>
+  </div>
+  <div class="container">
+    <nav class="nav-container">
+        <div class="logo">
+            <a href="#"><img src="logo.png" alt="Logo" /></a>
         </div>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <div class="overlay" id="overlay"></div>
+        <ul class="nav-links" id="navLinks">
+            <li class="close-btn-mobile" id="close-btn">&times;</li>
+            <li>
+            <a href="#" class="nav-menu">About</a>
+            <ul class="sub-menu">
+                <li><a href="#">Brief History</a></li>
+                <li><a href="#">Vision & Mission</a></li>
+                <li><a href="#">General Policy</a></li>
+                <li><a href="#">Library Guide</a></li>
+                <li><a href="#">Library Staff</a></li>
+                <li><a href="#">Citizen's Charter</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            </li>
+            <li>
+            <a href="#" class="nav-menu">Resources</a>
+            <ul class="sub-menu">
+                <li><a href="#">Print Collection</a></li>
+                <li><a href="#">Online Subscription</a></li>
+                <li><a href="#">Databases</a></li>
+                <li><a href="#">Datasets</a></li>
+                <li><a href="#">Archives Collection</a></li>
+            </ul>
+            </li>
+            <li>
+            <a href="#" class="nav-menu">Services</a>
+            <ul class="sub-menu">
+                <li><a href="#">Circulation Service</a></li>
+                <li><a href="#">Reference Service</a></li>
+                <li><a href="#">Current Awareness Service</a></li>
+                <li><a href="#">Thesis and Dissertation Binding</a></li>
+                <li><a href="#">Interlibrary Loan</a></li>
+                <li><a href="#">Document Delivery Service</a></li>
+            </ul>
+            </li>
+            <li><a href="#" class="nav-menu">Spaces</a></li>
+            <li><a href="#" class="nav-menu">Visitor</a></li>
+        </ul>
     </nav>
-    <style>
-        @media(max-width:1024px){.links-container{flex-direction:column;align-items:flex-end;position:fixed;top:0;right:-100%;z-index:10;width:380px;background-image:url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-bg.jpg');background-position:right bottom;background-size:cover;background-repeat:no-repeat;box-shadow:-5px 0 5px rgba(0,0,0,0.05);transition:0.45s ease-out;}}
-    </style>
+  </div>
 </header>
 
 
