@@ -42,7 +42,7 @@ if (is_page('up-school-of-economics')) {
   <div class="container">
     <nav class="nav-container">
         <div class="logo">
-            <a href="#"><img src="logo.png" alt="Logo" /></a>
+            <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Logo" /></a>
         </div>
         <div class="hamburger" id="hamburger">&#9776;</div>
         <div class="overlay" id="overlay"></div>
