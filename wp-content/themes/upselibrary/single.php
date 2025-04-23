@@ -102,27 +102,26 @@
         <h2 class="related-header-text">Want more of this?</h2>
     </section>
     <div class="related-posts">
-    <?php
-    $tags = wp_get_post_tags(get_the_ID());
-    if ($tags) :
-        $tag_ids = array();
-        foreach ($tags as $tag) {
-            $tag_ids[] = $tag->term_id;
-        }
+        <?php
+        $tags = wp_get_post_tags(get_the_ID());
+        if ($tags) :
+            $tag_ids = array();
+            foreach ($tags as $tag) {
+                $tag_ids[] = $tag->term_id;
+            }
 
-        // Query related posts
-        $related_query = new WP_Query(array(
-            'tag__in' => $tag_ids,
-            'posts_per_page' => 10,
-            'post__not_in' => array(get_the_ID()), 
-            'ignore_sticky_posts' => 1
-        ));
+            // Query related posts
+            $related_query = new WP_Query(array(
+                'tag__in' => $tag_ids,
+                'posts_per_page' => 10,
+                'post__not_in' => array(get_the_ID()), 
+                'ignore_sticky_posts' => 1
+            ));
 
-        if ($related_query->have_posts()) :
-            echo '<div class="related-posts-grid">';
-            while ($related_query->have_posts()) : $related_query->the_post();
-    ?>
-                <a href="<?php the_permalink(); ?>" class="related-post-item-link">
+            if ($related_query->have_posts()) :
+                echo '<div class="related-posts-grid">';
+                while ($related_query->have_posts()) : $related_query->the_post();
+        ?>
                     <div class="related-post-item">
                         <?php if (has_post_thumbnail()) : ?>
                             <div class="related-post-thumbnail">
@@ -130,25 +129,28 @@
                             </div>
                         <?php endif; ?>
 
-                        <h4 class="related-post-title"><?php the_title(); ?></h4>
-                        <p class="related-post-excerpt">
-                            <?php echo substr(strip_tags(get_the_excerpt()), 0, 70) . '...'; ?>
-                        </p>
+                        <div class="related-post-content">
+                            <a href="<?php the_permalink(); ?>" class="related-post-item-link">
+                                <h4 class="related-post-title"><?php the_title(); ?></h4>
+                                <p class="related-post-excerpt">
+                                    <?php echo substr(strip_tags(get_the_excerpt()), 0, 70) . '...'; ?>
+                                </p>
+                            </a>
 
-                        <button class="see-more-btn">See More</button>
+                            <button class="see-more-btn">See More</button>
+                        </div>
                     </div>
-                </a>
-    <?php
-            endwhile;
-            echo '</div>';
-            wp_reset_postdata();
+        <?php
+                endwhile;
+                echo '</div>';
+                wp_reset_postdata();
+            else :
+                echo '<p>No related post.</p>';
+            endif;
         else :
             echo '<p>No related post.</p>';
         endif;
-    else :
-        echo '<p>No related post.</p>';
-    endif;
-    ?>
+        ?>
 
     </div> 
 </section>

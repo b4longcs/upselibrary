@@ -73,6 +73,54 @@ navMenus.forEach(item => {
 });
 
 
+// Scroll up to reveal, scroll down to hide //
+let lastScrollTop = 0;
+const header = document.querySelector('.header-sticky');
+
+window.addEventListener('scroll', function () {
+  const scrollThreshold = window.innerWidth * 0.5;
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll < scrollThreshold) {
+    header.classList.remove('header-hidden');
+    return;
+  }
+
+  if (currentScroll > lastScrollTop) {
+    header.classList.add('header-hidden');
+  } else {
+    header.classList.remove('header-hidden');
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+
+
+// ProgressBar //
+let body = document.querySelector('body');
+let barWidthProp = '--progress-bar-width';
+let totalHeight = body.clientHeight;
+
+let setProgressBar = () => {
+	let scrollRatio = (window.innerHeight + window.scrollY) * 100  / totalHeight;
+	
+	body.style.setProperty(barWidthProp, scrollRatio + '%');	
+};
+
+setProgressBar();
+
+window.addEventListener('scroll', e => {
+	setProgressBar();
+})
+
+window.addEventListener('resize', e => {
+	totalHeight = body.clientHeight;
+	setProgressBar();
+})
+
+
+
 //* End of Header *//
   
 //* Animated Text *//

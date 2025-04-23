@@ -1,10 +1,43 @@
 <?php get_header();?>
-<main class="container">
-    <!-- <section class="hero-section">
-        <h1 data-scrollreveal="enter bottom over 1s and move 40px">Welcome to UPSE Library</h1>
-    </section> -->
+<section class="hero-section">
+    <div class="video-overlay"></div>
+    <video class="hero-video" autoplay muted loop playsinline preload="none">
+        <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-container">
+        <div class="left-hero" data-scrollreveal="enter bottom over 1s and move 30px">
+                <div class="left-content-one">
+                    <p><span class="left-content-one-normal">Supplying</span></p>
+                    <p><span class="left-content-one-highlight">Information</span></p>
+                    <p><span class="left-content-one-normal">on Demand</span></p>
+                </div>
+                <div class="left-content-two">
+                    <a href="#from-GetS" class="custom-button-one" >Get Started</a>
+                    <a href="#" class="custom-button-two">Contact Us</a>
+                </div>
+        </div>
+        <div class="right-hero" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
+            <div class="right-hero-container p-2 p-lg-5">
+                <div class="carousel position-relative mx-auto overflow-hidden rounded">
+                <div class="carousel-images d-flex"></div>
 
-    <section class="home-tabs">
+                <div class="carousel-controls position-absolute top-50 start-0 end-0 d-flex justify-content-between translate-middle-y">
+                    <button class="prev btn btn-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 33px; height: 33px;">&#10094;
+                    </button>
+
+                    <button class="next btn btn-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 33px; height: 33px;">&#10095;
+                    </button>
+                </div>
+
+                <div class="carousel-pagination-container d-flex justify-content-center mt-3">
+                    <div class="carousel-pagination d-flex"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<main class="container">
+    <section class="home-tabs" id="from-GetS">
         <div class="tabs" data-scrollreveal="enter bottom over 1s and move 40px after 0.2s">
             <div class="tabs-nav" role="tablist" aria-label="Content sections">
                 <div class="tabs-indicator"></div>
