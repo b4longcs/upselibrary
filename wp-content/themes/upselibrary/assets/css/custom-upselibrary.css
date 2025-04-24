@@ -18,6 +18,8 @@
     --fw-normal: 400;
     --fw-semi-bold: 600;
     --fw-bold: 700;
+    --fw-xbold: 800;
+    --fw-xxbold: 900;
     
     /* Colors */
     --clr-white: #ffffff;
@@ -592,6 +594,15 @@ p, ul, li, a{
     .related-posts-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
+
+
+    .global-left-hero-content .subheader {
+        width: 100% !important;
+    }
+
+    .subsubheader {
+        width: 90% !important;
+    }
 }
 
 /* Media query for screens smaller than or equal to 500px */
@@ -613,3 +624,77 @@ p, ul, li, a{
     }
 }
 
+
+/* PAGE GENERAL */
+.global-hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.global-left-hero,
+.global-right-hero {
+    flex: 1 1 370px;
+}
+
+.global-left-hero-content h1 {
+    font-size: clamp(4rem, 5vw, 5rem);
+    color: var(--clr-primary-color);
+    font-family: var(--font-secondary);
+    letter-spacing: -2.5px;
+    font-weight: var(--fw-bold);
+}
+.global-left-hero-content .subheader {
+    font-size: calc(var(--fs-md) + .1rem);
+    color: var(--clr-text-color);
+    width: 70%;
+    margin: 2rem 0 1rem 0 !important;
+}
+
+
+.subsubheader {
+    font-size: calc(var(--fs-md) + .1rem);
+    color: var(--clr-text-color);
+    width: 70%;
+    margin: .3rem 0 .3rem 1rem !important;
+}
+
+.global-right-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.global-right-hero img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+}
+
+.global-page-content h2 {
+    text-transform: uppercase;
+    font-family: var(--font-secondary);
+    font-size: var(--fs-reg);
+    font-weight: var(--fw-bold);
+    letter-spacing: -.5px;
+    color: var(--clr-primary-color);
+}
+
+#hero-section-custom {
+    align-items: self-start;
+}
+
+#subheader-custom{
+    margin: 1rem 0 !important;
+    color: var(--clr-primary-color);
+    font-size: calc(var(--fs-sm) + .15rem);
+    font-weight: var(--fw-semi-bold);
+}
+
+#subsubheader-custom {
+    font-size: calc(var(--fs-md) + .1rem);
+    color: var(--clr-text-color);
+    width: 100%;
+    margin: 1rem 0 !important;
+}

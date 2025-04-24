@@ -14,7 +14,7 @@ add_action('after_setup_theme', 'my_custom_theme_setup');
 // Enqueue scripts and styles
 function enqueue_theme_assets() {
     wp_enqueue_style('remixicon', 'https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css', array(), '4.6.0', 'all');
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap&family=Roboto:wght@400;700&display=swap', array(), null, 'all');
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap&family=Roboto:wght@400;700&display=swap', array(), null, 'all');
     wp_enqueue_style('tex-gyre', 'https://fonts.cdnfonts.com/css/tex-gyre-adventor', array(), null, 'all');
     wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '4.5.0', 'all');
     wp_enqueue_style('carouselcss', get_template_directory_uri() . '/assets/css/carousel.css', array(), null, 'all');
