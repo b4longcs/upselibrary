@@ -1,54 +1,127 @@
-//* Header Sticky *//
-document.addEventListener("DOMContentLoaded", function () {
-  const header = document.getElementById("main-header");
-  
+//* Header *//
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+const closeBtn = document.getElementById('close-btn');
+const overlay = document.getElementById('overlay');
+const navMenus = document.querySelectorAll('.nav-links > li');
 
-  window.addEventListener("scroll", function () {
-      if (window.scrollY > 150) {
-          header.classList.add("sticky");
-          
-      } else {
-          header.classList.remove("sticky");
+// Open sidebar
+hamburger.addEventListener('click', () => {
+  navLinks.classList.add('active');
+  overlay.classList.add('active');
+});
+
+// Close sidebar
+function closeSidebar() {
+  navLinks.classList.remove('active');
+  overlay.classList.remove('active');
+  navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
+}
+
+closeBtn.addEventListener('click', closeSidebar);
+overlay.addEventListener('click', closeSidebar);
+
+// Handle each nav item
+navMenus.forEach(item => {
+  const hasSubMenu = item.querySelector('.sub-menu');
+
+  item.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    const isOpen = item.classList.contains('open');
+
+    // If no sub-menu, close all others
+    if (!hasSubMenu) {
+      navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
+      return;
+    }
+
+    // If this one is not open, open it and close others
+    if (!isOpen) {
+      navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
+      item.classList.add('open', 'active-indicator');
+    }
+  });
+
+  // Double-click closes the current submenu if open
+  if (hasSubMenu) {
+    item.addEventListener('dblclick', (e) => {
+      e.stopPropagation();
+      item.classList.remove('open', 'active-indicator');
+    });
+  }
+
+  // Hover for desktop
+  item.addEventListener('mouseenter', () => {
+    if (window.innerWidth > 1024) {
+      navMenus.forEach(li => {
+        if (!li.classList.contains('open')) {
+          li.classList.remove('active-indicator');
+        }
+      });
+      if (!item.classList.contains('open')) {
+        item.classList.add('active-indicator');
       }
+    }
+  });
+
+  item.addEventListener('mouseleave', () => {
+    if (window.innerWidth > 1024 && !item.classList.contains('open')) {
+      item.classList.remove('active-indicator');
+    }
   });
 });
 
-//* End of Header Sticky *//
+
+// Scroll up to reveal, scroll down to hide //
+let lastScrollTop = 0;
+const header = document.querySelector('.header-sticky');
+
+window.addEventListener('scroll', function () {
+  const scrollThreshold = window.innerWidth * 0.5;
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll < scrollThreshold) {
+    header.classList.remove('header-hidden');
+    return;
+  }
+
+  if (currentScroll > lastScrollTop) {
+    header.classList.add('header-hidden');
+  } else {
+    header.classList.remove('header-hidden');
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
 
 
-//* Expanded Sub-Menu *//
-(() => {
-    document.addEventListener("DOMContentLoaded", () => {
-      if (window.innerWidth > 1024) return;
-  
-      const labels = document.querySelectorAll(".menu-label");
-  
-      labels.forEach(label => {
-        label.addEventListener("click", () => {
-          const menuKey = label.dataset.menu;
-          const subMenu = document.querySelector(`.sub-menu[data-submenu="${menuKey}"]`);
-          const isOpen = subMenu?.classList.contains("open");
-  
-          document.querySelectorAll(".sub-menu").forEach(menu => {
-            menu.classList.remove("open");
-            menu.style.maxHeight = "";
-          });
-  
-          document.querySelectorAll(".menu-label").forEach(l => {
-            l.setAttribute("aria-expanded", "false");
-          });
 
-          if (subMenu && !isOpen) {
-            subMenu.classList.add("open");
-            subMenu.style.maxHeight = `${subMenu.scrollHeight}px`;
-            label.setAttribute("aria-expanded", "true");
-          }
-        });
-      });
-    });
-})();
+// ProgressBar //
+let body = document.querySelector('body');
+let barWidthProp = '--progress-bar-width';
+let totalHeight = body.clientHeight;
 
-//* End of Sub-Menu *//
+let setProgressBar = () => {
+	let scrollRatio = (window.innerHeight + window.scrollY) * 100  / totalHeight;
+	
+	body.style.setProperty(barWidthProp, scrollRatio + '%');	
+};
+
+setProgressBar();
+
+window.addEventListener('scroll', e => {
+	setProgressBar();
+})
+
+window.addEventListener('resize', e => {
+	totalHeight = body.clientHeight;
+	setProgressBar();
+})
+
+
+
+//* End of Header *//
   
 //* Animated Text *//
 const words = ["Learn", "Explore", "Discover"];
