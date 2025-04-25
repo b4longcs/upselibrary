@@ -19,11 +19,11 @@
 
 
 .carousel-pagination button {
-    background-color: #7a7a7a;
+    background-color: var(--clr-secondary-color);
     border: none;
-    border-radius: 50%;
-    width: 8px;
-    height: 8px;
+    border-radius: 30px;
+    width: 6px;
+    height: 6px;
     margin: 0 5px;
     padding: 0;
     cursor: pointer;
@@ -33,9 +33,9 @@
 
 .carousel-pagination button.active {
     background-color: #a1a1a1;
-    width: 45px;
-    height: 8px;
-    border-radius: 50px;
+    width: 60px;
+    height: 6px;
+    border-radius: 30px;
 }
 
 .carousel-pagination button:hover {
@@ -46,10 +46,10 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 8px;
+    height: 6px;
     background-color: #fff;
     width: 0;
-    border-radius: 50px;
+    border-radius: 30px;
     display: none;
     transition: width 4s linear;
 }
@@ -57,4 +57,25 @@
 .carousel-pagination button.active .progress-bar {
     display: block;
     width: 100%;
+}
+
+.next,
+.prev {
+    background-color: var(--clr-bg-color);
+    border: none;
+    color: var(--clr-text-color);
+    font-size: 2rem;
+    transition: color 0.3s ease;
+    padding: .7rem;
+}
+
+.next:hover,
+.prev:hover {
+    color: var(--clr-white); 
+    background-color: var(--clr-text-color);
+}
+
+.prev i,
+.next i {
+    font-size: calc(var(--fs-md) + .45rem); 
 }

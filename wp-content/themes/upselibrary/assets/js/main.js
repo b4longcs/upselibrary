@@ -348,3 +348,28 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('DOMContentLoaded', scrollRevealInit);
 
 })(window);
+
+
+//* BREADCRUMB *//
+document.addEventListener("DOMContentLoaded", () => {
+const homeUrl = window.location.origin;
+const path = window.location.pathname.split('/').filter(Boolean); 
+
+// Construct breadcrumb parts
+const breadcrumbParts = path.reduce((acc, part, index) => {
+    const currentUrl = `${homeUrl}/${path.slice(0, index + 1).join('/')}`;
+    const isCurrentPage = index === path.length - 1;
+    acc.push({
+    text: decodeURIComponent(part.replace('-', ' ')), // Decode and format
+    url: isCurrentPage ? '' : currentUrl, // Current page has no URL
+    color: isCurrentPage ? 'gray' : '#000033'
+    });
+    return acc;
+}, [{ text: "Home", url: homeUrl, color: "#00573f" }]);
+
+document.getElementById("breadcrumb-container").innerHTML = breadcrumbParts
+    .map((item, index) => 
+    `${item.url ? `<a href="${item.url}" style="color: ${item.color};">${item.text}</a>` : `<span style="color: ${item.color};">${item.text}</span>`}
+    ${index < breadcrumbParts.length - 1 ? ' / ' : ''}`)
+    .join('');
+});

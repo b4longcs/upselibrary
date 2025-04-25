@@ -1,0 +1,31 @@
+.pages-container,
+.global-pages-content {
+    flex: 1 1 372px;
+}
+
+.hero-header-one,
+.hero-header-two{
+    font-family: var(--font-primary);
+    font-weight: var(--fw-bold);
+    letter-spacing: -1px;
+    font-size: clamp(3rem, 6vw, 5rem);
+
+}
+.right-hero img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+}
+
+.content-header,
+.content-text{
+    font-size: calc(var(--fs-sm) + .1rem);
+    font-family: var(--font-secondary);
+    margin: .5rem 0 !important;
+}
+
+.content-header {
+    font-weight: var(--fw-semi-bold);
+    color: var(--clr-primary-color);
+}
+

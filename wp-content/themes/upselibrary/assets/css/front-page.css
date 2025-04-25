@@ -54,6 +54,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 1200px;
+    gap: 1rem;
 }
 
 .left-hero,
@@ -331,7 +332,7 @@ input::placeholder {
 .animated-text .text-animated {
   display: inline-block;
   background-color: var(--clr-primary-color);
-  -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   animation: blink 1s infinite;
   border-right: 8px solid var(--clr-accent-color); 
