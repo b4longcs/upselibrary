@@ -69,7 +69,7 @@ if (is_page('up-school-of-economics')) {
                 <li>
                 <a href="#" class="nav-menu">Resources</a>
                 <ul class="sub-menu">
-                    <li><a href="#">Print Collection</a></li>
+                    <li><a href="<?php echo get_permalink( get_page_by_title( 'Print Collection' ) ); ?>">Print Collection</a></li>
                     <li><a href="#">Online Subscription</a></li>
                     <li><a href="#">Databases</a></li>
                     <li><a href="#">Datasets</a></li>
