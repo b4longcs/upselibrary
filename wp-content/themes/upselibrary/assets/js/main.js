@@ -78,7 +78,7 @@ let lastScrollTop = 0;
 const header = document.querySelector('.header-sticky');
 
 window.addEventListener('scroll', function () {
-  const scrollThreshold = window.innerWidth * 0.5;
+  const scrollThreshold = window.innerWidth * 0.3;
   const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
   if (currentScroll < scrollThreshold) {
@@ -219,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //*END of tabs*//
 
 
-//* TEST *//
 ((window) => {
   'use strict';
 
