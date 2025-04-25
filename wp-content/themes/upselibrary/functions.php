@@ -47,13 +47,12 @@ function enqueue_theme_assets() {
     wp_enqueue_script('nav-script');
     wp_enqueue_script('mainjs');
 
-    // ✅ Conditional loading using custom logic
-    if (needs_frontpage_styles()) {
-        wp_enqueue_style('carouselcss');
-        wp_enqueue_style('front-page');
-        wp_enqueue_script('carouseljs');
-    }
+    // ✅ Load front-page styles and scripts globally
+    wp_enqueue_style('carouselcss');
+    wp_enqueue_style('front-page');
+    wp_enqueue_script('carouseljs');
 }
+
 add_action('wp_enqueue_scripts', 'enqueue_theme_assets');
 
 // Customizer settings
@@ -62,8 +61,7 @@ function custom_image_sizes() {
 }
 add_action('after_setup_theme', 'custom_image_sizes');
 
-
-//* breadcrumb */
+// Breadcrumbs function
 function custom_breadcrumb() {
     echo '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
 
@@ -89,3 +87,5 @@ function custom_breadcrumb() {
 
     echo '</ol></nav>';
 }
+
+?>
