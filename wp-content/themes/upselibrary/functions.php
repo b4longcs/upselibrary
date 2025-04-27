@@ -22,6 +22,7 @@ function enqueue_theme_assets() {
     wp_enqueue_style('front-page', get_template_directory_uri() . '/assets/css/front-page.css', array(), null, 'all');
     wp_enqueue_style('custom-header-css', get_template_directory_uri() . '/assets/css/header.css', array(), null, 'all');
     wp_enqueue_style('custom-upselibrary', get_template_directory_uri() . '/assets/css/custom-upselibrary.css', array(), null, 'all');
+    wp_enqueue_style('custom-pages-css', get_template_directory_uri() . '/assets/css/custom-pages.css', array(), null, 'all');  // Added custom-pages-css
 
     // Scripts
     wp_enqueue_script('jquery');
@@ -31,7 +32,7 @@ function enqueue_theme_assets() {
 
     // Other front-page-specific scripts
     if ( is_front_page() ) {
-        wp_enqueue_script('carouseljs', get_template_directory_uri() . '/assets/js/carousel.js', array(), null, true);
+        wp_enqueue_script('carouseljs', get_template_directory_uri() . '/assets/js/carousel.js', array(), null, true);  // Added carouseljs
         wp_enqueue_script('text-animated-js', get_template_directory_uri() . '/assets/js/text-animated.js', array(), null, true);
     }
 
@@ -43,10 +44,36 @@ function enqueue_theme_assets() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_theme_assets');
 
-
-
 // Customizer settings
 function custom_image_sizes() {
     add_image_size('sidebar-thumbnail', 280, 140, true); // Custom size for sidebar
 }
 add_action('after_setup_theme', 'custom_image_sizes');
+
+
+//* breadcrumb */
+function custom_breadcrumb() {
+    echo '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
+
+    echo '<li class="breadcrumb-item"><a href="' . home_url() . '">Home</a></li>';
+
+    if (is_single()) {
+        $category = get_the_category();
+        if ($category) {
+            $category = $category[0];
+            echo '<li class="breadcrumb-item"><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></li>';
+        }
+        echo '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
+    } elseif (is_page()) {
+        $parent_id = wp_get_post_parent_id(get_the_ID());
+        if ($parent_id) {
+            $parent = get_post($parent_id);
+            echo '<li class="breadcrumb-item"><a href="' . get_permalink($parent->ID) . '">' . $parent->post_title . '</a></li>';
+        }
+        echo '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
+    } elseif (is_category()) {
+        echo '<li class="breadcrumb-item active" aria-current="page">' . single_cat_title('', false) . '</li>';
+    }
+
+    echo '</ol></nav>';
+}

@@ -22,11 +22,10 @@
                 <div class="carousel-images d-flex"></div>
 
                 <div class="carousel-controls position-absolute top-50 start-0 end-0 d-flex justify-content-between translate-middle-y">
-                    <button class="prev btn btn-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 33px; height: 33px;">&#10094;
+                    <button class="prev btn btn-light lh-1 rounded-circle d-flex align-items-center justify-content-center"><i class="ri-arrow-left-s-line"></i>
                     </button>
 
-                    <button class="next btn btn-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 33px; height: 33px;">&#10095;
-                    </button>
+                    <button class="next btn btn-light lh-1 rounded-circle d-flex align-items-center justify-content-center"><i class="ri-arrow-right-s-line"></i>
                 </div>
 
                 <div class="carousel-pagination-container d-flex justify-content-center mt-3">

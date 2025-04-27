@@ -32,8 +32,13 @@
 }
 
 .header-text {
+<<<<<<< HEAD
     background-color: var(--clr-primary-color);
     color: white;
+=======
+    background-color: var(--clr-highlight-color);
+    color: var(--clr-text-color);
+>>>>>>> f11f056f3d2b496e72209f4eeac839a9a8f02545
     font-size: var(--fs-sm);
     text-align: center;
     padding: 10px;
@@ -161,7 +166,11 @@
         right: -360px;
         width: 360px;
         height: 100vh;
+<<<<<<< HEAD
         background-color: var(--tab-background-color);
+=======
+        
+>>>>>>> f11f056f3d2b496e72209f4eeac839a9a8f02545
         padding: 20px;
         overflow-y: auto;
         transition: right 0.3s ease-in-out;
