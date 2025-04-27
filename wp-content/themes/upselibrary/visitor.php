@@ -6,7 +6,7 @@ Template Name: Visitor
 get_header(); ?>
 <section class="container">
     <div class="global-hero-section">
-        <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 30px">
+        <div class="global-left-hero">
             <div class="global-left-hero-content">
                 <h1>Visitor</h1>
                 <p class="subheader">
@@ -20,7 +20,7 @@ get_header(); ?>
                 </div>
             </div>
         </div>
-        <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
+        <div class="global-right-hero">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/visitor-header-img.svg" alt="right-hero-img" class="right-hero-img">
         </div>
     </div>
@@ -72,5 +72,5 @@ get_header(); ?>
         </div>
     </div>
 </section>
-
+<section class="spacer" style="height: 50dvh"></section>
 <?php get_footer(); ?>
