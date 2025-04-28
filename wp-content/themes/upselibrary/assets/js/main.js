@@ -78,7 +78,7 @@ let lastScrollTop = 0;
 const header = document.querySelector('.header-sticky');
 
 window.addEventListener('scroll', function () {
-  const scrollThreshold = window.innerWidth * 0.3;
+  const scrollThreshold = window.innerWidth * 0.5;
   const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
   if (currentScroll < scrollThreshold) {
@@ -94,8 +94,6 @@ window.addEventListener('scroll', function () {
 
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
-
-
 
 // ProgressBar //
 let body = document.querySelector('body');
@@ -118,107 +116,68 @@ window.addEventListener('resize', e => {
 	totalHeight = body.clientHeight;
 	setProgressBar();
 })
-
-
-
 //* End of Header *//
-  
-//* Animated Text *//
-const words = ["Learn", "Explore", "Discover"];
-const text = document.querySelector(".text-animated");
-
-const gen = (function* () {
-  let index = 0;
-  while (true) {
-    yield index;
-    index = (index + 1) % words.length;
-  }
-})();
-
-const printChar = (word) => {
-  let i = 0;
-  text.textContent = "";
-  const interval = setInterval(() => {
-    if (i >= word.length) {
-      clearInterval(interval);
-      deleteChar();
-    } else {
-      text.textContent += word[i++];
-    }
-  }, 200);
-};
-
-const deleteChar = () => {
-  let i = text.textContent.length;
-  const interval = setInterval(() => {
-    if (i > 0) {
-      text.textContent = text.textContent.slice(0, --i);
-    } else {
-      clearInterval(interval);
-      printChar(words[gen.next().value]);
-    }
-  }, 100);
-};
-
-printChar(words[gen.next().value]);
-
-//* End of Animated Text *//
 
 //* Tabs --code pen*//
 document.addEventListener('DOMContentLoaded', () => {
-    const tabList = document.querySelector('.tabs-nav');
-    const tabs = tabList.querySelectorAll('.tab-button');
-    const panels = document.querySelectorAll('.tab-panel');
-    const indicator = document.querySelector('.tabs-indicator');
+  // Check if .tabs-nav and .tabs-button elements exist on the page before running the code
+  const tabList = document.querySelector('.tabs-nav');
+  if (!tabList) return;  // Exit if .tabs-nav does not exist
 
-    const setIndicatorPosition = (tab) => {
-        indicator.style.transform = `translateX(${tab.offsetLeft}px)`;
-        indicator.style.width = `${tab.offsetWidth}px`;
-    };
+  const tabs = tabList.querySelectorAll('.tab-button');
+  const panels = document.querySelectorAll('.tab-panel');
+  const indicator = document.querySelector('.tabs-indicator');
 
-    setIndicatorPosition(tabs[0]);
+  const setIndicatorPosition = (tab) => {
+      indicator.style.transform = `translateX(${tab.offsetLeft}px)`;
+      indicator.style.width = `${tab.offsetWidth}px`;
+  };
 
-    tabs.forEach((tab) => {
-        tab.addEventListener('click', (e) => {
-            const targetTab = e.target;
-            const targetPanel = document.querySelector(
-                `#${targetTab.getAttribute('aria-controls')}`
-            );
+  // Set initial indicator position
+  if (tabs.length > 0) setIndicatorPosition(tabs[0]);
 
-            tabs.forEach((tab) => {
-                tab.setAttribute('aria-selected', false);
-                tab.classList.remove('active');
-            });
-            targetTab.setAttribute('aria-selected', true);
-            targetTab.classList.add('active');
+  // Event listener for tab clicks
+  tabs.forEach((tab) => {
+      tab.addEventListener('click', (e) => {
+          const targetTab = e.target;
+          const targetPanel = document.querySelector(`#${targetTab.getAttribute('aria-controls')}`);
 
-            panels.forEach((panel) => {
-                panel.setAttribute('aria-hidden', true);
-            });
-            targetPanel.setAttribute('aria-hidden', false);
+          tabs.forEach((tab) => {
+              tab.setAttribute('aria-selected', false);
+              tab.classList.remove('active');
+          });
+          targetTab.setAttribute('aria-selected', true);
+          targetTab.classList.add('active');
 
-            setIndicatorPosition(targetTab);
-        });
-    });
+          panels.forEach((panel) => {
+              panel.setAttribute('aria-hidden', true);
+          });
+          targetPanel.setAttribute('aria-hidden', false);
 
-    tabList.addEventListener('keydown', (e) => {
-        const targetTab = e.target;
-        const previousTab = targetTab.previousElementSibling;
-        const nextTab = targetTab.nextElementSibling;
+          setIndicatorPosition(targetTab);
+      });
+  });
 
-        if (e.key === 'ArrowLeft' && previousTab) {
-            previousTab.click();
-            previousTab.focus();
-        }
-        if (e.key === 'ArrowRight' && nextTab) {
-            nextTab.click();
-            nextTab.focus();
-        }
-    });
+  // Event listener for tab navigation using arrow keys
+  tabList.addEventListener('keydown', (e) => {
+      const targetTab = e.target;
+      const previousTab = targetTab.previousElementSibling;
+      const nextTab = targetTab.nextElementSibling;
+
+      if (e.key === 'ArrowLeft' && previousTab) {
+          previousTab.click();
+          previousTab.focus();
+      }
+      if (e.key === 'ArrowRight' && nextTab) {
+          nextTab.click();
+          nextTab.focus();
+      }
+  });
 });
+
 //*END of tabs*//
 
-
+//* Scroll Reveal *//
 ((window) => {
   'use strict';
 

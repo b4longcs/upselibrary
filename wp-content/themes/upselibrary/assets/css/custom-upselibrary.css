@@ -16,10 +16,10 @@
     /* Font Weight */
     --fw-snormal: 300;
     --fw-normal: 400;
-    --fw-semi-bold: 500;
-    --fw-xbold: 600;
-    --fw-xxbold: 700;
-    --fw-xxxbold: 800;
+    --fw-semi-bold: 600;
+    --fw-bold: 700;
+    --fw-xbold: 800;
+    --fw-xxbold: 900;
     
     /* Colors */
     --clr-white: #ffffff;

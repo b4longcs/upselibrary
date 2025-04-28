@@ -247,14 +247,7 @@
             <img class="collection-left-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/groupchat.png" alt="collection-image">
         </div>
     </section>
-    <section class="hero-error" data-scrollreveal="enter bottom over 1s and move 30px">
-        <h2>Looking for something specific?</h2>
-        <div class="error-form">
-            <form role="search" method="get" class="custom-search-form" action="<?php echo home_url('/'); ?>">
-                <input type="search" name="s" class="custom-search-input" placeholder="Search anything..." required />
-                <button type="submit" class="custom-search-button">Search</button>
-            </form>
-        </div>
-    </section>
 </main>
+
+
 <?php get_footer();?>
