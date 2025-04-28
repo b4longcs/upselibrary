@@ -247,6 +247,15 @@
             <img class="collection-left-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/groupchat.png" alt="collection-image">
         </div>
     </section>
+    <section class="fp-search d-flex justify-content-center align-items-center flex-column py-5">
+        <p class="fp-search-p">Looking for something specific?</p>
+        <div class="error-form">
+            <form role="search" method="get" class="custom-search-form" action="<?php echo home_url('/'); ?>">
+                <input type="search" name="s" class="custom-search-input" placeholder="Search anything..." required />
+                <button type="submit" class="custom-search-button">Search</button>
+            </form>
+        </div>
+    </section>
 </main>
 
 
