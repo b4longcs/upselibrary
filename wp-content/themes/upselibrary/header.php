@@ -37,6 +37,8 @@ if (is_page('up-school-of-economics')) {
 <body>
 <div id="progress-bar"></div> 
 <header class="header-sticky">
+       
+       
     <div class="header-text">
         <p>The UPSE Library is open from 8:00 AM to 7:00 PM (Monday to Friday).</p>
     </div>
@@ -69,11 +71,11 @@ if (is_page('up-school-of-economics')) {
                 <li>
                 <a href="#" class="nav-menu">Resources</a>
                 <ul class="sub-menu">
-                    <li><a href="<?php echo get_permalink( get_page_by_title( 'Print Collection' ) ); ?>">Print Collection</a></li>
-                    <li><a href="#">Online Subscription</a></li>
-                    <li><a href="#">Databases</a></li>
-                    <li><a href="#">Datasets</a></li>
-                    <li><a href="#">Archives Collection</a></li>
+                    <li><a href="/print-collection">Print Collection</a></li>
+                    <li><a href="/online-subscription">Online Subscription</a></li>
+                    <li><a href="/databases">Databases</a></li>
+                    <li><a href="/datasets">Datasets</a></li>
+                    <li><a href="/archives-collection">Archives Collection</a></li>
                 </ul>
                 </li>
                 <li>
@@ -92,8 +94,6 @@ if (is_page('up-school-of-economics')) {
             </ul>
         </nav>
     </div>
-    <style>@media (max-width: 1024px){.nav-links{background:url('<?php echo get_template_directory_uri(); ?>/assets/images/bg-bg.jpg') no-repeat left top/cover;}}</style>
-
 </header>
 
 

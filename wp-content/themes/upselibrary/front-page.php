@@ -1,22 +1,22 @@
 <?php get_header();?>
-<section class="hero-section">
+<section class="fp-hero-section">
     <div class="video-overlay"></div>
-    <video class="hero-video" autoplay muted loop playsinline preload="none">
+    <video class="fp-hero-video" autoplay muted loop playsinline preload="none">
         <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/hero-video.mp4" type="video/mp4">
     </video>
-    <div class="hero-container">
-        <div class="left-hero" data-scrollreveal="enter bottom over 1s and move 30px">
+    <div class="fp-hero-container">
+        <div class="fp-left-hero" data-scrollreveal="enter bottom over 1s and move 30px">
                 <div class="left-content-one">
                     <p><span class="left-content-one-normal">Supplying</span></p>
                     <p><span class="left-content-one-highlight">Information</span></p>
                     <p><span class="left-content-one-normal">on Demand</span></p>
                 </div>
-                <div class="left-content-two">
+                <div class="fp-left-content-two">
                     <a href="#from-GetS" class="custom-button-one" >Get Started</a>
                     <a href="#" class="custom-button-two">Contact Us</a>
                 </div>
         </div>
-        <div class="right-hero" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
+        <div class="fp-right-hero" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
             <div class="right-hero-container p-2 p-lg-5">
                 <div class="carousel position-relative mx-auto overflow-hidden rounded">
                 <div class="carousel-images d-flex"></div>
@@ -247,14 +247,7 @@
             <img class="collection-left-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/groupchat.png" alt="collection-image">
         </div>
     </section>
-    <section class="hero-error" data-scrollreveal="enter bottom over 1s and move 30px">
-        <h2>Looking for something specific?</h2>
-        <div class="error-form">
-            <form role="search" method="get" class="custom-search-form" action="<?php echo home_url('/'); ?>">
-                <input type="search" name="s" class="custom-search-input" placeholder="Search anything..." required />
-                <button type="submit" class="custom-search-button">Search</button>
-            </form>
-        </div>
-    </section>
 </main>
+
+
 <?php get_footer();?>

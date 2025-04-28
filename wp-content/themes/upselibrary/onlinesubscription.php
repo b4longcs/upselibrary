@@ -5,8 +5,8 @@ Template Name: Online Subscription
 get_header(); ?>
 <section class="container">
     <?php custom_breadcrumb(); ?>
-    <section class="pages-container align-items-center justify-content-between d-flex flex-wrap">
-        <div class="left-hero">
+    <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
+        <div class="global-left-hero">
             <div class="left-hero-header d-flex justify-content-center  flex-column">
                 <p class="hero-header-one">Online</p>
                 <p class="hero-header-two">Subscription</p>
@@ -18,23 +18,23 @@ get_header(); ?>
                 </p>
             </div>
         </div>
-        <div class="right-hero">
+        <div class="global-right-hero">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/onlinesubscription-img.svg" alt="global-hero-img">
         </div>
     </section>
-    <section class="global-pages-container my-5 my-lg-3 my-md-2 my-sm-2">
+    <section class="global-pages-content my-5 my-lg-3 my-md-2 my-sm-2">
         <section class="home-tabs" id="from-GetS">
             <div class="tabs" data-scrollreveal="enter bottom over 1s and move 40px after 0.2s">
                 <div class="tabs-nav" role="tablist" aria-label="Content sections">
                     <div class="tabs-indicator"></div>
                     <button class="tab-button" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1">
-                        Tuklas
+                        eJournals
                     </button>
                     <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">
-                        ETD-IR
+                        ePeriodicals
                     </button>
                     <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3">
-                        EBSCO
+                        eBooks
                     </button>
                 </div>
 
@@ -72,6 +72,7 @@ get_header(); ?>
             </div>
 
         </section>
+
     </section>
     <section class="spacer"></section>
 </section>
