@@ -35,8 +35,8 @@
 }
 
 .header-text {
-    background-color: var(--clr-highlight-color);
-    color: var(--clr-text-color);
+    background-color: var(--clr-primary-color);
+    color: white;
     font-size: var(--fs-sm);
     text-align: center;
     padding: 10px;

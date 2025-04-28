@@ -247,6 +247,7 @@
             <img class="collection-left-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/groupchat.png" alt="collection-image">
         </div>
     </section>
+<<<<<<< HEAD
     <section class="fp-search d-flex justify-content-center align-items-center flex-column py-5">
         <p class="fp-search-p">Looking for something specific?</p>
         <div class="error-form">
@@ -256,6 +257,8 @@
             </form>
         </div>
     </section>
+=======
+>>>>>>> 4e6d78916d37459bed2b231b5e3dec76f102bfc7
 </main>
 
 
