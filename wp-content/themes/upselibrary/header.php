@@ -70,11 +70,11 @@ if (is_page('up-school-of-economics')) {
                 <li>
                 <a href="#" class="nav-menu">Resources</a>
                 <ul class="sub-menu">
-                    <li><a href="#">Print Collection</a></li>
-                    <li><a href="#">Online Subscription</a></li>
-                    <li><a href="#">Databases</a></li>
-                    <li><a href="#">Datasets</a></li>
-                    <li><a href="#">Archives Collection</a></li>
+                    <li><a href="/print-collection">Print Collection</a></li>
+                    <li><a href="/online-subscription">Online Subscription</a></li>
+                    <li><a href="/databases">Databases</a></li>
+                    <li><a href="/datasets">Datasets</a></li>
+                    <li><a href="/archives-collection">Archives Collection</a></li>
                 </ul>
                 </li>
                 <li>
