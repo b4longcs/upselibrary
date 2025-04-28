@@ -38,6 +38,7 @@ if (is_page('up-school-of-economics')) {
 <div id="progress-bar"></div> 
 <header class="header-sticky">
        
+       
     <div class="header-text">
         <p>The UPSE Library is open from 8:00 AM to 7:00 PM (Monday to Friday).</p>
     </div>
