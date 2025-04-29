@@ -58,14 +58,14 @@ if (is_page('up-school-of-economics')) {
                 <li>
                 <a href="#" class="nav-menu">About</a>
                 <ul class="sub-menu">
-                    <li><a href="#">Brief History</a></li>
+                    <li><a href="/brief-history">Brief History</a></li>
                     <li><a href="#">Vision & Mission</a></li>
-                    <li><a href="#">General Policy</a></li>
-                    <li><a href="#">Library Guide</a></li>
-                    <li><a href="#">Library Staff</a></li>
+                    <li><a href="/general-policy">General Policy</a></li>
+                    <li><a href="/library-guide">Library Guide</a></li>
+                    <li><a href="/library-staff">Library Staff</a></li>
                     <li><a href="#">Citizen's Charter</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/contact-us">Contact Us</a></li>
                 </ul>
                 </li>
                 <li>
@@ -89,8 +89,8 @@ if (is_page('up-school-of-economics')) {
                     <li><a href="#">Document Delivery Service</a></li>
                 </ul>
                 </li>
-                <li><a href="#" class="nav-menu">Spaces</a></li>
-                <li><a href="#" class="nav-menu">Visitor</a></li>
+                <li><a href="/spaces" class="nav-menu">Spaces</a></li>
+                <li><a href="/visitor" class="nav-menu">Visitor</a></li>
             </ul>
         </nav>
     </div>

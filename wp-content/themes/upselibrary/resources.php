@@ -27,7 +27,7 @@ get_header(); ?>
                     </div>
                     <p class="rp-content">The UPSE Library’s print collection is comprised of more than 80,000 volumes of books classified as Filipiniana, General Circulation, General Reference, and Reserve…</p>
                 </div>
-                <a href="#" class="resources-grid-btn">See more</a>
+                <a href="/print-collection" class="resources-grid-btn">See more</a>
             </div>
         </div>
         <div class="resources-item">
@@ -39,7 +39,7 @@ get_header(); ?>
                     </div>
                     <p class="rp-content">The UPSE Library is subscribed to four dataset providers namely, CEIC Data, EIKON with Datastream, Orbis Database, and GTAP Database…</p>
                 </div>
-                <a href="#" class="resources-grid-btn">See more</a>
+                <a href="/online-subscription" class="resources-grid-btn">See more</a>
             </div>
         </div>
         <div class="resources-item">
@@ -51,7 +51,7 @@ get_header(); ?>
                     </div>
                     <p class="rp-content">The UPSE Library is subscribed to four dataset providers namely, CEIC Data, EIKON with Datastream, and GTAP Database…</p>
                 </div>
-                <a href="#" class="resources-grid-btn">See more</a>
+                <a href="/databases" class="resources-grid-btn">See more</a>
             </div>
         </div>
         <div class="resources-item">
@@ -63,7 +63,7 @@ get_header(); ?>
                     </div>
                     <p class="rp-content">To access the curated datasets from various agencies, accomplish the attached Data Use Agreement (DUA) …</p>
                 </div>
-                <a href="#" class="resources-grid-btn">See more</a>
+                <a href="/datasets" class="resources-grid-btn">See more</a>
             </div>
         </div>
         <div class="resources-item">
@@ -75,7 +75,7 @@ get_header(); ?>
                     </div>
                     <p class="rp-content">Work in progress</p>
                 </div>
-                <a href="#" class="resources-grid-btn">See more</a>
+                <a href="/archives-collection" class="resources-grid-btn">See more</a>
             </div>
         </div>
     </section>

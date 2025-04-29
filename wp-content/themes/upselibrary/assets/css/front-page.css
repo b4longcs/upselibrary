@@ -903,11 +903,10 @@ input::placeholder {
     text-align: center;
 }
 
-
-
 @media (max-width: 1024px) {
     .container, .fp-hero-container {
-        width: 87%;
+        width: 97%;
+        align-items: center;
     }
 
     .fp-hero-container {
