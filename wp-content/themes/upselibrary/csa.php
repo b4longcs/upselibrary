@@ -23,14 +23,43 @@ get_header(); ?>
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/databases-img.svg" alt="global-hero-img">
         </div>
     </section>
-    <section class="global-pages-content my-5 my-lg-3 my-md-2 my-sm-2">
-        <div class="gp-databases">
-            <a href="https://www.ceicdata.com/en"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ceic.webp" alt=""></a>
-            <a href="https://www.gtap.agecon.purdue.edu/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/eikon.webp" alt=""></a>
-            <a href="https://eikon.refinitiv.com/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/gtap.png" alt=""></a>
+    
+
+
+    <h1 class="my-5" id="post-list-title">Latest Updates</h1>
+    <section class="post-filter-container">
+        <div class="post-grid-top-container d-flex justify-content-between align-items-center flex-wrap">
             
+            <div class="post-grid-filter d-flex justify-content-center align-items-center ">
+                <p class="post-grid-filter">Filter:</p>
+                <select id="category-filter" class="category-filter">
+                    <option value="all">All</option>
+                    <?php 
+                    $categories = get_categories();
+                    foreach ($categories as $category) {
+                        echo '<option value="' . $category->slug . '">' . $category->name . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+            
+            <!-- Search Input -->
+            <input type="text" id="search-input" class="search-input" placeholder="Search posts...">
+        </div>
+
+        <div class="span-line my-4"></div>
+
+        <!-- Posts Grid -->
+        <div id="posts-grid" class="posts-grid" aria-live="polite">
+            <!-- Posts will be dynamically loaded here -->
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="pagination" aria-label="Pagination">
+            <!-- Pagination buttons will be dynamically generated -->
         </div>
     </section>
+    
     <section class="spacer"></section>
 </section>
 <?php get_footer(); ?>
