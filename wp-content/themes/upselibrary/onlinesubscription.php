@@ -39,34 +39,42 @@ get_header(); ?>
                 </div>
 
                 <div class="tab-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" aria-hidden="false">
-                    <div class="parent">
-                        <div class="div1"> </div>
-                        <div class="div2"> </div>
-                        <div class="div3"> </div>
-                        <div class="div4"> </div>
-                        <div class="div5"> </div>
-                        <div class="div6"> </div>
+                    <div class="online-sub-content">
+                        <section class="bento-layout">
+                            <div class="bento-grid">
+                                <div class="div1">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/taylor.png" alt="taylor"></a>
+                                </div>
+                                <div class="div2">
+                                    <a href="#"><img src=""></a>
+                                </div>
+                                <div class="div3">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/clarivate.png" alt=""></a>
+                                </div>
+                                <div class="div4">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/sciencedirect.svg" alt=""></a>
+                                </div>
+                                <div class="div5">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/wiley.png" alt=""></a>
+                                </div>
+                                <div class="div6">
+                                    <a href="https://selib.upd.edu.ph/resources/online-subscription"></a>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
                 
                 <div class="tab-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" aria-hidden="true">
-                    <div class="parent">
-                        <div class="div1"> </div>
-                        <div class="div2"> </div>
-                        <div class="div3"> </div>
-                        <div class="div4"> </div>
-                        <div class="div5"> </div>
-                        <div class="div6"> </div>
+                    <div class="online-sub-content">
+                    <section class="bento-layout">
+                            
+                        </section>
                     </div>
                 </div>
                 <div class="tab-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" aria-hidden="true">
-                    <div class="parent">
-                        <div class="div1"> </div>
-                        <div class="div2"> </div>
-                        <div class="div3"> </div>
-                        <div class="div4"> </div>
-                        <div class="div5"> </div>
-                        <div class="div6"> </div>
+                    <div class="online-sub-content">
+                        
                     </div>
                 </div>
             </div>

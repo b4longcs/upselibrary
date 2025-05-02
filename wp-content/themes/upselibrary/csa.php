@@ -23,15 +23,12 @@ get_header(); ?>
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/databases-img.svg" alt="global-hero-img">
         </div>
     </section>
-    
-
-
     <h1 class="my-5" id="post-list-title">Latest Updates</h1>
     <section class="post-filter-container">
-        <div class="post-grid-top-container d-flex justify-content-between align-items-center flex-wrap">
+        <div class="post-grid-top-container d-flex  align-items-center flex-wrap gap-2">
             
             <div class="post-grid-filter d-flex justify-content-center align-items-center ">
-                <p class="post-grid-filter">Filter:</p>
+                <p class="post-grid-filter">Filter : </p>
                 <select id="category-filter" class="category-filter">
                     <option value="all">All</option>
                     <?php 
@@ -59,7 +56,6 @@ get_header(); ?>
             <!-- Pagination buttons will be dynamically generated -->
         </div>
     </section>
-    
     <section class="spacer"></section>
 </section>
 <?php get_footer(); ?>

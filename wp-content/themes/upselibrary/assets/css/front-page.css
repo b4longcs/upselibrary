@@ -39,18 +39,25 @@
 }
 
 .fp-hero-container {
-    position: relative;
-    z-index: 2;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    overflow: hidden;
+    z-index: 2;
     max-width: 1200px;
-    gap: 1rem;
+
 }
 
 .fp-hero-video {
@@ -81,25 +88,12 @@
 .fp-left-hero,
 .fp-right-hero {
     -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    width: 100%;
+        -ms-flex: 1 1 clamp(300px, 50%, 100%);
+            flex: 1 1 clamp(300px, 50%, 100%);
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
-.fp-left-hero {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    gap: 2rem;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-
-}
 
 .fp-left-content-one {
     display: -webkit-box;
@@ -204,13 +198,6 @@
     gap: 2rem;
 }
 
-
-.carousel-controls .prev,
-.carousel-controls .next {
-    padding: 0.75rem; 
-    width: auto; 
-    height: auto; 
-}
 
 /* End of Hero */
 
@@ -908,10 +895,6 @@ input::placeholder {
         width: 97%;
         align-items: center;
     }
-
-    .fp-hero-container {
-        height: 70%;
-    }
     .cas-post-title, .cas-post-excerpt {
         max-width: 80% !important;
     }
@@ -931,18 +914,9 @@ input::placeholder {
 }
 
 @media (max-width: 500px) {
-   
 
-    .hero-container {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
-    }
-
-    .left-hero,
-    .right-hero {
-        width: 100%;
+    .fp-hero-container {
+        width: 90%;
     }
 
     .cas-left h2, 

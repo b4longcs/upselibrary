@@ -50,8 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
             postsGrid.appendChild(postCard);
         });
     }
-    
-       
+      
     function renderPagination(totalPages, currentPage) {
         const pagination = document.getElementById('pagination');
         pagination.innerHTML = '';
@@ -89,9 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     
-    
-    
-
     function getPostsPerPage() {
         const width = window.innerWidth;
         if (width > 1024) return postsPerPage.desktop;
@@ -107,8 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
         getPosts(categoryFilter.value, searchInput.value, 1);
     });
 
-    
-
     pagination.addEventListener('click', (e) => {
         const button = e.target.closest('button');
         if (!button || !button.dataset.page) return;
@@ -120,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     
-
     window.addEventListener('resize', () => {
         getPosts(categoryFilter.value, searchInput.value, currentPage);
     });
