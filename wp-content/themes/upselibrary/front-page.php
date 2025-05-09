@@ -35,6 +35,9 @@
         </div>
     </div>
 </section>
+<section class="animation">
+    <h1 class="animated-text" data-scrollreveal="enter bottom over 1s and move 20px after 0.4s"><span class="text-animated">Explore</span>UPSE Library</h1>
+</section>
 <main class="container">
     <section class="home-tabs" id="from-GetS">
         <div class="tabs" data-scrollreveal="enter bottom over 1s and move 40px after 0.2s">
@@ -83,10 +86,6 @@
                 </form>
             </div>
         </div>
-
-    </section>
-    <section class="animation">
-        <h1 class="animated-text" data-scrollreveal="enter bottom over 1s and move 20px after 0.4s"><span class="text-animated">Explore</span>UPSE Library</h1>
     </section>
     <section class="cas">
         <div class="cas-left" data-scrollreveal="enter bottom over 1s and move 30px">

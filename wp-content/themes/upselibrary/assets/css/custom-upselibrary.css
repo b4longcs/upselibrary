@@ -1,15 +1,15 @@
 
 :root {
     /* Font-related variables */
-    --font-primary: 'Tex Gyre Adventor', sans-serif;
-    --font-secondary: 'Poppins', sans-serif;
+    --font-primary: "Tex Gyre Adventor", sans-serif;
+    --font-secondary: "Poppins", sans-serif;
     
     /* Text Size */
     --fs-xxsm: 0.5rem;
     --fs-xsm: 0.6rem;
     --fs-sm: 0.7rem;
     --fs-md: 0.8rem;
-    --fs-reg: 0.9rem
+    --fs-reg: 0.9rem;
     --fs-lg: 1rem;
     --fs-xlg: 1.5rem;
     --fs-xxlg: 2rem;
@@ -29,6 +29,7 @@
     --clr-text-color: #000033;
     --clr-accent-color: #4d4d4d;
     --clr-accent-color-two: #ebebeb;
+    --clr-accent-color-three: #c0c0c0;
     --clr-bg-color: #FFFCF6;
     --clr-bg-color-hover: #00573f;
     --clr-bg-color-hover-light: #5f867c;
@@ -62,7 +63,44 @@
 *{
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--clr-primary-color) #f0f0f0;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Style for the scrollbar container */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the width of the scrollbar */
+  height: 8px; /* Adjust the height of the horizontal scrollbar */
+}
+
+/* Style for the scrollbar track */
+::-webkit-scrollbar-track {
+  background: transparent; /* Transparent background for the track */
+}
+
+/* Style for the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #00573f; /* Set the thumb color */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 2px solid transparent; /* Optional: add space around thumb if needed */
+}
+
+/* Optional: hover effect on thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #00462e; /* Darker shade when hovered */
+}
+
+
+a {
+  transition: all 0.3s ease-in-out;
+}
+
+
 body {
     font-family: var(--font-primary);
     padding: 0 !important;
@@ -576,7 +614,7 @@ p, ul, li, a{
             box-sizing: border-box;
     margin-bottom: 10px;
     border-radius: 16px;
-    background-color: var(--clr-bg-color);
+    background-color: var(--clr-white);
     -webkit-box-shadow: 
         0 1px 3px rgba(0, 0, 0, 0.12), 
         0 4px 6px rgba(0, 0, 0, 0.1);

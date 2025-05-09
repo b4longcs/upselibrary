@@ -52,12 +52,6 @@ add_action('wp_enqueue_scripts', 'enqueue_theme_assets');
 
 
 
-// Customizer settings
-function custom_image_sizes() {
-    add_image_size('sidebar-thumbnail', 280, 140, true); // Custom size for sidebar
-}
-add_action('after_setup_theme', 'custom_image_sizes');
-
 
 //* breadcrumb */
 function custom_breadcrumb() {

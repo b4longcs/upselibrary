@@ -453,8 +453,9 @@ input::placeholder {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: auto;
-    margin: 6% 0 10%;
+    height: 100dvh;
+    background: url(../images/bg-bg.jpg) no-repeat center center / cover;
+    
 }
 .animated-text {
   font-size: clamp(2rem, 3vw, 6rem) !important;

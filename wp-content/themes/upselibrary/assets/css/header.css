@@ -52,7 +52,8 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding: 10px 16px;
+            
+    padding:  .4rem .8rem;
     margin: .6rem 0;
     background-color: var(--clr-white);
     position: relative;
@@ -108,8 +109,7 @@
     display: flex;
     gap: 1.5em;
     list-style: none;
-    margin: 0;
-    padding: 0;
+    height: 50px;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -134,27 +134,25 @@
     position: absolute;
     top: 120%;
     right: 0;
-    left: 0;
+    left: -10px;
     background: var(--clr-primary-color);
     opacity: 0;
     width: 230px;
     visibility: hidden;
     max-height: 0;
     overflow: hidden;
-    -webkit-transition: all 0.35s ease;
-    -o-transition: all 0.35s ease;
-    transition: all 0.35s ease;
-    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.35s ease, visibility 0.35s ease, max-height 0.35s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
     border-radius: 8px;
-    
 }
 
-.nav-links li:hover .sub-menu {
+/* Show sub-menu on hover or focus-within */
+.nav-links li:hover .sub-menu,
+.nav-links li:focus-within .sub-menu {
     opacity: 1;
     visibility: visible;
-    max-height: inherit;    
+    max-height: inherit;
 }
 
 .sub-menu li a {
@@ -177,6 +175,7 @@
 @media (max-width: 1024px) {
     .hamburger {
         display: block;
+        line-height: .8;
     }
 
     .nav-links {
