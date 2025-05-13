@@ -95,7 +95,7 @@
 
 
 .global-right-hero img {
-    width: auto;
+    width: 75%;
     height: 100%;
 }
 
@@ -1169,7 +1169,7 @@
     flex-direction: column;
     padding: 2rem 1rem;
     gap: 1rem;
-    width: 100%;
+    width: 280px;
 }
 
 .tags-content {

@@ -78,7 +78,6 @@
         the_posts_navigation();
 
     else : ?>
-        <p class="searchpage-no-results">No results found.</p>
     <?php endif; ?>
 </section>
 <section class="spacer"></section>

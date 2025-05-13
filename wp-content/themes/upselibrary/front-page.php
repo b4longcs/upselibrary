@@ -161,7 +161,7 @@
                 We provide a range of services to support your research needs, 
                 including research assistance, study spaces, and access to online databases.
             </p>
-            <a class="global-button" href="#">
+            <a class="global-button" href="/services">
                 <span class="dots">View More</span> 
             </a>
         </div>
@@ -175,7 +175,7 @@
                 Our library offers a variety of resources to expand your knowledge 
                 and enhance your learning experience with us.
             </p>
-            <a class="global-button" href="#">
+            <a class="global-button" href="/resources">
                 <span class="dots">View More</span> 
             </a>
         </div>

@@ -14,7 +14,6 @@ get_header(); ?>
          
         </div>
         <div class="global-right-hero">
-            <img src="" alt="">
         </div>
     </section>
     <section class="resources-grid my-5 my-lg-3 my-md-2 my-sm-2">
