@@ -24,7 +24,7 @@ get_header(); ?>
                         <i class="ri-book-2-fill"></i> 
                         <h3>Print Collection</h3>
                     </div>
-                    <p class="rp-content">The UPSE Library’s print collection is comprised of more than 80,000 volumes of books classified as Filipiniana, General Circulation, General Reference, and Reserve…</p>
+                    <p class="rp-content">The UPSE Library&#39;s print collection is comprised of more than 80,000 volumes of books classified as Filipiniana, General Circulation, General Reference, and Reserve…</p>
                 </div>
                 <a href="/print-collection" class="resources-grid-btn">See more</a>
             </div>

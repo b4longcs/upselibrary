@@ -1,20 +1,19 @@
 <?php get_header(); ?>
 <div class="container">
     <div class="single-main">
-        <div class="single-container me-5">
+        <div class="single-container me-2">
             <main>
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <article>
-                        <h1 class="post-title"><?php the_title(); ?></h1>
-                        <p class="post-meta mt-5 mb-2">
-                            <span class="post-date">Published: <?php echo get_the_date(); ?></span>
-                            | <span class="post-time"><?php echo get_the_time(); ?></span>
-                        </p>
+                        <?php custom_breadcrumb(); ?>
+                        
+                        <h1 class="post-title mb-5"><?php the_title(); ?></h1>
+                        
                         <?php
                             $tags = get_the_tags();
                             if ($tags) :
                         ?>
-                            <div class="post-tags mb-4">
+                            <div class="post-tags my-2 ml-3">
                                 <span class="tag-label">Tags:</span>
                                 <?php foreach ($tags as $tag) : ?>
                                     <span class="tag-badge">
@@ -25,6 +24,11 @@
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
+                        <p class="post-meta mt-3 mb-2">
+                            <span class="post-date">Published: <?php echo get_the_date( get_option( 'date_format' ) ); ?></span>
+                            | <span class="post-time"><?php echo get_the_time( get_option( 'time_format' ) ); ?></span>
+                        </p>
+                        <div class="span-line my-4"></div>
                         <div class="post-content">
                             <?php the_content(); ?>
                         </div>
@@ -39,13 +43,9 @@
                             <?php next_post_link('%link', 'Next Post <i class="fa-solid fa-chevron-right"></i>'); ?>
                         </div>
                     </div>
-
-
-                         
                 <?php endwhile; endif; ?>
             </main>
         </div>
-        
         <div class="sidebar mt-5 mb-5 p-3">
             <div class="categories">
                 <h5 class="category mt-3 mb-2">Categories</h5>
@@ -92,11 +92,10 @@
             </div>
             
         </div>
-
     </div>
 </div>
-<span class="span-line mt-5"></span>
-<section class="more-related mb-5">
+<section class="span-line mt-5"></section>
+<section class="more-related  py-5">
     <section class="more-news-container d-flex">
         <span class="more-spaces"></span>
         <h2 class="related-header-text">Want more of this?</h2>
@@ -124,9 +123,9 @@
         ?>
                     <div class="related-post-item">
                         <?php if (has_post_thumbnail()) : ?>
-                            <div class="related-post-thumbnail">
+                            <a href="<?php the_permalink(); ?>" class="related-post-thumbnail">
                                 <?php the_post_thumbnail('full', ['srcset' => wp_get_attachment_image_srcset(get_post_thumbnail_id())]); ?>
-                            </div>
+                            </a>
                         <?php endif; ?>
 
                         <div class="related-post-content">
@@ -154,12 +153,15 @@
 
     </div> 
 </section>
-
+<section class="span-line mt-5"></section>
 <section class="more-news">
     
     <section class="single-most">
-        <div><span class="most-header">Most Recent Updates</span></div>
-        <section class="most-grid">
+        <section class="more-news-container d-flex mt-2">
+            <span class="more-spaces"></span>
+            <h2 class="related-header-text">Most Recent Updates</h2>
+        </section>
+        <section class="most-grid mt-3">
             <?php
             // Define the arguments for the query
             $args = array(
@@ -230,6 +232,15 @@
         
     </section>
       
+</section>
+<section class="fp-search d-flex justify-content-center align-items-center flex-column">
+    <p class="fp-search-p">Looking for something specific?</p>
+    <div class="error-form">
+        <form role="search" method="get" class="custom-search-form" action="<?php echo home_url('/'); ?>">
+            <input type="search" name="s" class="custom-search-input" placeholder="Search anything..." required />
+            <button type="submit" class="custom-search-button">Search</button>
+        </form>
+    </div>
 </section>
 
 <?php get_footer(); ?>

@@ -114,7 +114,7 @@
 
 /* General breadcrumb styles */
 .breadcrumb {
-    margin-bottom: 2rem;
+    margin: 1.5rem 0 ;
     list-style: none;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -179,6 +179,7 @@
 .spacer {
     height: 20dvh;
     width: 100%;
+
 }
 
 
@@ -468,43 +469,6 @@
             "div4 div4"
             "div5 div6";
     }
-
-    
-}
-
-/* Desktop and above screens */
-@media (min-width: 900px) {
-    .bento-grid {
-        grid-template-columns: repeat(4, 220px); 
-        grid-template-rows: repeat(3, 250px);
-        grid-template-areas:
-            "div1 div1 div1 div3"
-            "div2 div4 div4 div3"
-            "div5 div5 div6 div6"
-    }
-}
-
-@media (min-width: 1200px) {
-    .bento-grid {
-        grid-template-columns: repeat(4, 300px); 
-        grid-template-rows: repeat(3, 250px);
-        grid-template-areas:
-            "div1 div1 div1 div3"
-            "div2 div4 div4 div3"
-            "div5 div5 div6 div6"
-    }
-}
-
-@media (max-width: 500px) {
-    .subheader {
-        width: 100%;
-    }
-
-    .global-hero-subheader,
-    .gh-subsubheader {
-        width: 100%;
-    }
-
 }
 
 /* End Online Subs */
@@ -1123,7 +1087,7 @@
 /*TAGS*/
 .tags-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1rem;
     justify-items: center;
 }
@@ -1136,7 +1100,7 @@
 }
 
 .tags-hero-text {
-    font-size: clamp(3rem, 4vw, 5rem);
+    font-size: clamp(2rem, 3vw, 4rem);
     font-weight: var(--fw-semi-bold);
     color: var(--clr-primary-color);
     text-transform: uppercase;
@@ -1155,6 +1119,7 @@
 .tag-name {
     font-size: var(--fs-reg); 
     font-weight: bold;
+    line-height: 1.5;
 }
 
 .tag-post-count {
@@ -1167,9 +1132,9 @@
 .tags-container {
     display: flex;
     flex-direction: column;
-    padding: 2rem 1rem;
-    gap: 1rem;
-    width: 280px;
+    padding: 1rem .5rem;
+    gap: .6rem;
+    width: 250px;
 }
 
 .tags-content {
@@ -1178,7 +1143,7 @@
 
 .tags-thumbnail img {
     width: 100%;
-    height: 300px;
+    height: 220px;
     object-fit: cover;
     object-position: center;
     border-radius: 20px;
@@ -1186,20 +1151,20 @@
 }
 
 .tags-thumbnail img:hover {
-    -webkit-transform: scale(1.05);
-        -ms-transform: scale(1.05);
-            transform: scale(1.05);
+    -webkit-transform: scale(1.02);
+        -ms-transform: scale(1.02);
+            transform: scale(1.02);
     -webkit-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
 .tags-title {
-    line-height: .6;
+    line-height: .4;
 }
 .tags-title a{
     color: var(--clr-primary-color);
-    font-size: var(--fs-lg);
+    font-size: var(--fs-reg);
     font-weight: var(--fw-semi-bold);
 }
 
@@ -1211,8 +1176,9 @@
 }
 
 .tags-excerpt {
-    font-size: var(--fs-md);
-    color: var(--clr-text-color);
+    font-size: calc(var(--fs-sm) + .05rem);
+    color: var(--clr-accent-color);
+    font-family: var(--font-secondary);
     margin: 0;
     padding: 0;
     text-wrap: wrap;
@@ -1358,11 +1324,61 @@
     margin-top: 2rem;
 }
 
-@media (max-width: 500px) {
+
+/* End of Search Page */
+@media (min-width: 300px) {
+    .subheader {
+        width: 100%;
+    }
+
     .searchpage-item {
         flex-wrap: wrap;
     }
 
+    .global-hero-subheader,
+    .gh-subsubheader {
+        width: 100%;
+    }
+
+    .global-right-hero img {
+        width: 100%;
+        height: auto;
+    }
+
 }
 
-/* End of Search Page */
+
+@media (min-width: 500px) {
+    .global-right-hero img {
+        width: 60%;
+        height: auto;
+    }
+}
+
+@media (min-width: 900px) {
+    .bento-grid {
+        grid-template-columns: repeat(4, 220px); 
+        grid-template-rows: repeat(3, 250px);
+        grid-template-areas:
+            "div1 div1 div1 div3"
+            "div2 div4 div4 div3"
+            "div5 div5 div6 div6"
+    }
+
+    .global-right-hero img {
+        width: 80%;
+        height: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bento-grid {
+        grid-template-columns: repeat(4, 300px); 
+        grid-template-rows: repeat(3, 250px);
+        grid-template-areas:
+            "div1 div1 div1 div3"
+            "div2 div4 div4 div3"
+            "div5 div5 div6 div6"
+    }
+}
+

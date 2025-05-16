@@ -24,7 +24,7 @@
                         <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
                     </div>
                     <div class="tags-content">
-                        <h2 class="tags-title mb-4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                        <h2 class="tags-title mb-3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                         <div class="tags-excerpt">
                             <?php 
                             $excerpt = get_the_excerpt();
@@ -35,21 +35,19 @@
                 </article>
             <?php endwhile; ?>
         </div>
-        <?php the_posts_navigation(); ?>
+        <?php the_posts_pagination(); ?>
+        
     <?php else : ?>
         <p>No posts found for this tag.</p>
     <?php endif; ?>
 </section>
-<section class="fp-search d-flex justify-content-center align-items-center flex-column py-5 my-5">
-        <p class="fp-search-p">Looking for something specific?</p>
-        <div class="error-form">
-            <form role="search" method="get" class="custom-search-form" action="<?php echo home_url('/'); ?>">
-                <input type="search" name="s" class="custom-search-input" placeholder="Search anything..." required />
-                <button type="submit" class="custom-search-button">Search</button>
-            </form>
-        </div>
-    </section>
-<section class="spacer"></section>
-
-
+<section class="fp-search d-flex justify-content-center align-items-center flex-column">
+    <p class="fp-search-p">Looking for something specific?</p>
+    <div class="error-form">
+        <form role="search" method="get" class="custom-search-form" action="<?php echo home_url('/'); ?>">
+            <input type="search" name="s" class="custom-search-input" placeholder="Search anything..." required />
+            <button type="submit" class="custom-search-button">Search</button>
+        </form>
+    </div>
+</section>
 <?php get_footer(); ?>

@@ -1,308 +1,293 @@
-//* Header *//
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-const closeBtn = document.getElementById('close-btn');
-const overlay = document.getElementById('overlay');
-const navMenus = document.querySelectorAll('.nav-links > li');
 
-// Open sidebar
-hamburger.addEventListener('click', () => {
-  navLinks.classList.add('active');
-  overlay.classList.add('active');
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  Header.init();
+  Tabs.init();
+  ScrollReveal.init();
+  AjaxPosts.init();
 });
 
-// Close sidebar
-function closeSidebar() {
-  navLinks.classList.remove('active');
-  overlay.classList.remove('active');
-  navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
-}
+// ====================================
+// MODULE: Header
+// ====================================
+const Header = (() => {
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  const closeBtn = document.getElementById('close-btn');
+  const overlay = document.getElementById('overlay');
+  const navMenus = document.querySelectorAll('.nav-links > li');
+  const headerSticky = document.querySelector('.header-sticky');
+  let lastScrollTop = 0;
 
-closeBtn.addEventListener('click', closeSidebar);
-overlay.addEventListener('click', closeSidebar);
-
-// Handle each nav item
-navMenus.forEach(item => {
-  const hasSubMenu = item.querySelector('.sub-menu');
-
-  item.addEventListener('click', (e) => {
-    e.stopPropagation();
-
-    const isOpen = item.classList.contains('open');
-
-    // If no sub-menu, close all others
-    if (!hasSubMenu) {
+  const toggleSidebar = (open = true) => {
+    navLinks.classList.toggle('active', open);
+    overlay.classList.toggle('active', open);
+    if (!open) {
       navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
-      return;
     }
+  };
 
-    // If this one is not open, open it and close others
-    if (!isOpen) {
-      navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
-      item.classList.add('open', 'active-indicator');
-    }
-  });
+  const initSidebar = () => {
+    hamburger?.addEventListener('click', () => toggleSidebar(true));
+    [closeBtn, overlay].forEach(el => el?.addEventListener('click', () => toggleSidebar(false)));
 
-  // Double-click closes the current submenu if open
-  if (hasSubMenu) {
-    item.addEventListener('dblclick', (e) => {
-      e.stopPropagation();
-      item.classList.remove('open', 'active-indicator');
-    });
-  }
+    navMenus.forEach(item => {
+      const subMenu = item.querySelector('.sub-menu');
 
-  // Hover for desktop
-  item.addEventListener('mouseenter', () => {
-    if (window.innerWidth > 1024) {
-      navMenus.forEach(li => {
-        if (!li.classList.contains('open')) {
-          li.classList.remove('active-indicator');
+      item.addEventListener('click', e => {
+        const isOpen = item.classList.contains('open');
+        if (subMenu) {
+          e.preventDefault();
+          e.stopPropagation();
+          navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
+          if (!isOpen) item.classList.add('open', 'active-indicator');
+        } else {
+          navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
         }
       });
-      if (!item.classList.contains('open')) {
-        item.classList.add('active-indicator');
-      }
+
+      item.addEventListener('dblclick', () => {
+        item.classList.remove('open', 'active-indicator');
+      });
+
+      item.addEventListener('mouseenter', () => {
+        if (window.innerWidth > 1024 && !item.classList.contains('open')) {
+          item.classList.add('active-indicator');
+        }
+      });
+
+      item.addEventListener('mouseleave', () => {
+        if (window.innerWidth > 1024 && !item.classList.contains('open')) {
+          item.classList.remove('active-indicator');
+        }
+      });
+    });
+  };
+
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll < window.innerWidth * 0.5) {
+      headerSticky.classList.remove('header-hidden');
+    } else {
+      headerSticky.classList.toggle('header-hidden', currentScroll > lastScrollTop);
     }
-  });
+    lastScrollTop = Math.max(currentScroll, 0);
+  };
 
-  item.addEventListener('mouseleave', () => {
-    if (window.innerWidth > 1024 && !item.classList.contains('open')) {
-      item.classList.remove('active-indicator');
-    }
-  });
-});
+  const setProgressBar = () => {
+    const totalHeight = document.body.clientHeight;
+    const ratio = ((window.innerHeight + window.scrollY) * 100) / totalHeight;
+    document.body.style.setProperty('--progress-bar-width', `${ratio}%`);
+  };
 
+  const init = () => {
+    initSidebar();
+    window.addEventListener('scroll', handleScroll);
+    ['scroll', 'resize'].forEach(evt => window.addEventListener(evt, setProgressBar));
+    setProgressBar();
+  };
 
-// Scroll up to reveal, scroll down to hide //
-let lastScrollTop = 0;
-const header = document.querySelector('.header-sticky');
+  return { init };
+})();
 
-window.addEventListener('scroll', function () {
-  const scrollThreshold = window.innerWidth * 0.5;
-  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+// ====================================
+// MODULE: Tabs
+// ====================================
+const Tabs = (() => {
+  const init = () => {
+    const tabList = document.querySelector('.tabs-nav');
+    if (!tabList) return;
 
-  if (currentScroll < scrollThreshold) {
-    header.classList.remove('header-hidden');
-    return;
-  }
+    const tabs = tabList.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-panel');
+    const indicator = document.querySelector('.tabs-indicator');
 
-  if (currentScroll > lastScrollTop) {
-    header.classList.add('header-hidden');
-  } else {
-    header.classList.remove('header-hidden');
-  }
-
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
-
-// ProgressBar //
-let body = document.querySelector('body');
-let barWidthProp = '--progress-bar-width';
-let totalHeight = body.clientHeight;
-
-let setProgressBar = () => {
-	let scrollRatio = (window.innerHeight + window.scrollY) * 100  / totalHeight;
-	
-	body.style.setProperty(barWidthProp, scrollRatio + '%');	
-};
-
-setProgressBar();
-
-window.addEventListener('scroll', e => {
-	setProgressBar();
-})
-
-window.addEventListener('resize', e => {
-	totalHeight = body.clientHeight;
-	setProgressBar();
-})
-//* End of Header *//
-
-//* Tabs --code pen*//
-document.addEventListener('DOMContentLoaded', () => {
-  // Check if .tabs-nav and .tabs-button elements exist on the page before running the code
-  const tabList = document.querySelector('.tabs-nav');
-  if (!tabList) return;  // Exit if .tabs-nav does not exist
-
-  const tabs = tabList.querySelectorAll('.tab-button');
-  const panels = document.querySelectorAll('.tab-panel');
-  const indicator = document.querySelector('.tabs-indicator');
-
-  const setIndicatorPosition = (tab) => {
+    const setIndicatorPosition = tab => {
       indicator.style.transform = `translateX(${tab.offsetLeft}px)`;
       indicator.style.width = `${tab.offsetWidth}px`;
-  };
-
-  // Set initial indicator position
-  if (tabs.length > 0) setIndicatorPosition(tabs[0]);
-
-  // Event listener for tab clicks
-  tabs.forEach((tab) => {
-      tab.addEventListener('click', (e) => {
-          const targetTab = e.target;
-          const targetPanel = document.querySelector(`#${targetTab.getAttribute('aria-controls')}`);
-
-          tabs.forEach((tab) => {
-              tab.setAttribute('aria-selected', false);
-              tab.classList.remove('active');
-          });
-          targetTab.setAttribute('aria-selected', true);
-          targetTab.classList.add('active');
-
-          panels.forEach((panel) => {
-              panel.setAttribute('aria-hidden', true);
-          });
-          targetPanel.setAttribute('aria-hidden', false);
-
-          setIndicatorPosition(targetTab);
-      });
-  });
-
-  // Event listener for tab navigation using arrow keys
-  tabList.addEventListener('keydown', (e) => {
-      const targetTab = e.target;
-      const previousTab = targetTab.previousElementSibling;
-      const nextTab = targetTab.nextElementSibling;
-
-      if (e.key === 'ArrowLeft' && previousTab) {
-          previousTab.click();
-          previousTab.focus();
-      }
-      if (e.key === 'ArrowRight' && nextTab) {
-          nextTab.click();
-          nextTab.focus();
-      }
-  });
-});
-
-//*END of tabs*//
-
-//* Scroll Reveal *//
-((window) => {
-  'use strict';
-
-  const docElem = window.document.documentElement;
-
-  const getViewportH = () => {
-    const client = docElem.clientHeight;
-    const inner = window.innerHeight;
-    return client < inner ? inner : client;
-  };
-
-  const getOffset = (el) => {
-    let offsetTop = 0, offsetLeft = 0;
-    while (el) {
-      if (!isNaN(el.offsetTop)) offsetTop += el.offsetTop;
-      if (!isNaN(el.offsetLeft)) offsetLeft += el.offsetLeft;
-      el = el.offsetParent;
-    }
-    return { top: offsetTop, left: offsetLeft };
-  };
-
-  const isElementInViewport = (el, h = 0) => {
-    const scrolled = window.pageYOffset;
-    const viewed = scrolled + getViewportH();
-    const elTop = getOffset(el).top;
-    const elBottom = elTop + el.offsetHeight;
-    return (elTop + el.offsetHeight * h) <= viewed && elBottom >= scrolled;
-  };
-
-  const parseLanguage = (el) => {
-    const words = el.getAttribute('data-scrollreveal').split(/[, ]+/);
-    const parsed = {};
-    let enterFrom;
-
-    const filter = (words) => {
-      const blacklist = ["from", "the", "and", "then", "but"];
-      return words.filter(word => !blacklist.includes(word));
     };
 
-    const filteredWords = filter(words);
+    const switchTab = tab => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.setAttribute('aria-hidden', true));
 
-    filteredWords.forEach((word, i) => {
-      switch (word) {
-        case "enter":
-          enterFrom = filteredWords[i + 1];
-          parsed.axis = (enterFrom === "top" || enterFrom === "bottom") ? "y" : "x";
-          parsed.from = enterFrom;
-          break;
-        case "after":
-        case "wait":
-          parsed.delay = filteredWords[i + 1];
-          break;
-        case "move":
-          parsed.distance = filteredWords[i + 1];
-          break;
-        case "over":
-          parsed.duration = filteredWords[i + 1];
-          break;
-        case "trigger":
-          parsed.eventName = filteredWords[i + 1];
-          break;
+      const targetPanel = document.getElementById(tab.getAttribute('aria-controls'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', true);
+      targetPanel.setAttribute('aria-hidden', false);
+
+      setIndicatorPosition(tab);
+    };
+
+    if (tabs.length) setIndicatorPosition(tabs[0]);
+
+    tabs.forEach(tab => tab.addEventListener('click', e => switchTab(e.target)));
+
+    tabList.addEventListener('keydown', e => {
+      const nav = e.key === 'ArrowLeft' ? e.target.previousElementSibling : e.target.nextElementSibling;
+      if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && nav) {
+        nav.click();
+        nav.focus();
       }
     });
-
-    if (enterFrom === "top" || enterFrom === "left") {
-      parsed.distance = `-${parsed.distance || "25px"}`;
-    }
-
-    return parsed;
   };
 
-  const genCSS = (el) => {
-    const parsed = parseLanguage(el);
-    const dist = parsed.distance || "25px";
-    const dur = parsed.duration || "0.66s";
-    const delay = parsed.delay || "0s";
-    const axis = parsed.axis || "y";
+  return { init };
+})();
+
+// ====================================
+// MODULE: ScrollReveal
+// ====================================
+const ScrollReveal = (() => {
+  const getViewportHeight = () => Math.max(document.documentElement.clientHeight, window.innerHeight);
+
+  const getOffset = el => {
+    let top = 0;
+    while (el) {
+      top += el.offsetTop || 0;
+      el = el.offsetParent;
+    }
+    return top;
+  };
+
+  const isInViewport = (el, threshold = 0.33) => {
+    const scroll = window.pageYOffset;
+    const view = scroll + getViewportHeight();
+    const top = getOffset(el);
+    const bottom = top + el.offsetHeight;
+    return top + el.offsetHeight * threshold <= view && bottom >= scroll;
+  };
+
+  const parseData = el => {
+    const tokens = el.getAttribute('data-scrollreveal').split(/[, ]+/).filter(w => !['from', 'the', 'and', 'then', 'but'].includes(w));
+    const obj = {};
+
+    tokens.forEach((t, i) => {
+      if (t === 'enter') obj.from = tokens[i + 1];
+      if (t === 'wait' || t === 'after') obj.delay = tokens[i + 1];
+      if (t === 'move') obj.distance = tokens[i + 1];
+      if (t === 'over') obj.duration = tokens[i + 1];
+    });
+
+    obj.axis = ['top', 'bottom'].includes(obj.from) ? 'y' : 'x';
+    if (['top', 'left'].includes(obj.from)) obj.distance = `-${obj.distance || '25px'}`;
+
+    return obj;
+  };
+
+  const getCSS = el => {
+    const d = parseData(el);
+    const duration = d.duration || '0.66s';
+    const delay = d.delay || '0s';
+    const dist = d.distance || '25px';
+    const axis = d.axis || 'y';
 
     return {
-      initial: `
-        transform: translate${axis}(${dist});
-        opacity: 0;
-      `,
-      target: `
-        transform: translate${axis}(0);
-        opacity: 1;
-      `,
-      transition: `
-        transition: all ${dur} ease ${delay};
-      `,
-      totalDuration: (parseFloat(dur) + parseFloat(delay)) * 1000
+      init: `transform: translate${axis}(${dist}); opacity: 0;`,
+      final: `transform: translate${axis}(0); opacity: 1; transition: all ${duration} ease ${delay};`,
+      timeout: (parseFloat(duration) + parseFloat(delay)) * 1000
     };
   };
 
-  const animate = (el) => {
-    const css = genCSS(el);
-
+  const animate = el => {
+    const css = getCSS(el);
     if (!el.hasAttribute('data-sr-init')) {
-      el.setAttribute('style', css.initial);
+      el.setAttribute('style', css.init);
       el.setAttribute('data-sr-init', 'true');
     }
 
-    if (el.hasAttribute('data-sr-complete')) return;
-
-    if (isElementInViewport(el, 0.33)) {
-      el.setAttribute('style', css.target + css.transition);
+    if (!el.hasAttribute('data-sr-complete') && isInViewport(el)) {
+      el.setAttribute('style', css.final);
       setTimeout(() => {
         el.removeAttribute('style');
         el.setAttribute('data-sr-complete', 'true');
-      }, css.totalDuration);
+      }, css.timeout);
     }
   };
 
-  const scrollRevealInit = () => {
-    const elems = [...document.querySelectorAll('[data-scrollreveal]')];
-    
-    const scrollHandler = () => {
-      elems.forEach(el => animate(el));
-    };
+  const init = () => {
+    const elements = Array.from(document.querySelectorAll('[data-scrollreveal]'));
+    const onScroll = () => elements.forEach(animate);
 
-    window.addEventListener('scroll', scrollHandler);
-    window.addEventListener('resize', scrollHandler);
-    scrollHandler(); // fire on load
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', onScroll);
+    onScroll();
   };
 
-  document.addEventListener('DOMContentLoaded', scrollRevealInit);
+  return { init };
+})();
 
-})(window);
+// ====================================
+// MODULE: AjaxPosts
+// ====================================
+const AjaxPosts = (() => {
+  let currentPage = 1;
+  let wrapper, container;
+
+  const getPerPage = () => {
+    const w = window.innerWidth;
+    return w <= 450 ? 4 : w <= 768 ? 6 : w <= 1024 ? 8 : 10;
+  };
+
+  const scrollTo = el => {
+    window.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
+  };
+
+  const updatePagination = () => {
+    document.querySelector('.pagination')?.remove();
+
+    const pag = document.createElement('div');
+    pag.className = 'pagination fade-slide';
+    pag.innerHTML = `
+      <button class="prev" ${currentPage === 1 ? 'disabled' : ''}><i class="ri-arrow-left-line"></i></button>
+      <button class="next"><i class="ri-arrow-right-line"></i></button>
+    `;
+    document.querySelector('.category-posts')?.appendChild(pag);
+
+    pag.querySelector('.prev')?.addEventListener('click', () => {
+      if (currentPage > 1) loadPosts(--currentPage);
+    });
+    pag.querySelector('.next')?.addEventListener('click', () => {
+      loadPosts(++currentPage);
+    });
+  };
+
+  const loadPosts = (page = 1) => {
+    const data = new FormData();
+    data.append('action', 'load_tags_ajax');
+    data.append('security', tags_ajax_obj.nonce);
+    data.append('page', page);
+    data.append('posts_per_page', getPerPage());
+    data.append('category', tags_ajax_obj.category);
+
+    fetch(tags_ajax_obj.ajaxurl, {
+      method: 'POST',
+      credentials: 'same-origin',
+      body: data
+    })
+    .then(res => res.text())
+    .then(html => {
+      container.innerHTML = html;
+      if (container === wrapper) updatePagination();
+      scrollTo(container);
+    });
+  };
+
+  const handleResize = () => {
+    currentPage = 1;
+    loadPosts(currentPage);
+  };
+
+  const init = () => {
+    wrapper = document.querySelector('.category-wrapper');
+    container = document.querySelector('#tag-posts-container') || wrapper;
+    if (!container) return;
+
+    window.addEventListener('resize', handleResize);
+    loadPosts(currentPage);
+  };
+
+  return { init };
+})();

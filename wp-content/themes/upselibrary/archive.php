@@ -1,56 +1,63 @@
 <?php get_header(); ?>
-<section class="container">
-    <div class="archive-header">
+
+<section class="taxonomy-header">
+    <div class="taxonomy-content">
         <h1>
-            <?php
-            if (is_category()) :
-                single_cat_title(); // Displays the title of the category
-            elseif (is_tag()) :
-                single_tag_title(); // Displays the title of the tag
-            elseif (is_author()) :
-                the_author(); // Displays the author's name
-            elseif (is_year()) :
-                echo get_the_date('Y'); // Displays the year
-            elseif (is_month()) :
-                echo get_the_date('F Y'); // Displays the month and year
-            elseif (is_day()) :
-                echo get_the_date('F j, Y'); // Displays the specific day
-            else :
-                _e('Archives'); // Default title for general archives
-            endif;
+            <?php 
+            if (is_category()) {
+                single_cat_title();
+            } elseif (is_tag()) {
+                single_tag_title();
+            }
             ?>
         </h1>
-
-        <?php
-        // Optional: Display the archive description if available
-        if (is_category() || is_tag()) :
-            echo category_description();
-        endif;
-        ?>
+        <p>
+            <?php 
+            if (is_category()) {
+                echo category_description();
+            } elseif (is_tag()) {
+                echo tag_description();
+            }
+            ?>
+        </p>
     </div>
+</section>
 
-    <div class="archive-posts">
-        <?php if (have_posts()) : ?>
-            <?php while (have_posts()) : the_post(); ?>
-                <article class="post">
-                    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                    <div class="post-meta">
-                        <span>Posted on <?php the_time('F j, Y'); ?></span>
-                    </div>
-                    <div class="post-excerpt">
-                        <?php the_excerpt(); ?>
-                    </div>
-                </article>
-            <?php endwhile; ?>
+<section class="container">
+    <?php 
+    // Define dynamic ID and hash anchor based on taxonomy type
+    $taxonomy_id = is_category() ? 'category-posts' : (is_tag() ? 'tag-posts' : 'archive-posts');
+    ?>
+    <div id="<?php echo $taxonomy_id; ?>" class="taxonomy-posts py-5">
+        <span class="span-line my-3"></span> 
 
-            <!-- Pagination -->
-            <div class="pagination">
-                <?php the_posts_pagination(); ?>
-            </div>
-
-        <?php else : ?>
-            <p>No posts found for this archive.</p>
-        <?php endif; ?>
+        <div class="tags-wrapper">
+            <?php if ( have_posts() ) : ?>
+                <?php while ( have_posts() ) : the_post(); ?>
+                    <article class="tags-container">
+                        <div class="tags-thumbnail">
+                            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+                        </div>
+                        <div class="tags-content">
+                            <h2 class="tags-title mb-3">
+                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                            </h2>
+                            <div class="tags-excerpt">
+                                <?php 
+                                $excerpt = get_the_excerpt();
+                                echo (strlen($excerpt) > 120) ? substr($excerpt, 0, 120) . '...' : $excerpt;
+                                ?>
+                            </div>
+                        </div>
+                    </article>
+                <?php endwhile; ?>
+                <div class="pagination">
+                    <?php the_posts_pagination(); ?>
+                </div>
+            <?php else : ?>
+                <p>No posts found in this archive.</p>
+            <?php endif; ?>
+        </div>
     </div>
 </section>
 

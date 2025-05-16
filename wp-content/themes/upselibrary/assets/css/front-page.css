@@ -272,6 +272,12 @@
     color: var(--clr-bg-color);
 }
 
+.tab-button[aria-selected="false"] {
+    color: var(--clr-text-color);
+
+}
+
+
 .tabs-indicator {
     position: absolute;
     top: var(--tabs-nav-padding);
