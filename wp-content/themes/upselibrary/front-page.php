@@ -4,7 +4,7 @@
     <video class="fp-hero-video" autoplay muted loop playsinline preload="none">
         <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/hero-video.mp4" type="video/mp4">
     </video>
-    <div class="fp-hero-container">
+    <div class="fp-hero-container" >
         <div class="fp-left-hero" data-scrollreveal="enter bottom over 1s and move 30px">
                 <div class="left-content-one my-4">
                     <p><span class="left-content-one-normal">Supplying</span></p>

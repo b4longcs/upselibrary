@@ -56,10 +56,10 @@ if (is_page('up-school-of-economics')) {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg>
                 </li>
                 <li>
-                <a href="#" class="nav-menu">About</a>
+                <a href="#" class="nav-menu" aria-haspopup="true">About</a>
                 <ul class="sub-menu">
                     <li><a href="/brief-history">Brief History</a></li>
-                    <li><a href="#">Vision & Mission</a></li>
+                    <li><a href="/vision-and-mission">Vision & Mission</a></li>
                     <li><a href="/general-policy">General Policy</a></li>
                     <li><a href="/library-guide">Library Guide</a></li>
                     <li><a href="/library-staff">Library Staff</a></li>
@@ -69,7 +69,7 @@ if (is_page('up-school-of-economics')) {
                 </ul>
                 </li>
                 <li>
-                <a href="#" class="nav-menu">Resources</a>
+                <a href="#" class="nav-menu" aria-haspopup="true">Resources</a>
                 <ul class="sub-menu">
                     <li><a href="/print-collection">Print Collection</a></li>
                     <li><a href="/online-subscription">Online Subscription</a></li>
@@ -79,7 +79,7 @@ if (is_page('up-school-of-economics')) {
                 </ul>
                 </li>
                 <li>
-                <a href="#" class="nav-menu">Services</a>
+                <a href="#" class="nav-menu" aria-haspopup="true">Services</a>
                 <ul class="sub-menu">
                     <li><a href="#">Circulation Service</a></li>
                     <li><a href="#">Reference Service</a></li>
@@ -89,8 +89,8 @@ if (is_page('up-school-of-economics')) {
                     <li><a href="#">Document Delivery Service</a></li>
                 </ul>
                 </li>
-                <li><a href="/spaces" class="nav-menu">Spaces</a></li>
-                <li><a href="/visitor" class="nav-menu">Visitor</a></li>
+                <li><a href="/spaces" class="nav-menu" aria-haspopup="true">Spaces</a></li>
+                <li><a href="/visitor" class="nav-menu" aria-haspopup="true">Visitor</a></li>
             </ul>
         </nav>
     </div>

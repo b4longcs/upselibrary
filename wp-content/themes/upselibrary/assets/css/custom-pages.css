@@ -82,7 +82,7 @@
 .subsubheader,
 .global-hero-subheader,
 .gh-subsubheader {
-    font-size: calc(var(--fs-sm) + 0.1rem);
+    font-size: calc(var(--fs-sm) + 0.22rem);
     -ms-flex-item-align: start;
         -ms-grid-row-align: start;
         align-self: start;
@@ -1109,10 +1109,10 @@
 
 .tags-hero-search {
     display: inline-block;
-    padding: var(--button-padding-y) var(--button-padding-x) !important;
+    padding: calc(var(--button-padding-y) - .1rem) calc(var(--button-padding-x) + .4rem) !important;
     font-size: var(--fs-reg);
-    background-color: var(--clr-primary-color);
-    color: var(--clr-white);
+    background-color: var(--clr-accent-color-three);
+    color: var(--clr-text-color);
     border-radius: 20px;
 }
 
@@ -1323,9 +1323,33 @@
     text-align: center;
     margin-top: 2rem;
 }
-
-
 /* End of Search Page */
+
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.bf-img-text {
+    font-size: var(--fs-sm);
+
+}
+
+
+
+
+
 @media (min-width: 300px) {
     .subheader {
         width: 100%;

@@ -159,6 +159,8 @@
     padding: 1rem 1rem !important;
     display: block;
     color: var(--clr-bg-color);
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .sub-menu li a:hover {

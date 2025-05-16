@@ -148,6 +148,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
 }
 
 
@@ -164,6 +165,7 @@ body {
             box-sizing: border-box;
     background-color: white;
     margin-top: 130px !important;
+    scroll-snap-type: y mandatory;
 }
 
 h1, h2, h3, h4, h5, h6 {

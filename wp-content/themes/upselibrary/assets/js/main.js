@@ -1,7 +1,4 @@
 
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
   Header.init();
   Tabs.init();
@@ -37,10 +34,13 @@ const Header = (() => {
       const subMenu = item.querySelector('.sub-menu');
 
       item.addEventListener('click', e => {
+        if (e.target.tagName === 'A') return;
+
         const isOpen = item.classList.contains('open');
         if (subMenu) {
           e.preventDefault();
           e.stopPropagation();
+
           navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
           if (!isOpen) item.classList.add('open', 'active-indicator');
         } else {
@@ -84,6 +84,14 @@ const Header = (() => {
 
   const init = () => {
     initSidebar();
+
+    document.querySelectorAll('.sub-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        overlay.classList.remove('active');
+      });
+    });
+    
     window.addEventListener('scroll', handleScroll);
     ['scroll', 'resize'].forEach(evt => window.addEventListener(evt, setProgressBar));
     setProgressBar();
@@ -110,33 +118,55 @@ const Tabs = (() => {
     };
 
     const switchTab = tab => {
-      tabs.forEach(t => t.classList.remove('active'));
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', false);
+      });
+
       panels.forEach(p => p.setAttribute('aria-hidden', true));
 
-      const targetPanel = document.getElementById(tab.getAttribute('aria-controls'));
       tab.classList.add('active');
       tab.setAttribute('aria-selected', true);
-      targetPanel.setAttribute('aria-hidden', false);
+
+      const targetPanel = document.getElementById(tab.getAttribute('aria-controls'));
+      if (targetPanel) {
+        targetPanel.setAttribute('aria-hidden', false);
+      }
 
       setIndicatorPosition(tab);
     };
 
-    if (tabs.length) setIndicatorPosition(tabs[0]);
+    if (tabs.length) {
+      const firstTab = tabs[0];
+      const firstPanel = document.getElementById(firstTab.getAttribute('aria-controls'));
 
-    tabs.forEach(tab => tab.addEventListener('click', e => switchTab(e.target)));
+      setIndicatorPosition(firstTab);
+      firstTab.classList.add('active');
+      firstTab.setAttribute('aria-selected', true);
+      if (firstPanel) firstPanel.setAttribute('aria-hidden', false);
+    }
+
+    tabs.forEach(tab => tab.addEventListener('click', e => switchTab(e.currentTarget)));
 
     tabList.addEventListener('keydown', e => {
-      const nav = e.key === 'ArrowLeft' ? e.target.previousElementSibling : e.target.nextElementSibling;
-      if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && nav) {
-        nav.click();
-        nav.focus();
+      const currentTab = document.activeElement;
+      let newTab = null;
+
+      if (e.key === 'ArrowLeft') {
+        newTab = currentTab.previousElementSibling;
+      } else if (e.key === 'ArrowRight') {
+        newTab = currentTab.nextElementSibling;
+      }
+
+      if (newTab && newTab.classList.contains('tab-button')) {
+        newTab.click();
+        newTab.focus();
       }
     });
   };
 
   return { init };
 })();
-
 // ====================================
 // MODULE: ScrollReveal
 // ====================================
