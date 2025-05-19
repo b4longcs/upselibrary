@@ -1,4 +1,4 @@
-<?php echo '<!-- layout-bf.php loaded -->'; ?>
+<?php echo '<!-- layout-ls.php loaded -->'; ?>
 
 <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
     <div class="global-left-hero">

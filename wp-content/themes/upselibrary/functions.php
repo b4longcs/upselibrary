@@ -69,7 +69,7 @@ function enqueue_conditional_scripts() {
         wp_enqueue_script('text-animated-js', get_template_directory_uri() . '/assets/js/text-animated.js', [], null, true);
     }
 
-    if (is_page_template('assets/page-templates/services/layout-csa.php')) {
+    if (is_page_template('csa.php')) {
         wp_enqueue_script('filter-js', get_template_directory_uri() . '/assets/js/filter.js', ['jquery'], null, true);
         wp_localize_script('filter-js', 'ajaxurl', admin_url('admin-ajax.php'));
     }

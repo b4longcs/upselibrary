@@ -11,9 +11,9 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     width: 100%;
@@ -58,7 +58,7 @@
     font-family: var(--font-secondary);
     font-weight: var(--fw-semi-bold);
     letter-spacing: -1.9px;
-    font-size: clamp(3.7rem, 5vw, 4.4rem);
+    font-size: clamp(3.7rem, 7vw, 5rem);
     line-height: 0.9;
 }
 .hero-header-one {
@@ -1109,24 +1109,24 @@
 
 .tags-hero-search {
     display: inline-block;
-    padding: calc(var(--button-padding-y) - .1rem) calc(var(--button-padding-x) + .4rem) !important;
-    font-size: var(--fs-reg);
-    background-color: var(--clr-accent-color-three);
+    padding: calc(var(--button-padding-y) + .2rem) calc(var(--button-padding-x) + .4rem) !important;
+    font-size: var(--fs-md);
+    background-color: var(--clr-accent-color-two);
     color: var(--clr-text-color);
     border-radius: 20px;
 }
 
 .tag-name {
-    font-size: var(--fs-reg); 
-    font-weight: bold;
-    line-height: 1.5;
+    font-size: var(--fs-md); 
+    font-family: var(--font-secondary);
+    line-height: 1.2;
 }
 
 .tag-post-count {
     font-size: var(--fs-md);
     font-family: var(--font-secondary);
     color: var(--clr-text-color);
-    
+    font-style: italic;
 }
 
 .tags-container {
@@ -1346,7 +1346,21 @@
 
 }
 
+.cu-text {
+    font-size: var(--fs-xxlg) !important;
+    color: var(--clr-primary-color);
+}
 
+.cu-a {
+    color: var(--clr-text-color);
+}
+
+.cu-a:hover {
+    color: var(--clr-primary-color);
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
 
 
 

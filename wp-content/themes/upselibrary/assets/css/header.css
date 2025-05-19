@@ -107,7 +107,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    gap: 1.5em;
+    gap: 1.1em;
     list-style: none;
     height: 50px;
     -webkit-box-align: center;
@@ -123,7 +123,7 @@
     font-weight: var(--fw-bold);
     font-family: var(--font-primary);
     text-transform: uppercase;
-    font-size: var(--fs-xsm);
+    font-size: var(--fs-sm);
     letter-spacing: .8px;
 }
 .nav-links a:hover {
@@ -137,7 +137,7 @@
     left: -10px;
     background: var(--clr-primary-color);
     opacity: 0;
-    width: 230px;
+    width: 260px;
     visibility: hidden;
     max-height: 0;
     overflow: hidden;
@@ -156,11 +156,12 @@
 }
 
 .sub-menu li a {
-    padding: 1rem 1rem !important;
+    padding: 1.1rem 1.4rem !important;
     display: block;
     color: var(--clr-bg-color);
     pointer-events: auto;
     cursor: pointer;
+    font-size: var(--fs-sm);
 }
 
 .sub-menu li a:hover {
