@@ -1,8 +1,4 @@
-<?php 
-/*
-Template Name: Archives
-*/
-get_header(); ?>
+<?php echo '<!-- layout-ac.php loaded -->'; ?>
 <section class="container">
     <?php custom_breadcrumb(); ?>
     <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
@@ -25,4 +21,3 @@ get_header(); ?>
     </section>
     <section class="spacer"></section>
 </section>
-<?php get_footer(); ?>

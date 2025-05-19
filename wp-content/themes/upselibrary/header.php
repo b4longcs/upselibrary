@@ -83,7 +83,7 @@ if (is_page('up-school-of-economics')) {
                 <ul class="sub-menu">
                     <li><a href="#">Circulation Service</a></li>
                     <li><a href="#">Reference Service</a></li>
-                    <li><a href="#">Current Awareness Service</a></li>
+                    <li><a href="/current-awareness-service">Current Awareness Service</a></li>
                     <li><a href="#">Thesis and Dissertation Binding</a></li>
                     <li><a href="#">Interlibrary Loan</a></li>
                     <li><a href="#">Document Delivery Service</a></li>
