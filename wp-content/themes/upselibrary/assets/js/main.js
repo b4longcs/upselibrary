@@ -68,7 +68,7 @@ const Header = (() => {
 
   const handleScroll = () => {
     const currentScroll = window.scrollY;
-    if (currentScroll < window.innerWidth * 0.5) {
+    if (currentScroll < window.innerWidth * 0.1) {
       headerSticky.classList.remove('header-hidden');
     } else {
       headerSticky.classList.toggle('header-hidden', currentScroll > lastScrollTop);
@@ -321,3 +321,30 @@ const AjaxPosts = (() => {
 
   return { init };
 })();
+
+// ====================================
+// GLOBAL FUNCTIONS (if any)
+// ====================================
+function resizeFaqImg() {
+  const img = document.getElementById('faq-img');
+  if (!img) return;
+  const width = window.innerWidth;
+
+  if (width <= 450) {
+    img.style.width = '95%';
+  } else if (width <= 768) {
+    img.style.width = '75%';
+  } else if (width <= 1024) {
+    img.style.width = '60%';
+  } else {
+    img.style.width = '60%';
+  }
+}
+
+resizeFaqImg();
+window.addEventListener('resize', resizeFaqImg);
+
+
+
+
+

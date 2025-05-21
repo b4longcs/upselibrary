@@ -63,7 +63,7 @@ if (is_page('up-school-of-economics')) {
                     <li><a href="/general-policy">General Policy</a></li>
                     <li><a href="/library-guide">Library Guide</a></li>
                     <li><a href="/library-staff">Library Staff</a></li>
-                    <li><a href="#">Citizen's Charter</a></li>
+                    <li><a href="https://drive.google.com/file/d/1cgqN7T1mbFOvwj7B4i5OkXsBByCs8_bl/view">Citizen's Charter</a></li>
                     <li><a href="/faq">FAQ</a></li>
                     <li><a href="/contact-us">Contact Us</a></li>
                 </ul>

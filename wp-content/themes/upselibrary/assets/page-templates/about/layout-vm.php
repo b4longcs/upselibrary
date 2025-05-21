@@ -15,7 +15,7 @@
     </div>
 </section>
 <section class="container">
-    <div class="global-pages-container pt-5 mx-lg-5 mx-md-4 mx-sm-1">
+    <div class="global-pages-container pt-5 px-lg-5 px-md-3 px-sm-2">
         <div class="span-line"></div>
         <div class="global-pages-container">
             <div class="global-left-hero" >
@@ -28,7 +28,7 @@
     </div>
 </section>
 <section class="container">
-    <div class="global-pages-container pt-5 mx-lg-5 mx-md-4 mx-sm-1">
+    <div class="global-pages-container pt-5 px-lg-5 px-md-3 px-sm-2">
         <div class="span-line"></div>
         <div class="global-pages-container">
             <div class="global-left-hero" >

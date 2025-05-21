@@ -27,6 +27,7 @@
     --clr-primary-color: #00573f;
     --clr-secondary-color: #EEE7CE;
     --clr-text-color: #000033;
+    --clr-text-color-two: #444444;
     --clr-accent-color: #4d4d4d;
     --clr-accent-color-two: #ebebeb;
     --clr-accent-color-three: #c0c0c0;
@@ -1184,3 +1185,24 @@ p, ul, li, a{
     }
 }
 
+.ri-progress-8-line {
+    font-size: .5rem;
+}
+
+.grh-content-header {
+    color: var(--clr-white);
+    background-color: var(--clr-primary-color);
+}
+
+.grh-content-two {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-items: center;
+}
+
+.ri-sun-cloudy-fill, 
+.ri-time-fill,
+.ri-door-closed-fill {
+    font-size: var(--fs-xlg);
+    color: var(--clr-primary-color);
+}

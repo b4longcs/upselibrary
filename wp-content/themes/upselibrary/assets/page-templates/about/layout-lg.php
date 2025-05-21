@@ -7,13 +7,40 @@
             <p class="hero-header-two">Guide</p>
         </div>
         <div class="left-hero-subsubheader my-3 w-75">
-            <p class="content-text my-3">The UPSE Library is subscribed to four dataset providers namely, <b>CEIC Data, EIKON with Datastream, and GTAP Database.</b> Access is exclusive to currently-enrolled UPSE students, faculty members, and staff. </p>
-            <p class="content-text-custom bg-custom p-4">
-                <a class="note">NOTE:</a> You may open these electronic periodicals using <b>OpenAthens</b>. For further assistance, please email <a href="mailto:upselibrary.upd@up.edu.ph"><u class="email">upselibrary.upd@up.edu.ph</u></a>
-            </p>
+            
         </div>
     </div>
     <div class="global-right-hero">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/library-guide.svg" alt="global-hero-img">
+    </div>
+</section>
+<section class="container">
+    <div class="lg-container">
+        <div class="lg-left-hero">
+            <div class="lib-bro">
+                <!-- <div class="content-one">
+                    
+                </div> -->
+                <div class="inverted">
+                    <h3>General</h3>
+                    <h3>Policy</h3>
+                    <div class="span-line my-2"></div>
+                    <p>The UPSE Library has policies in place to ensure that the users&#39; information needs are met, and protocols are followed.</p>
+                </div>
+            </div>
+        </div>
+        <div class="lg-right-hero">
+            <div class="newsletter">
+                <!-- <div class="content-one">
+                    
+                </div> -->
+                <div class="inverted">
+                    <h3>General</h3>
+                    <h3>Policy</h3>
+                    <div class="span-line my-2"></div>
+                    <p>The UPSE Library has policies in place to ensure that the users&#39; information needs are met, and protocols are followed.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

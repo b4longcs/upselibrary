@@ -25,13 +25,13 @@
     top: 0;
     width: 100%;
     z-index: 998;
-    -webkit-transition: top 0.65s ease;
-    -o-transition: top 0.65s ease;
-    transition: top 0.65s ease;
+    -webkit-transition: top 0.55s ease-in-out;
+    -o-transition: top 0.55s ease-in-out;
+    transition: top 0.55s ease-in-out;
 }
 
 .header-hidden {
-    top: -130px; 
+    top: -110px; 
 }
 
 .header-text {
@@ -119,12 +119,12 @@
 }
 .nav-links a {
     text-decoration: none;
-    color: var(--clr-text-color);
-    font-weight: var(--fw-bold);
-    font-family: var(--font-primary);
+    color: var(--clr-text-color-two);
+    font-weight: var(--fw-semi-bold);
+    font-family: var(--font-secondary);
     text-transform: uppercase;
     font-size: var(--fs-sm);
-    letter-spacing: .8px;
+    letter-spacing: -0.10px;
 }
 .nav-links a:hover {
     color: var(--clr-primary-color);
@@ -159,9 +159,12 @@
     padding: 1.1rem 1.4rem !important;
     display: block;
     color: var(--clr-bg-color);
+    font-family: var(--font-secondary);
     pointer-events: auto;
     cursor: pointer;
-    font-size: var(--fs-sm);
+    letter-spacing: -0.05px;
+    font-weight: var(--fw-semi-bold);
+    font-size: calc(var(--fs-xsm) + 0.1rem);
 }
 
 .sub-menu li a:hover {
