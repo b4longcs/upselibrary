@@ -25,9 +25,9 @@
     top: 0;
     width: 100%;
     z-index: 998;
-    -webkit-transition: top 0.55s ease-in-out;
-    -o-transition: top 0.55s ease-in-out;
-    transition: top 0.55s ease-in-out;
+    -webkit-transition: top 0.30s ease-in-out;
+    -o-transition: top 0.30s ease-in-out;
+    transition: top 0.30s ease-in-out;
 }
 
 .header-hidden {

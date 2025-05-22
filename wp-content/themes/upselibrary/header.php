@@ -81,12 +81,12 @@ if (is_page('up-school-of-economics')) {
                 <li>
                 <a href="#" class="nav-menu" aria-haspopup="true">Services</a>
                 <ul class="sub-menu">
-                    <li><a href="#">Circulation Service</a></li>
-                    <li><a href="#">Reference Service</a></li>
+                    <li><a href="/circulation-service">Circulation Service</a></li>
+                    <li><a href="/reference-service">Reference Service</a></li>
                     <li><a href="/current-awareness-service">Current Awareness Service</a></li>
-                    <li><a href="#">Thesis and Dissertation Binding</a></li>
-                    <li><a href="#">Interlibrary Loan</a></li>
-                    <li><a href="#">Document Delivery Service</a></li>
+                    <li><a href="/thesis-and-dissertation-binding">Thesis and Dissertation Binding</a></li>
+                    <li><a href="/interlibrary-loan">Interlibrary Loan</a></li>
+                    <li><a href="/document-delivery-service">Document Delivery Service</a></li>
                 </ul>
                 </li>
                 <li><a href="/spaces" class="nav-menu" aria-haspopup="true">Spaces</a></li>
@@ -95,6 +95,7 @@ if (is_page('up-school-of-economics')) {
         </nav>
     </div>
 </header>
+<button id="scrollToTopBtn" class="scrollToTopBtn"><i class="ri-arrow-up-line"></i></button>
 
 
 

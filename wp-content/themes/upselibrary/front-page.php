@@ -145,7 +145,7 @@
             <span class="line w-10"></span>
             <p class="collection-right-subheader">Immense yourself in a wealth of economics knowledge with our collection of literature and databases. Start your journey today and gain a deeper understanding the world of economics.</p>
 
-            <a class="global-button" href="#">
+            <a class="global-button" href="/about">
                 <span class="dots">About Us</span> 
             </a>
 

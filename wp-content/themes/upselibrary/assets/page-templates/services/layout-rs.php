@@ -1,6 +1,6 @@
 <?php echo '<!-- layout-rs.php loaded -->'; ?>
 
-<section class="global-pages-container">
+<section class="global-pages-container mt-5">
     <div class="global-left-hero">
         <div class="left-hero-header d-flex justify-content-center  flex-column">
             <p class="hero-header-one">Reference</p>

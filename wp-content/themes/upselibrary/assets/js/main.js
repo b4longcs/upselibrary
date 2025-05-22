@@ -325,21 +325,12 @@ const AjaxPosts = (() => {
 // ====================================
 // GLOBAL FUNCTIONS (if any)
 // ====================================
-function resizeFaqImg() {
+const resizeFaqImg = () => {
   const img = document.getElementById('faq-img');
-  if (!img) return;
-  const width = window.innerWidth;
-
-  if (width <= 450) {
-    img.style.width = '95%';
-  } else if (width <= 768) {
-    img.style.width = '75%';
-  } else if (width <= 1024) {
-    img.style.width = '60%';
-  } else {
-    img.style.width = '60%';
-  }
-}
+  img?.style && (img.style.width =
+    window.innerWidth <= 450 ? '95%' :
+    window.innerWidth <= 768 ? '75%' : '60%');
+};
 
 resizeFaqImg();
 window.addEventListener('resize', resizeFaqImg);
@@ -347,4 +338,21 @@ window.addEventListener('resize', resizeFaqImg);
 
 
 
+var scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
+// When the user scrolls down 50% of the viewport height, show the button
+window.onscroll = function() {
+    if (document.body.scrollTop > window.innerHeight * 0.2 || document.documentElement.scrollTop > window.innerHeight * 0.5) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+};
+
+// When the user clicks on the button, scroll to the top
+scrollToTopBtn.onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+};

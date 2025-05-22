@@ -1,5 +1,5 @@
 <?php echo '<!-- layout-ds.php loaded -->'; ?>
-<section class="container">
+<section class="ds-container mt-5">
     <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
         <div class="global-left-hero">
             <div class="left-hero-header d-flex justify-content-center  flex-column">

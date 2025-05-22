@@ -1,6 +1,5 @@
 <?php echo '<!-- layout-db.php loaded -->'; ?>
-<section class="container">
-    <?php custom_breadcrumb(); ?>
+<section class="db-container mt-5">
     <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
         <div class="global-left-hero">
             <div class="left-hero-header d-flex justify-content-center  flex-column">

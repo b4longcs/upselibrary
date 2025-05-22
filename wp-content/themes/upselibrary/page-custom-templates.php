@@ -27,7 +27,7 @@ get_header();
         'services' => [
             'circulation-service' => 'cs',
             'reference-service' => 'rs',
-            'tbd' => 'tbd',
+            'thesis-and-dissertation-binding' => 'tdb',
             'interlibrary-loan' => 'ill',
             'document-delivery-service' => 'dds',
         ]

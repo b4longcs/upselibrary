@@ -1143,10 +1143,9 @@ p, ul, li, a{
 
 .pagination button {
     background: none;
-    border: 2px solid var(--clr-primary-color);
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1155,7 +1154,7 @@ p, ul, li, a{
 }
 
 .pagination button i {
-    font-size: 1.4rem;
+    font-size: 0.8rem;
     color: var(--clr-primary-color);
 }
 

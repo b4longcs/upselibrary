@@ -26,7 +26,7 @@ function enqueue_theme_assets() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_theme_assets');
 
-// Enqueue Styles
+
 function enqueue_styles() {
     wp_enqueue_style('wp-block-library');
     wp_enqueue_style('remixicon', 'https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css', [], '4.6.0');
@@ -76,7 +76,7 @@ function enqueue_conditional_scripts() {
 
     $custom_templates = ['spaces.php', 'analytics.php', 'tools.php'];
     if (in_array(get_page_template_slug(), $custom_templates)) {
-        wp_enqueue_script('mainjs'); // already registered
+        wp_enqueue_script('mainjs');
     }
 }
 
