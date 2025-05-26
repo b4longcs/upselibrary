@@ -1,19 +1,19 @@
 <?php echo '<!-- layout-tdb.php loaded -->'; ?>
 
 <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap mt-5">
-    <div class="global-left-hero">
-        <div class="left-hero-header d-flex justify-content-center  flex-column">
+    <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+        <div class="left-hero-header d-flex justify-content-center  flex-column" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <p class="hero-header-one">Thesis &</p>
             <p class="hero-header-one">Dissertation</p>
             <p class="hero-header-two">Binding Guide</p>
         </div>
     </div>
-    <div class="global-right-hero">
+    <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/datasets-img.svg" alt="global-hero-img">
     </div>
 </section>
 <section class="tdb-container">
-    <div class="tdb-col p-xl-5 p-lg-4 p-md-3 bg-light rounded-5">
+    <div class="tdb-col p-xl-5 p-lg-4 p-md-3 bg-light rounded-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <p class="my-1" class="my-1"><b>1.</b> Ensure your thesis/dissertation are final and approved by your adviser.</p>
         <p class="my-1" class="my-1"><b>2.</b> Send an e-copy, preferably in DOCX and PDF, to <b>econetd@gmail.com</b>. If possible, also
         send your used datasets such as CSV and/or Stata files.</p>
@@ -34,7 +34,7 @@
         PM only)</p>
         <p style="color: red"><b>Note:</b> Students may bring their copies to the library or send them via preferred courier. Students shall shoulder applicable fees. The library’s address is:</p>
     </div>
-    <div class="tdb-col p-xl-5 p-lg-4 p-md-3 bg-light rounded-5">
+    <div class="tdb-col p-xl-5 p-lg-4 p-md-3 bg-light rounded-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="tdbfour">
             <div class="tdb-letterhead my-3">
                 <p style="color: #00573f" ><b>The Head Librarian</b></p>

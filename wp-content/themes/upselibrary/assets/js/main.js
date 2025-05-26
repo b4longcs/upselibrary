@@ -30,37 +30,30 @@ const Header = (() => {
     hamburger?.addEventListener('click', () => toggleSidebar(true));
     [closeBtn, overlay].forEach(el => el?.addEventListener('click', () => toggleSidebar(false)));
 
+    let currentlyOpen = null;
+
     navMenus.forEach(item => {
+      const toggleLink = item.querySelector('.nav-menu'); // clickable link
       const subMenu = item.querySelector('.sub-menu');
 
-      item.addEventListener('click', e => {
-        if (e.target.tagName === 'A') return;
+      if (!toggleLink || !subMenu) return;
 
-        const isOpen = item.classList.contains('open');
-        if (subMenu) {
-          e.preventDefault();
-          e.stopPropagation();
+      toggleLink.addEventListener('click', e => {
+        e.preventDefault();
 
-          navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
-          if (!isOpen) item.classList.add('open', 'active-indicator');
+        const isSameMenu = currentlyOpen === item;
+
+        if (isSameMenu) {
+          // If clicking the same open menu — close it
+          item.classList.remove('open', 'active-indicator');
+          currentlyOpen = null;
         } else {
+          // Close all
           navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
-        }
-      });
 
-      item.addEventListener('dblclick', () => {
-        item.classList.remove('open', 'active-indicator');
-      });
-
-      item.addEventListener('mouseenter', () => {
-        if (window.innerWidth > 1024 && !item.classList.contains('open')) {
-          item.classList.add('active-indicator');
-        }
-      });
-
-      item.addEventListener('mouseleave', () => {
-        if (window.innerWidth > 1024 && !item.classList.contains('open')) {
-          item.classList.remove('active-indicator');
+          // Open clicked one
+          item.classList.add('open', 'active-indicator');
+          currentlyOpen = item;
         }
       });
     });

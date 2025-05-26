@@ -1,14 +1,14 @@
 <?php echo '<!-- layout-bf.php loaded -->'; ?>
 
-<section class="faq-hero d-flex flex-column align-items-center justify-content-center">
+<section class="faq-hero d-flex flex-column align-items-center justify-content-center" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/faq.svg" id="faq-img" alt="faq-img">
     <h2 class="faq-hero-text h1">Frequently Asked Questions</h2>
 </section>
 
 
-<section class="faq-content d-flex flex-column align-items-center justify-content-center pt-4">
+<section class="faq-content d-flex flex-column align-items-center justify-content-center pt-4" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
     <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
+        <div class="accordion-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" >
             <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -23,22 +23,21 @@
             </div>
         </div>
 
-        <div class="accordion-item">
+        <div class="accordion-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <h2 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     Does the Library have access to datasets?
                 </button>
             </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample">
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" >
                 <div class="accordion-body">
                     <p>The Library has a set of curated datasets from different organizations, like the Asian Development Bank (ADB), Bangko Sentral ng Pilipinas (BSP), Department of Social Welfare and Development (DSWD), Philippine Center for Economic Development (PCED), Philippine Statistics Authority (PSA), Worldbank, United Nations Development Programme (UNDP), and UNESCO. You may email upselibrary.upd@up.edu.ph for access instructions.</p>
                 </div>
             </div>
         </div>
 
-        <div class="accordion-item">
+        <div class="accordion-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <h2 class="accordion-header" id="headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -53,7 +52,7 @@
             </div>
         </div>
 
-        <div class="accordion-item">
+        <div class="accordion-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <h2 class="accordion-header" id="headingFour">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -68,7 +67,7 @@
             </div>
         </div>
 
-        <div class="accordion-item">
+        <div class="accordion-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <h2 class="accordion-header" id="headingFive">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">

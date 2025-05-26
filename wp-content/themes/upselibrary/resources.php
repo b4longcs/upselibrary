@@ -3,21 +3,21 @@
 Template Name: Resources
 */
 get_header(); ?>
-<section class="container">
+<section class="container" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
     <?php custom_breadcrumb(); ?>
     <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap my-5">
-        <div class="global-left-hero">
-            <div class="left-hero-header d-flex justify-content-center  flex-column">
+        <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+            <div class="left-hero-header d-flex justify-content-center  flex-column my-5">
                 <p class="hero-header-one">Resources</p>
                 <span class="menu-category-page"></span>
             </div>
          
         </div>
-        <div class="global-right-hero">
+        <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         </div>
     </section>
     <section class="resources-grid my-5 my-lg-3 my-md-2 my-sm-2">
-        <div class="resources-item">
+        <div class="resources-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <div class="resources-grid-wrapper">
                 <div class="resources-grid-container">
                     <div class="resources-grid-content">
@@ -29,7 +29,7 @@ get_header(); ?>
                 <a href="/print-collection" class="resources-grid-btn">See more</a>
             </div>
         </div>
-        <div class="resources-item">
+        <div class="resources-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <div class="resources-grid-wrapper">
                 <div class="resources-grid-container">
                     <div class="resources-grid-content">
@@ -41,7 +41,7 @@ get_header(); ?>
                 <a href="/online-subscription" class="resources-grid-btn">See more</a>
             </div>
         </div>
-        <div class="resources-item">
+        <div class="resources-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <div class="resources-grid-wrapper">
                 <div class="resources-grid-container">
                     <div class="resources-grid-content">
@@ -53,7 +53,7 @@ get_header(); ?>
                 <a href="/databases" class="resources-grid-btn">See more</a>
             </div>
         </div>
-        <div class="resources-item">
+        <div class="resources-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <div class="resources-grid-wrapper">
                 <div class="resources-grid-container">
                     <div class="resources-grid-content">
@@ -65,7 +65,7 @@ get_header(); ?>
                 <a href="/datasets" class="resources-grid-btn">See more</a>
             </div>
         </div>
-        <div class="resources-item">
+        <div class="resources-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <div class="resources-grid-wrapper">
                 <div class="resources-grid-container">
                     <div class="resources-grid-content">

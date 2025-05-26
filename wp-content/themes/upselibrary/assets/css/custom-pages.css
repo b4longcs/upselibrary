@@ -75,7 +75,7 @@
     text-transform: uppercase;
     font-weight: var(--fw-bold);
     color: var(--clr-primary-color);
-    width: 60%;
+    width: 100%;
     font-size: var(--fs-sm);
 }
 
@@ -1048,13 +1048,13 @@
 
 
 .page-btn {
-    color: #00573f;
+    color: var(--clr-primary-color);
     border: none;
     background-color: transparent;
 }
 
 .page-btn:hover {
-    color: #000;
+    color: var(--clr-white);
 }
 
 .page-btn.active,
@@ -1062,7 +1062,7 @@
     background-color: #00573f;
     color: #fff;
     font-weight: bold;
-    border-color: #00573f;
+    border-color: var(--clr-primary-color);
 }
 
 /* Navigation buttons (with icons) */
@@ -1671,10 +1671,28 @@
 .inverted-two:hover {
     background-color: var(--clr-accent-color-four);
 }
-
-
-
 /* End of LG */
+
+
+/* Spaces */
+
+.ss-header {
+    font-size: clamp(4rem, 8vw, 10rem);
+    line-height: 0.8;
+}
+
+.spaces-header-img {
+    width: 300px;
+    height: 130px;
+    border-radius: 40px;
+}
+
+.tesing {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+/* End of Spaces */
 
 
 
@@ -1705,6 +1723,11 @@
         width: 60%;
         height: auto;
     }
+
+    .subheader {
+        width: 80%;
+    }
+    
 }
 
 @media (min-width: 900px) {
@@ -1721,6 +1744,12 @@
         width: 80%;
         height: auto;
     }
+
+    .subheader {
+        width: 70%;
+    }
+
+   
 }
 
 @media (min-width: 1200px) {
@@ -1732,17 +1761,22 @@
             "div2 div4 div4 div3"
             "div5 div5 div6 div6"
     }
+
+    .subheader {
+        width: 60%;
+    }
+    
 }
 
 .scrollToTopBtn {
     position: fixed;
-    bottom: 50px;
-    right: 50px;
+    bottom: 25px;
+    right: 25px;
     background-color: var(--clr-primary-color);
     color: white;
     border: none;
     border-radius: 50%;
-    padding: 0.7rem 1.2rem;
+    padding: 0.5rem 0.95rem;
     font-size: var(--fs-xlg);
     cursor: pointer;
     display: none; 

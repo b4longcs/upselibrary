@@ -1,28 +1,28 @@
 <?php echo '<!-- layout-cu.php loaded -->'; ?>
 
-<section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
-    <div class="global-left-hero">
+<section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+    <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
         <div class="left-hero-header d-flex justify-content-center  flex-column">
             <p class="hero-header-one">Contact</p>
             <p class="hero-header-two">Us</p>
         </div>
         
     </div>
-    <div class="global-right-hero">
+    <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/contact-us.svg" alt="global-hero-img">
     </div>
 </section>
-<div class="global-pages-container pt-5 py-4 px-lg-5 px-md-3 px-sm-2">
+<div class="global-pages-container pt-5 py-4 px-lg-5 px-md-3 px-sm-2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
     
     <div class="global-pages-container">
-        <div class="global-left-hero" >
+        <div class="global-left-hero"  data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
             <div class="global-left-hero-content">
                 <h2 class="cu-text">Get in Touch</h2>
                 <p class="subsubheader py-2 me-5">Have question or concern? Were here to help!</p>
                 <p class="subsubheader py-2 me-5">Reach out to our support team for expert assistance. Your satisfaction is our priority, and we’re just a message away.</p>
             </div>
         </div>
-        <div class="global-right-hero d-flex flex-column justify-content-center align-items-start p-5 rounded-5 bg-light">
+        <div class="global-right-hero d-flex flex-column justify-content-center align-items-start p-5 rounded-5 bg-light" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
             <div class="cu-text d-flex flex-row my-4 align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00573f" class="me-4" width="20px" height="20px">
                 <path d="M18.364 17.364L12 23.7279L5.63604 17.364C2.12132 13.8492 2.12132 8.15076 5.63604 4.63604C9.15076 1.12132 14.8492 1.12132 18.364 4.63604C21.8787 8.15076 21.8787 13.8492 18.364 17.364ZM12 15C14.2091 15 16 13.2091 16 11C16 8.79086 14.2091 7 12 7C9.79086 7 8 8.79086 8 11C8 13.2091 9.79086 15 12 15ZM12 13C10.8954 13 10 12.1046 10 11C10 9.89543 10.8954 9 12 9C13.1046 9 14 9.89543 14 11C14 12.1046 13.1046 13 12 13Z"></path>

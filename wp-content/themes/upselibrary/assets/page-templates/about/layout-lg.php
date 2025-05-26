@@ -1,7 +1,7 @@
 <?php echo '<!-- layout-lg.php loaded -->'; ?>
 
 <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
-    <div class="global-left-hero">
+    <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="left-hero-header d-flex justify-content-center  flex-column">
             <p class="hero-header-one">Library</p>
             <p class="hero-header-two">Guide</p>
@@ -10,14 +10,14 @@
             
         </div>
     </div>
-    <div class="global-right-hero">
+    <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/library-guide.svg" alt="global-hero-img">
     </div>
 </section>
 <section class="container">
     <div class="lg-container mt-5">
         <div class="lg-left-hero">
-            <div class="lib-bro">
+            <div class="lib-bro"  data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                 <div class="content-one pt-4" style="position: relative;">
                     <a href="/general-policy" target="_blank" style="position: absolute; top: 30px; right: 40px;color: #ffffff;" class="background-light rounded-circle bg-dark p-2" id="svg-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24" fill="currentColor">
@@ -31,7 +31,7 @@
                         <p class="inverted-p mt-3">The UPSE Library has policies in place to ensure that the users' information needs are met, and protocols are followed.</p>
                     </div>
                 </div>
-                <div class="content-two mt-3 p-5 rounded-5">
+                <div class="content-two mt-3 p-5 rounded-5"  data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                     <h3>Library</h3>
                     <h3 class="inverted-text">Brochure</h3>
                     <div class="span-line my-4"></div>
@@ -52,9 +52,9 @@
             </div>
         </div>
         <div class="lg-right-hero align-items-center justify-content-center d-flex flex-column">
-            <div class="newsletter" style="position: relative;">
+            <div class="newsletter" style="position: relative;" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                 <h3 class="lgrh-content" style="position: absolute; top: 2px; left: 8px; color: #00573f; font-size: 2.5rem;">Newsletter</h3>
-                <div class="inverted-two pt-5">
+                <div class="inverted-two pt-5" >
                     <div class="brochure-links mt-5 d-flex flex-column justify-content-center align-items-left">
                         <div class="lb-link d-flex flex-row gap-2 mt-4 my-2 text-decoration-none">
                             <a href="https://drive.google.com/file/d/1d9J_2yZfl-ciaOHhtOJmzgDEGZD9JlMx/view?usp=sharing">Be in the Know Vol. 7</a><i class="ri-arrow-right-long-line"></i>

@@ -12,11 +12,11 @@
                     <p><span class="left-content-one-normal">on Demand</span></p>
                 </div>
                 <div class="fp-left-content-two mt-2 mt-3">
-                    <a href="#from-GetS" class="custom-button-one" >Get Started</a>
-                    <a href="#" class="custom-button-two">Contact Us</a>
+                    <a href="#from-GetS" class="custom-button-one me-2" >Get Started</a>
+                    <a href="#" class="custom-button-two me-2">Contact Us</a>
                 </div>
         </div>
-        <div class="fp-right-hero" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
+        <div class="fp-right-hero" data-scrollreveal="enter bottom over 1s and move 30px after 0.2s">
             <div class="right-hero-container my-2">
                 <div class="carousel position-relative mx-auto overflow-hidden rounded">
                 <div class="carousel-images d-flex"></div>
@@ -35,11 +35,11 @@
         </div>
     </div>
 </section>
-<section class="animation">
-    <h1 class="animated-text" data-scrollreveal="enter bottom over 1s and move 20px after 0.4s"><span class="text-animated">Explore</span>UPSE Library</h1>
+<section class="animation" id="from-GetS">
+    <h1 class="animated-text"  data-scrollreveal="enter bottom over 1s and move 20px after 0.2s"><span class="text-animated">Explore</span>UPSE Library</h1>
 </section>
 <main class="container">
-    <section class="home-tabs" id="from-GetS">
+    <section class="home-tabs">
         <div class="tabs" data-scrollreveal="enter bottom over 1s and move 40px after 0.2s">
             <div class="tabs-nav" role="tablist" aria-label="Content sections">
                 <div class="tabs-indicator"></div>
@@ -88,7 +88,7 @@
         </div>
     </section>
     <section class="cas">
-        <div class="cas-left" data-scrollreveal="enter bottom over 1s and move 30px">
+        <div class="cas-left p-3" data-scrollreveal="enter bottom over 1s and move 30px">
             <p class="cas-category">Current Awareness</p>
             <h2>Keep up-to-date with the library's <span class="highlight-text">latest news</span></h2>
             <span class="line w-10"></span>
@@ -137,7 +137,7 @@
     </span>
     <section class="collection">
         <div class="collection-left" data-scrollreveal="enter bottom over 1s and move 30px">
-            <img class="collection-left-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/collection-img.png" alt="collection-image">
+            <img class="collection-left-img" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/collection-img.png" alt="collection-image">
         </div>
         <div class="collection-right" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
         <p class="collection-category">Collection</p>
@@ -154,7 +154,7 @@
     <section class="about-us-ext">
         <div class="ext-left" data-scrollreveal="enter bottom over 1s and move 30px">
             <div class="top">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/globe-about.svg" alt="about-globe">
+                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/globe-about.svg" alt="about-globe">
                 <h3>Discover our services</h3>
             </div>
             <p>
@@ -168,7 +168,7 @@
 
         <div class="ext-right" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
             <div class="top">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/explore-about.svg" alt="about-explore">
+                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/explore-about.svg" alt="about-explore">
                 <h3>Explore our resources</h3>
             </div>
             <p>
@@ -184,27 +184,27 @@
     <section class="online-database">
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px">
             <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/tuklas.webp" alt="tuklas">
+                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/tuklas.webp" alt="tuklas">
             </a>
         </div>
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px after 0.15s">
             <a href="#" target="_blank" rel="noopener noreferrer">
-                <img href="#" src="<?php echo get_template_directory_uri(); ?>/assets/images/openathens.png" alt="openAthens">
+                <img loading="lazy" href="#" src="<?php echo get_template_directory_uri(); ?>/assets/images/openathens.png" alt="openAthens">
             </a>
         </div>
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px after 0.16s">
             <a href="#" target="_blank" rel="noopener noreferrer">
-                <img href="#" src="<?php echo get_template_directory_uri(); ?>/assets/images/eikon.webp" alt="eikon">
+                <img loading="lazy" href="#" src="<?php echo get_template_directory_uri(); ?>/assets/images/eikon.webp" alt="eikon">
             </a>
         </div>
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px after 0.17s">
             <a href="#" target="_blank" rel="noopener noreferrer">
-                <img href="#" src="<?php echo get_template_directory_uri(); ?>/assets/images/gtap.png" alt="gtap">
+                <img loading="lazy" href="#" src="<?php echo get_template_directory_uri(); ?>/assets/images/gtap.png" alt="gtap">
             </a>
         </div>
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px after 0.18s">
             <a href="#" target="_blank" rel="noopener noreferrer">
-                <img class="ceic" src="<?php echo get_template_directory_uri(); ?>/assets/images/ceic.webp" alt="ceic">
+                <img loading="lazy" class="ceic" src="<?php echo get_template_directory_uri(); ?>/assets/images/ceic.webp" alt="ceic">
             </a>
         </div>
     </section>
@@ -243,7 +243,7 @@
             </div>
         </div>
         <div class="collection-left" data-scrollreveal="enter bottom over 1s and move 30px after 0.4s">
-            <img class="collection-left-img" src="<?php echo get_template_directory_uri(); ?>/assets/images/groupchat.png" alt="collection-image">
+            <img class="collection-left-img" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/groupchat.png" alt="collection-image">
         </div>
     </section>
     <section class="fp-search d-flex justify-content-center align-items-center flex-column py-5">
