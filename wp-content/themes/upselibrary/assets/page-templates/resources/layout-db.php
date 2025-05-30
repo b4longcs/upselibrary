@@ -1,7 +1,7 @@
 <?php echo '<!-- layout-db.php loaded -->'; ?>
 <section class="db-container mt-5">
-    <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
-        <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+    <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap mt-5">
+        <div class="global-left-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <div class="left-hero-header d-flex justify-content-center  flex-column">
                 <p class="hero-header-one">Databases</p>
                 <!-- <p class="hero-header-two">Subscription</p> -->
@@ -13,7 +13,7 @@
                 </p>
             </div>
         </div>
-        <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+        <div class="global-right-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/databases-img.svg" alt="global-hero-img">
         </div>
     </section>

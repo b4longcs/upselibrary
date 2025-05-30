@@ -1,6 +1,6 @@
 <?php echo '<!-- layout-bf.php loaded -->'; ?>
 
-<section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap my-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+<section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
     <div class="global-left-hero my-5">
         <div class="left-hero-header d-flex justify-content-center  flex-column">
             <p class="hero-header-one">Brief</p>

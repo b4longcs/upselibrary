@@ -1,7 +1,7 @@
 <?php echo '<!-- layout-rs.php loaded -->'; ?>
 
 <section class="global-pages-container mt-5">
-    <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+    <div class="global-left-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="left-hero-header d-flex justify-content-center  flex-column">
             <p class="hero-header-one" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Reference</p>
             <p class="hero-header-two" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Services</p>
@@ -10,7 +10,7 @@
             <p class="content-text my-3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Reference Service pertains to Ask-a-Librarian, library orientations and trainings, and publication of library brochures, guides, newsletters, and pathfinders.</p>
         </div>
     </div>
-    <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+    <div class="global-right-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ref-cir-img.svg" alt="global-hero-img">
     </div>
 </section>

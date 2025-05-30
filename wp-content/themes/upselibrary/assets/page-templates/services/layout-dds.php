@@ -1,7 +1,7 @@
 <?php echo '<!-- layout-dds.php loaded -->'; ?>
 
 <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
-    <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+    <div class="global-left-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="left-hero-header d-flex justify-content-center  flex-column">
             <p class="hero-header-one">Document</p>
             <p class="hero-header-two">Delivery</p>
@@ -13,7 +13,7 @@
             </p>
         </div>
     </div>
-    <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+    <div class="global-right-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/dds-img.svg" alt="global-hero-img">
     </div>
 </section>

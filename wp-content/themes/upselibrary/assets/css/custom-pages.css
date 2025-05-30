@@ -1694,7 +1694,39 @@
 }
 /* End of Spaces */
 
+.mn-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('../images/bg-bg.jpg');
+    height: 100dvh;
+    margin-top: -130px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
 
+.mn-logo img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 180px !important;
+    max-width: 250px !important;
+}
+
+.mn-text {
+    font-size: clamp(2.1rem, 3vw, 2.5rem);
+}
+
+
+.mn-container img {
+    width: 100%;
+    min-width: auto;
+    max-width: 600px;
+    height: auto;
+    justify-items: center;
+}
 
 @media (min-width: 300px) {
     .subheader {
