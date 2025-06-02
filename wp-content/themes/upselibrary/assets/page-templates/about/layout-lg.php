@@ -19,7 +19,7 @@
         <div class="lg-left-hero">
             <div class="lib-bro"  data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                 <div class="content-one pt-4" style="position: relative;">
-                    <a href="/general-policy" target="_blank" style="position: absolute; top: 30px; right: 40px;color: #ffffff;" class="background-light rounded-circle bg-dark p-2" id="svg-link">
+                    <a href="/general-policy" target="_blank" style="position: absolute; top: 60px; right: 10px;color: #ffffff;" class="background-light z-1 rounded-circle bg-dark p-2" id="svg-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
                         </svg>

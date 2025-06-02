@@ -34,7 +34,9 @@ if (is_page('up-school-of-economics')) {
     <meta name="twitter:image" content="<?php echo esc_url($twitter_image); ?>">
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+
 <div id="progress-bar"></div> 
 <header class="header-sticky">
        

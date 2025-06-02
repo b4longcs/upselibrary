@@ -53,11 +53,11 @@
         -ms-flex-align: center;
             align-items: center;
             
-    padding:  .4rem .8rem;
-    margin: .6rem 0;
+    padding:  0.5rem 1.5rem;
+    margin: 0.6rem 0;
     background-color: var(--clr-accent-color-four);
     position: relative;
-    border-radius: 50px;
+    border-radius: 1.2rem;
 }
 
 .logo img {
@@ -137,7 +137,7 @@
     top: 90%;
     right: 0;
     left: -10px;
-    background: var(--clr-accent-color-four);
+    background: var(--clr-white);
     opacity: 0;
     width: 285px;
     visibility: hidden;
@@ -214,16 +214,21 @@
                 flex-direction: column;
         position: fixed;
         top: 0;
-        right: -360px;
-        width: 360px;
+        right: -100%;
+        width: 100%;
         height: 100vh;
-        background-color: var(--tab-background-color);
-        padding: 20px;
+        max-width: 430px;
+        /* background-color: var(--tab-background-color); */
+        background-image: url('../images/bg-bg.jpg');
+        background-repeat: no-repeat;
+        background-position: bottom left;
+        background-size: cover; 
         overflow-y: auto;
-        -webkit-transition: right 0.2s ease-in;
-        -o-transition: right 0.2s ease-in;
-        transition: right 0.2s ease-in;
+        -webkit-transition: right 0.3s ease-in-out;
+        -o-transition: right 0.3s ease-in-out;
+        transition: right 0.3s ease-in-out;
         z-index: 200;
+        padding: 2em 3em !important;
     }
 
     .nav-links.active {
@@ -249,7 +254,7 @@
         -webkit-box-align: center;
             -ms-flex-align: center;
                 align-items: center;
-        font-size: var(--fs-xlg);
+        font-size: calc(var(--fs-xlg) + 0.55rem );
     }
 
     .sub-menu {
