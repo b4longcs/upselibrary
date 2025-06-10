@@ -82,62 +82,81 @@
         </div>
         <div class="lg-right-hero align-items-center justify-content-center d-flex flex-column">
             <div class="newsletter" style="position: relative;" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                <h3 class="lgrh-content" style="position: absolute; top: 2px; left: 8px; color: #00573f; font-size: 2.5rem;">Newsletter</h3>
+                <h3 class="lgrh-content" style="position: absolute; top: 2px; left: 25px; color: #00573f; font-size: 2rem;">Newsletter</h3>
                 <div class="inverted-two pt-5" >
-                    <div class="brochure-links mt-5 d-flex flex-column justify-content-center align-items-left">
-                        <div class="lb-link d-flex flex-row gap-2 mt-4 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/1d9J_2yZfl-ciaOHhtOJmzgDEGZD9JlMx/view?usp=sharing">Be in the Know Vol. 7</a><i class="ri-arrow-right-long-line"></i>
+                    <div class="brochure-links mt-3 d-flex flex-column justify-content-center align-items-left">
+                        <div class="lb-link d-flex flex-row gap-2 mt-5 mt-4 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1d9J_2yZfl-ciaOHhtOJmzgDEGZD9JlMx/view?usp=sharing">Be in the Know Vol. 7</a><i class="ri-arrow-right-long-line mx-1 lh-1"></i>
                         </div>
-                        <div class="lb-link d-flex flex-row gap-2 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/1Jq7muvFuvHOi6KXI5keIyzMdcZFJzhz2/view?usp=sharing">Be in the Know Vol. 6</a><i class="ri-arrow-right-long-line"></i>
+                        <div class="lb-link d-flex flex-row gap-2 mt-4 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1Jq7muvFuvHOi6KXI5keIyzMdcZFJzhz2/view?usp=sharing">Be in the Know Vol. 6</a><i class="ri-arrow-right-long-line mx-1 lh-1"></i>
                         </div>
-                        <div class="lb-link d-flex flex-row gap-2 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/1CFyYIGPjGMJ_8bFPCeTqFHFsEUVk4NI9/view?usp=sharing">Be in the Know Vol. 5</a><i class="ri-arrow-right-long-line"></i>
+                        <div class="lb-link d-flex flex-row gap-2 mt-4 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1CFyYIGPjGMJ_8bFPCeTqFHFsEUVk4NI9/view?usp=sharing">Be in the Know Vol. 5</a><i class="ri-arrow-right-long-line mx-1 lh-1"></i>
                         </div>
-                        <div class="lb-link d-flex flex-row gap-2 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/16OFpDv54lv-tQQNXV8qAMx2tOsaytqqZ/view?usp=sharing">Be in the Know Vol. 4</a><i class="ri-arrow-right-long-line"></i>
+                        <div class="lb-link d-flex flex-row gap-2 mt-4 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/16OFpDv54lv-tQQNXV8qAMx2tOsaytqqZ/view?usp=sharing">Be in the Know Vol. 4</a><i class="ri-arrow-right-long-line mx-1 lh-1"></i>
                         </div>
-                        <div class="lb-link d-flex flex-row gap-2 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/1fc7tglRlnD7wMUVQWqlZsM4GhHOIUbZu/view?usp=sharing">Be in the Know Vol. 3</a><i class="ri-arrow-right-long-line"></i>
+                        <div class="lb-link d-flex flex-row gap-2 mt-4 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1fc7tglRlnD7wMUVQWqlZsM4GhHOIUbZu/view?usp=sharing">Be in the Know Vol. 3</a><i class="ri-arrow-right-long-line mx-1 lh-1"></i>
                         </div>
-                        <div class="lb-link d-flex flex-row gap-2 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/1egE7aumou2TfjEFLettKRY9XO3W4YyfZ/view?usp=sharing">Be in the Know Vol. 2</a><i class="ri-arrow-right-long-line"></i>
+                        <div class="lb-link d-flex flex-row gap-2 mt-4 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1egE7aumou2TfjEFLettKRY9XO3W4YyfZ/view?usp=sharing">Be in the Know Vol. 2</a><i class="ri-arrow-right-long-line mx-1 lh-1"></i>
                         </div>
-                        <div class="lb-link d-flex flex-row gap-2 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/1D7OvFaFDCvth1gs3OJGodR2oazDF1gFy/view?usp=sharing">Be in the Know Vol. 1</a><i class="ri-arrow-right-long-line"></i>
+                        <div class="lb-link d-flex flex-row gap-2 mt-4 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1D7OvFaFDCvth1gs3OJGodR2oazDF1gFy/view?usp=sharing">Be in the Know Vol. 1</a><i class="ri-arrow-right-long-line mx-1 lh-1"></i>
                         </div>
                         
                     </div>
                 </div>    
             </div>
-            <div class="content-one pt-4" style="position: relative;">
-                <a href="/contact-us" target="_blank" style="position: absolute; top: 55px; right: 10px;color: #ffffff;" class="bg-dark z-1 rounded-circle p-2" id="svg-link">
+
+            <div class="newsletter mt-5 mb-2" style="position: relative;" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                <h3 class="inverted-text pb-5" style="position: absolute; top: 0; left: 25px; color: #00573f; font-size: 2rem;">PathFinders</h3>
+                <div class="rs-inverted-two" >
+                    <div class="lb-link mt-5 d-flex flex-column justify-content-center align-items-left">
+                        <div class="rs-pathfinders d-flex flex-row gap-2 mt-3 my-2 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1-JjibFSzqAsCZ94IgNHScp7D8GlF8DMu/view?usp=sharing">Economic Aspects of Human Fertility in the Philippines (Updated as of June 2023)</a>
+                            <i class="ri-arrow-right-long-line mx-3"></i>
+                        </div>
+                    </div>
+                    <div class="lb-link mt-4 d-flex flex-column justify-content-center align-items-left">
+                        <div class="rs-pathfinders d-flex flex-row gap-2 mt-3 my-2 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1-JjibFSzqAsCZ94IgNHScp7D8GlF8DMu/view?usp=sharing">Health Economics (Updated as of March 2023)</a>
+                            <i class="ri-arrow-right-long-line mx-3"></i>
+                        </div>
+                    </div>
+                    <div class="lb-link mt-1 d-flex flex-column justify-content-center align-items-left">
+                        <div class="rs-pathfinders d-flex flex-row gap-2 mt-3 my-2 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1-JjibFSzqAsCZ94IgNHScp7D8GlF8DMu/view?usp=sharing">Economics Development Projects: Cost Effectiveness, Evaluation and Finance (Updated as of September 2022)</a>
+                            <i class="ri-arrow-right-long-line mx-3"></i>
+                        </div>
+                    </div>
+                    <div class="lb-link mt-1 d-flex flex-column justify-content-center align-items-left">
+                        <div class="rs-pathfinders d-flex flex-row gap-2 mt-3 my-2 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1-JjibFSzqAsCZ94IgNHScp7D8GlF8DMu/view?usp=sharing">Environmental Economics (Updated as of June 2022)</a>
+                            <i class="ri-arrow-right-long-line mx-3"></i>
+                        </div>
+                    </div>
+                    <div class="lb-link mt-1 d-flex flex-column justify-content-center align-items-left">
+                        <div class="rs-pathfinders d-flex flex-row gap-2 mt-3 my-2 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1-JjibFSzqAsCZ94IgNHScp7D8GlF8DMu/view?usp=sharing">Labor Economics (Updated as of March 2022)</a>
+                            <i class="ri-arrow-right-long-line mx-3"></i>
+                        </div>
+                    </div>
+                    <div class="lb-link mt-1 d-flex flex-column justify-content-center align-items-left">
+                        <div class="rs-pathfinders d-flex flex-row gap-2 mt-3 my-2 text-decoration-none">
+                            <a href="https://drive.google.com/file/d/1-JjibFSzqAsCZ94IgNHScp7D8GlF8DMu/view?usp=sharing">PH Economic Conditions during COVID-19 (Updated as of June 2021)</a>
+                            <i class="ri-arrow-right-long-line mx-3"></i>
+                        </div>
+                    </div>
+                   
+                </div>
+                <a href="#" target="_blank" style="position: absolute; bottom: 5px; right: 10px;color: #ffffff;background-color: #00573f" class="z-1 rounded-circle p-2" id="svg-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
                     </svg>
                 </a>
-                <div class="rs-inverted">
-                    <h3 class="mt-4">Pathfinders</h3>
-                    <div class="span-line mt-5 my-2"></div>
-                    <div class="brochure-links mt-1 d-flex flex-column justify-content-center align-items-left">
-                        <div class="rs-pathfinders d-flex flex-row gap-2 mt-4 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/1d9J_2yZfl-ciaOHhtOJmzgDEGZD9JlMx/view?usp=sharing">Economic aspects of Human Fertility in the Philippines (Updated as of June 2023)</a>
-                            <i class="ri-arrow-right-long-line mx-3"></i>
-                        </div>
-                    </div>
-                    <div class="brochure-links mt-1 d-flex flex-column justify-content-center align-items-left">
-                        <div class="rs-pathfinders d-flex flex-row gap-2 mt-4 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/1d9J_2yZfl-ciaOHhtOJmzgDEGZD9JlMx/view?usp=sharing">Health Economics (Updated as of March 2023)</a>
-                            <i class="ri-arrow-right-long-line mx-3"></i>
-                        </div>
-                    </div>
-                    <div class="brochure-links mt-1 d-flex flex-column justify-content-center align-items-left">
-                        <div class="rs-pathfinders d-flex flex-row gap-2 mt-4 my-2 text-decoration-none">
-                            <a href="https://drive.google.com/file/d/1d9J_2yZfl-ciaOHhtOJmzgDEGZD9JlMx/view?usp=sharing">Economics Development Projects: Cost Effectiveness, Evaluation and Finance (Updated as of September 2022)</a>
-                            <i class="ri-arrow-right-long-line mx-3"></i>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

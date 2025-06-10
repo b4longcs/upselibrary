@@ -62,8 +62,27 @@
                 
                 <div class="tab-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" aria-hidden="true" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                     <div class="online-sub-content">
-                    <section class="bento-layout">
-                            
+                        <section class="bento-layout-two">
+                            <div class="bento-grid-two" >
+                                <div class="wq1" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/taylor.png" alt="taylor"></a>
+                                </div>
+                                <div class="wq2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src=""></a>
+                                </div>
+                                <div class="wq3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/clarivate.png" alt=""></a>
+                                </div>
+                                <div class="wq4" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/sciencedirect.svg" alt=""></a>
+                                </div>
+                                <div class="wq5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/wiley.png" alt=""></a>
+                                </div>
+                                <div class="wq6" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="https://selib.upd.edu.ph/resources/online-subscription"></a>
+                                </div>
+                            </div>
                         </section>
                     </div>
                 </div>

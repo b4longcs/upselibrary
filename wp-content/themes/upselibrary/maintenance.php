@@ -42,7 +42,7 @@ if (is_page('up-school-of-economics')) {
             <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Logo" /></a>
         </div>
         <div class="mt-5">
-            <h1 class="mn-text text-center" >The site is currently down for maintenance</h1>
+            <h1 class="mn-text text-center" >The site is currently down for maintenance.</h1>
             <p class="text-center h5 mt-3">Sorry for the inconvenience caused. We're almost done.</p>
         </div>
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/maintenance-img.png" alt="maintenance-img">

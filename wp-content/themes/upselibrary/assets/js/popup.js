@@ -3,15 +3,20 @@
 // ====================================
 window.onload = function () {
     setTimeout(function () {
-        document.getElementById('popupOverlay')?.classList.add('show');
-    }, 500);
+        const popup = document.getElementById('popupOverlay');
+        if (popup) {
+            popup.classList.add('show');
+            popup.style.pointerEvents = 'auto'; // Enable interaction
+        }
+    }, 300);
 };
+
 
 function closePopup() {
     const popupOverlay = document.getElementById('popupOverlay');
     if (popupOverlay) {
         popupOverlay.classList.remove('show');
-        popupOverlay.style.zIndex = '0';
+        popupOverlay.style.pointerEvents = 'none';
     }
 }
 

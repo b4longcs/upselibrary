@@ -21,7 +21,6 @@
 }
 
 /* Hero */
-
 .fp-hero-section {
     height: 100dvh;
     width: 100%;
@@ -250,7 +249,7 @@
             flex: 1;
     all: unset;
     position: relative;
-    padding: var(--button-padding-y) calc(var(--button-padding-x) + 1.3em);
+    padding: var(--button-padding-y) calc(var(--button-padding-x) + 1.1em);
     font-size: var(--tab-font-size);
     font-weight: var(--tab-font-weight);
     color: var(--clr-text-color);
@@ -732,7 +731,7 @@ input::placeholder {
         -ms-flex-direction: column;
             flex-direction: column;
     padding: 1.5em 3em;
-    background-color: var(--clr-accent-color-two);
+    background-color: var(--clr-bg-color-two);
     min-height: 250px;
     gap: 1.3em;
     border-radius: 2em;
@@ -926,8 +925,8 @@ input::placeholder {
 
 .fp-social-icon svg {
     fill: var(--clr-primary-color);
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     -webkit-transition: fill 0.3s ease, -webkit-transform 0.3s ease;
     transition: fill 0.3s ease, -webkit-transform 0.3s ease;
     -o-transition: fill 0.3s ease, transform 0.3s ease;
@@ -951,10 +950,16 @@ input::placeholder {
 }
 
 @media (max-width: 1024px) {
-    .container, .fp-hero-container {
-        width: 97%;
+    .container {
+        width: 90%;
         align-items: center;
     }
+
+    .fp-hero-container {
+        width: 88%;
+        align-items: center;
+    }
+
     .cas-post-title, .cas-post-excerpt {
         max-width: 80% !important;
     }
