@@ -33,6 +33,7 @@
     --clr-accent-color-three: #c0c0c0;
     --clr-accent-color-four: #f7f7f7;
     --clr-bg-color: #FFFCF6;
+    --clr-bg-color-two: #e8efec;
     --clr-bg-color-hover: #00573f;
     --clr-bg-color-hover-light: #5f867c;
     --clr-highlight-color: #eeeeee;
@@ -164,7 +165,7 @@ body {
     margin: 0 !important;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    background-color: white;
+    background-color: var(--clr-white);
     margin-top: 130px !important;
     scroll-snap-type: y mandatory;
 }
@@ -183,7 +184,7 @@ p, ul, li, a{
 }
 
 .container {
-    max-width: 1250px;
+    max-width: 1200px;
 
 }
 

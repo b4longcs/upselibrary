@@ -34,7 +34,9 @@ if (is_page('up-school-of-economics')) {
     <meta name="twitter:image" content="<?php echo esc_url($twitter_image); ?>">
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
+
 <div id="progress-bar"></div> 
 <header class="header-sticky">
        
@@ -56,41 +58,42 @@ if (is_page('up-school-of-economics')) {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z"></path></svg>
                 </li>
                 <li>
-                <a href="#" class="nav-menu" aria-haspopup="true">About</a>
-                <ul class="sub-menu">
-                    <li><a href="/brief-history">Brief History</a></li>
-                    <li><a href="/vision-and-mission">Vision & Mission</a></li>
-                    <li><a href="/general-policy">General Policy</a></li>
-                    <li><a href="/library-guide">Library Guide</a></li>
-                    <li><a href="/library-staff">Library Staff</a></li>
-                    <li><a href="https://drive.google.com/file/d/1cgqN7T1mbFOvwj7B4i5OkXsBByCs8_bl/view">Citizen's Charter</a></li>
-                    <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/contact-us">Contact Us</a></li>
-                </ul>
+                    <a href="#" class="nav-menu" aria-haspopup="true">About</a>
+                    <ul class="sub-menu">
+
+                        <li><a href="/brief-history" class="mt-3">Brief History</a></li>
+                        <li><a href="/vision-and-mission">Vision & Mission</a></li>
+                        <li><a href="/general-policy">General Policy</a></li>
+                        <li><a href="/library-guide">Library Guide</a></li>
+                        <li><a href="/library-staff">Library Staff</a></li>
+                        <li><a href="https://drive.google.com/file/d/1cgqN7T1mbFOvwj7B4i5OkXsBByCs8_bl/view">Citizen's Charter</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/contact-us" class="mb-3">Contact Us</a></li>
+                    </ul>
                 </li>
                 <li>
-                <a href="#" class="nav-menu" aria-haspopup="true">Resources</a>
-                <ul class="sub-menu">
-                    <li><a href="/print-collection">Print Collection</a></li>
-                    <li><a href="/online-subscription">Online Subscription</a></li>
-                    <li><a href="/databases">Databases</a></li>
-                    <li><a href="/datasets">Datasets</a></li>
-                    <li><a href="/archives-collection">Archives Collection</a></li>
-                </ul>
+                    <a href="#" class="nav-menu" aria-haspopup="true">Resources</a>
+                    <ul class="sub-menu">
+                        <li><a href="/print-collection" class="mt-3">Print Collection</a></li>
+                        <li><a href="/online-subscription">Online Subscription</a></li>
+                        <li><a href="/databases">Databases</a></li>
+                        <li><a href="/datasets">Datasets</a></li>
+                        <li><a href="/archives-collection" class="mb-3">Archives Collection</a></li>
+                    </ul>
                 </li>
                 <li>
-                <a href="#" class="nav-menu" aria-haspopup="true">Services</a>
-                <ul class="sub-menu">
-                    <li><a href="/circulation-service">Circulation Service</a></li>
-                    <li><a href="/reference-service">Reference Service</a></li>
-                    <li><a href="/current-awareness-service">Current Awareness Service</a></li>
-                    <li><a href="/thesis-and-dissertation-binding">Thesis and Dissertation Binding</a></li>
-                    <li><a href="/interlibrary-loan">Interlibrary Loan</a></li>
-                    <li><a href="/document-delivery-service">Document Delivery Service</a></li>
-                </ul>
+                    <a href="#" class="nav-menu" aria-haspopup="true">Services</a>
+                    <ul class="sub-menu">
+                        <li><a href="/circulation-service" class="mt-3">Circulation Service</a></li>
+                        <li><a href="/reference-service">Reference Service</a></li>
+                        <li><a href="/current-awareness-service">Current Awareness Service</a></li>
+                        <li><a href="/thesis-and-dissertation-binding">Thesis and Dissertation Binding</a></li>
+                        <li><a href="/interlibrary-loan">Interlibrary Loan</a></li>
+                        <li><a href="/document-delivery-service" class="mb-3">Document Delivery Service</a></li>
+                    </ul>
                 </li>
-                <li><a href="/spaces" class="nav-menu" aria-haspopup="true">Spaces</a></li>
-                <li><a href="/visitor" class="nav-menu" aria-haspopup="true">Visitor</a></li>
+                <li><a href="/spaces" class="me-2" aria-haspopup="true">Spaces</a></li>
+                <li><a href="/visitor" class="me-4" aria-haspopup="true">Visitor</a></li>
             </ul>
         </nav>
     </div>

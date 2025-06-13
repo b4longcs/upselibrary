@@ -1,21 +1,21 @@
 <?php echo '<!-- layout-cs.php loaded -->'; ?>
 
 <section class="global-pages-container mt-5">
-    <div class="global-left-hero">
+    <div class="global-left-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="left-hero-header d-flex justify-content-center  flex-column">
             <p class="hero-header-one">Circulation</p>
             <p class="hero-header-two">Services</p>
         </div>
-        <div class="left-hero-subsubheader my-3 w-75">
+        <div class="left-hero-subsubheader my-3 w-75" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <p class="content-text my-3">Circulation Service refers to the Library’s book lending service. Borrowing privileges for currently-enrolled UP students, faculty, and staff are as follows: </p>
         </div>
     </div>
-    <div class="global-right-hero">
+    <div class="global-right-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ref-cir-img.svg" alt="global-hero-img">
     </div>
 </section>
 <section class="circulation-grid my-5 my-lg-3 my-md-2 my-sm-2">
-    <div class="circulation-item">
+    <div class="circulation-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="circulation-grid-wrapper">
             <div class="circulation-grid-container">
                 <div class="circulation-grid-content pb-2">
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    <div class="circulation-item">
+    <div class="circulation-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="circulation-grid-wrapper">
             <div class="circulation-grid-container">
                 <div class="circulation-grid-content pb-2">
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div class="circulation-item">
+    <div class="circulation-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="circulation-grid-wrapper">
             <div class="circulation-grid-container">
                 <div class="circulation-grid-content pb-2">
@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="circulation-item">
+    <div class="circulation-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="circulation-grid-wrapper">
             <div class="circulation-grid-container">
                 <div class="circulation-grid-content pb-2">
@@ -63,19 +63,19 @@
             </div>
         </div>
     </div>
-    <div class="circulation-item">
+    <div class="circulation-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="circulation-grid-wrapper">
             <div class="circulation-grid-container">
                 <div class="circulation-grid-content pb-2">
                     <i class="ri-layout-3-fill"></i>
-                    <h3>ADMINISTRATIVE STAFF​</h3>
+                    <h3>ADMINISTRATIVE STAFF</h3>
                 </div>
                 <p class="circ-content">5 circulation books for 2 weeks</p>
                 <p class="circ-content">2 reserve books for overnight use</p>
             </div>
         </div>
     </div>
-    <div class="circulation-item">
+    <div class="circulation-item" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="circulation-grid-wrapper">
             <div class="circulation-grid-container">
                 <div class="circulation-grid-content pb-2">
@@ -88,15 +88,15 @@
         </div>
     </div>
 </section>
-    <div class="circ-pages-container pt-5">
-        <div class="span-line"></div>
+    <div class="circ-pages-container pt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+        <div class="span-line" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s"></div>
         <div class="circ-pages-container"> 
-            <div class="circ-left-hero">
+            <div class="circ-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                 <div class="circulation-left-hero-content">
                     <p class="circ-subheader py-3">
                     INSTRUCTIONS ON HOW TO BORROW BOOKS</p>
                     <p>
-                    <div class="numbered-paragraphs">
+                    <div class="numbered-paragraphs" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                         <p>Use Tuklas (tuklas.up.edu.ph) to confirm the book's availability. The book's circulation status must be ON-SHELF. </p>
                         <p>Write down the title, author/s, edition, date of publication, and call number of the book you intend to borrow on a slip of paper (call slip).</p>
                         <p>Proceed to the Circulation Section and give the call slip to the staff-on-duty.</p>
@@ -107,11 +107,11 @@
                     </p>
                 </div>
 
-                <div class="circulation-left-hero-content">
-                    <p class="circ-subheader py-3">
+                <div class="circulation-left-hero-content" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                    <p class="circ-subheader py-3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                     The following are not allowed and will automatically void your reservation:</p>
                     <p>
-                    <div class="numbered-paragraphs">
+                    <div class="numbered-paragraphs" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                         <p>Reservation slips with incomplete data, e.g. name or student number, incorrect title or author of the book.</p>
                         <p>Late submission of reservation slips.</p>
                         <p>Reserve books not taken ten (10) minutes before closing time. </p>
@@ -119,19 +119,19 @@
                     </p>
                 </div>
             </div>
-            <div class="circ-right-hero" >
-                <div class="circulation-right-hero-content">
-                    <p class="circ-subheader py-3">
+            <div class="circ-right-hero"  data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                <div class="circulation-right-hero-content" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                    <p class="circ-subheader py-3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                     HOW TO BORROW A RESERVE BOOK (ROOM USE)</p>
-                    <div class="numbered-paragraphs">
+                    <div class="numbered-paragraphs" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                         <p>Give author and title of book to staff at the Reserve Desk.</p>
                         <p>Present ID and sign the book card. Write your name and student number legibly on book card.</p>
                         <p>Students may apply for “room use” reservation if so desired. However, reserve books placed on “hour reading” should be called for on the hours due.</p>
                         
                     </div>
                     <div class="subsubheader-circ">
-                        <p class="circ-subheader py-3">Reserve Books for Overnight Use</p>
-                        <div class="numbered-paragraphs">
+                        <p class="circ-subheader py-3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Reserve Books for Overnight Use</p>
+                        <div class="numbered-paragraphs" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                             <p>A student may reserve a book for overnight use provided reservation is still open.</p>
                             <p>Reservation slips are available at the Control Desk which are numbered consecutively and issued on the first come, first serve basis.</p>
                             <p>Reservation in advance or by telephone is not accepted.</p>

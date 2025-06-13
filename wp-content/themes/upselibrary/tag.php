@@ -41,8 +41,9 @@
         <p>No posts found for this tag.</p>
     <?php endif; ?>
 </section>
-<section class="fp-search d-flex justify-content-center align-items-center flex-column">
-    <p class="fp-search-p">Looking for something specific?</p>
+<section class="span-line my-5"></section>
+<section class="fp-search d-flex justify-content-center align-items-center flex-column mt-5">
+    <p class="fp-search-p mt-5">Looking for something specific?</p>
     <div class="error-form">
         <form role="search" method="get" class="custom-search-form" action="<?php echo home_url('/'); ?>">
             <input type="search" name="s" class="custom-search-input" placeholder="Search anything..." required />
