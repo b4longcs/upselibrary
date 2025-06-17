@@ -20,7 +20,7 @@
                 </div>
         </div>
         <div class="fp-right-hero" data-scrollreveal="enter bottom over 1s and move 30px after 0.2s">
-            <div class="right-hero-container my-2">
+            <div class="right-hero-container m-3">
                 <div class="carousel position-relative mx-auto overflow-hidden rounded">
                 <div class="carousel-images d-flex"></div>
 

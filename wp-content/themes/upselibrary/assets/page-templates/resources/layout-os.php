@@ -88,7 +88,28 @@
                 </div>
                 <div class="tab-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" aria-hidden="true" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                     <div class="online-sub-content">
-                        
+                        <section class="bento-layout-three">
+                            <div class="bento-grid-three" >
+                                <div class="qq1" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/taylor.png" alt="taylor"></a>
+                                </div>
+                                <div class="qq2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src=""></a>
+                                </div>
+                                <div class="qq3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/clarivate.png" alt=""></a>
+                                </div>
+                                <div class="qq4" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/sciencedirect.svg" alt=""></a>
+                                </div>
+                                <div class="qq5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/wiley.png" alt=""></a>
+                                </div>
+                                <div class="qq6" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+                                    <a href="https://selib.upd.edu.ph/resources/online-subscription"></a>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
