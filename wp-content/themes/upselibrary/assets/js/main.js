@@ -91,11 +91,6 @@ const Header = (() => {
   return { init };
 })();
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  Tabs.init();
-});
-
 // ====================================
 // MODULE: Tabs
 // ====================================
@@ -163,6 +158,7 @@ const Tabs = (() => {
 
   return { init };
 })();
+
 // ====================================
 // MODULE: ScrollReveal
 // ====================================

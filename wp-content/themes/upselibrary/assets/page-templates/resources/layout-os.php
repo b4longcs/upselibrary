@@ -18,7 +18,7 @@
         </div>
     </section>
     <section class="global-pages-content my-5 my-lg-3 my-md-2 my-sm-2">
-        <section class="home-tabs mt-5" id="from-GetS">
+        <section class="home-tabs" id="from-GetS">
             <div class="tabs" >
                 <div class="tabs-nav" role="tablist" aria-label="Content sections" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                     <div class="tabs-indicator"></div>
@@ -38,10 +38,10 @@
                         <section class="bento-layout">
                             <div class="bento-grid" >
                                 <div class="div1" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/taylor.png" alt="taylor"></a>
+                                    <a href="https://mainlib.upd.edu.ph/taylor-francis-online-social-sciences-humanities-collection-package/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/taylor.png" alt="taylor"></a>
                                 </div>
                                 <div class="div2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src=""></a>
+                                    <a href="https://mainlib.upd.edu.ph/jstor/"><img src=""></a>
                                 </div>
                                 <div class="div3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                                     <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/clarivate.png" alt=""></a>
@@ -64,24 +64,14 @@
                     <div class="online-sub-content">
                         <section class="bento-layout-two">
                             <div class="bento-grid-two" >
-                                <div class="wq1" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/taylor.png" alt="taylor"></a>
-                                </div>
-                                <div class="wq2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src=""></a>
-                                </div>
-                                <div class="wq3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/clarivate.png" alt=""></a>
-                                </div>
-                                <div class="wq4" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/sciencedirect.svg" alt=""></a>
-                                </div>
-                                <div class="wq5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/wiley.png" alt=""></a>
-                                </div>
-                                <div class="wq6" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="https://selib.upd.edu.ph/resources/online-subscription"></a>
-                                </div>
+                                <a href="https://www.economist.com/" class="wq1" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to The Economist">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/the-economist-logo.png" alt="">
+                                </a>
+                                <a href="https://www.scmp.com/" class="wq2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to South China Morning Post"></a>
+                                <a href="https://time.com/" class="wq3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to Time Magazine"></a>
+                                <a href="https://mainlib.upd.edu.ph/gale-academic-onefile/" class="wq4" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to Gale Onefile"></a>
+                                <a href="https://mainlib.upd.edu.ph/pressreader/" class="wq5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to Pressreader"></a>
+                                <a href="https://mainlib.upd.edu.ph/new-york-times/" class="wq6" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to The New York Times"></a>
                             </div>
                         </section>
                     </div>
@@ -90,24 +80,32 @@
                     <div class="online-sub-content">
                         <section class="bento-layout-three">
                             <div class="bento-grid-three" >
-                                <div class="qq1" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/taylor.png" alt="taylor"></a>
-                                </div>
-                                <div class="qq2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src=""></a>
-                                </div>
-                                <div class="qq3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/clarivate.png" alt=""></a>
-                                </div>
-                                <div class="qq4" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/sciencedirect.svg" alt=""></a>
-                                </div>
-                                <div class="qq5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/wiley.png" alt=""></a>
-                                </div>
-                                <div class="qq6" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-                                    <a href="https://selib.upd.edu.ph/resources/online-subscription"></a>
-                                </div>
+                                <a href="#" class="qq1" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to The ADB">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/adb.png" alt="">
+                                </a>
+
+                                <a href="https://mainlib.upd.edu.ph/ebsco-ebooks/" class="qq2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to The Ebsco Ebooks">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ebsco-ebooks.png" alt="">
+                                </a>
+
+                                <a href="https://mainlib.upd.edu.ph/elgar-online-ebooks/" class="qq3" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to The Edgar Online">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/edgar-online.svg" alt="">
+                                </a>
+
+                                <a href="https://mainlib.upd.edu.ph/perlego/" class="qq4" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to Perlego">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/perlego.png" alt="">
+                                </a>
+
+                                <a href="#" class="qq5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to Handbook in Economics">Handbook in Economics (2000 to 2013)</a>
+
+                                <a href="https://mainlib.upd.edu.ph/cambridge-books-online/" class="qq6" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to Cambridge">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cambridge.png" alt="">
+                                </a>
+
+                                <a href="https://mainlib.upd.edu.ph/proquest-ebook-central-open-access-complete/" class="qq7" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to ProQuest Ebook Central">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/proquest.png" alt="">
+                                </a>
+                                
                             </div>
                         </section>
                     </div>

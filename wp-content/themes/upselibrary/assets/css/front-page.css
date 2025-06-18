@@ -951,7 +951,7 @@ input::placeholder {
 
 @media (max-width: 1024px) {
     .container {
-        width: 90%;
+        width: 100%;
         align-items: center;
     }
 
