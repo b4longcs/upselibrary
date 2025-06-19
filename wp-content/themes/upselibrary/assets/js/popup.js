@@ -8,7 +8,7 @@ window.onload = function () {
             popup.classList.add('show');
             popup.style.pointerEvents = 'auto'; // Enable interaction
         }
-    }, 300);
+    }, 1000);
 };
 
 

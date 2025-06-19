@@ -96,7 +96,7 @@
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/perlego.png" alt="">
                                 </a>
 
-                                <a href="#" class="qq5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to Handbook in Economics">Handbook in Economics (2000 to 2013)</a>
+                                <a href="#" class="qq5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to Handbook in Economics"><h3>Handbook in Economics (2000 to 2013)</h3></a>
 
                                 <a href="https://mainlib.upd.edu.ph/cambridge-books-online/" class="qq6" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s" aria-label="Link to Cambridge">
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/cambridge.png" alt="">

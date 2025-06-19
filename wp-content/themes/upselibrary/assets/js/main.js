@@ -354,3 +354,15 @@ const Global = (() => {
 
   return { init };
 })();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const preloader = document.getElementById("site-preloader");
+      if (preloader) {
+        preloader.classList.add("hidden");
+      }
+    }, 800);
+  });
+});

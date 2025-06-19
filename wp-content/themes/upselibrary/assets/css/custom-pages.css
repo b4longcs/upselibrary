@@ -434,65 +434,60 @@
 .div1 img {
     width: 17rem;
     height: auto;
-}
-
-.div2 { 
-    grid-area: div2; 
-    background-image: url('../images/jstor.jpg');
+}.div2, .div6 {
     background-size: cover;
-    background-position: center center; 
-}
-.div2 img {
-    width: 5rem;
-    height: auto;
+    background-position: center center;
 }
 
-.div3 { 
-    grid-area: div3; 
+.div6 {
+    background-position: top center;
+}
+
+.div2 {
+    grid-area: div2;
+    background-image: url('../images/jstor.jpg');
+}
+
+.div3 {
+    grid-area: div3;
     background: #d1a8ff;
 }
 
-.div3 img {
-    width: 12rem;
-    height: auto;
-}
-
-.div4{ 
-    grid-area: div4; 
+.div4 {
+    grid-area: div4;
     background: #ffd8b9;
 }
-.div4 img {
-    width: 20rem;
-    height: auto;
+
+.div5 {
+    grid-area: div5;
+    background: #e4ffc0;
 }
 
-.div5 { 
-    grid-area: div5; 
-    background: #e4ffc0; 
-}
-
-.div5 img {
-    width: 10rem;
-    height: auto;
-}
-
-.div6{ 
-    grid-area: div6; 
+.div6 {
+    grid-area: div6;
     background-image: url('../images/ebsco-acad.jpg');
-    background-size: cover;
-    background-position: top center; 
-}  
-
-.div6 a{
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 
+.div6 a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.div2 img { width: 5rem; }
+.div3 img { width: 12rem; }
+.div4 img { width: 20rem; }
+.div5 img,
+.div6 img { width: 10rem; }
+
+.div2 img,
+.div3 img,
+.div4 img,
+.div5 img,
 .div6 img {
-    width: 10rem;
     height: auto;
 }
+
 
 
 /* Panel 2*/
@@ -503,6 +498,7 @@
     justify-content: center;
     border-radius: 20px;
     text-decoration: none;
+    height: 100%;
     
 }
 
@@ -543,6 +539,12 @@
 .bento-grid-three a:nth-child(3) img,
 .bento-grid-three a:nth-child(4) img {
     max-width: 140px;
+}
+
+.qq5 h3 {
+    color: var(--clr-white);
+    font-size: calc(var(--fs-sm), 4vw, var(--fs-md));
+
 }
 /*End of Panel 3*/
 /* End Online Subs */
@@ -1907,11 +1909,12 @@
 
     .bento-grid-two {
         grid-template-columns: repeat(2, 100%);
-        grid-template-rows: repeat(3, 250px); 
+        grid-template-rows: repeat(4, 350px); 
         grid-template-areas:
             "wq1 wq2"
-            "wq3 wq4"
-            "wq5 wq6";
+            "wq1 wq3"
+            "wq4 wq5"
+            "wq6 wq5";
         justify-content: center;
     }
 
@@ -1921,10 +1924,15 @@
         grid-template-areas:
             "qq1 qq2"
             "qq3 qq2"
-            "qq4 qq4"
-            "qq5 qq6"
-            "qq5 qq7";
-        justify-content: center;
+            "qq4 qq7"
+            "qq4 qq6"
+            "qq5 qq5";
+        height: 100%;
+    }
+
+    [class^="qq"],
+    [class^="wq"] {
+        height: 100%;
     }
 
    
@@ -1941,7 +1949,7 @@
 @media (min-width: 900px) {
     .bento-grid{
         grid-template-columns: repeat(4, 220px); 
-        grid-template-rows: repeat(3, 250px);
+        grid-template-rows: repeat(3, 300px);
         grid-template-areas:
             "div1 div1 div1 div3"
             "div2 div4 div4 div3"
@@ -1950,7 +1958,7 @@
 
     .bento-grid-two {
         grid-template-columns: repeat(4, 220px); 
-        grid-template-rows: repeat(4, 250px);
+        grid-template-rows: repeat(4, 300px);
         grid-template-areas:
             "wq1 wq1 wq3 wq3"
             "wq2 wq2 wq3 wq3"
@@ -1959,8 +1967,8 @@
     }
 
     .bento-grid-three {
-        grid-template-columns: repeat(4, 300px); 
-        grid-template-rows: repeat(3, 250px);
+        grid-template-columns: repeat(3, 220px); 
+        grid-template-rows: repeat(3, 300px);
         grid-template-areas:
             "qq1 qq1 qq2 qq3"
             "qq4 qq5 qq5 qq3"
@@ -1987,7 +1995,7 @@
 @media (min-width: 1200px) {
     .bento-grid {
         grid-template-columns: repeat(4, 300px); 
-        grid-template-rows: repeat(3, 250px);
+        grid-template-rows: repeat(3, 300px);
         grid-template-areas:
             "div1 div1 div1 div3"
             "div2 div4 div4 div3"
@@ -1996,7 +2004,7 @@
 
     .bento-grid-two {
         grid-template-columns: repeat(4, 300px); 
-        grid-template-rows: repeat(4, 250px);
+        grid-template-rows: repeat(4, 300px);
         grid-template-areas:
             "wq1 wq1 wq1 wq1"
             "wq2 wq2 wq3 wq3"
@@ -2006,7 +2014,7 @@
 
     .bento-grid-three {
         grid-template-columns: repeat(4, 300px); 
-        grid-template-rows: repeat(3, 250px);
+        grid-template-rows: repeat(3, 300px);
         grid-template-areas:
             "qq1 qq1 qq2 qq3"
             "qq4 qq5 qq5 qq3"

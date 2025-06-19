@@ -36,11 +36,13 @@ if (is_page('up-school-of-economics')) {
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-
+<div id="site-preloader">
+    <div class="loader-inner">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Loading">
+    </div>
+</div>
 <div id="progress-bar"></div> 
 <header class="header-sticky">
-       
-       
     <div class="header-text">
         <p>The UPSE Library is open from 8:00 AM to 7:00 PM (Monday to Friday).</p>
     </div>
