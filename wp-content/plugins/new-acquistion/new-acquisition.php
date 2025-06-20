@@ -89,7 +89,10 @@ add_shortcode('new_acquisition', function () {
     <div class="na-accordion">
         <?php foreach ($entries as $entry): ?>
             <div class="na-item">
-            <button class="na-toggle" aria-expanded="false"><?php echo esc_html($entry['date']); ?></button>
+            <button class="na-toggle" aria-expanded="false">
+                <?php echo esc_html($entry['date']); ?>
+                <i class="ri-arrow-down-s-line na-icon"></i>
+            </button>
             <div class="na-content">
                 <div class="na-grid">
                 <?php foreach ($entry['images'] as $img): ?>

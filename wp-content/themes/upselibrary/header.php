@@ -2,15 +2,15 @@
 if (is_page('up-school-of-economics')) {
     $page_title = "UP School of Economics";
     $page_description = "Welcome to the UP School of Economics Library, home to world-class education and research in economics. Learn more about our services and resources.";
-    $canonical_url = "https://upselibrary.local/up-school-of-economics";
-    $og_image = "https://upselibrary.local/images/up-school-economics.jpg";
-    $twitter_image = "https://www.upselibrary.localges/up-school-economics-twitter.jpg";
+    $canonical_url = "https://selib.upd.edu.ph/up-school-of-economics";
+    $og_image = "https://selib.upd.edu.ph/images/logo.png";
+    $twitter_image = "https://www.selib.upd.edu.phges/logo.png";
 } else {
     $page_title = get_bloginfo('name'); 
     $page_description = get_bloginfo('description'); 
     $canonical_url = get_permalink();
-    $og_image = get_theme_mod('default_og_image', 'https://www.upselibrary.localault-image.jpg'); 
-    $twitter_image = get_theme_mod('default_twitter_image', 'https://www.upselibrary.localault-twitter-image.jpg'); 
+    $og_image = get_theme_mod('default_og_image', 'https://www.selib.upd.edu.ph/ault-image.jpg'); 
+    $twitter_image = get_theme_mod('default_twitter_image', 'https://www.selib.upd.edu.ph/ault-twitter-image.jpg'); 
 }
 ?>
 

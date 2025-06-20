@@ -366,3 +366,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 800);
   });
 });
+
+// ====================================
+// MODULE: New Acquisition Toggle
+// ====================================
+document.querySelectorAll('.na-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+        const content = toggle.nextElementSibling;
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+        toggle.setAttribute('aria-expanded', !isExpanded);
+        content.classList.remove('expanding', 'collapsing');
+
+        if (isExpanded) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+            void content.offsetHeight;
+            content.classList.add('collapsing');
+            content.style.maxHeight = '0';
+            content.style.opacity = '0';
+
+            content.addEventListener('transitionend', function handler(e) {
+                if (e.propertyName === 'max-height') {
+                    content.classList.remove('collapsing', 'na-visible');
+                    content.style.visibility = 'hidden';
+                    content.style.maxHeight = '';
+                    content.removeEventListener('transitionend', handler);
+                }
+            }, { once: true });
+
+        } else {
+            content.style.visibility = 'visible';
+            content.classList.add('na-visible', 'expanding');
+            content.style.opacity = '1';
+            content.style.maxHeight = content.scrollHeight + 'px';
+
+            content.addEventListener('transitionend', function handler(e) {
+                if (e.propertyName === 'max-height') {
+                    content.classList.remove('expanding');
+                    content.style.maxHeight = 'none';
+                    content.removeEventListener('transitionend', handler);
+                }
+            }, { once: true });
+        }
+    });
+});

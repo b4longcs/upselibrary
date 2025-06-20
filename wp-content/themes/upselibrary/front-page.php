@@ -217,7 +217,7 @@
             <p class="bottom-text" data-scrollreveal="enter bottom over 1s and move 30px after 0.14s">Acquisition</p>
         </div>
         <div class="na-button" data-scrollreveal="enter bottom over 1s and move 30px after 0.15s">
-            <a class="global-button" href="#" data-scrollreveal="enter bottom over 1s and move 30px after 0.16s" >
+            <a class="global-button" href="/new-acquisitions" data-scrollreveal="enter bottom over 1s and move 30px after 0.16s" >
                 <span class="dots">View All</span> 
             </a>
         </div>
