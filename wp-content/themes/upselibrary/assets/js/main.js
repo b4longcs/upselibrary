@@ -1,10 +1,11 @@
-
 document.addEventListener('DOMContentLoaded', () => {
   Header.init();
   Tabs.init();
   ScrollReveal.init();
   AjaxPosts.init();
   Global.init();
+  NewAcquisitionToggle.init();
+  setupPreloader();
 });
 
 // ====================================
@@ -34,24 +35,21 @@ const Header = (() => {
     let currentlyOpen = null;
 
     navMenus.forEach(item => {
-      const toggleLink = item.querySelector('.nav-menu'); // clickable link
+      const toggleLink = item.querySelector('.nav-menu');
       const subMenu = item.querySelector('.sub-menu');
-
       if (!toggleLink || !subMenu) return;
 
       toggleLink.addEventListener('click', e => {
         e.preventDefault();
-
         const isSameMenu = currentlyOpen === item;
 
-        if (isSameMenu) {
-          item.classList.remove('open', 'active-indicator');
-          currentlyOpen = null;
-        } else {
-          navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
+        navMenus.forEach(li => li.classList.remove('open', 'active-indicator'));
 
+        if (!isSameMenu) {
           item.classList.add('open', 'active-indicator');
           currentlyOpen = item;
+        } else {
+          currentlyOpen = null;
         }
       });
     });
@@ -60,8 +58,8 @@ const Header = (() => {
   const handleScroll = () => {
     const currentScroll = window.scrollY;
     if (currentScroll < window.innerWidth * 0.1) {
-      headerSticky.classList.remove('header-hidden');
-    } else {
+      headerSticky?.classList.remove('header-hidden');
+    } else if (headerSticky) {
       headerSticky.classList.toggle('header-hidden', currentScroll > lastScrollTop);
     }
     lastScrollTop = Math.max(currentScroll, 0);
@@ -82,7 +80,7 @@ const Header = (() => {
         overlay.classList.remove('active');
       });
     });
-    
+
     window.addEventListener('scroll', handleScroll);
     ['scroll', 'resize'].forEach(evt => window.addEventListener(evt, setProgressBar));
     setProgressBar();
@@ -99,9 +97,10 @@ const Tabs = (() => {
     const tabList = document.querySelector('.tabs-nav');
     if (!tabList) return;
 
-    const tabs = tabList.querySelectorAll('.tab-button');
-    const panels = document.querySelectorAll('.tab-panel');
+    const tabs = Array.from(tabList.querySelectorAll('.tab-button'));
+    const panels = Array.from(document.querySelectorAll('.tab-panel'));
     const indicator = document.querySelector('.tabs-indicator');
+    if (!indicator || tabs.length === 0) return;
 
     const setIndicatorPosition = tab => {
       indicator.style.transform = `translateX(${tab.offsetLeft}px)`;
@@ -111,47 +110,36 @@ const Tabs = (() => {
     const switchTab = tab => {
       tabs.forEach(t => {
         t.classList.remove('active');
-        t.setAttribute('aria-selected', false);
+        t.setAttribute('aria-selected', 'false');
       });
 
-      panels.forEach(p => p.setAttribute('aria-hidden', true));
+      panels.forEach(p => p.setAttribute('aria-hidden', 'true'));
 
       tab.classList.add('active');
-      tab.setAttribute('aria-selected', true);
+      tab.setAttribute('aria-selected', 'true');
 
       const targetPanel = document.getElementById(tab.getAttribute('aria-controls'));
-      if (targetPanel) {
-        targetPanel.setAttribute('aria-hidden', false);
-      }
+      if (targetPanel) targetPanel.setAttribute('aria-hidden', 'false');
 
       setIndicatorPosition(tab);
     };
 
-    if (tabs.length) {
-      const firstTab = tabs[0];
-      const firstPanel = document.getElementById(firstTab.getAttribute('aria-controls'));
-
-      setIndicatorPosition(firstTab);
-      firstTab.classList.add('active');
-      firstTab.setAttribute('aria-selected', true);
-      if (firstPanel) firstPanel.setAttribute('aria-hidden', false);
-    }
+    // Initialize first tab and panel
+    switchTab(tabs[0]);
 
     tabs.forEach(tab => tab.addEventListener('click', e => switchTab(e.currentTarget)));
 
     tabList.addEventListener('keydown', e => {
       const currentTab = document.activeElement;
-      let newTab = null;
+      if (!tabs.includes(currentTab)) return;
 
-      if (e.key === 'ArrowLeft') {
-        newTab = currentTab.previousElementSibling;
-      } else if (e.key === 'ArrowRight') {
-        newTab = currentTab.nextElementSibling;
-      }
+      let newIndex = tabs.indexOf(currentTab);
+      if (e.key === 'ArrowLeft') newIndex--;
+      else if (e.key === 'ArrowRight') newIndex++;
 
-      if (newTab && newTab.classList.contains('tab-button')) {
-        newTab.click();
-        newTab.focus();
+      if (newIndex >= 0 && newIndex < tabs.length) {
+        tabs[newIndex].click();
+        tabs[newIndex].focus();
       }
     });
   };
@@ -183,7 +171,9 @@ const ScrollReveal = (() => {
   };
 
   const parseData = el => {
-    const tokens = el.getAttribute('data-scrollreveal').split(/[, ]+/).filter(w => !['from', 'the', 'and', 'then', 'but'].includes(w));
+    const tokens = el.getAttribute('data-scrollreveal')
+      .split(/[, ]+/)
+      .filter(w => !['from', 'the', 'and', 'then', 'but'].includes(w));
     const obj = {};
 
     tokens.forEach((t, i) => {
@@ -216,12 +206,12 @@ const ScrollReveal = (() => {
   const animate = el => {
     const css = getCSS(el);
     if (!el.hasAttribute('data-sr-init')) {
-      el.setAttribute('style', css.init);
+      el.style.cssText = css.init;
       el.setAttribute('data-sr-init', 'true');
     }
 
     if (!el.hasAttribute('data-sr-complete') && isInViewport(el)) {
-      el.setAttribute('style', css.final);
+      el.style.cssText = css.final;
       setTimeout(() => {
         el.removeAttribute('style');
         el.setAttribute('data-sr-complete', 'true');
@@ -254,6 +244,7 @@ const AjaxPosts = (() => {
   };
 
   const scrollTo = el => {
+    if (!el) return;
     window.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
   };
 
@@ -266,6 +257,7 @@ const AjaxPosts = (() => {
       <button class="prev" ${currentPage === 1 ? 'disabled' : ''}><i class="ri-arrow-left-line"></i></button>
       <button class="next"><i class="ri-arrow-right-line"></i></button>
     `;
+
     document.querySelector('.category-posts')?.appendChild(pag);
 
     pag.querySelector('.prev')?.addEventListener('click', () => {
@@ -287,14 +279,14 @@ const AjaxPosts = (() => {
     fetch(tags_ajax_obj.ajaxurl, {
       method: 'POST',
       credentials: 'same-origin',
-      body: data
+      body: data,
     })
-    .then(res => res.text())
-    .then(html => {
-      container.innerHTML = html;
-      if (container === wrapper) updatePagination();
-      scrollTo(container);
-    });
+      .then(res => res.text())
+      .then(html => {
+        container.innerHTML = html;
+        if (container === wrapper) updatePagination();
+        scrollTo(container);
+      });
   };
 
   const handleResize = () => {
@@ -320,27 +312,29 @@ const AjaxPosts = (() => {
 const Global = (() => {
   const resizeFaqImg = () => {
     const img = document.getElementById('faq-img');
-    if (img?.style) {
-      img.style.width =
-        window.innerWidth <= 450 ? '95%' :
-        window.innerWidth <= 768 ? '75%' : '60%';
-    }
+    if (!img?.style) return;
+
+    const w = window.innerWidth;
+    img.style.width = w <= 450 ? '95%' : w <= 768 ? '75%' : '60%';
   };
 
   const handleScrollToTop = () => {
-    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-    if (!scrollToTopBtn) return;
+    const btn = document.getElementById('scrollToTopBtn');
+    if (!btn) return;
 
-    const showBtn = document.body.scrollTop > window.innerHeight * 0.2 || document.documentElement.scrollTop > window.innerHeight * 0.5;
-    scrollToTopBtn.style.display = showBtn ? "block" : "none";
+    const showBtn =
+      document.body.scrollTop > window.innerHeight * 0.2 ||
+      document.documentElement.scrollTop > window.innerHeight * 0.5;
+
+    btn.style.display = showBtn ? 'block' : 'none';
   };
 
   const setupScrollToTop = () => {
-    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-    if (!scrollToTopBtn) return;
+    const btn = document.getElementById('scrollToTopBtn');
+    if (!btn) return;
 
-    scrollToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     window.addEventListener('scroll', handleScrollToTop);
@@ -355,58 +349,82 @@ const Global = (() => {
   return { init };
 })();
 
-
-document.addEventListener("DOMContentLoaded", () => {
-  window.addEventListener("load", () => {
+// ====================================
+// MODULE: Preloader
+// ====================================
+function setupPreloader() {
+  window.addEventListener('load', () => {
     setTimeout(() => {
-      const preloader = document.getElementById("site-preloader");
-      if (preloader) {
-        preloader.classList.add("hidden");
-      }
+      const preloader = document.getElementById('site-preloader');
+      if (preloader) preloader.classList.add('hidden');
     }, 800);
   });
-});
+}
 
 // ====================================
 // MODULE: New Acquisition Toggle
 // ====================================
-document.querySelectorAll('.na-toggle').forEach(toggle => {
-    toggle.addEventListener('click', () => {
-        const content = toggle.nextElementSibling;
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+const NewAcquisitionToggle = (() => {
+  const toggles = () => document.querySelectorAll('.na-toggle');
 
-        toggle.setAttribute('aria-expanded', !isExpanded);
-        content.classList.remove('expanding', 'collapsing');
+  const collapseContent = content => {
+    content.style.maxHeight = content.scrollHeight + 'px';
+    void content.offsetHeight; // Force reflow
+    content.classList.add('collapsing');
+    content.style.maxHeight = '0';
+    content.style.opacity = '0';
 
-        if (isExpanded) {
-            content.style.maxHeight = content.scrollHeight + 'px';
-            void content.offsetHeight;
-            content.classList.add('collapsing');
-            content.style.maxHeight = '0';
-            content.style.opacity = '0';
-
-            content.addEventListener('transitionend', function handler(e) {
-                if (e.propertyName === 'max-height') {
-                    content.classList.remove('collapsing', 'na-visible');
-                    content.style.visibility = 'hidden';
-                    content.style.maxHeight = '';
-                    content.removeEventListener('transitionend', handler);
-                }
-            }, { once: true });
-
-        } else {
-            content.style.visibility = 'visible';
-            content.classList.add('na-visible', 'expanding');
-            content.style.opacity = '1';
-            content.style.maxHeight = content.scrollHeight + 'px';
-
-            content.addEventListener('transitionend', function handler(e) {
-                if (e.propertyName === 'max-height') {
-                    content.classList.remove('expanding');
-                    content.style.maxHeight = 'none';
-                    content.removeEventListener('transitionend', handler);
-                }
-            }, { once: true });
+    content.addEventListener(
+      'transitionend',
+      e => {
+        if (e.propertyName === 'max-height') {
+          content.classList.remove('collapsing', 'na-visible');
+          content.style.visibility = 'hidden';
+          content.style.maxHeight = '';
         }
-    });
-});
+      },
+      { once: true }
+    );
+  };
+
+  const expandContent = content => {
+    content.style.visibility = 'visible';
+    content.classList.add('na-visible', 'expanding');
+    content.style.opacity = '1';
+    content.style.maxHeight = content.scrollHeight + 'px';
+
+    content.addEventListener(
+      'transitionend',
+      e => {
+        if (e.propertyName === 'max-height') {
+          content.classList.remove('expanding');
+          content.style.maxHeight = 'none';
+        }
+      },
+      { once: true }
+    );
+  };
+
+  const onClick = e => {
+    const toggle = e.currentTarget;
+    const content = toggle.nextElementSibling;
+    if (!content) return;
+
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isExpanded));
+
+    content.classList.remove('expanding', 'collapsing');
+
+    if (isExpanded) {
+      collapseContent(content);
+    } else {
+      expandContent(content);
+    }
+  };
+
+  const init = () => {
+    toggles().forEach(toggle => toggle.addEventListener('click', onClick));
+  };
+
+  return { init };
+})();

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="container">
     <div class="single-main">
-        <div class="single-container me-2">
+        <div class="single-container me-3">
             <main>
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                     <article>

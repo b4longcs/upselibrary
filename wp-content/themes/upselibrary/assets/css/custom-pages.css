@@ -114,7 +114,7 @@
 
 /* General breadcrumb styles */
 .breadcrumb {
-    margin: 1.5rem 0 ;
+    padding: 1.5rem 0 ;
     list-style: none;
     display: -webkit-box;
     display: -ms-flexbox;

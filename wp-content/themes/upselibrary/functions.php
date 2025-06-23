@@ -249,3 +249,9 @@ function custom_scroll_to_archive_script() {
     }
 }
 add_action('wp_footer', 'custom_scroll_to_archive_script');
+
+add_action('admin_menu', function() {
+    if (!current_user_can('administrator')) {
+        remove_menu_page('edit.php?post_type=page');
+    }
+}, 999);

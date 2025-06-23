@@ -1,7 +1,4 @@
 <?php get_header();?>
-<section>
-    
-</section>
 <section class="fp-hero-section">
     <div class="video-overlay"></div>
     <video class="fp-hero-video" autoplay muted loop playsinline preload="none">
@@ -14,7 +11,7 @@
                     <p><span class="left-content-one-highlight">Information</span></p>
                     <p><span class="left-content-one-normal">on Demand</span></p>
                 </div>
-                <div class="fp-left-content-two mt-2 mt-3">
+                <div class="fp-left-content-two mt-5">
                     <a href="#from-GetS" class="custom-button-one me-2" >Get Started</a>
                     <a href="#" class="custom-button-two me-2">Contact Us</a>
                 </div>
@@ -126,7 +123,7 @@
                 endif;
                 ?>
             </div>
-            <a class="global-button" href="#">See More</a>
+            <a class="global-button" href="/current-awareness-service">See More</a>
         </div>
     </section>
     <span class="separator d-flex justify-content-center align-items-center" data-scrollreveal="enter bottom over 1s and move 30px after 0.4s">
@@ -217,7 +214,7 @@
             <p class="bottom-text" data-scrollreveal="enter bottom over 1s and move 30px after 0.14s">Acquisition</p>
         </div>
         <div class="na-button" data-scrollreveal="enter bottom over 1s and move 30px after 0.15s">
-            <a class="global-button" href="/new-acquisitions" data-scrollreveal="enter bottom over 1s and move 30px after 0.16s" >
+            <a class="global-button" href="/new-acquisition" data-scrollreveal="enter bottom over 1s and move 30px after 0.16s" >
                 <span class="dots">View All</span> 
             </a>
         </div>

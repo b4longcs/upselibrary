@@ -12,6 +12,7 @@
             ?>
         </p>
     </div>
+    <div class="span-line"></div>
     <?php
     if (have_posts()) :
         $results_by_type = [];

@@ -98,18 +98,27 @@
     word-wrap: break-word;
 }
 
-.post-content h1,
-.post-content h2,
-.post-content h3,
-.post-content h4,
-.post-content h5,
-.post-content h6,
+
 .post-content p,
 .post-content ul,
 .post-content ol,
 .post-content blockquote {
     max-width: 100%;
     overflow-wrap: break-word;
+    margin: 1.3rem 0 !important;
+    line-height: 2.5;
+    font-size: var(--fs-lg);
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    margin: 2rem 0 !important;
 }
 /* End of Wordpress Default CSS */
 

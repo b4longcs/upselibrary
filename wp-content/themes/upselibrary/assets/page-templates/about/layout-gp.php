@@ -82,12 +82,12 @@
                         
         
                         <!-- 2 -->
-                        <p class="subheader pt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">REGISTRATION FOR LIBRARY PRIVILEGES</p>
+                        <p class="subheader w-100 pt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">REGISTRATION FOR LIBRARY PRIVILEGES</p>
                         <p class="subsubheader py-2 me-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Bonafide members of the University and Constituent Universities may use the library. The undergraduate and graduate students must present their Form 5 to the staff-in-charge at the Circulation Desk for the issuance of library pass.</p>
                         <p class="subsubheader py-2 me-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Bonafide members of the University and Constituent Universities may use the library. The undergraduate and graduate students must present their Form 5 to the staff-in-charge at the Circulation Desk for the issuance of library pass.</p>
 
                         <!-- 3 -->
-                        <p class="subheader pt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">LOSS OF LIBRARY RESOURCES</p>
+                        <p class="subheader w-100 pt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">LOSS OF LIBRARY RESOURCES</p>
                         <div class="flex-row d-flex ms-lg-4 ms-md-3 ms-sm-1 pt-3 justify-content-center" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
                             <i class="ri-progress-8-line mx-2 pt-1"></i>
                             <p class="subsubheader me-5"><b>Loss of a Circulation Book.</b> Any person who loses or fails to return a book within seven (7) days after due date or recall shall either replace it with the same title, or pay its current replacement value within thirty (30) days. In all cases, the borrower shall pay a fine equivalent to 50% of the cost of the book.</p>
@@ -98,8 +98,8 @@
                         </div>
 
                         <!-- 4 -->
-                        <p class="subheader pt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">FEES AND FINES</p>
-                        <p class="subheader pt-3 px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Research Fee</p>
+                        <p class="subheader w-100 pt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">FEES AND FINES</p>
+                        <p class="subheader w-100 pt-3 px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Research Fee</p>
                         <p class="subsubheader pt-2 px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">UP students, faculty, REPS & administrative staff <i class="ri-subtract-fill"></i> Free</p> 
                         <p class="subsubheader px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Residency without library fee <i class="ri-subtract-fill"></i> P20/day</p> 
                         <p class="subsubheader px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Alumni researchers <i class="ri-subtract-fill"></i> First five visits free; afterwards <i class="ri-subtract-fill"></i> P20/day</p> 
@@ -107,7 +107,7 @@
                         <p class="subsubheader px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Private researchers/Students from other schools <i class="ri-subtract-fill"></i> P50/day</p> 
 
                         <!-- 5 -->
-                        <p class="subheader pt-4 px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Fines</p>
+                        <p class="subheader w-100 pt-4 px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Fines</p>
                         <p class="subsubheader pt-2 px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s"><b>Failure to Return a Circulation Book.</b> Any person who fails to return any book open to general circulation on its due date or after recall shall pay a fine of Php2.00 a day, exclusive of Sundays and holidays.</p> 
                         <p class="subsubheader pt-4 px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s"><b>Failure to Return a Reserve Book.</b> Any person who fails to return a reserve book shall pay a fine according to the following schedule: For the first hour or a fraction thereof after the hour appointed for return, one peso (Php1.00); for each hour after the first, five pesos (Php5.00); for each full day, fifty pesos (Php50.00). A second offense within a semester shall automatically suspend/curtail this privilege for the rest of the semester or summer.</p> 
                         <p class="subsubheader pt-4 px-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s"><b>Withdrawal of a Reserve Book Without Reservation Permit.</b> Any person who draws out a reserve book for overnight use without an approved reservation shall pay a fine of Php50.00. The library privilege to borrow from the reserve collections shall be suspended for two weeks on the second offense.</p>

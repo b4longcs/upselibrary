@@ -1,20 +1,9 @@
 <?php
-/*
-Template Name: Maintenance
-*/
-if (is_page('up-school-of-economics')) {
-    $page_title = "UP School of Economics";
-    $page_description = "Welcome to the UP School of Economics Library, home to world-class education and research in economics. Learn more about our services and resources.";
-    $canonical_url = "https://upselibrary.local/up-school-of-economics";
-    $og_image = "https://upselibrary.local/images/up-school-economics.jpg";
-    $twitter_image = "https://www.upselibrary.localges/up-school-economics-twitter.jpg";
-} else {
-    $page_title = get_bloginfo('name'); 
-    $page_description = get_bloginfo('description'); 
-    $canonical_url = get_permalink();
-    $og_image = get_theme_mod('default_og_image', 'https://www.upselibrary.localault-image.jpg'); 
-    $twitter_image = get_theme_mod('default_twitter_image', 'https://www.upselibrary.localault-twitter-image.jpg'); 
-}
+    $page_title = 'Site Under Maintenance';
+    $page_description = 'Our site is currently undergoing maintenance. Please check back soon.';
+    $canonical_url = home_url();
+    $og_image = plugin_dir_url(__FILE__) . 'assets/images/og-image.jpg';
+    $twitter_image = $og_image;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -42,8 +31,8 @@ if (is_page('up-school-of-economics')) {
             <a href="#"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Logo" /></a>
         </div>
         <div class="mt-5">
-            <h1 class="mn-text text-center" >The site is currently down for maintenance.</h1>
-            <p class="text-center h5 mt-3">Sorry for the inconvenience caused. We're almost done.</p>
+            <h1 class="mn-text text-center" >Our site is currently undergoing maintenance. </h1>
+            <p class="text-center h5 mt-3">Please check back soon. Sorry for the inconvenience.</p>
         </div>
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/maintenance-img.png" alt="maintenance-img">
     </section>

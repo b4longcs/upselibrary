@@ -14,8 +14,9 @@
         </span>
     </div>
 </section>
+
 <section class="container">
-    <span class="span-line"></span> 
+    <span class="span-line mb-5"></span> 
     <?php if ( have_posts() ) : ?>
         <div class="tags-wrapper">
             <?php while ( have_posts() ) : the_post(); ?>
