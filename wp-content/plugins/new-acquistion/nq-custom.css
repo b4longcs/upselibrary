@@ -8,14 +8,74 @@
 }
 .na-remove {
     position: absolute;
-    top: 2px; right: 4px;
+    top: 0; right: 2px;
     background: red;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
-    padding: 2px 5px;
+    padding: 4px 9px;
     border-radius: 50%;
 }
+
+.na-header {
+    display: flex;
+    margin: 2rem 0;
+}
+
+.na-header h1 {
+    font-size: 2rem;
+}
+
+.na-header-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1.2rem;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.na-header-buttons .button,
+.na-header-buttons .button-primary {
+    padding: 0.4rem 1.2rem; 
+    font-size: 0.85rem;
+    border-radius: 4px;
+}
+
+
+.na-preview .na-thumb {
+    width: 150px;
+    height: 200px;
+    margin: 2rem 1.2rem 0 0;
+    border-radius: 4px;
+    background: no-repeat center/cover;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
+.na-entry {
+    margin: 2rem 0;
+    padding: 1rem;
+    border-bottom: 1px solid #5c5c5c;
+}
+
+.na-entry .delete-na-entry {
+    border: 1px solid red !important;
+    color: white !important;
+    background: red !important;
+    border-radius: 4px;
+    padding: 6px 12px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+
+/* Hover effect for both buttons */
+.na-entry .delete-na-entry:hover {
+    background-color: rgb(255, 72, 72) !important;
+    color: white !important;
+}
+
 
 /* Frontend accordion */
 .na-toggle {
@@ -32,8 +92,10 @@
     transition: all 0.5s ease;
 }
 
+
+/* FrontEnd accordion styles */
 .na-item {
-    margin: 0.4rem 0;
+    margin: 0.5rem 0 ;
 }
 
 .na-toggle:hover {

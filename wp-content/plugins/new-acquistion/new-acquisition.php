@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: New Acquisition
- * Description: Adds a backend interface to manage book acquisition dates and images, displayed as accordion via shortcode.
+ * Description: Manage book acquisition dates and images, displayed as accordion on New Acquisition Page.
  * Version: 1.0
  * Author: Jonathan Tubo
  */
@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) exit;
 
 // Add admin menu
 add_action('admin_menu', function () {
-    add_menu_page('New Acquisitions', 'New Acquisitions', 'edit_pages', 'new-acquisition', 'na_admin_page', 'dashicons-archive');
+    add_menu_page('New Acquisitions', 'New Acquisitions', 'edit_pages', 'new-acquisition', 'na_admin_page', 'dashicons-cover-image', 25);
 });
 
 // Enqueue admin scripts
@@ -48,7 +48,13 @@ function na_admin_page() {
     $entries = get_option('na_data', []);
     ?>
     <div class="wrap">
-        <h1>New Acquisitions</h1>
+        <div class="na-header">
+            <h1>New Acquisitions</h1>
+            <div class="na-header-buttons">
+                <button type="button" class="button add-na-entry">+ Add Entry</button>
+                <input type="submit" class="button button-primary" value="Save Changes">
+            </div>
+        </div>
         <?php if (isset($_GET['saved'])) echo '<div class="updated"><p>Saved successfully!</p></div>'; ?>
         <form method="post" action="<?php echo admin_url('admin-post.php'); ?>">
             <?php wp_nonce_field('na_nonce'); ?>
@@ -58,21 +64,28 @@ function na_admin_page() {
                     <div class="na-entry">
                         <input type="text" name="na_entries[<?php echo $i; ?>][date]" value="<?php echo esc_attr($entry['date']); ?>" placeholder="Acquisition Date" required>
                         <button class="button upload-na">Upload Images</button>
+                        <button type="button" class="button-link delete-na-entry" style="color:red;">Delete Entry</button>
                         <input type="hidden" class="na-images" name="na_entries[<?php echo $i; ?>][images]" value="<?php echo esc_attr(implode(',', $entry['images'])); ?>">
                         <div class="na-preview">
                             <?php foreach ($entry['images'] as $url): ?>
-                                <div class="na-thumb" style="background-image: url('<?php echo esc_url($url); ?>')"></div>
+                                <div class="na-thumb" style="background-image: url('<?php echo esc_url($url); ?>')">
+                                    <span class="na-remove">&times;</span>
+                                </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <button type="button" class="button add-na-entry">+ Add Entry</button>
-            <p><input type="submit" class="button button-primary" value="Save"></p>
+            
         </form>
     </div>
     <?php
 }
+// Remove Comments Menu
+add_action('admin_menu', function () {
+    remove_menu_page('edit-comments.php');
+}, 999); // Run late to ensure it gets removed
+
 
 // Frontend CSS & JS
 add_action('wp_enqueue_scripts', function () {

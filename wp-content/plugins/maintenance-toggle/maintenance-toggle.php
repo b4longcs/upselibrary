@@ -24,7 +24,7 @@ add_action('admin_init', function() {
     );
 });
 
-// Serve maintenance.php for non-admins if mode is enabled
+// Serve maintenance.php for non-admins 
 add_action('template_redirect', function() {
     if (
         get_option('custom_maintenance_mode') &&

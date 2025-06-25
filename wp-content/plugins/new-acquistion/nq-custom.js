@@ -1,8 +1,8 @@
 jQuery(function ($) {
 
-    const createThumb = (url, index) => `
+    const createThumb = (url) => `
         <div class="na-thumb" style="background-image:url('${url}')">
-            <span class="na-remove" data-index="${index}">&times;</span>
+            <span class="na-remove">&times;</span>
         </div>
     `;
 
@@ -40,25 +40,36 @@ jQuery(function ($) {
         }
     }
 
+    // Handle media upload button click
     $(document).on('click', '.upload-na', function (e) {
         e.preventDefault();
         openMediaUploader($(this).closest('.na-entry'));
     });
 
+    // Handle image remove button click
     $(document).on('click', '.na-remove', function () {
         removeImageFromPreview($(this).closest('.na-thumb'));
     });
 
+    // Handle adding new entry
     $('.add-na-entry').on('click', function () {
         const id = Date.now();
         $('#na-entries').prepend(`
             <div class="na-entry">
+                <button type="button" class="button-link delete-na-entry" style="float:right;color:red;">Delete Entry</button>
                 <input type="text" name="na_entries[${id}][date]" placeholder="Acquisition Date" required>
                 <button class="button upload-na">Upload Images</button>
                 <input type="hidden" class="na-images" name="na_entries[${id}][images]" value="">
                 <div class="na-preview"></div>
             </div>
         `);
+    });
+
+    // Handle deleting an entire entry
+    $(document).on('click', '.delete-na-entry', function () {
+        if (confirm('Are you sure you want to delete this entry?')) {
+            $(this).closest('.na-entry').remove();
+        }
     });
 
 });
