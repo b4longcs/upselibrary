@@ -24,6 +24,7 @@ jQuery(function ($) {
 
         uploader.open();
     }
+
     function removeImageFromPreview($thumb) {
         const $container = $thumb.closest('.na-entry');
         const $input = $container.find('.na-images');
