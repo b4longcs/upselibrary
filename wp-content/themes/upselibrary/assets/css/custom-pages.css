@@ -1049,7 +1049,7 @@
 
 .posts-grid .post-card h3 {
     font-size: calc(var(--fs-md) + .15rem);
-    margin: .8rem .95rem;
+    margin: .8rem .95rem !important;
     color: var(--clr-text-color);
     text-align: left;
 }

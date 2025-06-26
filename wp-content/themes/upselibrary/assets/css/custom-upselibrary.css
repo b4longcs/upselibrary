@@ -106,8 +106,8 @@
     max-width: 100%;
     overflow-wrap: break-word;
     margin: 1.3rem 0 !important;
-    line-height: 2.5;
-    font-size: var(--fs-lg);
+    line-height: 1.85;
+    font-size: calc(var(--fs-md) + 0.15rem);
 }
 
 .post-content h1,

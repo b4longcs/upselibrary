@@ -13,7 +13,7 @@
                 </div>
                 <div class="fp-left-content-two mt-5">
                     <a href="#from-GetS" class="custom-button-one me-2" >Get Started</a>
-                    <a href="#" class="custom-button-two me-2">Contact Us</a>
+                    <a href="/about" class="custom-button-two me-2">About Us</a>
                 </div>
         </div>
         <div class="fp-right-hero" data-scrollreveal="enter bottom over 1s and move 30px after 0.2s">
@@ -135,20 +135,15 @@
         </svg>
        
     </span>
-    <section class="collection">
+    <section class="collection align-items-center">
         <div class="collection-left" data-scrollreveal="enter bottom over 1s and move 30px">
             <img class="collection-left-img" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/collection-img.png" alt="collection-image">
         </div>
         <div class="collection-right" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
-        <p class="collection-category">Collection</p>
+            <p class="collection-category">Collection</p>
             <h2><span class="highlight-text">Explore</span> the vast collection of Economics literature</h2>
             <span class="line w-10"></span>
             <p class="collection-right-subheader">Immense yourself in a wealth of economics knowledge with our collection of literature and databases. Start your journey today and gain a deeper understanding the world of economics.</p>
-
-            <a class="global-button" href="/about">
-                <span class="dots">About Us</span> 
-            </a>
-
         </div>
     </section>
     <section class="about-us-ext">
@@ -211,7 +206,7 @@
     <section class="new-acquisition" data-scrollreveal="enter bottom over 1s and move 30px">
         <div class="na-text" data-scrollreveal="enter bottom over 1s and move 30px after 0.1s">
             <p class="upper-text" data-scrollreveal="enter bottom over 1s and move 30px after 0.13s">New</p>
-            <p class="bottom-text" data-scrollreveal="enter bottom over 1s and move 30px after 0.14s">Acquisition</p>
+            <p class="bottom-text" data-scrollreveal="enter bottom over 1s and move 30px after 0.14s">Acquisitions</p>
         </div>
         <div class="na-button" data-scrollreveal="enter bottom over 1s and move 30px after 0.15s">
             <a class="global-button" href="/new-acquisition" data-scrollreveal="enter bottom over 1s and move 30px after 0.16s" >

@@ -459,14 +459,14 @@ input::placeholder {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    height: 70dvh;
+    height: clamp(40dvh, 63dvh, 75dvh);
     background: url(../images/bg-bg.jpg) no-repeat center center / cover;
     border-radius: 1.5rem;
     margin: 1rem;
     
 }
 .animated-text {
-  font-size: clamp(2rem, 3vw, 6rem) !important;
+  font-size: clamp(2.3rem, 4vw, 4rem) !important;
   color: var(--clr-text-color) !important;
   font-family: var(--font-primary);
   
@@ -856,7 +856,7 @@ input::placeholder {
 
 .upper-text {
     font-family: var(--font-primary);
-    font-size: clamp(3rem, 6vw, 4rem);
+    font-size: clamp(4rem, 8vw, 6rem);
     color: var(--clr-text-color);
     letter-spacing: -2px;
     margin-bottom: -12% !important;
@@ -864,7 +864,7 @@ input::placeholder {
 .bottom-text {
     
     font-family: var(--font-primary);
-    font-size: clamp(3em, 6vw, 4rem);
+    font-size: clamp(4em, 8vw, 6rem);
     color: var(--clr-primary-color);
     letter-spacing: -2px;
 }

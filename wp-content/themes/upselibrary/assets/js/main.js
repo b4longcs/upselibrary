@@ -253,40 +253,66 @@ const AjaxPosts = (() => {
 
     const pag = document.createElement('div');
     pag.className = 'pagination fade-slide';
-    pag.innerHTML = `
-      <button class="prev" ${currentPage === 1 ? 'disabled' : ''}><i class="ri-arrow-left-line"></i></button>
-      <button class="next"><i class="ri-arrow-right-line"></i></button>
-    `;
 
-    document.querySelector('.category-posts')?.appendChild(pag);
-
-    pag.querySelector('.prev')?.addEventListener('click', () => {
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'prev';
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.innerHTML = '<i class="ri-arrow-left-line"></i>';
+    prevBtn.addEventListener('click', () => {
       if (currentPage > 1) loadPosts(--currentPage);
     });
-    pag.querySelector('.next')?.addEventListener('click', () => {
-      loadPosts(++currentPage);
-    });
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'next';
+    nextBtn.innerHTML = '<i class="ri-arrow-right-line"></i>';
+    nextBtn.addEventListener('click', () => loadPosts(++currentPage));
+
+    pag.append(prevBtn, nextBtn);
+    document.querySelector('.category-posts')?.appendChild(pag);
   };
 
-  const loadPosts = (page = 1) => {
-    const data = new FormData();
-    data.append('action', 'load_tags_ajax');
-    data.append('security', tags_ajax_obj.nonce);
-    data.append('page', page);
-    data.append('posts_per_page', getPerPage());
-    data.append('category', tags_ajax_obj.category);
+  const injectHTMLSafely = (htmlString, target) => {
+    const temp = document.createElement('div');
+    temp.innerHTML = htmlString;
 
-    fetch(tags_ajax_obj.ajaxurl, {
-      method: 'POST',
-      credentials: 'same-origin',
-      body: data,
-    })
-      .then(res => res.text())
-      .then(html => {
-        container.innerHTML = html;
-        if (container === wrapper) updatePagination();
-        scrollTo(container);
+    const allowedTags = ['DIV', 'P', 'SPAN', 'A', 'IMG'];
+    for (let el of temp.querySelectorAll('*')) {
+      if (!allowedTags.includes(el.tagName)) el.remove();
+    }
+
+    target.innerHTML = ''; // Clear existing content
+    while (temp.firstChild) {
+      target.appendChild(temp.firstChild);
+    }
+  };
+
+  const loadPosts = async (page = 1) => {
+    try {
+      const data = new FormData();
+      data.append('action', 'load_tags_ajax');
+      data.append('security', tags_ajax_obj?.nonce ?? '');
+      data.append('page', page);
+      data.append('posts_per_page', getPerPage());
+      data.append('category', tags_ajax_obj?.category ?? '');
+
+      const response = await fetch(tags_ajax_obj.ajaxurl, {
+        method: 'POST',
+        credentials: 'same-origin',
+        body: data,
       });
+
+      if (!response.ok) throw new Error('Network error loading posts');
+
+      const html = await response.text();
+      if (!html.trim()) throw new Error('Empty response');
+
+      injectHTMLSafely(html, container);
+      if (container === wrapper) updatePagination();
+      scrollTo(container);
+    } catch (err) {
+      console.error('[AjaxPosts] Failed to load posts:', err.message);
+      container.innerHTML = '<p class="error-msg">Failed to load posts. Please try again.</p>';
+    }
   };
 
   const handleResize = () => {
@@ -299,12 +325,22 @@ const AjaxPosts = (() => {
     container = document.querySelector('#tag-posts-container') || wrapper;
     if (!container) return;
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', debounce(handleResize, 300));
     loadPosts(currentPage);
+  };
+
+  // Utility: simple debounce
+  const debounce = (fn, delay) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => fn.apply(this, args), delay);
+    };
   };
 
   return { init };
 })();
+
 
 // ====================================
 // MODULE: Global
