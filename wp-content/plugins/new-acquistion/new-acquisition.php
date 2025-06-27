@@ -11,7 +11,13 @@ if (!defined('ABSPATH')) exit; // Prevent direct access
 /** ------------------------------------------
  * Admin Menu & Assets
  * ------------------------------------------ */
+if (!defined('ABSPATH')) exit; // Prevent direct access
 
+/** ------------------------------------------
+ * Admin Menu & Assets
+ * ------------------------------------------ */
+
+// Add custom admin menu
 // Add custom admin menu
 add_action('admin_menu', function () {
     add_menu_page(
@@ -38,6 +44,11 @@ add_action('admin_enqueue_scripts', function ($hook) {
  * ------------------------------------------ */
 
 // Save form data
+/** ------------------------------------------
+ * Admin Data Handling
+ * ------------------------------------------ */
+
+// Save form data
 add_action('admin_post_na_save', function () {
     if (!current_user_can('edit_pages')) return;
     check_admin_referer('na_nonce');
@@ -48,7 +59,11 @@ add_action('admin_post_na_save', function () {
         foreach ($_POST['na_entries'] as $entry) {
             if (empty($entry['date'])) continue;
 
+
             $acquisitions[] = [
+                'date'     => sanitize_text_field($entry['date']),
+                'images'   => array_map('esc_url_raw', explode(',', $entry['images'])),
+                'archived' => !empty($entry['archived'])
                 'date'     => sanitize_text_field($entry['date']),
                 'images'   => array_map('esc_url_raw', explode(',', $entry['images'])),
                 'archived' => !empty($entry['archived'])
@@ -60,6 +75,10 @@ add_action('admin_post_na_save', function () {
     wp_redirect(admin_url('admin.php?page=new-acquisition&saved=true'));
     exit;
 });
+
+/** ------------------------------------------
+ * Admin Page Rendering
+ * ------------------------------------------ */
 
 /** ------------------------------------------
  * Admin Page Rendering
@@ -79,6 +98,7 @@ function na_admin_page() {
                         <p><?php _e('Saved successfully!', 'new-acquisition'); ?></p>
                     </div>
                 <?php endif; ?>
+                <h1>New Acquisitions</h1>
                 <h1>New Acquisitions</h1>
             </div>
 
@@ -150,14 +170,24 @@ function na_render_entries_section($entries, $archived = false, $header = '', $c
  * ------------------------------------------ */
 
 // Remove default Comments menu (optional)
+/** ------------------------------------------
+ * UI/UX Cleanup
+ * ------------------------------------------ */
+
+// Remove default Comments menu (optional)
 add_action('admin_menu', function () {
     remove_menu_page('edit-comments.php');
+}, 999);
 }, 999);
 
 /** ------------------------------------------
  * Frontend Assets
  * ------------------------------------------ */
+/** ------------------------------------------
+ * Frontend Assets
+ * ------------------------------------------ */
 
+// Enqueue plugin styles and scripts for frontend
 // Enqueue plugin styles and scripts for frontend
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('na-style', plugin_dir_url(__FILE__) . 'nq-custom.css');
@@ -168,10 +198,15 @@ add_action('wp_enqueue_scripts', function () {
  * Shortcode for Frontend Display
  * ------------------------------------------ */
 
+/** ------------------------------------------
+ * Shortcode for Frontend Display
+ * ------------------------------------------ */
+
 add_shortcode('new_acquisition', function () {
     $entries = get_option('na_data', []);
     if (!$entries) return '';
 
+    // Separate entries
     // Separate entries
     $active_entries = array_filter($entries, fn($e) => empty($e['archived']));
     $archived_entries = array_filter($entries, fn($e) => !empty($e['archived']));
@@ -186,10 +221,15 @@ add_shortcode('new_acquisition', function () {
     ob_start(); ?>
 
     <!-- Active Entries Accordion -->
+    <!-- Active Entries Accordion -->
     <div class="na-accordion">
         <?php foreach ($active_entries as $entry): ?>
             <div class="na-item">
                 <button class="na-toggle" aria-expanded="false">
+                    <?php
+                    $date_obj = DateTime::createFromFormat('Y-m-d', $entry['date']);
+                    echo esc_html($date_obj ? $date_obj->format('F j, Y') : $entry['date']);
+                    ?>
                     <?php
                     $date_obj = DateTime::createFromFormat('Y-m-d', $entry['date']);
                     echo esc_html($date_obj ? $date_obj->format('F j, Y') : $entry['date']);
@@ -208,11 +248,13 @@ add_shortcode('new_acquisition', function () {
     </div>
 
     <!-- Archived Summary -->
+    <!-- Archived Summary -->
     <?php if (!empty($archive_by_year)): ?>
         <div class="na-archive-summary">
             <h3>Archived Acquisitions</h3>
             <ul>
                 <?php foreach ($archive_by_year as $year => $items): ?>
+                    <li><?php echo esc_html($year); ?> (<?php echo count($items); ?>)</li>
                     <li><?php echo esc_html($year); ?> (<?php echo count($items); ?>)</li>
                 <?php endforeach; ?>
             </ul>
