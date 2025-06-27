@@ -1,169 +1,310 @@
-/* Admin preview thumbs */
+/* ===================================
+   📚 Admin Thumbnail Preview Styles
+=================================== */
 .na-thumb {
     position: relative;
-    width: 80px; height: 80px;
+    width: 90px;
+    height: 90px;
     background-size: cover;
-    margin: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 6px 6px 6px 0;
     display: inline-block;
-}
-.na-remove {
-    position: absolute;
-    top: 0; right: 2px;
-    background: red;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 4px 9px;
-    border-radius: 50%;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s ease;
 }
 
+.na-thumb:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.na-remove {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #e74c3c;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 10px 13px;
+    border-radius: 50%;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+
+.na-remove:hover,
+.na-remove:focus {
+    background: #c0392b;
+    outline: none;
+}
+
+/* ===================================
+   🧾 Admin Header and Notices
+=================================== */
 .na-header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
+    align-items: flex-start;
     gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .na-header h1 {
-    font-size: 2rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #004d33;
+    margin: 0;
 }
-
-.admin-na-header {
-    padding: 0.5rem 1rem;
-    background-color: #00573f;
-    color: #fff;
-    margin-top: 3rem;
-}
-
-.na-header-buttons {
-    display: flex;
-    gap: 0.5rem;
-    margin: 0.5rem 0 0 0 ;
-    align-items: left !important;
-    justify-content: start !important;
-}
-
-.na-header-buttons .button {
-    padding: 0.2rem 1.3rem; 
-    font-size: 0.8rem ;
-    color: #000 ;
-    border: solid 1px #929292;
-    border-radius: 1rem;
-}
-.na-header-buttons .button-primary{
-    padding: 0.2rem 1.3rem; 
-    font-size: 0.8rem ;
-    color: #fff ;
-    background-color: #00573f;
-    border: none;
-    font-style: bold;
-    border-radius: 1rem;
-}
-
-.na-header-buttons .button-primary:hover {
-    background-color: #007a5c;
-    color: #fff;
-}
-
 
 .na-save-notice {
-    padding: 2px 1rem;
-    background-color: #f5fff6;
-    border-left: solid 2px #00573f !important;
-    margin: 0;
-    border: none;
-    font-size: 14px;
-    display: inline-block;
-    color: #000 !important;
-    box-shadow: none;
+    padding: 8px 1.5rem;
+    background-color: #d7f5e9;
+    border-left: 4px solid #007a5c !important;
+    font-size: 15px;
+    color: #004d33 !important;
+    border-radius: 4px;
 }
 
-.na-preview .na-thumb {
-    width: 100px;
-    height: 130px;
-    margin: 1rem 0.5rem 0 0;
-    border-radius: 4px;
-    background: no-repeat center/cover;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+/* ===================================
+   🔘 Buttons Styling
+=================================== */
+.na-header-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.na-header-buttons .button,
+.na-entry .delete-na-entry {
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    border: 1px solid #929292;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
+}
+
+.na-header-buttons .button-primary {
+    background-color: #00573f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 87, 63, 0.6);
+}
+
+.na-header-buttons .button-primary:hover,
+.na-header-buttons .button-primary:focus {
+    background-color: #007a5c;
+    box-shadow: 0 4px 12px rgba(0, 122, 92, 0.8);
+    outline: none;
+}
+
+.na-header-buttons .add-na-entry.button {
+    background-color: #f5f5f5;
+    color: #333;
+    border-radius: 8px;
+}
+
+.na-header-buttons .add-na-entry.button:hover,
+.na-header-buttons .add-na-entry.button:focus {
+    background-color: #e0e0e0;
+    border-color: #888;
+    outline: none;
+}
+
+/* ===================================
+   🗂️ Entry Sections (Admin)
+=================================== */
+.admin-na-header {
+    padding: 0.7rem 1.5rem;
+    background-color: #00573f;
+    color: #fff;
+    margin-top: 3.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 6px;
 }
 
 .na-entry {
-    margin: 0.5rem 0;
-    padding: 1rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+    background: #fefefe;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
-.na-entry .delete-na-entry {
-    border: 1px solid red !important;
-    color: white !important;
-    background: red !important;
-    border-radius: 4px;
-    padding: 6px 12px;
+/* Archive checkbox visually hidden */
+.na-archive-checkbox {
+    display: none !important;
+}
+
+/* Archive/Restore buttons */
+.archive-btn {
+    border: none;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 0.7rem 2rem !important;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.archive-btn.archive-only-btn {
+    background-color: #FFA500;
+    color: black;
+    box-shadow: 0 2px 6px rgba(255, 204, 110, 0.7);
+}
+
+.archive-btn.archive-only-btn:hover {
+    background-color: #ffb62f;
+}
+
+.archive-btn.restore-btn {
+    background-color: #e0e0e0;
+    color: black;
+    box-shadow: 0 2px 6px rgba(233, 233, 233, 0.7);
+}
+
+.archive-btn.restore-btn:hover {
+    background-color: #ececec;
+}
+
+/* Input: date field */
+.na-entry input[type="date"] {
+    min-width: 160px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.na-entry input[type="date"]:focus {
+    border-color: #007a5c;
+    outline: none;
+}
+
+/* Upload button */
+.upload-na.button {
+    background-color: #007a5c;
+    color: white;
+    padding: 0.4rem 1.3rem;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 122, 92, 0.7);
+}
+
+.upload-na.button:hover,
+.upload-na.button:focus {
+    background-color: #00573f;
+    outline: none;
+    color: white;
+}
+
+/* Delete button */
+.delete-na-entry {
     text-decoration: none;
-    transition: all 0.2s ease;
+    background: #e74c3c !important;
+    color: white !important;
+    border: 1px solid #e74c3c !important;
+    border-radius: 6px !important;
+    font-weight: 600;
 }
 
+.delete-na-entry:hover,
+.delete-na-entry:focus {
+    background-color: #c0392b !important;
+    outline: none;
+}
 
+/* Preview container */
+.na-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-grow: 1;
+    min-width: 150px;
+}
 
+.na-preview .na-thumb {
+    width: 110px;
+    height: 140px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
-
-
-/* Hover effect for both buttons */
-.na-entry .delete-na-entry:hover {
-    background-color: rgb(255, 72, 72) !important;
-    color: white !important;
+/* ===================================
+   📁 Archived Entries Section
+=================================== */
+#na-archived-entries {
+    opacity: 0.75;
+    filter: grayscale(10%);
 }
 
 .na-archive-summary {
-    margin-top: 10rem;
+    margin-top: 6rem;
+    font-size: 1.1rem;
+    font-family: Arial, sans-serif;
+    color: #004d33;
+    user-select: none;
 }
 
 .na-archive-summary ul {
-    list-style: disc;
-    padding-left: 20px;
+    list-style: disc inside;
+    padding-left: 1.2rem;
 }
 
-
-
-/* Frontend accordion */
+/* ===================================
+   🖼️ Frontend Accordion Styles
+=================================== */
 .na-toggle {
     width: 100%;
-    padding: 1rem;
-    border: none;
+    padding: 1rem 1.2rem;
     text-align: left;
-    cursor: pointer;
+    border: none;
+    border-bottom: 1px solid var(--clr-primary-color);
+    font-size: 0.9rem;
+    font-weight: 600;
     background: none !important;
-    border-bottom: solid 1px var(--clr-primary-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.5s ease;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-radius 0.3s ease;
 }
 
-
-/* FrontEnd accordion styles */
-.na-item {
-    margin: 0.5rem 0 ;
-}
-
-.na-toggle:hover {
-    background: var(--clr-primary-color) !important;
+.na-toggle:hover,
+.na-toggle:focus {
+    background-color: var(--clr-primary-color) !important;
     color: var(--clr-white);
-    border-radius: 0.6rem;
+    outline: none;
 }
 
 .na-toggle[aria-expanded="true"] {
     background-color: var(--clr-primary-color) !important;
     color: var(--clr-white);
-    border-radius: 0.6rem;
+    border-radius: 0.6rem 0.6rem 0 0;
+    border-bottom: none;
 }
 
 .na-toggle .na-icon {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     transition: transform 0.3s ease;
 }
 
-/* Rotate icon when expanded */
 .na-toggle[aria-expanded="true"] .na-icon {
     transform: rotate(180deg);
 }
@@ -173,13 +314,15 @@
     max-height: 0;
     opacity: 0;
     visibility: hidden;
-    transition: max-height 0.4s ease, opacity 0.4s ease;
-    padding: 0 1rem;
+    padding: 0 1.5rem 1.5rem 1.5rem;
     background: #fafafa;
-    border-bottom: 1px solid #ddd;
+    border-radius: 0 0 0.6rem 0.6rem;
+    transition: max-height 0.45s ease, opacity 0.45s ease;
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.04);
 }
 
 .na-content.na-visible {
+    max-height: 1000px; /* accommodates images */
     opacity: 1;
     visibility: visible;
 }
@@ -189,43 +332,27 @@
     flex-wrap: wrap;
     column-gap: 1rem;
     row-gap: 1rem;
-    padding: 2rem 0;
-    background: none;
+    padding-top: 1rem;
 }
 
 .na-img {
-    width: 176px;
-    height: 240px;
+    width: 168px;
+    height: 230px;
     background: no-repeat center/cover;
-    border-radius: 0.2rem;
-    border: solid 1px var(--clr-primary-color);
+    border: 1px solid var(--clr-primary-color);
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 87, 63, 0.2);
 }
 
+/* ===================================
+   📐 Utility Styling
+=================================== */
 .na-page {
-    height: 40dvh;
-    width: 100%;
-    /* background-color: var(--clr-accent-color-four); */
-    background-position: right bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 1rem;
-    line-height: 1.3;
+    height: clamp(20dvh, 40dvh, 50dvh);
 }
 
-.na-page h1{
+.na-page h1 {
     font-size: clamp(3rem, 10vw, 9rem) !important;
     letter-spacing: -0.6px;
     line-height: 1.5;
 }
-
-.na-page p {
-    text-align: center;
-    max-width: 600px;
-    font-family: var(font-family-secondary);
-}
-
-.na-content.na-visible.expanding {
-    background: none;
-    border: none;
-}
-
