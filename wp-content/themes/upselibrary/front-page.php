@@ -178,28 +178,28 @@
     <p class="databases-text">Unleashing the power of knowledge through our <span class="highlight-text">online databases</span></p>
     <section class="online-database">
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/tuklas.webp" alt="tuklas">
+            <a href="https://tuklas.up.edu.ph/Search/Results" target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" href="https://tuklas.up.edu.ph/Search/Results" src="<?php echo get_template_directory_uri(); ?>/assets/images/tuklas.webp" alt="tuklas">
             </a>
         </div>
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px after 0.15s">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-                <img loading="lazy" href="#" src="<?php echo get_template_directory_uri(); ?>/assets/images/openathens.png" alt="openAthens">
+            <a href="https://www.openathens.net/" target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" href="https://www.openathens.net/" src="<?php echo get_template_directory_uri(); ?>/assets/images/openathens.png" alt="openAthens">
             </a>
         </div>
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px after 0.16s">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-                <img loading="lazy" href="#" src="<?php echo get_template_directory_uri(); ?>/assets/images/eikon.webp" alt="eikon">
+            <a href="https://eikon.refinitiv.com/" target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" href="https://eikon.refinitiv.com/" src="<?php echo get_template_directory_uri(); ?>/assets/images/eikon.webp" alt="eikon">
             </a>
         </div>
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px after 0.17s">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-                <img loading="lazy" href="#" src="<?php echo get_template_directory_uri(); ?>/assets/images/gtap.png" alt="gtap">
+            <a href="https://eikon.refinitiv.com/" target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" href="https://eikon.refinitiv.com/" src="<?php echo get_template_directory_uri(); ?>/assets/images/gtap.png" alt="gtap">
             </a>
         </div>
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px after 0.18s">
-            <a href="#" target="_blank" rel="noopener noreferrer">
-                <img loading="lazy" class="ceic" src="<?php echo get_template_directory_uri(); ?>/assets/images/ceic.webp" alt="ceic">
+            <a href="https://www.ceicdata.com/en" target="_blank" rel="noopener noreferrer">
+                <img loading="lazy" href="https://www.ceicdata.com/en" class="ceic" src="<?php echo get_template_directory_uri(); ?>/assets/images/ceic.webp" alt="ceic">
             </a>
         </div>
     </section>
