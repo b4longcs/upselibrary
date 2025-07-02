@@ -1,4 +1,3 @@
-  
 //* Animated Text *//
 const words = ["Learn", "Explore", "Discover"];
 const text = document.querySelector(".text-animated");
@@ -17,11 +16,11 @@ const printChar = (word) => {
   const interval = setInterval(() => {
     if (i >= word.length) {
       clearInterval(interval);
-      deleteChar();
+      setTimeout(deleteChar, 1500); 
     } else {
       text.textContent += word[i++];
     }
-  }, 200);
+  }, 50);
 };
 
 const deleteChar = () => {
@@ -31,9 +30,11 @@ const deleteChar = () => {
       text.textContent = text.textContent.slice(0, --i);
     } else {
       clearInterval(interval);
-      printChar(words[gen.next().value]);
+      setTimeout(() => {
+        printChar(words[gen.next().value]); // Add delay before next word
+      }, 200);
     }
-  }, 100);
+  }, 50);
 };
 
 printChar(words[gen.next().value]);

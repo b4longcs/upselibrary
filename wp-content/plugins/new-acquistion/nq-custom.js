@@ -73,8 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // HTML structure for a new entry
         wrapper.innerHTML = `
-            <input type="checkbox" name="na_entries[${id}][archived]" class="na-archive-checkbox" hidden>
-            <button type="button" class="archive-btn archive-only-btn" data-archived="0">Archive</button>
             <button type="button" class="delete-na-entry button-link" style="float:right;color:red;">Delete Entry</button>
             <input type="date" name="na_entries[${id}][date]" value="${getToday()}" required>
             <button type="button" class="upload-na button">Upload Images</button>
@@ -110,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apply flatpickr on page load
     enhanceDatePickers();
 
-    // Re-apply flatpickr on DOM mutations (e.g. new entry)
     const observer = new MutationObserver(enhanceDatePickers);
     observer.observe(activeContainer, { childList: true, subtree: true });
     observer.observe(archivedContainer, { childList: true, subtree: true });
