@@ -1,7 +1,7 @@
 <?php get_header();?>
 <section class="fp-hero-section">
     <div class="video-overlay"></div>
-    <video class="fp-hero-video" autoplay muted loop playsinline preload="none">
+    <video class="fp-hero-video" loading="lazy" autoplay muted loop playsinline preload="none">
         <source src="<?php echo get_template_directory_uri(); ?>/assets/videos/hero-video.mp4" type="video/mp4">
     </video>
     <div class="fp-hero-container" >
@@ -20,14 +20,12 @@
             <div class="right-hero-container m-3">
                 <div class="carousel position-relative mx-auto overflow-hidden rounded">
                 <div class="carousel-images d-flex"></div>
-
                 <div class="carousel-controls position-absolute top-50 start-0 end-0 d-flex justify-content-between translate-middle-y">
                     <button class="prev btn btn-light lh-1 rounded-circle d-flex align-items-center justify-content-center"><i class="ri-arrow-left-s-line"></i>
                     </button>
 
                     <button class="next btn btn-light lh-1 rounded-circle d-flex align-items-center justify-content-center"><i class="ri-arrow-right-s-line"></i>
                 </div>
-
                 <div class="carousel-pagination-container d-flex justify-content-center mt-3">
                     <div class="carousel-pagination d-flex"></div>
                 </div>
@@ -53,7 +51,6 @@
                     EBSCO
                 </button>
             </div>
-
             <div class="tab-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" aria-hidden="false">
                 <form align="center" id="custom_search" class="search-container" action="https://tuklas.up.edu.ph/Search/Results" method="get" target="_blank">
                     <div class="form-group">
@@ -64,7 +61,6 @@
                     </div>
                 </form>
             </div>
-            
             <div class="tab-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" aria-hidden="true">
                 <form align="center" id="custom_search" class="search-container" action="https://selib.upd.edu.ph/etdir/search?" method="get" target="_blank">
                     <div class="form-group">

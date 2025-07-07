@@ -300,7 +300,6 @@ const AjaxPosts = (() => {
         credentials: 'same-origin',
         body: data,
       });
-
       if (!response.ok) throw new Error('Network error loading posts');
 
       const html = await response.text();

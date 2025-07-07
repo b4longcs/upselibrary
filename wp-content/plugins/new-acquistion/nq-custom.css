@@ -293,7 +293,6 @@
 .na-toggle[aria-expanded="true"] {
     background-color: var(--clr-primary-color) !important;
     color: var(--clr-white);
-    border-radius: 0.6rem 0.6rem 0 0;
     border-bottom: none;
 }
 
