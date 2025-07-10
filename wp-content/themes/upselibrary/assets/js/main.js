@@ -89,6 +89,7 @@ const Header = (() => {
   return { init };
 })();
 
+
 // ====================================
 // MODULE: Tabs
 // ====================================
@@ -145,6 +146,23 @@ const Tabs = (() => {
   };
 
   return { init };
+  
+  document.querySelectorAll('.search-container').forEach(form => {
+    form.addEventListener('submit', function (e) {
+
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        if (isSafari) {
+            e.preventDefault();
+            const url = new URL(form.action);
+            const input = form.querySelector('input');
+            if (input && input.name && input.value) {
+                url.searchParams.set(input.name, input.value);
+                window.open(url.toString(), '_blank');
+            }
+        }
+    });
+  });
+  
 })();
 
 // ====================================

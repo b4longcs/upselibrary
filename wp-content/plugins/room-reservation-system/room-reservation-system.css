@@ -1,0 +1,239 @@
+#rrs-modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+#rrs-modal.show {
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+}
+
+#rrs-modal .rrs-modal-content {
+    background: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   GLOBAL STYLES
+========================================================================== */
+
+#rrs-calendar {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 16px;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   TOOLBAR & BUTTONS
+========================================================================== */
+
+.fc .fc-toolbar {
+    margin-bottom: 20px;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--clr-text-color);
+}
+
+.fc .fc-button {
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    color: var(--clr-text-color);
+    font-weight: 500;
+    text-transform: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    box-shadow: none;
+    transition: all 0.2s ease;
+}
+
+.fc .fc-button:hover {
+    background-color: #f3f3f3;
+    color: var(--clr-text-color);
+}
+
+/* ==========================================================================
+   MONTH VIEW (dayGridMonth)
+========================================================================== */
+
+.fc-daygrid-day-frame {
+    background-color: var(--bs-white);
+    border-radius: 6px;
+    padding: 8px;
+    transition: background 0.2s ease;
+    box-shadow: none;
+}
+
+.fc-daygrid-day:hover .fc-daygrid-day-frame {
+    background-color: #eaeaea;
+}
+
+.fc .fc-daygrid-day {
+    padding: 6px;
+}
+
+.fc .fc-daygrid-event {
+    margin: 4px 0;
+    padding: 2px 4px;
+    border-radius: 4px;
+    background-color: #3788d8;
+    color: #fff;
+    font-size: 0.85em;
+}
+
+.fc .fc-daygrid-body-natural .fc-daygrid-row {
+    border-bottom: 4px solid #f0f0f0;
+}
+
+/* Add spacing between day headers (Sun, Mon...) */
+.fc .fc-col-header-cell {
+    padding: 10px 5px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+/*---*/
+
+.fc .fc-daygrid-day-number {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    padding: 4px 6px;
+}
+
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+    margin-top: 6px;
+}
+
+.fc .fc-day-disabled {
+    background: none !important;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: var(--clr-accent-color-three);
+    border-radius: 12px;
+}
+
+/* ==========================================================================
+   WEEK / DAY VIEWS (timeGridWeek / timeGridDay)
+========================================================================== */
+
+/* Line below weekday headers */
+.fc-timeGridWeek-view .fc-scrollgrid-sync-table thead {
+    border-bottom: 1px solid #ccc;
+}
+
+/* Hour line markers */
+.fc .fc-timegrid-slot {
+    border-top: 1px solid #e0e0e0 !important;
+    height: 80px;
+}
+
+/* Hide all-day slot section */
+.fc .fc-timegrid-allday {
+    display: none !important;
+}
+
+/* Hour label styling */
+.fc .fc-timegrid-slot-label {
+    padding-top: 10px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* Prevent minor (half-hour) clutter */
+.fc .fc-timegrid-slot-minor {
+    border-top: none;
+}
+
+.fc-timegrid-slot-label-cushion {
+    color: var(--bs-black);
+    font-family: var(--font-primary);
+}
+
+/* ==========================================================================
+   EVENTS (Reservations)
+========================================================================== */
+
+.fc-event,
+.fc-timegrid-event {
+    background-color: #4CAF50 !important;
+    color: white !important;
+    border: none;
+    padding: 4px 8px !important;
+    font-size: var(--fs-xsm);
+    border-radius: 6px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+    height: 100% !important;
+}
+
+.fc-event:hover {
+    transform: scale(1.02);
+    filter: brightness(1.05);
+}
+
+/* Ensure full block fills slot */
+.fc-v-event .fc-event-main {
+    white-space: normal;
+}
+
+/* ==========================================================================
+   HEADER / STRUCTURE CLEANUP
+========================================================================== */
+
+.fc .fc-scrollgrid,
+.fc-theme-standard td,
+.fc-theme-standard th {
+    border: none !important;
+}
+
+.fc .fc-col-header-cell-cushion {
+    color: #555;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   ROOM SELECT DROPDOWN
+========================================================================== */
+
+#rrs-room-select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 16px;
+    background: #fff;
+}
+
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+    #rrs-calendar {
+        padding: 10px;
+    }
+
+    .fc-toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

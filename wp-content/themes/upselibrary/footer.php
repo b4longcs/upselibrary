@@ -34,7 +34,7 @@
             <div class="footer-row">
                 <div class="footer-links">
                     <h4>navigation</h4>
-                    <span class="span-line"></span>
+                    <span class="span-line mb-4 w-75"></span>
                     <ul>
                         <li>
                             <a href="/about">about</a>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="footer-links">
                     <h4>External links</h4>
-                    <span class="span-line"></span>
+                    <span class="span-line mb-4 w-75"></span>
                     <ul>
                         <li>
                             <a href="https://upd.edu.ph/">UP diliman</a>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="footer-links">
                     <h4>address</h4>
-                    <span class="span-line"></span>
+                    <span class="span-line mb-4 w-75"></span>
                     <ul>
                         <li>
                             <a href="">168 osmeña ave.</a>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="footer-links">
                     <h4>voip/email</h4>
-                    <span class="span-line"></span>
+                    <span class="span-line mb-4 w-75"></span>
                     <ul>
                         <li>
                             <a class="special-a" href="">upselibrary.upd@up.edu.ph</a>

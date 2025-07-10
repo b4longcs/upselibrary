@@ -47,7 +47,7 @@
     --tabs-gap: .3rem;
     --tab-padding: 0.45rem 1.7rem;
     --tab-border-radius: 25px;
-    --tab-font-size: .7rem;
+    --tab-font-size: .77rem;
     --tab-font-weight: 500;
     --tabs-nav-padding: 0.475rem;
     --tab-background-color: #f8f8f8;
@@ -103,7 +103,6 @@
 .post-content ul,
 .post-content ol,
 .post-content blockquote {
-    max-width: 100%;
     overflow-wrap: break-word;
     margin: 1.3rem 0 !important;
     line-height: 1.85;
@@ -116,9 +115,8 @@
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-    max-width: 100%;
     overflow-wrap: break-word;
-    margin: 2rem 0 !important;
+    margin: 1.7rem 0 !important;
 }
 /* End of Wordpress Default CSS */
 
@@ -291,6 +289,8 @@ p, ul, li, a{
     padding: 4px 0 !important;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    margin: 1% 0 0 0 !important;
+    font-weight: var(--fw-semi-bold);
 }
 
 .footer-links ul li a:hover {
@@ -313,6 +313,7 @@ p, ul, li, a{
 .footer-row h4 {
     font-size: clamp(var(--fs-sm), 5vw, var(--fs-md));
     text-transform: uppercase;
+    color: var(--clr-primary-color);
 }
 
 .footer-links .special-a{
