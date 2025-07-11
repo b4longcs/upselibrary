@@ -1,167 +1,348 @@
+/* ==========================================================================
+   MODAL STYLES
+========================================================================== */
+/* ✅ Modal base stays fixed (yours is good) */
+/* Hide by default */
+.modal-hidden {
+  display: none !important;
+}
+
+/* Modal overlay */
 #rrs-modal {
-    display: none; 
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100dvw;
-    height: 100dvh;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease forwards;
 }
 
-#rrs-modal.show {
-    display: flex; 
-    align-items: center;
-    justify-content: center; 
+/* Modal content box */
+.rrs-modal-content {
+  background: #fff;
+  padding: 1.8rem;
+  margin: 0 2rem;
+  min-width: 380px;
+  max-width: 500px;
+  border-radius: 0.8rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: scaleIn 0.4s ease forwards;
 }
 
-#rrs-modal .rrs-modal-content {
-    background: #fff;
-    padding: 20px;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 8px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+/* Success popup overlay */
+#rrs-success-popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 11000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Success popup content */
+.rrs-success-content {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 0.8rem;
+  max-width: 350px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  animation: scaleIn 0.4s ease forwards;
+}
+
+/* Success button */
+#rrs-ok-button {
+  margin-top: 1.5rem;
+  background: #4caf50;
+  border: none;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+#rrs-ok-button:hover {
+  background: #43a047;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+@keyframes scaleIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+
+
+/* ==========================================================================
+   FORM ELEMENTS
+========================================================================== */
+
+
+.rrs-dropdown {
+    padding: 10px 40px 10px 20px !important; 
+    border: 1px solid #ccc !important;
+    border-radius: 0.4rem;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: calc(var(--fs-md) + 0.1rem);
+
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14.121 6.343 8.464 7.757 7.05 12 11.293l4.243-4.242 1.414 1.414z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.rrs-input {
+    padding: 8px 40px 8px 20px !important; 
+    border: 1px solid #ccc !important;
+    border-radius: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.rrs-input[type="date"] {
+    font-size: var(--fw-semi-bold);
+    height: 4rem;
+}
+.rrs-input-content {
+    border-radius: 12px;
+    gap: 1rem;
+}
+
+#rrs-close-modal,
+.rrs-submit-modal {
+    padding: 8px 16px;
+    border: none;
+    width: 100%;
+    border-radius: 4px;
+    color: var(--bs-white);
+}
+#rrs-close-modal {
+    background-color: var(--clr-accent-color);
+}
+.rrs-submit-modal {
+    background-color: var(--clr-primary-color);
 }
 
 /* ==========================================================================
-   GLOBAL STYLES
+   MODAL TRIGGER & ROOM SELECT
 ========================================================================== */
+#rrs-room-select,
+#rrs-open-modal {
+    padding: 8px 16px;
+    font-size: 1rem;
+}
+#rrs-room-select {
+    padding: 8px 40px 8px 20px; 
+    font-size: var(--fs-reg);
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin: 1rem 0;
+    background: #fff;
 
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14.121 6.343 8.464 7.757 7.05 12 11.293l4.243-4.242 1.414 1.414z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+
+#rrs-open-modal {
+    background-color: var(--clr-primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+#rrs-open-modal:hover {
+    background-color: var(--clr-bg-color-hover-light);
+}
+
+/* ==========================================================================
+   CALENDAR CONTAINER
+========================================================================== */
 #rrs-calendar {
     background: #f9f9f9;
     padding: 20px;
     border-radius: 16px;
     font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-    box-shadow: none;
 }
 
 /* ==========================================================================
-   TOOLBAR & BUTTONS
+   FLATPICKR OVERRIDES
 ========================================================================== */
-
-.fc .fc-toolbar {
-    margin-bottom: 20px;
+.flatpickr-calendar {
+    z-index: 9999 !important;
+}
+.flatpickr-input {
+    background-color: #fff;
+    cursor: pointer;
+}
+.flatpickr-months,
+.flatpickr-monthDropdown-months {
+    background-color: #00573f !important;
+    color: #fff;
+    line-height: 2.3;
 }
 
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+    color: #fff;
+}
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day:hover,
+.flatpickr-monthDropdown-month {
+    background-color: #00573f !important;
+    color: #fff;
+    border: none;
+}
+.flatpickr-monthDropdown-month:active {
+    background-color: #fff;
+    color: black;
+}
+
+span.flatpickr-weekday {
+    background: none;
+    color: var(--clr-text-color);
+}
+.flatpickr-weekdays {
+    background-color: var(--clr-accent-color-four);
+}
+
+.flatpickr-months .flatpickr-month {
+    background:  none !important;
+    margin: 0.5rem 0 ;
+}
+
+/* ==========================================================================
+   FULLCALENDAR TOOLBAR
+========================================================================== */
+.fc .fc-toolbar {
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
 .fc .fc-toolbar-title {
-    font-size: 20px;
+    font-size: clamp(3rem, 3.5vw, 5rem);
     font-weight: 600;
     color: var(--clr-text-color);
 }
-
 .fc .fc-button {
-    background: #ffffff;
-    border: 1px solid #dcdcdc;
+    background: var(--clr-accent-color-two);
     color: var(--clr-text-color);
-    font-weight: 500;
-    text-transform: none;
-    border-radius: 6px;
-    padding: 5px 10px;
-    box-shadow: none;
-    transition: all 0.2s ease;
+    font-weight: var(--fw-semi-bold);
+    border: none;
+    border-radius: 10px;
+    padding: 8px 20px;
+    transition: background 0.2s ease;
 }
-
 .fc .fc-button:hover {
-    background-color: #f3f3f3;
+    background-color: var(--clr-accent-color-three);
     color: var(--clr-text-color);
+    border: none;
 }
 
+button:focus,
+button:focus-visible,
+button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+    padding: 1rem 0 ;
+    gap: 1.3rem;
+}
 /* ==========================================================================
    MONTH VIEW (dayGridMonth)
 ========================================================================== */
-
 .fc-daygrid-day-frame {
     background-color: var(--bs-white);
     border-radius: 6px;
     padding: 8px;
-    transition: background 0.2s ease;
-    box-shadow: none;
 }
-
 .fc-daygrid-day:hover .fc-daygrid-day-frame {
     background-color: #eaeaea;
 }
-
 .fc .fc-daygrid-day {
     padding: 6px;
 }
-
 .fc .fc-daygrid-event {
     margin: 4px 0;
     padding: 2px 4px;
     border-radius: 4px;
-    background-color: #3788d8;
+    background-color:var(--clr-primary-color) !important;
     color: #fff;
-    font-size: 0.85em;
+    font-size: var(--fs-md);
 }
-
-.fc .fc-daygrid-body-natural .fc-daygrid-row {
+.fc .fc-daygrid-row {
     border-bottom: 4px solid #f0f0f0;
 }
-
-/* Add spacing between day headers (Sun, Mon...) */
 .fc .fc-col-header-cell {
     padding: 10px 5px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
 }
-
-/*---*/
-
 .fc .fc-daygrid-day-number {
     font-size: 13px;
     font-weight: 500;
     color: #666;
-    padding: 4px 6px;
 }
-
 .fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
     margin-top: 6px;
 }
-
 .fc .fc-day-disabled {
     background: none !important;
 }
-
 .fc .fc-daygrid-day.fc-day-today {
     background-color: var(--clr-accent-color-three);
     border-radius: 12px;
 }
 
 /* ==========================================================================
-   WEEK / DAY VIEWS (timeGridWeek / timeGridDay)
+   WEEK / DAY VIEWS (timeGrid)
 ========================================================================== */
-
-/* Line below weekday headers */
 .fc-timeGridWeek-view .fc-scrollgrid-sync-table thead {
     border-bottom: 1px solid #ccc;
 }
-
-/* Hour line markers */
 .fc .fc-timegrid-slot {
     border-top: 1px solid #e0e0e0 !important;
     height: 80px;
 }
-
-/* Hide all-day slot section */
 .fc .fc-timegrid-allday {
     display: none !important;
 }
-
-/* Hour label styling */
 .fc .fc-timegrid-slot-label {
     padding-top: 10px;
     font-size: 13px;
     color: #666;
 }
-
-/* Prevent minor (half-hour) clutter */
 .fc .fc-timegrid-slot-minor {
     border-top: none;
 }
-
 .fc-timegrid-slot-label-cushion {
     color: var(--bs-black);
     font-family: var(--font-primary);
@@ -170,42 +351,50 @@
 /* ==========================================================================
    EVENTS (Reservations)
 ========================================================================== */
+.fc-timegrid-col-frame {
+    background-color: var(--clr-white);
+    border-radius: 12px;
+}
 
 .fc-event,
 .fc-timegrid-event {
-    background-color: #4CAF50 !important;
+    background-color:var(--clr-primary-color) !important;
     color: white !important;
     border: none;
     padding: 4px 8px !important;
     font-size: var(--fs-xsm);
     border-radius: 6px;
-    box-sizing: border-box;
     display: flex;
     align-items: center;
-    transition: transform 0.2s ease;
     height: 100% !important;
+    transition: transform 0.2s ease;
 }
-
 .fc-event:hover {
     transform: scale(1.02);
     filter: brightness(1.05);
 }
-
-/* Ensure full block fills slot */
 .fc-v-event .fc-event-main {
     white-space: normal;
 }
 
-/* ==========================================================================
-   HEADER / STRUCTURE CLEANUP
-========================================================================== */
+.fc-v-event .fc-event-title {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semi-bold);
+}
 
+
+.fc-timegrid-event .fc-event-time {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semi-bold);
+}
+/* ==========================================================================
+   FULLCALENDAR STRUCTURE CLEANUP
+========================================================================== */
 .fc .fc-scrollgrid,
 .fc-theme-standard td,
 .fc-theme-standard th {
     border: none !important;
 }
-
 .fc .fc-col-header-cell-cushion {
     color: #555;
     font-size: 13px;
@@ -213,27 +402,17 @@
 }
 
 /* ==========================================================================
-   ROOM SELECT DROPDOWN
+   RESPONSIVE
 ========================================================================== */
-
-#rrs-room-select {
-    padding: 8px 12px;
-    font-size: 14px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin-bottom: 16px;
-    background: #fff;
-}
-
-
-/* Responsive tweak */
 @media (max-width: 768px) {
     #rrs-calendar {
         padding: 10px;
     }
-
     .fc-toolbar {
         flex-direction: column;
         gap: 10px;
     }
 }
+
+
+

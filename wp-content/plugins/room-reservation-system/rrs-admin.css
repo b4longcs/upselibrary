@@ -1,0 +1,28 @@
+
+select[name="room_filter"] {
+    display: none;
+}
+.room-tabs {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 1rem 0;
+    gap: 5px !important;
+}
+.room-tab {
+    padding: 8px 16px;
+    background: #f1f1f1;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+    background: #e7e7e7;
+}
+
+.room-tab:hover{
+    background: #d3d3d3;
+    color: #000;
+}
+.room-tab.active {
+    background: #48a7ff;
+    color: white;
+}
