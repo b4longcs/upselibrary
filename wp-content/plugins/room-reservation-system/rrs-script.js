@@ -1,73 +1,40 @@
 jQuery(document).ready(function($) {
 
-     // Show modal helper
+    // Cache DOM elements
+    const $modal = $('#rrs-modal');
+    const $successPopup = $('#rrs-success-popup');
+    const $successMessage = $('#rrs-success-message');
+    const $form = $('#rrs-reservation-form');
+    const $response = $('#rrs-response');
+    const $roomSelect = $('select[name="room"]');
+    const $dateInput = $('#rrs-date-picker');
+    const $timeDropdown = $('#rrs-time-dropdown');
+    const $calendarEl = document.getElementById('rrs-calendar');
+
+    // Show modal helper
     function showModal() {
-        $('#rrs-modal').removeClass('modal-hidden');
+        $modal.removeClass('modal-hidden').addClass('show').hide().fadeIn();
     }
 
     // Hide modal helper
     function hideModal() {
-        $('#rrs-modal').addClass('modal-hidden');
-    }
-
-    // Show success popup helper
-    function showSuccess(message) {
-        $('#rrs-success-message').text(message);
-        $('#rrs-success-popup').removeClass('modal-hidden');
-    }
-
-    // Hide success popup helper
-    function hideSuccess() {
-        $('#rrs-success-popup').addClass('modal-hidden');
-    }
-
-    // Open modal when clicking "Reserve a Room"
-    $('#rrs-open-modal').on('click', showModal);
-
-    // Close modal on cancel button
-    $('#rrs-close-modal').on('click', hideModal);
-
-    // Close modal when clicking outside modal content (overlay)
-    $(document).on('click', function(e) {
-        if ($(e.target).is('#rrs-modal')) {
-        hideModal();
-        }
-    });
-
-    // Handle form submission
-    $('#rrs-reservation-form').on('submit', function(e) {
-        e.preventDefault();
-
-        var formData = $(this).serialize();
-        formData += '&action=submit_reservation&nonce=' + rrs_ajax.nonce;
-
-        $.post(rrs_ajax.ajax_url, formData, function(response) {
-        if (response.success) {
-            // Hide the modal form
-            hideModal();
-
-            // Show the success popup with message
-            showSuccess(response.data.message);
-
-            // Reset the form for next use
-            $('#rrs-reservation-form')[0].reset();
-
-        } else {
-            $('#rrs-response')
-            .html('<p>' + response.data.message + '</p>')
-            .css('color', 'red');
-        }
+        $modal.fadeOut(function() {
+            $(this).addClass('modal-hidden').removeClass('show');
         });
-    });
+    }
 
-    // Hide success popup when clicking OK
-    $('#rrs-ok-button').on('click', hideSuccess);
+    // Show success popup
+    function showSuccess(message) {
+        $successMessage.text(message);
+        $successPopup.removeClass('modal-hidden');
+    }
 
+    // Hide success popup
+    function hideSuccess() {
+        $successPopup.addClass('modal-hidden');
+    }
 
-
-    /**
-     * Fetch reserved times for the selected room & date and disable them.
-     */
+    // Fetch reserved times for the selected room & date
     function fetchReservedTimes(room, date) {
         if (!room || !date) return;
 
@@ -80,71 +47,51 @@ jQuery(document).ready(function($) {
 
             const reservedTimes = response.data
                 .filter(event => event.start.startsWith(date))
-                .map(event => {
-                    const hour = new Date(event.start).getHours();
-                    return `${hour}:00`;
-                });
+                .map(event => `${new Date(event.start).getHours()}:00`);
 
-            $('#rrs-time-dropdown option').each(function () {
-                const value = $(this).val();
-                if (reservedTimes.includes(value)) {
-                    $(this)
-                        .prop('disabled', true)
-                        .text($(this).text().replace(' (Slot Taken)', '') + ' (Slot Taken)');
-                } else {
-                    $(this)
-                        .prop('disabled', false)
-                        .text($(this).text().replace(' (Slot Taken)', ''));
-                }
+            $timeDropdown.find('option').each(function () {
+                const $option = $(this);
+                const val = $option.val();
+                const text = $option.text().replace(' (Slot Taken)', '');
+
+                $option.prop('disabled', reservedTimes.includes(val));
+                $option.text(reservedTimes.includes(val) ? `${text} (Slot Taken)` : text);
             });
         });
     }
 
-    /**
-     * Re-check time availability whenever room or date changes.
-     */
-    $('#rrs-room-dropdown, #rrs-date-picker').on('change', function () {
-        const room = $('#rrs-room-dropdown').val();
-        const date = $('#rrs-date-picker').val();
-        fetchReservedTimes(room, date);
+    // Handle form submission
+    $form.on('submit', function(e) {
+        e.preventDefault();
+
+        let formData = $form.serialize();
+        formData += `&action=submit_reservation&nonce=${rrs_ajax.nonce}`;
+
+        $.post(rrs_ajax.ajax_url, formData, function(response) {
+            if (response.success) {
+                hideModal();
+                showSuccess(response.data.message);
+                $form[0].reset();
+            } else {
+                $response.html(`<p>${response.data.message}</p>`).css('color', 'red');
+            }
+        });
     });
 
-    flatpickr("#rrs-date-picker", {
-        dateFormat: "Y-m-d",
-        minDate: "today"
-    });
-
-    const $roomSelect = $('select[name="room"]');
-    const $dateInput = $('#rrs-date-picker');
-
-    function maybeFetchReservedTimes() {
-        const room = $roomSelect.val();
-        const date = $dateInput.val();
-        fetchReservedTimes(room, date);
-    }
-
-    $roomSelect.on('change', maybeFetchReservedTimes);
-    $dateInput.on('change', maybeFetchReservedTimes);
-
-    /**
-     * Initialize FullCalendar
-     */
-    const calendarEl = document.getElementById('rrs-calendar');
+    // Calendar initialization
     let calendar;
 
     function loadCalendar(room = 'Room 1') {
         if (calendar) calendar.destroy();
 
-        calendar = new FullCalendar.Calendar(calendarEl, {
+        calendar = new FullCalendar.Calendar($calendarEl, {
             initialView: 'dayGridMonth',
             themeSystem: 'standard',
-
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
-
             hiddenDays: [0, 6],
             nowIndicator: true,
             allDaySlot: false,
@@ -157,50 +104,39 @@ jQuery(document).ready(function($) {
             selectable: false,
             showNonCurrentDates: false,
             fixedWeekCount: false,
-
             views: {
                 timeGridWeek: {
                     titleFormat: { year: 'numeric', month: 'short', day: 'numeric' },
-                    slotLabelFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
+                    slotLabelFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' }
                 },
                 timeGridDay: {
                     titleFormat: { weekday: 'long', month: 'short', day: 'numeric' },
-                    slotLabelFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
+                    slotLabelFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' }
                 }
             },
-
             eventTimeFormat: {
                 hour: 'numeric',
                 minute: '2-digit',
                 meridiem: 'short'
             },
-
             eventDisplay: 'block',
             eventColor: '#4CAF50',
-
             events: function(fetchInfo, successCallback, failureCallback) {
                 $.get(rrs_ajax.ajax_url, {
                     action: 'get_approved_reservations',
                     room: room,
                     nonce: rrs_ajax.nonce
                 }, function(response) {
-                    if (response.success) {
-                        successCallback(response.data);
-                    } else {
-                        failureCallback();
-                    }
+                    response.success ? successCallback(response.data) : failureCallback();
                 });
             },
-
             dateClick: function(info) {
-                if (calendar.view.type === 'timeGridDay' || calendar.view.type === 'timeGridWeek') {
-                    const selectedDate = info.dateStr.split('T')[0];
-                    const selectedTime = info.dateStr.split('T')[1].substring(0, 5);
-
-                    $('#rrs-modal').addClass('show').hide().fadeIn();
-                    $('#rrs-reservation-form input[name="date"]').val(selectedDate);
-                    $('#rrs-reservation-form select[name="time"]').val(selectedTime);
-                    fetchReservedTimes($('#rrs-room-dropdown').val(), selectedDate); // fetch conflicts
+                if (['timeGridDay', 'timeGridWeek'].includes(calendar.view.type)) {
+                    const [selectedDate, selectedTime] = info.dateStr.split('T');
+                    showModal();
+                    $form.find('input[name="date"]').val(selectedDate);
+                    $form.find('select[name="time"]').val(selectedTime.substring(0, 5));
+                    fetchReservedTimes($roomSelect.val(), selectedDate);
                 } else {
                     calendar.changeView('timeGridDay', info.dateStr);
                 }
@@ -210,36 +146,26 @@ jQuery(document).ready(function($) {
         calendar.render();
     }
 
-    // Initial calendar load
-    loadCalendar();
-
-    // Reload calendar when room selection changes
+    // Event Bindings
+    $('#rrs-open-modal').on('click', showModal);
+    $('#rrs-close-modal').on('click', hideModal);
+    $('#rrs-ok-button').on('click', hideSuccess);
     $('#rrs-room-select').on('change', function() {
         loadCalendar(this.value);
     });
 
-    // Open modal
-    $('#rrs-open-modal').on('click', function() {
-        $('#rrs-modal').addClass('show').hide().fadeIn();
-    });
-
-    // Close modal on cancel
-    $('#rrs-close-modal').on('click', function() {
-        $('#rrs-modal').fadeOut(function() {
-            $(this).removeClass('show');
-        });
-    });
-
-    // Close modal on overlay click
     $(document).on('click', function(e) {
-        if ($(e.target).is('#rrs-modal')) {
-            $('#rrs-modal').fadeOut(function() {
-                $(this).removeClass('show');
-            });
+        if ($(e.target).is($modal)) {
+            hideModal();
         }
     });
 
-    // Initialize Flatpickr
+    // Re-check time availability on input changes
+    $roomSelect.add($dateInput).on('change', function() {
+        fetchReservedTimes($roomSelect.val(), $dateInput.val());
+    });
+
+    // Initialize flatpickr
     flatpickr("#rrs-date-picker", {
         altInput: true,
         altFormat: "F j, Y",
@@ -247,5 +173,8 @@ jQuery(document).ready(function($) {
         minDate: "today",
         disableMobile: true
     });
-    
+
+    // Initial calendar load
+    loadCalendar();
+
 });
