@@ -23,6 +23,50 @@ select[name="room_filter"] {
     color: #000;
 }
 .room-tab.active {
-    background: #48a7ff;
+    background: #00573f;
     color: white;
+}
+
+/* Time Tabs */
+.time-tab {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #e0e0e0;
+  color: #000000;           
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.time-tab:hover {
+  background-color: #cfcfcf;
+  color: #000;
+}
+
+.time-tab.active {
+  background-color: #00573f;
+  font-weight: bold;
+  color: #fff;
+}
+/* Admin Color Coding per time */
+tr.time-08 td { background-color: #fff9cc; }  /* Cream */
+tr.time-09 td { background-color: #c6f7e2; }  /* Aqua */
+tr.time-10 td { background-color: #d0ecff; }  /* Sky blue */
+tr.time-11 td { background-color: #dcf5c7; }  /* Lettuce green */
+tr.time-12 td { background-color: #ffe2ba; }  /* Apricot */
+tr.time-13 td { background-color: #d7fadb; }  /* Mint */
+tr.time-14 td { background-color: #f0e8ff; }  /* Lavender (optional) */
+tr.time-15 td { background-color: #fff3b0; }  /* Vanilla */
+tr.time-16 td { background-color: #cce7ff; }  /* Ice blue */
+
+tr[class^="time-"] td {
+  border-left: 3px solid #eee;
+  color: #222;
+  padding: 8px 12px;
+}
+.button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
 }

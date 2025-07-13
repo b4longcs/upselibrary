@@ -323,11 +323,58 @@ add_action('manage_reservation_request_posts_custom_column', function($column, $
 add_action('admin_post_approve_reservation', function() {
     if (!current_user_can('edit_posts')) wp_die('Permission denied');
     $post_id = intval($_GET['post_id']);
+
+    // Get the room, date, and time of this reservation
+    $room = get_post_meta($post_id, 'room', true);
+    $date = get_post_meta($post_id, 'date', true);
+    $time = get_post_meta($post_id, 'time', true);
+
+    // Check if another reservation is already approved for this slot
+    $existing_approved = get_posts([
+        'post_type'      => 'reservation_request',
+        'posts_per_page' => 1,
+        'meta_query'     => [
+            ['key' => 'room', 'value' => $room],
+            ['key' => 'date', 'value' => $date],
+            ['key' => 'time', 'value' => $time],
+            ['key' => 'status', 'value' => 'approved'],
+            ['key' => '_wpnonce', 'compare' => 'NOT EXISTS'], // avoid conflict with nonce meta if any
+        ],
+        'exclude' => [$post_id], 
+    ]);
+
+    if ($existing_approved) {
+        // Redirect back with error message
+        $redirect_url = add_query_arg('rrs_error', 'slot_taken', admin_url('edit.php?post_type=reservation_request'));
+        wp_redirect($redirect_url);
+        exit;
+    }
+
+    // Approve this reservation
     update_post_meta($post_id, 'status', 'approved');
     rrs_send_approval_email($post_id, 'approved');
+
+    // Optional: Deny all other pending requests for this slot
+    $other_requests = get_posts([
+        'post_type'      => 'reservation_request',
+        'posts_per_page' => -1,
+        'meta_query'     => [
+            ['key' => 'room', 'value' => $room],
+            ['key' => 'date', 'value' => $date],
+            ['key' => 'time', 'value' => $time],
+            ['key' => 'status', 'value' => 'pending'],
+        ],
+        'exclude' => [$post_id],
+    ]);
+    foreach ($other_requests as $request) {
+        update_post_meta($request->ID, 'status', 'denied');
+        rrs_send_approval_email($request->ID, 'denied');
+    }
+
     wp_redirect(admin_url('edit.php?post_type=reservation_request'));
     exit;
 });
+
 
 add_action('admin_post_deny_reservation', function() {
     if (!current_user_can('edit_posts')) wp_die('Permission denied');
@@ -383,16 +430,28 @@ add_action('restrict_manage_posts', function() {
 add_filter('parse_query', function($query) {
     global $pagenow;
     if ($pagenow === 'edit.php' && $query->get('post_type') === 'reservation_request') {
+        $meta_query = [];
+
         if (!empty($_GET['room_filter'])) {
-            $query->set('meta_query', [
-                [
-                    'key'   => 'room',
-                    'value' => sanitize_text_field($_GET['room_filter']),
-                ]
-            ]);
+            $meta_query[] = [
+                'key'   => 'room',
+                'value' => sanitize_text_field($_GET['room_filter']),
+            ];
+        }
+
+        if (!empty($_GET['time_filter'])) {
+            $meta_query[] = [
+                'key'   => 'time',
+                'value' => sanitize_text_field($_GET['time_filter']),
+            ];
+        }
+
+        if (!empty($meta_query)) {
+            $query->set('meta_query', $meta_query);
         }
     }
 });
+
 
 add_action('admin_enqueue_scripts', function($hook) {
     if ($hook === 'edit.php' && isset($_GET['post_type']) && $_GET['post_type'] === 'reservation_request') {
@@ -401,20 +460,45 @@ add_action('admin_enqueue_scripts', function($hook) {
 });
 
 add_filter('views_edit-reservation_request', function($views) {
-    $current = $_GET['room_filter'] ?? '';
+    $room_selected = $_GET['room_filter'] ?? '';
+    $time_selected = $_GET['time_filter'] ?? '';
     $base_url = admin_url('edit.php?post_type=reservation_request');
 
-    echo '<div class="room-tabs" style="margin-top: 10px; margin-bottom: 10px; display: flex; gap: 10px;">';
-    echo '<a class="room-tab' . ($current === '' ? ' active' : '') . '" href="' . esc_url($base_url) . '">All</a>';
-
+    echo '<div class="room-tabs" style="margin: 10px 0; display: flex; gap: 10px;">';
+    echo '<a class="room-tab' . ($room_selected === '' ? ' active' : '') . '" href="' . esc_url($base_url) . '">All Rooms</a>';
     for ($i = 1; $i <= 6; $i++) {
         $room = "Room $i";
         $url = add_query_arg('room_filter', urlencode($room), $base_url);
-        $active = ($current === $room) ? ' active' : '';
+        $active = ($room_selected === $room) ? ' active' : '';
         echo '<a class="room-tab' . $active . '" href="' . esc_url($url) . '">' . esc_html($room) . '</a>';
     }
-
     echo '</div>';
+
+    if ($room_selected !== '') {
+        echo '<div class="time-tabs" style="margin-bottom: 10px; display: flex; gap: 8px;">';
+        echo '<a class="time-tab' . ($time_selected === '' ? ' active' : '') . '" href="' . esc_url(add_query_arg(['room_filter' => $room_selected], $base_url)) . '">All Times</a>';
+        for ($i = 8; $i <= 16; $i++) {
+            $time = "$i:00";
+            $next_time = ($i + 1) . ":00";
+            $label = date('g A', strtotime($time)) . ' - ' . date('g A', strtotime($next_time));
+            $url = add_query_arg(['room_filter' => $room_selected, 'time_filter' => $time], $base_url);
+            $active = ($time_selected === $time) ? ' active' : '';
+            echo '<a class="time-tab' . $active . '" href="' . esc_url($url) . '">' . esc_html($label) . '</a>';
+        }
+        echo '</div>';
+    }
 
     return $views;
 });
+
+
+add_filter('post_class', function($classes, $class, $post_id) {
+    if (get_post_type($post_id) === 'reservation_request') {
+        $time = get_post_meta($post_id, 'time', true);
+        if ($time) {
+            $hour = (int) explode(':', $time)[0];
+            $classes[] = 'time-' . str_pad($hour, 2, '0', STR_PAD_LEFT);
+        }
+    }
+    return $classes;
+}, 10, 3);
