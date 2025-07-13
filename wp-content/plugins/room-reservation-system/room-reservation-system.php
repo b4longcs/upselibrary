@@ -62,7 +62,7 @@ add_shortcode('room_reservation_form', function() {
                             <option class="my-2" value="Room <?= $i ?>">Room <?= $i ?></option>
                         <?php endfor; ?>
                     </select>
-                    <select class="my-1 rrs-dropdown" name="time" required>
+                    <select class="my-1 rrs-dropdown" name="time" id="rrs-time-dropdown" required>
                         <option value="" disabled selected hidden>Select Time</option>
                         <?php for ($i = 8; $i <= 16; $i++): ?>
                             <option class="my-2" value="<?= $i ?>:00">
@@ -283,6 +283,15 @@ add_filter('post_row_actions', function($actions, $post) {
     return $actions;
 }, 10, 2);
 
+
+// /*Restore Edit and Trash*/
+// add_filter('post_row_actions', function($actions, $post) {
+//     if ($post->post_type === 'reservation_request') {
+//         unset($actions['inline hide-if-no-js'], $actions['view']);
+//     }
+//     return $actions;
+// }, 10, 2);
+
 // Populate custom columns
 add_action('manage_reservation_request_posts_custom_column', function($column, $post_id) {
     if ($column === 'reservation_datetime') {
@@ -309,14 +318,45 @@ add_action('manage_reservation_request_posts_custom_column', function($column, $
     }
 
     if ($column === 'reservation_action') {
+        global $wpdb;
+
         $status = get_post_meta($post_id, 'status', true);
+        $room   = get_post_meta($post_id, 'room', true);
+        $date   = get_post_meta($post_id, 'date', true);
+        $time   = get_post_meta($post_id, 'time', true);
+
+        // Raw SQL query to bypass WP_Query filters
+        $is_conflicted = $wpdb->get_var($wpdb->prepare("
+            SELECT COUNT(*) FROM $wpdb->postmeta pm1
+            INNER JOIN $wpdb->postmeta pm2 ON pm1.post_id = pm2.post_id
+            INNER JOIN $wpdb->postmeta pm3 ON pm1.post_id = pm3.post_id
+            INNER JOIN $wpdb->postmeta pm4 ON pm1.post_id = pm4.post_id
+            INNER JOIN $wpdb->posts p ON pm1.post_id = p.ID
+            WHERE p.post_type = 'reservation_request'
+            AND p.ID != %d
+            AND pm1.meta_key = 'room' AND pm1.meta_value = %s
+            AND pm2.meta_key = 'date' AND pm2.meta_value = %s
+            AND pm3.meta_key = 'time' AND pm3.meta_value = %s
+            AND pm4.meta_key = 'status' AND pm4.meta_value = 'approved'
+            AND p.post_status = 'publish'
+        ", $post_id, $room, $date, $time)) > 0;
+
+        // Render Approve or Slot Taken
         if ($status !== 'approved') {
-            echo '<a href="' . admin_url("admin-post.php?action=approve_reservation&post_id=$post_id") . '" class="button">Approve</a> ';
+            if (!$is_conflicted) {
+                echo '<a href="' . admin_url("admin-post.php?action=approve_reservation&post_id=$post_id") . '" class="button">Approve</a> ';
+            } else {
+                echo '<span class="button disabled" style="opacity: 0.5; pointer-events: none;" title="Another reservation is already approved for this time slot.">Slot Taken</span> ';
+            }
         }
+
+        // Always show Deny unless already denied
         if ($status !== 'denied') {
             echo '<a href="' . admin_url("admin-post.php?action=deny_reservation&post_id=$post_id") . '" class="button">Deny</a>';
         }
     }
+
+
 }, 10, 2);
 
 // Handle approve/deny actions
@@ -502,3 +542,5 @@ add_filter('post_class', function($classes, $class, $post_id) {
     }
     return $classes;
 }, 10, 3);
+
+

@@ -70,3 +70,8 @@ tr[class^="time-"] td {
     cursor: not-allowed;
     pointer-events: none;
 }
+
+#rrs-time-dropdown option:disabled {
+    color: #888;
+    background-color: #f8f8f8;
+}

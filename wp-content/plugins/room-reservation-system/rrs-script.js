@@ -90,11 +90,11 @@ jQuery(document).ready(function($) {
                 if (reservedTimes.includes(value)) {
                     $(this)
                         .prop('disabled', true)
-                        .text($(this).text().replace(' (Booked)', '') + ' (Booked)');
+                        .text($(this).text().replace(' (Slot Taken)', '') + ' (Slot Taken)');
                 } else {
                     $(this)
                         .prop('disabled', false)
-                        .text($(this).text().replace(' (Booked)', ''));
+                        .text($(this).text().replace(' (Slot Taken)', ''));
                 }
             });
         });
@@ -108,6 +108,23 @@ jQuery(document).ready(function($) {
         const date = $('#rrs-date-picker').val();
         fetchReservedTimes(room, date);
     });
+
+    flatpickr("#rrs-date-picker", {
+        dateFormat: "Y-m-d",
+        minDate: "today"
+    });
+
+    const $roomSelect = $('select[name="room"]');
+    const $dateInput = $('#rrs-date-picker');
+
+    function maybeFetchReservedTimes() {
+        const room = $roomSelect.val();
+        const date = $dateInput.val();
+        fetchReservedTimes(room, date);
+    }
+
+    $roomSelect.on('change', maybeFetchReservedTimes);
+    $dateInput.on('change', maybeFetchReservedTimes);
 
     /**
      * Initialize FullCalendar
@@ -230,5 +247,5 @@ jQuery(document).ready(function($) {
         minDate: "today",
         disableMobile: true
     });
-
+    
 });
