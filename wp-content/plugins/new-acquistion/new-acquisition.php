@@ -6,17 +6,11 @@
  * Author: Jonathan Tubo
  */
 
-if (!defined('ABSPATH')) exit; // Prevent direct access
+if (!defined('ABSPATH')) exit; 
 
 /** ------------------------------------------
  * Admin Menu & Assets
  * ------------------------------------------ */
-if (!defined('ABSPATH')) exit; // Prevent direct access
-
-/** ------------------------------------------
- * Admin Menu & Assets
- * ------------------------------------------ */
-
 // Add custom admin menu
 add_action('admin_menu', function () {
     add_menu_page(
@@ -44,6 +38,8 @@ add_action('admin_enqueue_scripts', function ($hook) {
 
 add_action('admin_post_na_save', function () {
     if (!current_user_can('edit_pages')) return;
+    if (empty($_POST['_wp_http_referer']) || strpos($_POST['_wp_http_referer'], 'page=new-acquisition') === false) return;
+
     check_admin_referer('na_nonce');
 
     $acquisitions = [];
@@ -52,11 +48,7 @@ add_action('admin_post_na_save', function () {
         foreach ($_POST['na_entries'] as $entry) {
             if (empty($entry['date'])) continue;
 
-
             $acquisitions[] = [
-                'date'     => sanitize_text_field($entry['date']),
-                'images'   => array_map('esc_url_raw', explode(',', $entry['images'])),
-                'archived' => !empty($entry['archived']),
                 'date'     => sanitize_text_field($entry['date']),
                 'images'   => array_map('esc_url_raw', explode(',', $entry['images'])),
                 'archived' => !empty($entry['archived'])
@@ -68,6 +60,7 @@ add_action('admin_post_na_save', function () {
     wp_redirect(admin_url('admin.php?page=new-acquisition&saved=true'));
     exit;
 });
+
 
 /** ------------------------------------------
  * Admin Page Rendering
@@ -164,9 +157,10 @@ function na_render_entries_section($entries, $archived = false, $header = '', $c
 /** ------------------------------------------
  * UI/UX Cleanup
  * ------------------------------------------ */
-add_action('admin_menu', function () {
+add_action('admin_head', function () {
+    if (!isset($_GET['page']) || $_GET['page'] !== 'new-acquisition') return;
     remove_menu_page('edit-comments.php');
-}, 999);
+});
 
 
 /** ------------------------------------------
@@ -174,10 +168,14 @@ add_action('admin_menu', function () {
  * ------------------------------------------ */
 // Enqueue plugin styles and scripts for frontend
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('na-style', plugin_dir_url(__FILE__) . 'nq-custom.css');
-    wp_enqueue_script('na-script', plugin_dir_url(__FILE__) . 'nq-custom.js', [], null, true);
-});
+    if (!is_page()) return;
 
+    global $post;
+    if (has_shortcode($post->post_content, 'new_acquisition')) {
+        wp_enqueue_style('na-style', plugin_dir_url(__FILE__) . 'nq-custom.css');
+        wp_enqueue_script('na-script', plugin_dir_url(__FILE__) . 'nq-custom.js', [], null, true);
+    }
+});
 
 /** ------------------------------------------
  * Shortcode for Frontend Display

@@ -1,7 +1,6 @@
 /* ==========================================================================
    MODAL STYLES
 ========================================================================== */
-/* ✅ Modal base stays fixed (yours is good) */
 /* Hide by default */
 .modal-hidden {
   display: none !important;
