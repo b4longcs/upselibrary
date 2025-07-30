@@ -11,7 +11,6 @@ if (!defined('ABSPATH')) exit;
 /** ------------------------------------------
  * Admin Menu & Assets
  * ------------------------------------------ */
-// Add custom admin menu
 add_action('admin_menu', function () {
     add_menu_page(
         'New Acquisitions',           // Page title
@@ -23,7 +22,6 @@ add_action('admin_menu', function () {
         25                            // Position
     );
 });
-
 // Enqueue admin scripts and styles
 add_action('admin_enqueue_scripts', function ($hook) {
     if ($hook !== 'toplevel_page_new-acquisition') return;
@@ -35,7 +33,6 @@ add_action('admin_enqueue_scripts', function ($hook) {
 /** ------------------------------------------
  * Admin Data Handling
  * ------------------------------------------ */
-
 add_action('admin_post_na_save', function () {
     if (!current_user_can('edit_pages')) return;
     if (empty($_POST['_wp_http_referer']) || strpos($_POST['_wp_http_referer'], 'page=new-acquisition') === false) return;
@@ -65,7 +62,6 @@ add_action('admin_post_na_save', function () {
 /** ------------------------------------------
  * Admin Page Rendering
  * ------------------------------------------ */
-
 function na_admin_page() {
     $entries = get_option('na_data', []);
     ?>
@@ -97,7 +93,7 @@ function na_admin_page() {
     <?php
 }
 
-// Helper to render entries
+// Render entries section with header and container
 function na_render_entries_section($entries, $archived = false, $header = '', $container_id = '', $style = '') {
     ?>
     <h2 class="admin-na-header"><?php echo esc_html($header); ?></h2>
@@ -130,7 +126,6 @@ function na_render_entries_section($entries, $archived = false, $header = '', $c
                                 <?php echo $is_archived ? 'Restore' : 'Archive'; ?>
                             </button>
                         </div>
-
                         <button type="button" class="button-link delete-na-entry" style="color:red;">Delete Entry</button>
                     </div>
                     
@@ -139,7 +134,6 @@ function na_render_entries_section($entries, $archived = false, $header = '', $c
                     class="na-images"
                     name="na_entries[<?php echo $i; ?>][images]"
                     value="<?php echo esc_attr(implode(',', $entry['images'])); ?>">
-
                 <div class="na-preview">
                     <?php foreach ($entry['images'] as $url): ?>
                         <div class="na-thumb" style="background-image: url('<?php echo esc_url($url); ?>')">
@@ -152,8 +146,6 @@ function na_render_entries_section($entries, $archived = false, $header = '', $c
     </div>
     <?php
 }
-
-
 /** ------------------------------------------
  * UI/UX Cleanup
  * ------------------------------------------ */
@@ -161,8 +153,6 @@ add_action('admin_head', function () {
     if (!isset($_GET['page']) || $_GET['page'] !== 'new-acquisition') return;
     remove_menu_page('edit-comments.php');
 });
-
-
 /** ------------------------------------------
  * Frontend Assets
  * ------------------------------------------ */
@@ -176,15 +166,13 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_script('na-script', plugin_dir_url(__FILE__) . 'nq-custom.js', [], null, true);
     }
 });
-
 /** ------------------------------------------
  * Shortcode for Frontend Display
  * ------------------------------------------ */
 add_shortcode('new_acquisition', function () {
     $entries = get_option('na_data', []);
     if (!$entries) return '';
-
-
+    
     // Separate entries
     $active_entries = array_filter($entries, fn($e) => empty($e['archived']));
     $archived_entries = array_filter($entries, fn($e) => !empty($e['archived']));

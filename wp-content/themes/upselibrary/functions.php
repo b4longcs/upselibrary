@@ -262,3 +262,5 @@ add_action('admin_menu', function() {
         remove_menu_page('edit.php?post_type=page');
     }
 }, 999); 
+
+
