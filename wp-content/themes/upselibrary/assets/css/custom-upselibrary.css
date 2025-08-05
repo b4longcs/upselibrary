@@ -1,7 +1,8 @@
 
+
 :root {
     /* Font-related variables */
-    --font-primary: "Tex Gyre Adventor", sans-serif;
+    --font-primary: "TexGyreAdventor", sans-serif;
     --font-secondary: "Poppins", sans-serif;
     
     /* Text Size */
@@ -179,6 +180,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-primary);
+    font-weight: var(--fw-bold);
 }
 
 p, ul, li, a{
