@@ -1,0 +1,76 @@
+
+
+/* Carousel Module UI - Admin */
+.gs-carousel-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.gs-carousel-slot {
+    flex: 1 1 200px;
+    min-width: 200px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.gs-preview-container {
+    position: relative;
+    height: 100%;
+    background: #f9f9f9;
+    border: 1px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.gs-carousel-image {
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+
+.gs-carousel-slot button {
+    margin: 1rem 0 0 0 !important;
+}
+
+.gs-placeholder {
+    color: #999;
+    font-size: 14px;
+}
+
+.carousel-submit {
+    margin: 6rem 0 0 0 ;
+}
+
+.gs-remove-image {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background: #c00;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    line-height: 1.5;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+}
+
+.gs-remove-image:hover {
+    background: #fdd;
+}
+
+/*USER LOG */

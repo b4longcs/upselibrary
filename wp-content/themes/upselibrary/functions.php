@@ -263,4 +263,8 @@ add_action('admin_menu', function() {
     }
 }, 999); 
 
+add_action('admin_menu', function () {
+    remove_menu_page('edit-comments.php'); 
+});
+
 
