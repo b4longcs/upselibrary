@@ -73,4 +73,25 @@
     background: #fdd;
 }
 
-/*USER LOG */
+/* Admin: New User */
+.gs-meta-wrapper {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.gs-meta-wrapper p {
+    margin-bottom: 15px;
+}
+
+#college-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+#college-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

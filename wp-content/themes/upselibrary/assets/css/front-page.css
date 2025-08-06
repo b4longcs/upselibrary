@@ -855,10 +855,7 @@ input::placeholder {
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: start;
-    background-image: url(../images/bg-bg.jpg);
-    background-position: right bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: url(../images/bg-bg.jpg) no-repeat right bottom / cover;
     padding: 4.5em 2em;
     border-radius: 30px;
     width: 100%;

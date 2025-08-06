@@ -38,7 +38,7 @@ if (is_page('up-school-of-economics')) {
 <?php wp_body_open(); ?>
 <div id="site-preloader">
     <div class="loader-inner">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Loading">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="UPSE logo">
     </div>
 </div>
 <div id="progress-bar"></div> 
