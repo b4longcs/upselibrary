@@ -1,6 +1,7 @@
+// Gate System Frontend: Speech, Modal, Scanner, and Carousel
 let selectedVoice = null;
 
-// Load voices and select preferred voice
+// Load available voices
 function loadVoices() {
     return new Promise((resolve) => {
         const voices = speechSynthesis.getVoices();
@@ -12,19 +13,16 @@ function loadVoices() {
     });
 }
 
-// Estimate speech duration (optional utility)
+// Estimate speech duration
 function estimateSpeechDuration(text, rate = 0.9) {
     const words = text.trim().split(/\s+/).length;
     const avgWPM = 180;
-    const timeInMinutes = words / avgWPM;
-    return (timeInMinutes * 60000) / rate;
+    return (words / avgWPM) * 60000 / rate;
 }
 
-// Speak text with fallback and retry
+// Speak text with fallback
 window.speak = function (text, onEndCallback = null) {
     if (!window.speechSynthesis) return;
-
-    // Cancel current speech
     window.speechSynthesis.cancel();
 
     setTimeout(() => {
@@ -36,26 +34,19 @@ window.speak = function (text, onEndCallback = null) {
         msg.pitch = 1;
 
         let spoke = false;
-
         msg.onstart = () => { spoke = true; };
         msg.onend = () => {
-            if (typeof onEndCallback === 'function') {
-                onEndCallback();
-            }
+            if (typeof onEndCallback === 'function') onEndCallback();
         };
 
         speechSynthesis.speak(msg);
-
-        // Retry if not triggered
         setTimeout(() => {
-            if (!spoke) {
-                speechSynthesis.speak(msg);
-            }
+            if (!spoke) speechSynthesis.speak(msg);
         }, 500);
-    }, 250); // Slight delay to ensure cancel completes
+    }, 250);
 };
 
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', async () => {
     const input = document.getElementById('scanner-input');
     const modal = document.getElementById('scanner-modal');
     const overlay = document.getElementById('scanner-overlay');
@@ -66,30 +57,32 @@ document.addEventListener('DOMContentLoaded', async function () {
     const courseField = document.getElementById('scanner-course');
     const collegeField = document.getElementById('scanner-college');
 
-    // Load voices and set preferred one
+    // Init voices
     const voices = await loadVoices();
     selectedVoice = voices.find(v => v.lang === 'en-US' && v.name.includes('Google')) ||
                     voices.find(v => v.lang.startsWith('en'));
 
-    // Pre-warm speech engine with a silent utterance
-    const warmup = new SpeechSynthesisUtterance(' ');
-    warmup.volume = 0;
-    speechSynthesis.speak(warmup);
+    // Warmup
+    speechSynthesis.cancel();
+    setTimeout(() => {
+        const warmup = new SpeechSynthesisUtterance(' ');
+        warmup.volume = 0;
+        speechSynthesis.speak(warmup);
+    }, 100);
 
+    // Show modal
     function showModal(success, data = {}) {
         modal.classList.remove('hidden');
         overlay.classList.add('active');
 
         requestAnimationFrame(() => {
             if (success) {
-                message.textContent = 'Welcome!';
                 nameField.value = data.name || '';
                 courseField.value = data.course || '';
                 collegeField.value = data.college || '';
                 successDetails.classList.remove('hidden');
                 failMessage.classList.add('hidden');
             } else {
-                message.textContent = 'Access Denied';
                 nameField.value = '';
                 courseField.value = '';
                 collegeField.value = '';
@@ -113,33 +106,27 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    input.addEventListener('change', function () {
+    // Handle scan
+    input.addEventListener('change', () => {
         const barcode = input.value.trim();
         input.value = '';
-
         if (!barcode) return;
-
-        message.textContent = 'Processing...';
 
         fetch(gs_frontend.ajax_url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({
                 action: 'gs_scan_user',
-                barcode: barcode,
+                barcode,
                 nonce: gs_frontend.nonce
             })
         })
         .then(res => res.json())
-        .then(data => {
-            showModal(data.success, data.success ? data.data : null);
-        })
-        .catch(() => {
-            showModal(false);
-        });
+        .then(data => showModal(data.success, data.success ? data.data : null))
+        .catch(() => showModal(false));
     });
 
-    // Carousel
+    // Init carousel
     const slides = document.querySelectorAll('.carousel-slide');
     let index = 0;
     if (slides.length > 0) {
@@ -151,3 +138,29 @@ document.addEventListener('DOMContentLoaded', async function () {
         }, 4000);
     }
 });
+
+// Live date/time
+function updateDateTime() {
+    const date = new Date();
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+
+    const hour12 = hours % 12 || 12;
+
+    const paddedMinutes = minutes.toString().padStart(2, '0');
+    const paddedSeconds = seconds.toString().padStart(2, '0');
+
+    document.getElementById('current-date').textContent = date.toLocaleDateString('en-US', dateOptions);
+    document.getElementById('time-hm').textContent = `${hour12}:${paddedMinutes}:`;
+    document.getElementById('time-s').textContent = paddedSeconds;
+    document.getElementById('time-ampm').textContent = ` ${ampm}`;
+}
+setInterval(updateDateTime, 1000);
+updateDateTime();
+
+
+

@@ -1,16 +1,6 @@
 
-#scanner-input {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 15px;
-    font-size: 20px;
-    width: 300px;
-}
 
-/* Overlay */
-/* Ensure main app is behind overlay/modal */
+/* Gate Scanner CSS */
 #gate-scanner-app {
   position: relative;
   z-index: 1;
@@ -23,10 +13,13 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.7); /* semi-transparent black */
-    backdrop-filter: blur(6px); /* blur effect */
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
     opacity: 0;
     visibility: hidden;
+    -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+    -o-transition: opacity 0.3s ease, visibility 0.3s ease;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 999;
 }
@@ -36,48 +29,33 @@
     visibility: visible;
 }
 
-/* Modal with fade-in and slight zoom */
+/* HIDDEN UTILITY / Modal*/
 #scanner-modal {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
+    -webkit-transform: translate(-50%, -50%) scale(0.95);
+        -ms-transform: translate(-50%, -50%) scale(0.95);
+            transform: translate(-50%, -50%) scale(0.95);
     background: white;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     opacity: 0;
+    -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+    transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+    -o-transition: opacity 0.3s ease, transform 0.3s ease;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
     z-index: 1000;
 }
-
 #scanner-modal:not(.hidden) {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+        -ms-transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(1);
 }
-
-/* Modal Content */
-.modal-content {
-  background: #fff;
-  color: #000;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-  text-align: center;
-}
-
-.modal-content input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-}
-
-/* HIDDEN UTILITY */
-.hidden {
-  display: none !important;
-}
-
-
 #scanner-fail-message {
     color: #000 ;
     font-weight: bold;
@@ -86,6 +64,9 @@
     background-color: #fff;
 }
 
+.hidden {
+  display: none !important;
+}
 
 .modal-content {
     background: #fff !important;
@@ -95,7 +76,6 @@
     text-align: center;
     width: 300px;
 }
-
 .modal-content input {
     width: 100%;
     padding: 8px;
@@ -104,41 +84,366 @@
     border-radius: 4px;
 }
 
-
-/* Carousel Container */
-.carousel-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 700px;
-    height: 600px;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+/* --> Success modal */
+.scanner-success-details {
+    background-color: #fff;
 }
 
-/* Carousel Slides */
+.success-text {
+    font-size: 3rem !important;
+}
+
+.success-img {
+    width: 100%;
+    height: 100%;
+}
+
+.success-labels label {
+    font-size: 0.9rem !important;
+    font-weight: bold !important;
+}
+
+.success-label-text {
+  font-size: 1rem !important;
+  font-weight: bold;
+  color: #222;
+  background-color: transparent;
+  border: none !important;
+  border-bottom: 1px solid #000 !important;
+  border-radius: 0 !important;
+  line-height: 1;
+  width: 100%;
+  
+  -webkit-transition: border-color 0.3s ease, background-color 0.3s ease;
+  
+  -o-transition: border-color 0.3s ease, background-color 0.3s ease;
+  
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  outline: none !important;
+}
+
+/* Main front end */
+.gate-scanner-body {
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: "TexGyreAdventor", sans-serif;
+    height: 100dvh;
+}
+.gs-header-text {
+    background-color: #00573f;
+    padding: 0.4rem 2rem !important;
+}
+.gs-header-text p{
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+.gate-scanner-container {
+    background-color: #f5f5f5;
+    border-radius: 4rem;
+}
+
+.gate-scanner {
+    padding: 0 2rem;
+}
+
+.logo-div h5 {
+    font-size: 0.8rem;
+    font-family: poppins, sans-serif;
+    margin: 0;
+    letter-spacing: -0.5px;
+    color: #888;
+}
+
+.scanner-input-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+#scanner-input {
+    padding: 0.7rem 2rem;
+    font-size: 1rem; 
+    border: 1px solid #000000;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 320px;
+    outline: none;
+    background: #fff;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#scanner-input:focus {
+    border-color: hsl(0, 0%, 0%);
+    -webkit-box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.gate-logo {
+    height: auto;
+    width: 18rem;
+}
+
+.gate-static-section h1 {
+    font-size: 4rem;
+    letter-spacing: -1px;
+    margin: 1rem 0;
+    color: #00573f;
+}
+
+.gate-static-section span {
+    color: #000033;
+}
+
+.left-div, 
+.right-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+}
+
+.left-div {
+    width: 60%;
+}
+
+.left-div-container {
+    background-color: #f5f5f5;
+    border-radius: 2rem;
+}
+
+.right-div {
+    width: 40%;
+    margin-top: 5rem;
+}
+
+/* left-div */
+.input-ctr {
+    width: 40%;
+    background-color: #fff;
+    border-radius: 1.2rem;
+    padding: 2.5rem; 
+    text-align: center;
+}
+.gs-span-line {
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    text-align: center;
+    background-color: #888; 
+    margin: 0 1rem;   
+    text-align: center;  
+}
+/* Frontend - Time/Date */
+.datetime-box {
+    background-color: #fff;
+    border-radius: 1.2rem;
+    padding: 2.5rem;
+    width: 60%;
+    line-height: 0.8;
+}
+
+#current-date {
+    font-size: 2.3rem !important;
+    color: #00573f;
+    font-weight: bold;
+}
+
+#time-hm {
+  font-size: 6rem;
+  color: #00573f;
+  font-weight: bold;
+}
+
+#time-s {
+  font-size: 4rem;
+  color: #888;
+}
+
+#time-ampm {
+  font-size: 4rem !important;
+  color: #444;
+  font-weight: bold;
+}
+.gs-notice-left,
+.gs-notice-right {
+    border-radius: 16px;
+    gap: 1rem;
+     background-color: #fff;
+}
+
+.gs-notice-left {width: 70%;}
+.gs-notice-right {width: 30%;}
+
+.notices-img {
+    width: 18rem;
+    height: 15rem;
+    border-radius: 12px;
+}
+
+.notice-red-text {
+    font-size: 0.8rem;
+    color: red;
+    font-weight: bold;
+    font-family: poppins, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.notice-txt h2 {
+    font-size: 1.2rem;
+    color: #00573f;
+    letter-spacing: -0.4px;
+    font-family: poppins, sans-serif;
+    font-weight: bold;
+    display: inline-block; 
+    padding-bottom: 4px;
+    border-bottom: 1px solid #00573f; 
+}
+
+.notice-subtext {
+    font-size: 0.9rem;
+}
+
+/* Right div */
+/* Carousel Container */
+
+.carousel-container {
+    width: 40rem;
+    height: 40rem;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    border-radius: 1.2rem;
+}
+
 .carousel-slide {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
+    -webkit-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
     transition: opacity 1s ease-in-out;
     z-index: 0;
 }
 
-/* Active Slide */
 .carousel-slide.active {
     opacity: 1;
     z-index: 1;
 }
 
-/* Images inside slides */
 .carousel-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
-    pointer-events: none;
-    user-select: none;
+    -o-object-fit: cover;
+       object-fit: cover;
+    display: block;
+}
+
+.seal {
+    padding: 1.5rem 0 0 0 ;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    margin-top: auto; 
+}
+
+.seal-img {
+    width: 100%;
+    height: 6rem;
+    text-align: right;
+}
+
+.gs-span-line-three {
+    display: inline-block;
+    width: 6px;
+    height: 25px;
+    border-radius: 1rem;
+    text-align: center;
+    background-color: #00573f; 
+    margin: 0 1rem 0 0;   
+    text-align: center;   
+}
+
+/* Bootom div */
+
+.bottom-div {
+    background-color: #00573f;
+    padding: 12px;
+    margin: 1.7rem 0 0 0;
+}
+
+.bottom-div-one,
+.bottom-div-two {
+    gap: 5px;
+}
+
+.gs-span-line-two {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    text-align: center;
+    background-color: #ff0000; 
+    border-radius: 50%;
+    margin: 0 12px 0 0 ;   
+    text-align: center;  
+}
+
+.gs-social-text {
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.gs-social-icon {
+    width: 30px;
+    height: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-radius: 50%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 50%;
+}
+
+.gs-social-icon svg {
+    fill: #00573f;
+    width: 15px;
+    height: 15px;
+    -webkit-transition: fill 0.3s ease, -webkit-transform 0.3s ease;
+    transition: fill 0.3s ease, -webkit-transform 0.3s ease;
+    -o-transition: fill 0.3s ease, transform 0.3s ease;
+    transition: fill 0.3s ease, transform 0.3s ease;
+    transition: fill 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.web-svg {
+    width: 20px;
+    height: 20px;
 }
