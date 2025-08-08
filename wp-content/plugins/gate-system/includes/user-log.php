@@ -5,7 +5,7 @@ add_action('admin_menu', function () {
         'edit.php?post_type=gs_user',
         'User Log',
         'User Log',
-        'manage_options',
+        'edit_others_posts',
         'user-log',
         'gs_render_user_log_page'
     );

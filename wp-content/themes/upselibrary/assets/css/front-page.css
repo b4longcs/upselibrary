@@ -123,7 +123,7 @@
 .left-content-one p span{
     font-size: clamp(2.8rem, 6.5vw, 4.3rem);
     font-family: var(--font-primary);
-    font-weight: var(--fw-normal);
+    font-weight: var(--fw-bold);
     letter-spacing: clamp(-1.5px, 5vw, -2px);
 }
 .left-content-two {
@@ -251,8 +251,9 @@
     position: relative;
     padding: var(--button-padding-y) calc(var(--button-padding-x) + 1.1em);
     font-size: var(--tab-font-size);
-    font-weight: var(--tab-font-weight);
+    font-weight: var(--fw-bold);
     color: var(--clr-text-color);
+    font-family: var(--font-secondary);
     border-radius: var(--tab-border-radius);
     cursor: pointer;
     line-height: 1.5;
@@ -631,7 +632,8 @@ input::placeholder {
 .custom-recent-posts .cas-post-title {
     font-size: clamp(var(--fs-md), 2vw, var(--fs-reg));
     margin: 0;
-    font-weight: bold;
+    font-weight: var(--fw-bold);
+    font-family: var(--font-secondary);
     color: #135f43;
     max-width: 70%;
 }
@@ -791,7 +793,9 @@ input::placeholder {
     width: 100%;
     gap: 5em 4em;
     padding: 5%;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
   
 .grid-item {
@@ -862,18 +866,20 @@ input::placeholder {
     padding: 4.5em 2em;
     border-radius: 30px;
     width: 100%;
+    line-height: 1.1;
 }
 
 .upper-text {
     font-family: var(--font-primary);
     font-size: clamp(3.5rem, 8vw, 5.5rem);
+    font-weight: var(--fw-bold);
     color: var(--clr-text-color);
     letter-spacing: -2px;
     margin-bottom: -5% !important;
 }
 .bottom-text {
-    
     font-family: var(--font-primary);
+    font-weight: var(--fw-bold);
     font-size: clamp(3.5em, 8vw, 5.5rem);
     color: var(--clr-primary-color);
     letter-spacing: -2px;
@@ -957,12 +963,16 @@ input::placeholder {
 @media (max-width: 1024px) {
     .container {
         width: 93%;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
 
     .fp-hero-container {
         width: 95%;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
 
     .cas-post-title, .cas-post-excerpt {
@@ -1000,7 +1010,9 @@ input::placeholder {
     }
 
     .fp-social-media {
-        justify-content: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
     }
 
     #join-special-content h2 {

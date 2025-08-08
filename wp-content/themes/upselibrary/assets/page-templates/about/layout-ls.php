@@ -4,7 +4,7 @@
     <div class="d-flex justify-content-center flex-column align-items-center my-5 ">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/staff-header.png" alt="staff-hero-header" class="staff-header px-lg-5 px-md-4 px-sm-3">
     </div>
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/staff-Library.jpg" alt="staff-hero-img" class="staff-hero-img rounded-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/staff-library.jpg" alt="staff-hero-img" class="staff-hero-img rounded-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
 
 </section>
 <section class="ls-container pt-5">
@@ -35,7 +35,7 @@
             </div>
             <div class="team-member img-calvin" data-scrollreveal="enter bottom over 1s and move 50px after 0.15s">
                 <div class="info-box">
-                    <div class="name">Vacant</div>
+                    <div class="name">Calvin P. Guzman</div>
                     <div class="position">College Librarian II</div>
                     <div class="position"><i>Reference Librarian</i></div>
                 </div>
@@ -99,6 +99,12 @@
             <div class="team-member img-racz" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
                 <div class="info-box">
                     <div class="name">Raczil Cullano</div>
+                    <div class="position"><i>First Floor</i></div>
+                </div>
+            </div>
+            <div class="team-member img-roel" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
+                <div class="info-box">
+                    <div class="name">Roel D. Castillo</div>
                     <div class="position"><i>First Floor</i></div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ add_action('admin_menu', function () {
         'edit.php?post_type=gs_user',
         'Carousel',
         'Carousel',
-        'manage_options',
+        'edit_others_posts',
         'gs-carousel',
         'gs_carousel_page'
     );
@@ -22,7 +22,7 @@ add_action('admin_enqueue_scripts', function ($hook) {
 
 // 🎠 Carousel admin page with image uploader and preview
 function gs_carousel_page() {
-    if (!current_user_can('manage_options')) {
+    if (!current_user_can('edit_others_posts')) {
         wp_die(__('Unauthorized access.', 'gate-system'));
     }
 

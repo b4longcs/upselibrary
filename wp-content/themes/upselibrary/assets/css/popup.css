@@ -1,10 +1,7 @@
 
-
 /* ====================================
 // MODULE: Global: Popup
 // ====================================*/
-
-
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -12,11 +9,19 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     z-index: 10000;
     opacity: 0;
+    -webkit-transition: opacity 0.5s ease;
+    -o-transition: opacity 0.5s ease;
     transition: opacity 0.5s ease;
     pointer-events: none;
 }
@@ -27,32 +32,49 @@
 }
 
 .popup-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
     max-width: 600px;
     background: white;
-    padding: 0.6rem;
+    padding: 2rem;
+    gap: 0.7rem;
     border-radius: 1.5rem;
     overflow: hidden;
     position: relative;
-    flex-direction: row; 
-    align-items: center;
-    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row; 
+    -webkit-box-align: center; 
+        -ms-flex-align: center; 
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .popup-box img {
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
-    margin: 0.7rem;
-    border-radius: 10px;
+    width: 55%;
+    height: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 0.6rem;
 }
 
 .popup-content {
     padding: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     width: 50%; 
 }
 
@@ -64,9 +86,12 @@
 }
 
 .popup-header {
-    font-size: var(--fs-reg);
+    font-size: 2rem;
     margin: 10px 0;
-    line-height: 1.5em;
+    line-height: 1;
+    font-family: var(--font-secondary);
+    font-weight: var(--fw-bold);
+    letter-spacing: -0.5px;
     color: var(--clr-primary-color) !important;
 }
 
@@ -103,9 +128,15 @@
     right: 15px;
     background: none !important;
     cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     background: none;
     border: none;
     font-size: var(--fs-xlg) !important;
@@ -120,15 +151,20 @@
 
 @media (max-width: 500px) {
     .popup-box {
-        flex-direction: column; 
-        width: 75%;
-        padding: 1rem 0;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column; 
+        width: 85%;
+        padding: 2.5rem;
     }
 
     .popup-box img {
         width: 88%;
         height: auto;
-        align-self: center;
+        -ms-flex-item-align: center;
+            -ms-grid-row-align: center;
+            align-self: center;
         border: 0;
     }
 

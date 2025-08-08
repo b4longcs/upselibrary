@@ -18,9 +18,9 @@ require_once plugin_dir_path(__FILE__) . 'includes/user-log.php';
 // Enqueue frontend assets
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('gs-css', plugin_dir_url(__FILE__) . 'assets/css/gs-css.css');
-    wp_enqueue_script('gs-js', plugin_dir_url(__FILE__) . 'assets/js/gs-js.js', ['jquery'], null, true);
     wp_enqueue_style('tex-gyre', 'https://fonts.cdnfonts.com/css/tex-gyre-adventor');
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+    wp_enqueue_style('chartjs', '"https://cdn.jsdelivr.net/npm/chart.js"');
 
     if (is_page_template('page-gate-scanner.php')) {
         wp_enqueue_style('gs-frontend-style', plugin_dir_url(__FILE__) . 'assets/css/scanner.css');
@@ -29,6 +29,9 @@ add_action('wp_enqueue_scripts', function () {
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce'    => wp_create_nonce('gs_frontend_nonce'),
         ]);
+
+        // Enqueue the fullscreen helper script here
+        wp_enqueue_script('gs-js', plugin_dir_url(__FILE__) . 'assets/js/gs-js.js', [], null, true);
     }
 });
 
@@ -142,3 +145,65 @@ function esc_csv($value) {
     $value = str_replace('"', '""', $value); // escape double quotes
     return $value;
 }
+
+// Add Dashboard Widget for Daily User Logs Graph
+add_action('wp_dashboard_setup', function () {
+    wp_add_dashboard_widget('gs_daily_logs', 'Gate System – Daily User Logs', 'gs_render_daily_logs_widget');
+});
+
+function gs_render_daily_logs_widget() {
+    $csv_file = plugin_dir_path(__FILE__) . 'gate-logs.csv';
+    $daily_counts = file_exists($csv_file)
+        ? array_reduce(array_map('str_getcsv', file($csv_file)), function ($carry, $row) {
+            if (!empty($row[5])) $carry[trim($row[5])] = ($carry[trim($row[5])] ?? 0) + 1;
+            return $carry;
+        }, [])
+        : [];
+
+    uksort($daily_counts, fn($a, $b) => strtotime($a) - strtotime($b));
+
+    $dates  = array_keys($daily_counts);
+    $counts = array_values($daily_counts);
+
+    $today       = date('F d, Y');
+    $week_start  = strtotime('monday this week');
+    $today_total = $daily_counts[$today] ?? 0;
+    $week_total  = array_sum(array_filter($daily_counts, fn($count, $date) => strtotime($date) >= $week_start, ARRAY_FILTER_USE_BOTH));
+    $total_scans = array_sum($counts);
+    ?>
+    <style>
+    .gs-summary{display:flex;gap:8px;margin-bottom:15px;font-family:'Poppins',sans-serif}
+    .gs-tile{flex:1;border:1px solid #000;padding:16px;border-radius:12px;text-align:center}
+    .gs-tile h3{margin:0;font-size:22px !important;font-weight:bold !important;color:#000}
+    .gs-tile span{display:block;font-size:12px;color:#000;font-weight:bold;margin-top:4px;text-transform:uppercase}
+    </style>
+
+    <div class="gs-summary">
+        <?php foreach ([['Today',$today_total],['This Week',$week_total],['All Time',$total_scans]] as [$label,$val]): ?>
+            <div class="gs-tile"><h3><?= $val ?></h3><span><?= $label ?></span></div>
+        <?php endforeach; ?>
+    </div>
+
+    <canvas id="gs-daily-logs-chart" height="200"></canvas>
+    <script>
+    document.addEventListener('DOMContentLoaded',function(){
+        new Chart(document.getElementById('gs-daily-logs-chart'),{
+            type:'bar',
+            data:{
+                labels:<?= json_encode($dates) ?>,
+                datasets:[{data:<?= json_encode($counts) ?>,backgroundColor:'#00573f',borderWidth:0,borderRadius:4}]
+            },
+            options:{
+                responsive:true,
+                plugins:{legend:{display:false},tooltip:{titleFont:{family:'Poppins'},bodyFont:{family:'Poppins'}}},
+                scales:{
+                    x:{ticks:{font:{family:'Poppins'}}},
+                    y:{beginAtZero:true,ticks:{font:{family:'Poppins'},stepSize:1}}
+                }
+            }
+        });
+    });
+    </script>
+    <?php
+}
+

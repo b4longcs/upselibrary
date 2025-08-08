@@ -3,13 +3,13 @@
 add_action('admin_menu', function () {
     add_submenu_page(
         'edit.php?post_type=gs_user',
-        'Export Logs',
-        'Export Logs',
-        'manage_options',
+        'Export Users Logs',
+        'Export Users Logs',
+        'edit_others_posts',
         'export-logs',
         function () {
-            if (!current_user_can('manage_options')) {
-                wp_die(__('Unauthorized access.', 'textdomain'));
+            if (!current_user_can('edit_others_posts')) {
+                wp_die(__('Unauthorized access.'));
             }
 
             $file_path = plugin_dir_path(dirname(__FILE__)) . 'gate-logs.csv';
@@ -67,12 +67,12 @@ add_action('admin_init', function () {
     if (isset($_POST['export_logs'])) {
         // Validate nonce for CSRF protection
         if (!isset($_POST['gs_export_logs_nonce']) || !wp_verify_nonce($_POST['gs_export_logs_nonce'], 'gs_export_logs_action')) {
-            wp_die(__('Security check failed', 'textdomain'));
+            wp_die(__('Security check failed'));
         }
 
         // Check user capability
-        if (!current_user_can('manage_options')) {
-            wp_die(__('Unauthorized export attempt.', 'textdomain'));
+        if (!current_user_can('edit_others_posts')) {
+            wp_die(__('Unauthorized export attempt.'));
         }
 
         // Sanitize inputs
@@ -83,17 +83,17 @@ add_action('admin_init', function () {
         $start_ts = strtotime($start_date . ' 00:00:00');
         $end_ts = strtotime($end_date . ' 23:59:59');
         if (!$start_ts || !$end_ts) {
-            wp_die(__('Invalid date range provided.', 'textdomain'));
+            wp_die(__('Invalid date range provided.'));
         }
 
         $file_path = plugin_dir_path(dirname(__FILE__)) . 'gate-logs.csv';
         if (!file_exists($file_path)) {
-            wp_die(__('Log file not found.', 'textdomain'));
+            wp_die(__('Log file not found.'));
         }
 
         $handle = fopen($file_path, 'r');
         if (!$handle) {
-            wp_die(__('Unable to open log file.', 'textdomain'));
+            wp_die(__('Unable to open log file.'));
         }
 
         $all_rows = [];
@@ -103,7 +103,7 @@ add_action('admin_init', function () {
         fclose($handle);
 
         if (empty($all_rows)) {
-            wp_die(__('No logs found.', 'textdomain'));
+            wp_die(__('No logs found.'));
         }
 
         $header = $all_rows[0];
@@ -123,7 +123,7 @@ add_action('admin_init', function () {
         }
 
         if (empty($filtered_rows)) {
-            wp_die(__('No logs match the selected filters.', 'textdomain'));
+            wp_die(__('No logs match the selected filters.'));
         }
 
         // Output CSV

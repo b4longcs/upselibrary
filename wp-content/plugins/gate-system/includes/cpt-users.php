@@ -22,6 +22,13 @@ add_action('admin_head', function () {
         echo '<style>
             .column-barcode, .column-college, .column-type { font-weight: 600; }
             .column-name { color: #0073aa; }
+
+            .wp-list-table .row-actions {
+                visibility: hidden;
+            }
+            .wp-list-table tr:hover .row-actions {
+                visibility: visible;
+            }
         </style>';
     }
 });
