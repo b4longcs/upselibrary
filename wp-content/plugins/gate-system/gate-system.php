@@ -95,7 +95,6 @@ add_action('wp_ajax_gs_save_user_meta', function () {
     wp_send_json_success(['message' => 'User metadata saved.', 'post_id' => $post_id]);
 });
 
-
 // AJAX: Handle frontend scan request
 add_action('wp_ajax_gs_scan_user', 'gs_handle_scan');
 add_action('wp_ajax_nopriv_gs_scan_user', 'gs_handle_scan');
