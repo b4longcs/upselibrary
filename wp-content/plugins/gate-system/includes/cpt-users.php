@@ -8,6 +8,7 @@ add_action('init', function () {
             'add_new_item'  => 'Add New User',
         ],
         'public'        => false,
+        'exclude_from_search' => true,
         'show_ui'       => true,
         'menu_icon'     => 'dashicons-id-alt',
         'supports'      => [],

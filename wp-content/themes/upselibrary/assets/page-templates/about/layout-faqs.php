@@ -1,4 +1,4 @@
-<?php echo '<!-- layout-bf.php loaded -->'; ?>
+<?php echo '<!-- layout-faqs.php loaded -->'; ?>
 
 <section class="faq-hero d-flex flex-column align-items-center justify-content-center" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/faq.svg" id="faq-img" alt="faq-img">
