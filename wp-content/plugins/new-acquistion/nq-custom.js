@@ -108,9 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apply flatpickr on page load
     enhanceDatePickers();
 
+    // Mutation observer — only observe if container exists
     const observer = new MutationObserver(enhanceDatePickers);
-    observer.observe(activeContainer, { childList: true, subtree: true });
-    observer.observe(archivedContainer, { childList: true, subtree: true });
+    [activeContainer, archivedContainer].forEach(container => {
+        if (container) observer.observe(container, { childList: true, subtree: true });
+    });
 
     // Event delegation: handle all button actions
     document.addEventListener('click', (e) => {

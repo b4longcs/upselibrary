@@ -28,7 +28,7 @@ defined('ABSPATH') || exit;
             <div class="gate-static-section my-5">
                 <h1>Hello, <span> Welcome to UPSE Library!<span></h1>
             </div>
-            <div class="left-div-container d-flex flex-column align-items-left justify-content-start p-4">
+            <div class="left-div-container d-flex flex-column align-items-left justify-content-start p-3">
                 <div class="scanner-div w-100 d-flex align-items-center flex-row my-1 gap-3 justify-content-evenly">
                     
                     <div class="input-ctr h-100">

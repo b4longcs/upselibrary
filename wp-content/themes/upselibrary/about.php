@@ -1,6 +1,6 @@
 <?php 
 /*
-Template Name: About
+Template Name: About Us
 */
 get_header(); ?>
 <section class="container" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
@@ -8,7 +8,7 @@ get_header(); ?>
     <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap my-5">
         <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
             <div class="left-hero-header d-flex justify-content-center  flex-column">
-                <p class="hero-header-one">About</p>
+                <p class="hero-header-one">About Us</p>
                 <span class="menu-category-page"></span>
                 
             </div>

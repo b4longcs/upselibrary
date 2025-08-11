@@ -14,7 +14,7 @@ get_header();
             'general-policy' => 'gp',
             'library-guides' => 'lg',
             'library-staff' => 'ls',
-            'faq' => 'faq',
+            'faqs' => 'faqs',
             'contact-us' => 'cu',
         ],
         'resources' => [
