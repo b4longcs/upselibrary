@@ -98,7 +98,7 @@
 <section class="more-related  py-5">
     <section class="more-news-container d-flex">
         <span class="more-spaces"></span>
-        <h2 class="related-header-text">Want more of this?</h2>
+        <h2 class="related-header-text">Want more of these?</h2>
     </section>
     <div class="related-posts">
         <?php

@@ -21,9 +21,11 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('tex-gyre', 'https://fonts.cdnfonts.com/css/tex-gyre-adventor');
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
     
+    
 
     if (is_page_template('page-gate-scanner.php')) {
         wp_enqueue_style('gs-frontend-style', plugin_dir_url(__FILE__) . 'assets/css/scanner.css');
+        wp_enqueue_script('chartjs', 'https://cdn.jsdelivr.net/npm/chart.js', [], null, true);
         wp_enqueue_script('chartjs', 'https://cdn.jsdelivr.net/npm/chart.js', [], null, true);
         wp_enqueue_script('gs-frontend-script', plugin_dir_url(__FILE__) . 'assets/js/scanner.js', [], null, true);
         wp_localize_script('gs-frontend-script', 'gs_frontend', [
@@ -36,14 +38,23 @@ add_action('wp_enqueue_scripts', function () {
     }
 });
 
+// Hide Gate Scanner page from search
+add_action('pre_get_posts', function($query) {
+    if (!is_admin() && $query->is_main_query() && $query->is_search()) {
+        $page = get_page_by_path('gate-scanner'); // Page slug
+        if ($page) {
+            $query->set('post__not_in', [$page->ID]);
+        }
+    }
+});
+
+
 add_action('admin_menu', function () {
     if (!is_admin()) return;
 
     $user = wp_get_current_user();
     $username = $user->user_login;
     $roles = (array) $user->roles;
-
-    // Block access for Subscriber, Author, Contributor completely
     $blocked_roles = ['subscriber', 'author', 'contributor'];
 
     // If user has any blocked role, remove all plugin menus including Gate System CPT
