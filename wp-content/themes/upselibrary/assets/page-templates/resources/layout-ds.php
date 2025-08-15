@@ -17,11 +17,11 @@
     </section>
     <section class="global-pages-content my-5 my-lg-3 my-md-2 my-sm-2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="gp-datasets" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-            <a href="https://psada.psa.gov.ph/home"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/psa.png" alt=""></a>
-            <a href="https://comtradeplus.un.org/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/comtradelogo.png" alt=""></a>
-            <a href="https://www.ceicdata.com/en"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ceic.webp" alt=""></a>
-            <a href="https://www.gtap.agecon.purdue.edu/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/eikon.webp" alt=""></a>
-            <a href="https://eikon.refinitiv.com/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/gtap.png" alt=""></a>
+            <a href="https://psada.psa.gov.ph/home"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/psa.png" alt="PSA"></a>
+            <a href="https://comtradeplus.un.org/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/comtradelogo.png" alt="Comtrade Plus"></a>
+            <a href="https://www.ceicdata.com/en"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ceic.webp" alt="CEIC Data"></a>
+            <a href="https://www.gtap.agecon.purdue.edu/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/eikon.webp" alt="EIKON with Datastream"></a>
+            <a href="https://eikon.refinitiv.com/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/gtap.png" alt="GTAP Database"></a>
         </div>
     </section>
     <section class="spacer"></section>

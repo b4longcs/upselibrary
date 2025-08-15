@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/datasets-img.svg" alt="global-hero-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/datasets-img.svg" alt="Thesis and Dissertation Binding Guide Image">
     </div>
 </section>
 <section class="tdb-container">

@@ -9,7 +9,7 @@
         <!-- <div class="left-hero-subsubheader"></div> -->
     </div>
     <div class="global-right-hero">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/printcollection-img.svg" alt="global-hero-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/printcollection-img.svg" alt="Print Collection Image">
     </div>
 </section>
 

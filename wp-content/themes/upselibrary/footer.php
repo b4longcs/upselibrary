@@ -5,7 +5,7 @@
         <div class="logo-container mt-5">
             <div class="logo">
                 <a href="<?php echo home_url(); ?>">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Logo">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="UPSE Logo">
                 </a>
             </div> 
             <div class="social-media gap-4 pt-3">
@@ -27,7 +27,7 @@
                     </svg>
                 </a>
             </div>
-            <img class="seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/seal.png" alt="Logo">
+            <img class="seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/seal.png" alt="Seal">
 
         </div>
         <div class="footer-container mt-5">
@@ -62,9 +62,9 @@
                     <span class="span-line mb-4 w-75"></span>
                     <ul>
                         <li>
-                            <a href="">168 osmeña ave.</a>
-                            <a href="">diliman</a>
-                            <a href="">Quezon City, Manila</a>
+                            <a href="#" class="no-click">168 osmeña ave.</a>
+                            <a href="#" class="no-click">diliman</a>
+                            <a href="#" class="no-click">Quezon City, Manila</a>
                         </li>
                     </ul>
                 </div>
@@ -73,8 +73,8 @@
                     <span class="span-line mb-4 w-75"></span>
                     <ul>
                         <li>
-                            <a class="special-a" href="">upselibrary.upd@up.edu.ph</a>
-                            <a href="">(02)8981-8500 loc. 3488</a>
+                            <a class="special-a no-click" href="#">upselibrary.upd@up.edu.ph</a>
+                            <a href="#" class="no-click">(02)8981-8500 loc. 3488</a>
                         </li>
                     </ul>
                 </div>

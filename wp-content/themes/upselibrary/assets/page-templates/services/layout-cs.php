@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="global-right-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ref-cir-img.svg" alt="global-hero-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ref-cir-img.svg" alt="Circulation Service Image">
     </div>
 </section>
 <section class="circulation-grid my-5 my-lg-3 my-md-2 my-sm-2">

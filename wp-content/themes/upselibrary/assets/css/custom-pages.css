@@ -1107,6 +1107,7 @@
 .read-more-button {
     padding: var(--button-padding-y) var(--button-padding-x);
     font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
     border-radius: 20px;
     background-color: var(--clr-primary-color);
     color: var(--clr-white);

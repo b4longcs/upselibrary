@@ -12,7 +12,7 @@
             </div> -->
         </div>
         <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/archives-img.svg" alt="global-hero-img">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/archives-img.svg" alt="Archives Collection Image">
         </div>
     </section>
     <section class="global-pages-content my-5 my-lg-3 my-md-2 my-sm-2">

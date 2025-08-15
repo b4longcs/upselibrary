@@ -2,7 +2,7 @@
 /**
  * Plugin Name: New Acquisition
  * Description: Manage book acquisition dates and images, displayed as an accordion on the New Acquisition Page.
- * Version: 1.035
+ * Version: 1.00
  * Author: Jonathan Tubo
  */
 

@@ -9,7 +9,7 @@
         
     </div>
     <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/contact-us.svg" alt="global-hero-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/contact-us.svg" alt="Contact Us Image">
     </div>
 </section>
 <div class="global-pages-container pt-5 py-4 px-lg-5 px-md-3 px-sm-2" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">

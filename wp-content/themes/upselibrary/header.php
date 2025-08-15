@@ -1,39 +1,69 @@
 <?php
-if (is_page('up-school-of-economics')) {
-    $page_title = "UP School of Economics";
-    $page_description = "Welcome to the UP School of Economics Library, home to world-class education and research in economics. Learn more about our services and resources.";
-    $canonical_url = "https://selib.upd.edu.ph/up-school-of-economics";
-    $og_image = "https://selib.upd.edu.ph/images/logo.png";
-    $twitter_image = "https://www.selib.upd.edu.phges/logo.png";
-} else {
-    $page_title = get_bloginfo('name'); 
-    $page_description = get_bloginfo('description'); 
-    $canonical_url = get_permalink();
-    $og_image = get_theme_mod('default_og_image', 'https://www.selib.upd.edu.ph/ault-image.jpg'); 
-    $twitter_image = get_theme_mod('default_twitter_image', 'https://www.selib.upd.edu.ph/ault-twitter-image.jpg'); 
-}
-?>
+    if ( is_singular() ) {
+        $page_title       = single_post_title('', false) . ' | ' . get_bloginfo('name');
+        $page_description = wp_strip_all_tags(get_the_excerpt(), true);
+        $canonical_url    = get_permalink();
+        $og_type          = 'article';
 
+        if ( has_post_thumbnail() ) {
+            $og_image = get_the_post_thumbnail_url(null, 'full');
+        }
+    } elseif ( is_home() || is_front_page() ) {
+        $page_title       = get_bloginfo('name');
+        $page_description = get_bloginfo('description');
+        $canonical_url    = home_url('/');
+        $og_type          = 'website';
+    } elseif ( is_archive() ) {
+        $page_title       = wp_get_document_title();
+        $page_description = get_bloginfo('description');
+        $canonical_url    = get_pagenum_link();
+        $og_type          = 'website';
+    } else {
+        $page_title       = wp_get_document_title();
+        $page_description = get_bloginfo('description');
+        $canonical_url    = home_url($_SERVER['REQUEST_URI']);
+        $og_type          = 'website';
+    }
+
+    // Fallback images
+    if ( empty($og_image) ) {
+        $og_image = get_theme_mod('default_og_image', 'https://selib.upd.edu.ph/logo.png');
+    }
+    $twitter_image = $og_image;
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo esc_html($page_title); ?></title>
+
+    <!-- SEO -->
     <meta name="description" content="<?php echo esc_attr($page_description); ?>">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="<?php echo esc_url($canonical_url); ?>">
+
+    <!-- Open Graph -->
     <meta property="og:title" content="<?php echo esc_attr($page_title); ?>">
     <meta property="og:description" content="<?php echo esc_attr($page_description); ?>">
     <meta property="og:image" content="<?php echo esc_url($og_image); ?>">
     <meta property="og:url" content="<?php echo esc_url($canonical_url); ?>">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="<?php echo esc_attr($og_type); ?>">
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo esc_attr($page_title); ?>">
     <meta name="twitter:description" content="<?php echo esc_attr($page_description); ?>">
     <meta name="twitter:image" content="<?php echo esc_url($twitter_image); ?>">
+
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="4k4x7bluyoP97G13q9x0nTO1yJ8TlQZTN0lHowBgKm8">
+
     <?php wp_head(); ?>
 </head>
+
+
+
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="site-preloader">

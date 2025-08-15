@@ -7,13 +7,13 @@
     <div class="fp-hero-container" >
         <div class="fp-left-hero" data-scrollreveal="enter bottom over 1s and move 30px">
                 <div class="left-content-one my-4">
-                    <p><span class="left-content-one-normal">Supplying</span></p>
-                    <p><span class="left-content-one-highlight">Information</span></p>
-                    <p><span class="left-content-one-normal">on Demand</span></p>
+                    <h1 class="left-content-one-normal">Supplying</h1>
+                    <h1 class="left-content-one-highlight">information</h1>
+                    <h1 class="left-content-one-normal">on demand</h1>
                 </div>
-                <div class="fp-left-content-two mt-5">
-                    <a href="#from-GetS" class="custom-button-one me-2" >Get Started</a>
-                    <a href="/about" class="custom-button-two me-2">About Us</a>
+                <div class="fp-left-content-two mt-lg-5 mt-md-3 mt-sm-2">
+                    <a href="#from-GetS" class="custom-button-one me-2" >Get started </a>
+                    <a href="/about" class="custom-button-two me-2">About us</a>
                 </div>
         </div>
         <div class="fp-right-hero" data-scrollreveal="enter bottom over 1s and move 30px after 0.2s">
@@ -57,7 +57,7 @@
                         <input class="form-control" maxlength="60" size="60" name="lookfor" type="text" placeholder="Tuklas: Search anything">
                     </div>
                     <div class="form-group">
-                        <button class="search" type="submit">SEARCH</button>
+                        <button class="search" type="submit">Search</button>
                     </div>
                 </form>
             </div>
@@ -67,7 +67,7 @@
                         <input class="form-control" maxlength="100" size="60" name="query" type="text" placeholder="ETD: Search anything">
                     </div>
                     <div class="form-group">
-                        <button class="search" type="submit">SEARCH</button>
+                        <button class="search" type="submit">Search</button>
                     </div>
                 </form>
             </div>
@@ -77,7 +77,7 @@
                         <input class="form-control" maxlength="60" size="60" name="q" type="text" placeholder="EBSCO: Search anything">
                     </div>
                     <div class="form-group">
-                        <button class="search" type="submit">SEARCH</button>
+                        <button class="search" type="submit">Search</button>
                     </div>
                 </form>
             </div>
@@ -119,7 +119,7 @@
                 endif;
                 ?>
             </div>
-            <a class="global-button" href="/current-awareness-service">See More</a>
+            <a class="global-button" href="/current-awareness-service">See more</a>
         </div>
     </section>
     <span class="separator d-flex justify-content-center align-items-center" data-scrollreveal="enter bottom over 1s and move 30px after 0.4s">
@@ -133,7 +133,7 @@
     </span>
     <section class="collection align-items-center">
         <div class="collection-left" data-scrollreveal="enter bottom over 1s and move 30px">
-            <img class="collection-left-img" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/collection-img.png" alt="collection-image">
+            <img class="collection-left-img" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/collection-img.png" alt="Collection Image">
         </div>
         <div class="collection-right" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
             <p class="collection-category">Collection</p>
@@ -153,7 +153,7 @@
                 including research assistance, study spaces, and access to online databases.
             </p>
             <a class="global-button" href="/services">
-                <span class="dots">View More</span> 
+                <span class="dots">View more</span> 
             </a>
         </div>
 
@@ -167,7 +167,7 @@
                 and enhance your learning experience with us.
             </p>
             <a class="global-button" href="/resources">
-                <span class="dots">View More</span> 
+                <span class="dots">View more</span> 
             </a>
         </div>
     </section>
@@ -206,7 +206,7 @@
         </div>
         <div class="na-button" data-scrollreveal="enter bottom over 1s and move 30px after 0.15s">
             <a class="global-button" href="/new-acquisition" data-scrollreveal="enter bottom over 1s and move 30px after 0.16s" >
-                <span class="dots">View All</span> 
+                <span class="dots">View all</span> 
             </a>
         </div>
     </section>

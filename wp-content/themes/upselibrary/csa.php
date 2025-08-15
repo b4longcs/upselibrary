@@ -16,7 +16,7 @@ get_header(); ?>
             
         </div>
         <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/databases-img.svg" alt="global-hero-img">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/databases-img.svg" alt="Current Awareness Service Image">
         </div>
     </section>
     <h1 class="my-5" id="post-list-title" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">Latest Updates</h1>

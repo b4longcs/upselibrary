@@ -7,14 +7,21 @@
                     <article>
                         <?php custom_breadcrumb(); ?>
                         
-                        <h1 class="post-title mb-5"><?php the_title(); ?></h1>
+                        <h1 class="post-title mb-2"><?php the_title(); ?></h1>
                         
+                        
+                        <p class="post-meta mt-3 mb-2">
+                            <span class="post-date"><b>Published:</b> <?php echo get_the_date( get_option( 'date_format' ) ); ?></span>
+                        </p>
+                        <div class="span-line my-4"></div>
+                        <div class="post-content">
+                            <?php the_content(); ?>
+                        </div>
                         <?php
                             $tags = get_the_tags();
                             if ($tags) :
                         ?>
-                            <div class="post-tags my-2 ml-3">
-                                <span class="tag-label">Tags:</span>
+                            <div class="post-tags my-3">
                                 <?php foreach ($tags as $tag) : ?>
                                     <span class="tag-badge">
                                         <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">
@@ -24,14 +31,6 @@
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
-                        <p class="post-meta mt-3 mb-2">
-                            <span class="post-date">Published: <?php echo get_the_date( get_option( 'date_format' ) ); ?></span>
-                            | <span class="post-time"><?php echo get_the_time( get_option( 'time_format' ) ); ?></span>
-                        </p>
-                        <div class="span-line my-4"></div>
-                        <div class="post-content">
-                            <?php the_content(); ?>
-                        </div>
                     </article>
                     <div class="post-navigation">
                         <div class="nav-previous">
@@ -159,7 +158,7 @@
     <section class="single-most">
         <section class="more-news-container d-flex mt-2">
             <span class="more-spaces"></span>
-            <h2 class="related-header-text">Most Recent Updates</h2>
+            <h2 class="related-header-text">Library News & Highlights</h2>
         </section>
         <section class="most-grid mt-3">
             <?php

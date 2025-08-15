@@ -20,7 +20,7 @@ get_header(); ?>
             
         </div>
         <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.25s">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/visitor-header-img.svg" alt="right-hero-img" class="right-hero-img">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/visitor-header-img.svg" alt="Visitor Hero Image" class="right-hero-img">
         </div>
     </div>
 </section>

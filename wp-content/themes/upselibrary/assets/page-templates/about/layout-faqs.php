@@ -1,7 +1,7 @@
 <?php echo '<!-- layout-faqs.php loaded -->'; ?>
 
 <section class="faq-hero d-flex flex-column align-items-center justify-content-center" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/faq.svg" id="faq-img" alt="faq-img">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/faq.svg" id="faq-img" alt="FAQs Image">
     <h2 class="faq-hero-text h1">Frequently Asked Questions</h2>
 </section>
 

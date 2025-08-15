@@ -96,7 +96,7 @@
 }
 
 .popup-text {
-    font-size: var(--fs-md);
+    font-size: var(--fs-reg);
     font-family: var(--font-secondary);
     color: var(--clr-text-color) !important;
     margin: 0.2rem 0 0.9rem;
@@ -175,7 +175,6 @@
 
     .popup-header {
         text-align: center;
-        
     }
 
     .popup-content {
@@ -184,7 +183,7 @@
     }
 
     .popup-text {
-        font-size: var(--fs-md);
+        font-size: var(--fs-reg);
         margin: 0;
         text-align: center;
     }

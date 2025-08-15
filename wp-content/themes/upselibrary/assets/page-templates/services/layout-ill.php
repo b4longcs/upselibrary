@@ -12,12 +12,12 @@
         </div>
     </div>
     <div class="global-right-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/interlibrary-img.svg" alt="global-hero-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/interlibrary-img.svg" alt="Interlibrary Loan Image">
     </div>
 </section>
 <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap-reverse mt-5">
     <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/referral-img.svg" alt="global-hero-img">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/referral-img.svg" alt="Referral Image">
     </div>
     <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
         <div class="left-hero-header d-flex justify-content-center  flex-column" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">

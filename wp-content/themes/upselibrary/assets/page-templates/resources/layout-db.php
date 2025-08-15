@@ -19,10 +19,9 @@
     </section>
     <section class="global-pages-content my-5 my-lg-3 my-md-2 my-sm-2">
         <div class="gp-databases" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
-            <a href="https://www.ceicdata.com/en"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ceic.webp" alt=""></a>
-            <a href="https://www.gtap.agecon.purdue.edu/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/eikon.webp" alt=""></a>
-            <a href="https://eikon.refinitiv.com/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/gtap.png" alt=""></a>
-            
+            <a href="https://www.ceicdata.com/en"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/ceic.webp" alt="CEIC Data"></a>
+            <a href="https://www.gtap.agecon.purdue.edu/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/eikon.webp" alt="EIKON with Datastream"></a>
+            <a href="https://eikon.refinitiv.com/"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/gtap.png" alt="GTAP Database"></a>
         </div>
     </section>
     <section class="spacer"></section>

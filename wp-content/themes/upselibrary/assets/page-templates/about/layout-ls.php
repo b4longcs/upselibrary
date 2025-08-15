@@ -2,9 +2,9 @@
 
 <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
     <div class="d-flex justify-content-center flex-column align-items-center my-5 ">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/staff-header.png" alt="staff-hero-header" class="staff-header px-lg-5 px-md-4 px-sm-3">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/staff-header.png" alt="Staff Hero Header" class="staff-header px-lg-5 px-md-4 px-sm-3">
     </div>
-    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/staff-library.jpg" alt="staff-hero-img" class="staff-hero-img rounded-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/staff-library.jpg" alt="Staff Library Image" class="staff-hero-img rounded-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
 
 </section>
 <section class="ls-container pt-5">

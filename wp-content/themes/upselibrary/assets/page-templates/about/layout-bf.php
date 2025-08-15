@@ -16,7 +16,7 @@
 </section>
 <section class="bf-container" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
     <div class="img-container my-5 " data-scrollreveal="enter bottom over 1s and move 50px after 0.2s">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brief-history.jpg" alt="bf-image" class="bf-image">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/brief-history.jpg" alt="bf-image" class="Brief History Image">
         <p class="bf-img-text has-text-align-center">At present, the print collection of the Library is comprised of more than 80,000 volumes of books.</p>
     </div>
     <p class="bf-content my-4 px-lg-5 px-md-3 px-sm-1" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">The UP School of Economics (UPSE) Library started in 1965 when the School was established as a separate unit of the University of the Philippines. The Library collection of the former Institute of Economic Development and Research (IEDR) formed the core collection of the School of Economics Library.</p>

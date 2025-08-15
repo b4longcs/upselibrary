@@ -16,6 +16,7 @@
     /* Font Weight */
     --fw-snormal: 300;
     --fw-normal: 400;
+    --fw-slight-bold: 500;
     --fw-semi-bold: 600;
     --fw-bold: 700;
     --fw-xbold: 800;
@@ -105,7 +106,7 @@
     overflow-wrap: break-word;
     margin: 1.3rem 0 !important;
     line-height: 1.85;
-    font-size: calc(var(--fs-md) + 0.15rem);
+    font-size: var(--fs-lg);
 }
 
 .post-content h1,
@@ -333,6 +334,12 @@ p, ul, li, a{
         flex-wrap: wrap;
     text-transform: none;
 }
+.no-click {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: inherit;
+}
 /* END OF FOOTER */
 
 /* Single Post */
@@ -381,6 +388,7 @@ p, ul, li, a{
 
 .post-date {
     font-size: calc(var(--fs-sm) + .05rem);
+    color: var(--clr-accent-color);
 }
 
 .post-time {
@@ -412,8 +420,8 @@ p, ul, li, a{
 .tag-badge {
     display: inline-block;
     background-color: var(--clr-primary-color);
-    padding: calc(var(--button-padding-y) - .2rem) calc(var(--button-padding-x) + .1rem)!important;
-    margin: .4rem .15rem 0;
+    padding: calc(var(--button-padding-y) + 0.1rem) calc(var(--button-padding-x) + 0.1rem)!important;
+    margin: 0.4rem 0 0;
     font-size: var(--fs-sm);
     border-radius: 1.2rem;
     -webkit-transition: background-color 0.2s;
@@ -425,7 +433,9 @@ p, ul, li, a{
 }
 
 .tag-badge a {
-    color:var(--clr-bg-color);
+    color: var(--clr-bg-color);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semi-bold);
     text-decoration: none;
 }
 
@@ -921,6 +931,7 @@ p, ul, li, a{
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    padding: calc(var(--button-padding-y) + 0.1rem) calc(var(--button-padding-x) + 0.2rem) !important;
 }
 
 .custom-search-input {
@@ -930,6 +941,7 @@ p, ul, li, a{
     font-size: calc(var(--fs-md) + 0.1rem);
     font-style: normal;
     border: 1px solid var(--clr-accent-color);
+    padding: 1.5rem 1.5rem 1.5rem 2.2rem !important;
 }
 
 .custom-search-input::-webkit-input-placeholder {
@@ -975,7 +987,7 @@ p, ul, li, a{
 }
 
 .custom-search-button {
-    font-weight: var(--fw-normal);
+    font-weight: var(--fw-bold);
     font-family: var(--font-secondary);
     background-color: var(--clr-primary-color);
     color: var(--clr-white);
