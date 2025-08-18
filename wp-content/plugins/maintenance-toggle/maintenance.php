@@ -32,7 +32,7 @@
         </div>
         <div class="mt-5">
             <h1 class="mn-text text-center" >Our site is currently undergoing maintenance. </h1>
-            <p class="text-center h5 mt-3">Please check back soon. Sorry for the inconvenience.</p>
+            <p class="text-center h5 mt-3">For the latest announcements and updates, please visit our Facebook page.</p>
         </div>
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/maintenance-img.png" alt="maintenance-img">
     </section>

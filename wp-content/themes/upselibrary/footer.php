@@ -1,8 +1,8 @@
 <section class="spacer"></section>
 <footer>
     <span class="span-line"></span> 
-    <div class="container d-flex justify-content-between">
-        <div class="logo-container mt-5">
+    <section class="container d-flex justify-content-between my-3">
+        <div class="logo-container">
             <div class="logo">
                 <a href="<?php echo home_url(); ?>">
                     <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="UPSE Logo">
@@ -30,7 +30,7 @@
             <img class="seal" src="<?php echo get_template_directory_uri(); ?>/assets/images/seal.png" alt="Seal">
 
         </div>
-        <div class="footer-container mt-5">
+        <div class="footer-container mx-lg-5 mx-md-3 mx-sm-1 my-1">
             <div class="footer-row">
                 <div class="footer-links">
                     <h4>navigation</h4>
@@ -79,8 +79,12 @@
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>    
+    </section>
+    <section class="footer-credits d-flex justify-content-between flex-row align-items-center">
+        <p>Illustration by Storyset</p>
+        <p>© <?php echo date("Y"); ?> UP School of Economics Library. All rights reserved.</p>
+    </section>
 </footer>
 <?php wp_footer(); ?>
 </body>
