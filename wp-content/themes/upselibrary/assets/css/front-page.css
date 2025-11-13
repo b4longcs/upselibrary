@@ -35,7 +35,6 @@
         -ms-flex-align: center;
             align-items: center;
     margin-top: calc(-1 * 120px);
-
 }
 
 .fp-hero-container {
@@ -522,11 +521,8 @@ input::placeholder {
 .collection-right,
 .ext-left,
 .ext-right{
-
     -webkit-box-flex: 1;
-
         -ms-flex: 1 1 clamp(300px, 50%, 100%);
-
             flex: 1 1 clamp(300px, 50%, 100%);
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -707,6 +703,7 @@ input::placeholder {
         -ms-flex-align: stretch;
             align-items: stretch;
     gap: 2em;
+    flex-wrap: wrap;
 }
 
 .ext-left,
@@ -721,11 +718,11 @@ input::placeholder {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    padding: 1.5em 3em;
+    padding: 2.5rem 2rem;
     background-color: var(--clr-bg-color-two);
     min-height: 250px;
-    gap: 1.3em;
-    border-radius: 2em;
+    gap: 1em;
+    border-radius: 2rem;
 }
 
 
@@ -746,7 +743,7 @@ input::placeholder {
 }
 
 .ext-right img {
-    width: 38px;
+    width: 44px;
     height: auto;
     margin-top: 1em;
 }
@@ -804,6 +801,7 @@ input::placeholder {
 
 .online-database .grid-item:nth-child(1) img {
     height: 80px;
+    object-fit: contain;
 }
 
 .online-database .grid-item:nth-child(2) img {
@@ -812,14 +810,17 @@ input::placeholder {
 }
 .online-database .grid-item:nth-child(3) img {
     height: 85px;
+    object-fit: contain;
 }
 
 .online-database .grid-item:nth-child(4) img {
     height: 60px;
+    object-fit: contain;
 }
 
 .online-database .grid-item:nth-child(5) img {
     height: 45px;
+    object-fit: contain;
 }
 
 
@@ -961,6 +962,7 @@ input::placeholder {
         -webkit-box-align: center;
             -ms-flex-align: center;
                 align-items: center;
+        margin-top: 6rem;
     }
 
     .cas-post-title, .cas-post-excerpt {
@@ -979,6 +981,12 @@ input::placeholder {
 
     .container {
         width: 95%;
+    }
+
+    .fp-hero-section {
+        height: 65dvh;
+        margin-top: calc(-1 * 120px);
+
     }
 
     .cas-post-title, .cas-post-excerpt {
@@ -1012,6 +1020,11 @@ input::placeholder {
 
     .fp-hero-container {
         width: 100%;
+        margin-top: 2rem;
+    }
+
+    .fp-hero-section {
+        height: 100dvh;
     }
 
     .fp-left-hero {
@@ -1029,6 +1042,7 @@ input::placeholder {
         width: 100%;
         max-width: 100% ;
     }
+
     .online-database {
         display: -ms-grid;
         display: grid;
@@ -1045,6 +1059,7 @@ input::placeholder {
     
     .about-us-ext {
         padding: 10% 0 !important;
+        flex-direction: column !important;
     }
 
     .collection-left {

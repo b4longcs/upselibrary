@@ -267,4 +267,110 @@ add_action('admin_menu', function () {
     remove_menu_page('edit-comments.php'); 
 });
 
+/* Fixed categogy.php posts render */
+add_action('pre_get_posts', function ($query) {
+    if ($query->is_main_query() && $query->is_category() && !is_admin()) {
+        error_log('CATEGORY QUERY: ' . print_r($query->query_vars, true));
+    }
+});
+
+
+
+
+
+// Add "Duplicate" link in the row actions for Posts only
+add_filter('post_row_actions', function ($actions, $post) {
+    if ($post->post_type === 'post' && current_user_can('edit_posts')) {
+        $url = wp_nonce_url(
+            admin_url('admin.php?action=duplicate_post&post=' . $post->ID),
+            'duplicate_post_' . $post->ID
+        );
+        $actions['duplicate'] = '<a href="' . esc_url($url) . '" title="Duplicate this post">Duplicate</a>';
+    }
+    return $actions;
+}, 10, 2);
+
+// Handle the duplication process
+add_action('admin_action_duplicate_post', function () {
+    if (empty($_GET['post']) || !isset($_GET['_wpnonce'])) {
+        wp_die('Invalid request');
+    }
+
+    $post_id = absint($_GET['post']);
+    if (!wp_verify_nonce($_GET['_wpnonce'], 'duplicate_post_' . $post_id)) {
+        wp_die('Security check failed');
+    }
+
+    $post = get_post($post_id);
+    if ($post && $post->post_type === 'post') {
+        // Create duplicate post
+        $new_post_id = wp_insert_post([
+            'post_title'   => $post->post_title . ' (Copy)',
+            'post_content' => $post->post_content,
+            'post_status'  => 'draft',
+            'post_type'    => 'post',
+            'post_author'  => get_current_user_id(),
+        ]);
+
+        // Copy custom fields
+        $meta = get_post_meta($post_id);
+        foreach ($meta as $key => $values) {
+            foreach ($values as $value) {
+                add_post_meta($new_post_id, $key, maybe_unserialize($value));
+            }
+        }
+
+        // Redirect to edit screen
+        wp_redirect(admin_url('post.php?action=edit&post=' . $new_post_id));
+        exit;
+    } else {
+        wp_die('Post not found or invalid post type.');
+    }
+});
+
+// Register the bulk action for posts
+add_filter('bulk_actions-edit-post', function ($bulk_actions) {
+    $bulk_actions['duplicate_posts'] = 'Duplicate';
+    return $bulk_actions;
+});
+
+
+// Handle bulk duplication and auto-publish
+add_filter('handle_bulk_actions-edit-post', function ($redirect_to, $action, $post_ids) {
+    if ($action !== 'duplicate_posts') {
+        return $redirect_to;
+    }
+
+    $count = 0;
+    foreach ($post_ids as $post_id) {
+        $post = get_post($post_id);
+        if ($post && $post->post_type === 'post') {
+            $new_post_id = wp_insert_post([
+                'post_title'   => $post->post_title . ' (Copy)',
+                'post_content' => $post->post_content,
+                'post_status'  => 'publish', // Auto publish
+                'post_type'    => 'post',
+                'post_author'  => get_current_user_id(),
+            ]);
+
+            // Copy metadata
+            $meta = get_post_meta($post_id);
+            foreach ($meta as $key => $values) {
+                foreach ($values as $value) {
+                    add_post_meta($new_post_id, $key, maybe_unserialize($value));
+                }
+            }
+            $count++;
+        }
+    }
+
+    return add_query_arg('bulk_duplicated', $count, $redirect_to);
+}, 10, 3);
+
+add_action('admin_notices', function () {
+    if (!empty($_REQUEST['bulk_duplicated'])) {
+        $count = intval($_REQUEST['bulk_duplicated']);
+        printf('<div id="message" class="updated notice notice-success is-dismissible"><p>%s post(s) duplicated and published.</p></div>', $count);
+    }
+});
 

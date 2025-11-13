@@ -340,17 +340,6 @@ p, ul, li, a{
     text-decoration: none;
     color: inherit;
 }
-
-.footer-credits {
-    width: 98%;
-    margin: 0 auto;
-}
-
-.footer-credits p {
-    font-size: var(--fs-xsm) !important;
-    color: var(--clr-text-color-two) !important;
-    font-weight: var(--fw-normal);
-}
 /* END OF FOOTER */
 
 /* Single Post */
@@ -500,7 +489,7 @@ p, ul, li, a{
 .related-posts-grid {
     display: -ms-grid;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(0, 260px));
+    grid-template-columns: repeat(auto-fill, minmax(0, 300px));
     gap: 20px;
     place-items: center;
 }
@@ -520,8 +509,8 @@ p, ul, li, a{
     border-radius: 15px;
     -webkit-box-shadow: 2px 0 10px 2px rgba(0, 0, 0, 0.1);
             box-shadow: 2px 0 10px 2px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    height: 100%; /* Ensures equal height in grid */
+    max-width: 390px;
+    height: 100%;
 }
 
 .related-post-item-link {
@@ -584,6 +573,9 @@ p, ul, li, a{
 .related-post-title {
     font-size: var(--fs-lg);
     margin: 0 1em 0.5em;
+    font-weight: var(--fw-semi-bold);
+    font-family: var(--font-secondary);
+    letter-spacing: -0.3px;
 }
 
 .related-post-title:hover {
@@ -604,9 +596,11 @@ p, ul, li, a{
     color: white;
     padding: var(--button-padding-y) var(--button-padding-x);
     font-size: var(--fs-md);
+    font-weight: var(--fw-semi-bold);
+    font-family: var(--font-secondary);
     margin: 1.8em 1.2em 2.5em 1.2em;
     border: none;
-    border-radius: 5px;
+    border-radius: 1.2rem;
     cursor: pointer;
     font-size: var(--fs-sm);
     -webkit-transition: background-color 0.3s ease;
@@ -667,7 +661,6 @@ p, ul, li, a{
 /* More Related */
 .more-related {
     padding: 2% 15%;
-
 }
 
 
@@ -722,7 +715,7 @@ p, ul, li, a{
         -ms-flex-direction: column;
             flex-direction: column;
     width: 100%;
-    max-width: 300px;
+    max-width: 390px;
     height: auto;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
@@ -781,12 +774,15 @@ p, ul, li, a{
     font-size: var(--fs-reg);
     margin-bottom: 10px;
     font-weight: var(--fw-semi-bold);
+    
 }
 
 .most-title a {
     text-decoration: none;
     font-family: var(--font-primary);
     color: var(--clr-text-color);
+    font-family: var(--font-secondary);
+    letter-spacing: -0.3px;
 }
 
 .most-title a:hover {
@@ -1046,8 +1042,10 @@ p, ul, li, a{
     .more-related, .more-news {
         padding: 2% 3%;
     }
-    .footer-credits {
-        width: 90%;
+
+    /*Category*/
+    .category-posts-grid {
+        grid-template-columns: repeat(2, 1fr) !important; 
     }
 }
 
@@ -1064,9 +1062,11 @@ p, ul, li, a{
     .sidebar {
         display: none;
     }
-    .footer-credits {
-        width: 95%;
-    }
+
+    /*Category*/
+    .category-posts-grid {
+    grid-template-columns: repeat(2, 1fr) !important; 
+  }
 }
 
 /* Media query for screens smaller than or equal to 500px */
@@ -1100,10 +1100,17 @@ p, ul, li, a{
             -ms-flex-align: center;
                 align-items: center;
     }
-    .footer-credits {
-        width: 98%;
-        flex-direction: column;
-        text-align: center;
+
+    .pagination-wrapper .page-numbers {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+        padding: 0 0.5rem;
+    }
+
+    /*Category*/
+    .category-posts-grid {
+        grid-template-columns: 1fr !important;
     }
 }
 
@@ -1200,64 +1207,60 @@ p, ul, li, a{
 }
 
 .pagination {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-top: 2rem;
-    gap: 2rem;
-    -webkit-animation: slideFade 0.5s ease-in-out both;
-            animation: slideFade 0.5s ease-in-out both;
+    font-family: inherit;
 }
 
-.pagination button {
-    background: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+.pagination button,
+.pagination .current-page {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    padding: 0.6rem 1rem;
     cursor: pointer;
-    -webkit-transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
-    transition: background-color 0.3s ease, -webkit-transform 0.3s ease;
-    -o-transition: background-color 0.3s ease, transform 0.3s ease;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    transition: background-color 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+    border: none;
+    background-color: transparent;
+    color: var(--clr-text-color);
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.pagination button i {
-    font-size: 0.8rem;
-    color: var(--clr-primary-color);
+/* Current Page */
+.pagination .current-page {
+    background-color: #00573f;
+    color: #fff;
+    font-weight: bold;
 }
 
+/* Hover for other pages and arrows */
 .pagination button:hover:not(:disabled) {
-    background-color: var(--clr-primary-color);
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1);
+    background-color: rgba(0, 87, 63, 0.1);
+    color: #00573f;
 }
 
-.pagination button:hover:not(:disabled) i {
-    color: white;
-}
-
+/* Disabled state */
 .pagination button:disabled {
+    cursor: default;
     opacity: 0.4;
-    cursor: not-allowed;
-    border-color: #ccc;
 }
+
+/* Arrows styling for consistency */
+.pagination button[aria-label*="Previous"],
+.pagination button[aria-label*="Next"] {
+    font-size: var(--fs-md);
+    font-weight: bold;
+}
+
+
 
 @-webkit-keyframes slideFade {
     from {
@@ -1306,4 +1309,177 @@ p, ul, li, a{
 .ri-door-closed-fill {
     font-size: var(--fs-xlg);
     color: var(--clr-primary-color);
+}
+
+/* Category.php */
+/* === Container & Title === */
+.container.category-archive {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.archive-title {
+    font-size: clamp(2.3rem, 4vw, 5rem);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-style: var(--font-primary);
+    font-weight: var(--fw-bold);
+}
+
+/* === Grid Layout === */
+.category-posts-grid {
+    display: -ms-grid;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+/* === Card Styles === */
+.category-post-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  -webkit-transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  -o-transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, -webkit-transform 0.2s ease, -webkit-box-shadow 0.2s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.category-post-card:hover {
+  -webkit-transform: translateY(-5px);
+      -ms-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+          box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+/* Thumbnail */
+.category-post-card .category-post-thumbnail img {
+    width: 100%;
+    height: 300px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    display: block;
+}
+
+/* Content */
+.category-post-card .category-post-content {
+    padding: 2rem 1rem 2.5rem 1rem;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+
+
+}
+
+.category-post-card .category-post-title {
+  font-size: var(--fs-lg);
+  margin-bottom: 0.7rem;
+  font-weight: var(--fw-bold);
+}
+
+.category-post-card .category-post-title a {
+  text-decoration: none;
+  color: #222;
+}
+
+.category-post-card .category-post-title a:hover {
+  color: #0073aa;
+}
+
+.category-post-card .category-post-excerpt {
+  font-size: var(--fs-md);
+  color: #555;
+  line-height: 1.2;
+}
+
+/* === Pagination (Material Responsive Style) === */
+.pagination-wrapper {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.pagination-wrapper ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;     /* ✅ allows wrapping */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.pagination-wrapper li {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+/* Base buttons */
+.pagination-wrapper .page-numbers {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.7rem !important;
+  border-radius: 50%;
+  font-size: var(--fs-reg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text-color);
+  text-decoration: none;
+  background: transparent;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+/* Current (active) page */
+.pagination-wrapper .page-numbers.current {
+    background: var(--clr-primary-color);
+    color: var(--clr-white);
+    font-weight: var(--fw-bold);
+}
+
+/* Prev & Next buttons */
+.pagination-wrapper .page-numbers.prev,
+.pagination-wrapper .page-numbers.next {
+    border-radius: 20px;
+    padding: 0 1rem;
+    min-width: auto;
+    height: 100%;
+    font-weight: var(--fw-bold);
+}
+
+/* Hover effect for Prev/Next */
+.pagination-wrapper .page-numbers.prev:hover,
+.pagination-wrapper .page-numbers.next:hover {
+    padding: 0.5rem;
 }

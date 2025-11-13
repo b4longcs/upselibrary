@@ -266,28 +266,57 @@ const AjaxPosts = (() => {
     window.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
   };
 
-  const updatePagination = () => {
-    document.querySelector('.pagination')?.remove();
+  const updatePagination = (totalPages) => {
+    const pag = document.getElementById('pagination');
+    if (!pag) return;
 
-    const pag = document.createElement('div');
-    pag.className = 'pagination fade-slide';
+    pag.innerHTML = ''; // clear buttons only, keep container
 
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'prev';
-    prevBtn.disabled = currentPage === 1;
-    prevBtn.innerHTML = '<i class="ri-arrow-left-line"></i>';
-    prevBtn.addEventListener('click', () => {
-      if (currentPage > 1) loadPosts(--currentPage);
+    const createBtn = (label, page, disabled = false, isActive = false) => {
+      const btn = document.createElement('button');
+      btn.innerHTML = label;
+      if (disabled) btn.disabled = true;
+      if (isActive) btn.classList.add('active');
+      btn.addEventListener('click', () => {
+        if (!disabled && page !== currentPage) loadPosts(page);
+      });
+      return btn;
+    };
+
+    // First + Prev
+    pag.append(
+      createBtn('&laquo;', 1, currentPage === 1),
+      createBtn('&lt;', currentPage - 1, currentPage === 1)
+    );
+
+    const delta = 2;
+    let range = [];
+    for (let i = Math.max(2, currentPage - delta);
+        i <= Math.min(totalPages - 1, currentPage + delta);
+        i++) {
+      range.push(i);
+    }
+
+    const pages = [1, ...range, totalPages];
+    let prevPage = 0;
+    pages.forEach(p => {
+      if (prevPage && p - prevPage > 1) {
+        const dots = document.createElement('span');
+        dots.className = 'dots';
+        dots.textContent = '...';
+        pag.appendChild(dots);
+      }
+      pag.append(createBtn(p, p, false, p === currentPage));
+      prevPage = p;
     });
 
-    const nextBtn = document.createElement('button');
-    nextBtn.className = 'next';
-    nextBtn.innerHTML = '<i class="ri-arrow-right-line"></i>';
-    nextBtn.addEventListener('click', () => loadPosts(++currentPage));
-
-    pag.append(prevBtn, nextBtn);
-    document.querySelector('.category-posts')?.appendChild(pag);
+    // Next + Last
+    pag.append(
+      createBtn('&gt;', currentPage + 1, currentPage === totalPages),
+      createBtn('&raquo;', totalPages, currentPage === totalPages)
+    );
   };
+
 
   const injectHTMLSafely = (htmlString, target) => {
     const temp = document.createElement('div');

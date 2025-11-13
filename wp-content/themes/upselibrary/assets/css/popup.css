@@ -189,11 +189,8 @@
     }
 
     .popup-close {
-        background-color: var(--clr-primary-color) !important;
-        color: var(--bs-white) !important;
-        padding: 0.7rem 1.04rem;
-        border-radius: 50%;
-        font-size: var(--fs-reg) !important;
+        color: var(--clr-primary-color) !important;
+        font-size: var(--fs-xlg) !important;
     }
 
     .popup-close {

@@ -1,53 +1,49 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM elements
     const categoryFilter = document.getElementById('category-filter');
     const searchInput = document.getElementById('search-input');
     const postsGrid = document.getElementById('posts-grid');
     const pagination = document.getElementById('pagination');
     const postListTitle = document.getElementById('post-list-title');
 
+    // State
     let currentPage = 1;
+    const postsPerPage = { small: 6, large: 8 };
 
-    const postsPerPage = {
-        small: 6,  
-        large: 8 
-    };
+    // Get posts per page based on screen size
+    const getPostsPerPage = () => window.innerWidth >= 1025 ? postsPerPage.large : postsPerPage.small;
 
-    function getPostsPerPage() {
-        return window.innerWidth >= 1025 ? postsPerPage.large : postsPerPage.small;
-    }
-
-    function getPosts(category = 'all', search = '', page = 1) {
-        const postsPerPageCount = getPostsPerPage();
-        const data = {
-            action: 'filter_posts',
-            category,
-            search,
-            page,
-            posts_per_page: postsPerPageCount
-        };
-
+    // Fetch and render posts based on filters and pagination
+    const getPosts = (category = 'all', search = '', page = 1) => {
         fetch(ajaxurl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(data)
+            body: new URLSearchParams({
+                action: 'filter_posts',
+                category,
+                search,
+                page,
+                posts_per_page: getPostsPerPage()
+            })
         })
-            .then(res => res.json())
-            .then(data => {
-                renderPosts(data.posts);
-                renderPagination(data.total_pages, page);
-            });
-    }
+        .then(res => res.json())
+        .then(data => {
+            renderPosts(data.posts);
+            renderPagination(data.total_pages, page);
+        });
+    };
 
-    function renderPosts(posts) {
+    // Render posts in the grid
+    const renderPosts = posts => {
         postsGrid.innerHTML = '';
         postsGrid.classList.add('posts-grid');
-
         const fragment = document.createDocumentFragment();
         posts.forEach(post => fragment.appendChild(createPostCard(post)));
         postsGrid.appendChild(fragment);
-    }
+    };
 
-    function createPostCard(post) {
+    // Create single post card element
+    const createPostCard = post => {
         const postCard = document.createElement('a');
         postCard.className = 'post-card';
         postCard.href = post.link;
@@ -60,73 +56,93 @@ document.addEventListener('DOMContentLoaded', function () {
             <span class="read-more-button">Read More</span>
         `;
         return postCard;
-    }
+    };
 
-    function renderPagination(totalPages, currentPage) {
+    // Render pagination buttons
+    const renderPagination = (totalPages, currentPage) => {
         pagination.innerHTML = '';
         const fragment = document.createDocumentFragment();
 
-        if (currentPage > 1) {
-            fragment.appendChild(createPaginationButton(1, 'First Page', 'ri-arrow-left-double-fill'));
-            fragment.appendChild(createPaginationButton(currentPage - 1, 'Previous Page', 'ri-arrow-left-s-line'));
-        }
+        // Previous button
+        if (currentPage > 1) fragment.appendChild(createPaginationButton(currentPage - 1, 'Previous Page', '<'));
 
-        for (let i = 1; i <= totalPages; i++) {
-            const isActive = i === currentPage ? 'active' : '';
-            fragment.appendChild(createPaginationButton(i, `Page ${i}`, '', isActive));
-        }
+        // Page range: two before, current, two after
+        const pages = getPageRange(currentPage, totalPages);
+        pages.forEach(page => {
+            const element = page === currentPage
+                ? createCurrentPageSpan(page)
+                : createPaginationButton(page, `Page ${page}`);
+            fragment.appendChild(element);
+        });
 
-        if (currentPage < totalPages) {
-            fragment.appendChild(createPaginationButton(currentPage + 1, 'Next Page', 'ri-arrow-right-s-line'));
-            fragment.appendChild(createPaginationButton(totalPages, 'Last Page', 'ri-arrow-right-double-fill'));
-        }
+        // Next button
+        if (currentPage < totalPages) fragment.appendChild(createPaginationButton(currentPage + 1, 'Next Page', '>'));
 
         pagination.appendChild(fragment);
-    }
+    };
 
-    function createPaginationButton(page, label, iconClass = '', activeClass = '') {
+    // Generate a range of pages for pagination
+    const getPageRange = (current, total) => {
+        const pages = [];
+        for (let i = current - 2; i <= current + 2; i++) {
+            if (i > 0 && i <= total) pages.push(i);
+        }
+        return pages;
+    };
+
+    // Create pagination button
+    const createPaginationButton = (page, label, text = '') => {
         const button = document.createElement('button');
         button.dataset.page = page;
-        button.className = `page-btn ${activeClass}`;
+        button.className = 'page-btn';
         button.setAttribute('aria-label', label);
-        button.innerHTML = iconClass ? `<i class="${iconClass}"></i>` : page;
+        button.textContent = text || page;
         return button;
-    }
+    };
 
-    function refreshPosts() {
-        getPosts(categoryFilter.value, searchInput.value, currentPage);
-    }
+    // Create span for current page
+    const createCurrentPageSpan = page => {
+        const span = document.createElement('span');
+        span.className = 'current-page';
+        span.textContent = page;
+        return span;
+    };
 
-    categoryFilter.addEventListener('change', () => {
-        currentPage = 1;
-        refreshPosts();
-    });
+    // Refresh posts based on filters and page
+    const refreshPosts = () => getPosts(categoryFilter.value, searchInput.value, currentPage);
 
-    searchInput.addEventListener('input', () => {
-        currentPage = 1;
-        refreshPosts();
-    });
-
-    pagination.addEventListener('click', (e) => {
-        const button = e.target.closest('button');
-        if (!button?.dataset.page) return;
-
-        currentPage = parseInt(button.dataset.page);
-        refreshPosts();
-        postListTitle?.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    window.addEventListener('resize', debounce(() => {
-        refreshPosts();
-    }, 300));
-
-    function debounce(func, delay) {
+    // Debounce utility
+    const debounce = (func, delay) => {
         let timer;
         return (...args) => {
             clearTimeout(timer);
             timer = setTimeout(() => func.apply(this, args), delay);
         };
-    }
+    };
+
+    // Event: Category change
+    categoryFilter.addEventListener('change', () => {
+        currentPage = 1;
+        refreshPosts();
+    });
+
+    // Event: Search input
+    searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        refreshPosts();
+    });
+
+    // Event: Pagination click
+    pagination.addEventListener('click', e => {
+        const button = e.target.closest('button');
+        if (!button?.dataset.page) return;
+        currentPage = parseInt(button.dataset.page);
+        refreshPosts();
+        postListTitle?.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Event: Window resize
+    window.addEventListener('resize', debounce(refreshPosts, 300));
 
     // Initial load
     getPosts();

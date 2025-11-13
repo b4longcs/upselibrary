@@ -999,7 +999,7 @@
 .posts-grid {
     display: -ms-grid;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
     gap: 2rem 1.5rem;
     border-radius: 10px;
     justify-items: center;
@@ -1025,7 +1025,7 @@
     transition: transform 0.3s, box-shadow 0.3s;
     transition: transform 0.3s, box-shadow 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.3s;
     padding-bottom: 1.5rem !important;
-    max-width: 300px;
+    max-width: 390px;
     width: 100%;
 }
 
@@ -1074,10 +1074,11 @@
 }
 
 .posts-grid .post-card h3 {
-    font-size: calc(var(--fs-md) + .15rem);
-    margin: .8rem .95rem !important;
+    font-size: var(--fs-lg) ;
+    margin: 0.8rem 0.95rem !important;
     color: var(--clr-text-color);
     text-align: left;
+    line-height: 1.5;
 }
 
 .posts-grid .post-card h3:hover{
@@ -1088,8 +1089,9 @@
 }
 
 .posts-grid .post-card p {
-    font-size: var(--fs-sm);
+    font-size: var(--fs-md);
     color: #555;
+    line-height: 1.3;
     text-align: left;
     margin: 0 .95rem 1rem !important;
     -webkit-box-flex: 1;
@@ -1105,10 +1107,10 @@
 }
 
 .read-more-button {
-    padding: var(--button-padding-y) var(--button-padding-x);
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-bold);
-    border-radius: 20px;
+    padding: var(--button-padding-y) var(--button-padding-x) ;
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semi-bold);
+    border-radius: 1.2rem;
     background-color: var(--clr-primary-color);
     color: var(--clr-white);
     width: auto;
@@ -1130,10 +1132,13 @@
     appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
-    font-size: calc(var(--fs-sm) + .05rem );
-    color: #00573f;
+    font-size: var(--fs-md);
+    color: var(--clr-primary-color);
+    font-weight: var(--fw-bold);
+    font-family: var(--font-secondary);
+    color: var(--clr-text-color);
     border: 1px solid var(--clr-bg-color-hover-light);
-    padding: .6rem 1rem;
+    padding: 1rem 1.5rem;
     border-radius: 25px;
     position: relative;
     background-image: url('data:image/svg+xml;utf8,<svg fill="%2300573f" height="10" viewBox="0 0 24 24" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M12 16l-6-6h12z"/></svg>'); 
@@ -1142,14 +1147,24 @@
     background-size: var(--fs-sm);
     outline: none;
     width: 180px;
+    
 }
+
+#category-filter option {
+    font-weight: var(--fw-bold);
+    font-family: var(--font-secondary);
+    color: var(--clr-text-color);
+}
+
 
 #search-input {
     position: relative;
     border: 1px solid var(--clr-bg-color-hover-light);
     border-radius: 30px;
-    font-size: var(--fs-sm);
-    padding: .65rem 1.5rem;
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    font-family: var(--font-secondary);
+    padding: 1rem 1.5rem;
     width: 100%;
     max-width: 425px;
 }
@@ -1191,49 +1206,6 @@
     font-size: var(--fs-sm);
     font-style: normal;
     font-weight: var(--fw-normal);
-}
-
-#pagination {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 2rem;
-}
-
-#pagination button {
-    font-size: var(--fs-sm);
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-    -webkit-transition: background-color 0.2s ease, color 0.2s ease;
-    -o-transition: background-color 0.2s ease, color 0.2s ease;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.page-btn {
-    color: var(--clr-primary-color);
-    border: none;
-    background-color: transparent;
-}
-
-.page-btn:hover {
-    color: var(--clr-white);
-}
-
-.page-btn.active,
-.page-btn[aria-current="page"] {
-    background-color: #00573f;
-    color: #fff;
-    font-weight: bold;
-    border-color: var(--clr-primary-color);
 }
 
 /* Navigation buttons (with icons) */

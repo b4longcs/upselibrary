@@ -111,7 +111,7 @@
             // Query related posts
             $related_query = new WP_Query(array(
                 'tag__in' => $tag_ids,
-                'posts_per_page' => 10,
+                'posts_per_page' => 4,
                 'post__not_in' => array(get_the_ID()), 
                 'ignore_sticky_posts' => 1
             ));
@@ -154,13 +154,12 @@
 </section>
 <section class="span-line mt-5"></section>
 <section class="more-news">
-    
     <section class="single-most">
         <section class="more-news-container d-flex mt-2">
             <span class="more-spaces"></span>
             <h2 class="related-header-text">Library News & Highlights</h2>
         </section>
-        <section class="most-grid mt-3">
+        <section class="most-grid mt-5">
             <?php
             // Define the arguments for the query
             $args = array(

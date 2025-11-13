@@ -6,7 +6,7 @@
     </video>
     <div class="fp-hero-container" >
         <div class="fp-left-hero" data-scrollreveal="enter bottom over 1s and move 30px">
-                <div class="left-content-one my-4">
+                <div class="left-content-one mb-3">
                     <h1 class="left-content-one-normal">Supplying</h1>
                     <h1 class="left-content-one-highlight">information</h1>
                     <h1 class="left-content-one-normal">on demand</h1>
@@ -109,7 +109,7 @@
                                 <div class="cas-post-content">
                                     <h3 class="cas-post-title"><?php the_title(); ?></h3>
                                     <p class="cas-post-excerpt">
-                                        <?php echo wp_trim_words(get_the_excerpt(), 17, '...'); ?>
+                                        <?php echo wp_trim_words(get_the_excerpt(), 10, '...'); ?>
                                     </p>
                                 </div>
                             </div>
@@ -144,11 +144,12 @@
     </section>
     <section class="about-us-ext">
         <div class="ext-left" data-scrollreveal="enter bottom over 1s and move 30px">
+            <img class="m-0 p-0" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/globe-about.svg" alt="about-globe">
             <div class="top">
-                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/globe-about.svg" alt="about-globe">
+                
                 <h3>Discover our services</h3>
             </div>
-            <p>
+            <p class="mb-4">
                 We provide a range of services to support your research needs, 
                 including research assistance, study spaces, and access to online databases.
             </p>
@@ -158,11 +159,11 @@
         </div>
 
         <div class="ext-right" data-scrollreveal="enter bottom over 1s and move 30px after 0.3s">
+            <img class="m-0 p-0" loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/explore-about.svg" alt="about-explore">
             <div class="top">
-                <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/assets/images/explore-about.svg" alt="about-explore">
                 <h3>Explore our resources</h3>
             </div>
-            <p>
+            <p class="mb-4">
                 Our library offers a variety of resources to expand your knowledge 
                 and enhance your learning experience with us.
             </p>
