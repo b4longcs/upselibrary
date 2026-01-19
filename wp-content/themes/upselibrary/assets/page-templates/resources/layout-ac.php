@@ -1,7 +1,7 @@
 <?php echo '<!-- layout-ac.php loaded -->'; ?>
 <section class="container">
     <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap">
-        <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+        <div class="global-left-hero" 
             <div class="left-hero-header d-flex justify-content-center  flex-column">
                 <p class="hero-header-one">Archives</p>
                 <p class="hero-header-two">Collection</p>
@@ -11,7 +11,7 @@
                 
             </div> -->
         </div>
-        <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+        <div class="global-right-hero">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/archives-img.svg" alt="Archives Collection Image">
         </div>
     </section>

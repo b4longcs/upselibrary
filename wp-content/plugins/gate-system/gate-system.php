@@ -41,7 +41,7 @@ add_action('wp_enqueue_scripts', function () {
 // Hide Gate Scanner page from search
 add_action('pre_get_posts', function($query) {
     if (!is_admin() && $query->is_main_query() && $query->is_search()) {
-        $page = get_page_by_path('gate-scanner'); // Page slug
+        $page = get_page_by_path('gate-system'); // Page slug
         if ($page) {
             $query->set('post__not_in', [$page->ID]);
         }
@@ -60,8 +60,8 @@ add_action('admin_menu', function () {
     // If user has any blocked role, remove all plugin menus including Gate System CPT
     if (array_intersect($blocked_roles, $roles)) {
         remove_menu_page('edit.php?post_type=gs_user');        // Gate System CPT menu
-        remove_menu_page('room-reservation-system');            // Your other plugin menu slug (find exact slug)
-        remove_menu_page('new-acquisition');                     // Your other plugin menu slug
+        remove_menu_page('room-reservation-system');           // Your other plugin menu slug (find exact slug)
+        remove_menu_page('new-acquisition');                   // Your other plugin menu slug
         return;
     }
 
@@ -70,9 +70,6 @@ add_action('admin_menu', function () {
         remove_menu_page('new-acquisition');
     }
 }, 999);
-
-
-
 
 // Create gate log table on activation
 register_activation_hook(__FILE__, function () {

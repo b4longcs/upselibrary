@@ -6,7 +6,7 @@ get_header(); ?>
 <section class="container">
     <?php custom_breadcrumb(); ?>  
     <div class="global-pages-container">
-        <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+        <div class="global-left-hero"
             
             <p class="hero-header-one py-3">Visitor</p>
             <!-- <p class="hero-header-two"></p> -->
@@ -19,7 +19,7 @@ get_header(); ?>
             </div>
             
         </div>
-        <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.25s">
+        <div class="global-right-hero">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/visitor-header-img.svg" alt="Visitor Hero Image" class="right-hero-img">
         </div>
     </div>

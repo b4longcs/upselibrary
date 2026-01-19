@@ -1,16 +1,16 @@
 <?php echo '<!-- layout-cs.php loaded -->'; ?>
 
 <section class="global-pages-container mt-5">
-    <div class="global-left-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+    <div class="global-left-hero">
         <div class="left-hero-header d-flex justify-content-center  flex-column">
             <p class="hero-header-one">Circulation</p>
             <p class="hero-header-two">Services</p>
         </div>
-        <div class="left-hero-subsubheader my-3 w-75" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+        <div class="left-hero-subsubheader my-3 w-75">
             <p class="content-text my-3">Circulation Service refers to the Library’s book lending service. Borrowing privileges for currently-enrolled UP students, faculty, and staff are as follows: </p>
         </div>
     </div>
-    <div class="global-right-hero mt-5" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+    <div class="global-right-hero">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/ref-cir-img.svg" alt="Circulation Service Image">
     </div>
 </section>

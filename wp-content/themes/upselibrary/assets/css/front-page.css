@@ -431,6 +431,25 @@ input::placeholder {
             box-shadow: none;
     outline: none;
 }
+
+.search-links {
+    gap: 1.8rem 1rem;
+}
+
+.centered_link a {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-semi-bold);
+    color: var(--clr-text-color);
+    padding: 0.8rem 1.3rem !important;
+    border-radius: 2rem;
+    background-color: var(--tab-background-color);
+
+}
+
+.centered_link a:hover {
+    background-color:var(--clr-accent-color-two);
+}
+
 /* End of tabs */
 
 

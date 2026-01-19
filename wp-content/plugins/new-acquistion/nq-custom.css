@@ -1,5 +1,5 @@
 /* ===================================
-   📚 Admin Thumbnail Preview Styles
+Admin Thumbnail Preview Styles
 =================================== */
 .na-thumb {
     position: relative;
@@ -37,8 +37,8 @@
     outline: none;
 }
 
-/* ===================================
-   🧾 Admin Header and Notices
+/* ==================================
+ Admin Header and Notices
 =================================== */
 .na-header {
     display: flex;
@@ -65,7 +65,7 @@
 }
 
 /* ===================================
-   🔘 Buttons Styling
+ Buttons Styling
 =================================== */
 .na-header-buttons {
     display: flex;
@@ -113,7 +113,7 @@
 }
 
 /* ===================================
-   🗂️ Entry Sections (Admin)
+Entry Sections (Admin)
 =================================== */
 .admin-na-header {
     padding: 0.7rem 1.5rem;
@@ -244,7 +244,7 @@
 }
 
 /* ===================================
-   📁 Archived Entries Section
+Archived Entries Section
 =================================== */
 #na-archived-entries {
     opacity: 0.75;
@@ -265,7 +265,7 @@
 }
 
 /* ===================================
-   🖼️ Frontend Accordion Styles
+Frontend Accordion Styles
 =================================== */
 .na-toggle {
     width: 100%;
@@ -339,7 +339,7 @@
 }
 
 /* ===================================
-   📐 Utility Styling
+ Utility Styling
 =================================== */
 .na-page {
     height: clamp(20dvh, 40dvh, 50dvh);

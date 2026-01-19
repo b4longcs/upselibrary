@@ -3,10 +3,10 @@
 Template Name: About Us
 */
 get_header(); ?>
-<section class="container" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+<section class="container">
     <?php custom_breadcrumb(); ?>
     <section class="global-pages-container align-items-center justify-content-between d-flex flex-wrap my-5">
-        <div class="global-left-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+        <div class="global-left-hero">
             <div class="left-hero-header d-flex justify-content-center  flex-column">
                 <p class="hero-header-one">About Us</p>
                 <span class="menu-category-page"></span>
@@ -14,7 +14,7 @@ get_header(); ?>
             </div>
          
         </div>
-        <div class="global-right-hero" data-scrollreveal="enter bottom over 1s and move 50px after 0.1s">
+        <div class="global-right-hero">
         </div>
     </section>
     <section class="resources-grid my-5 my-lg-3 my-md-2 my-sm-2">

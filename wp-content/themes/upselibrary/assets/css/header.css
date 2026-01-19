@@ -124,7 +124,7 @@
         -ms-flex-align: center;
             align-items: center;
             
-    padding:  0.8rem 1rem !important;
+    padding:  0.5rem 1.5rem !important;
     margin: 0.6rem 0;
     background-color: var(--clr-bg-color-two);
     position: relative;
@@ -132,7 +132,7 @@
 }
 
 .logo img {
-    width: 285px;
+    width: 260px;
     height: auto;
 }
 
@@ -177,7 +177,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    gap: 0.55rem;
+    gap: 0.65rem;
     list-style: none;
     height: 50px;
     -webkit-box-align: center;
@@ -188,7 +188,6 @@
     position: relative;
     height: 100%;
     line-height: 3;
-
 }
 .nav-links a {
     text-decoration: none;
@@ -232,7 +231,6 @@
     max-height: -moz-fit-content;
     max-height: fit-content;
 }
-
 
 .sub-menu li {
     line-height: 1.5;

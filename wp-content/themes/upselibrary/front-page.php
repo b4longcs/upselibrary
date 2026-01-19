@@ -48,23 +48,33 @@
                     ETD-IR
                 </button>
                 <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3">
-                    EBSCO
+                    Saliktroniko
                 </button>
             </div>
             <div class="tab-panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" aria-hidden="false">
                 <form align="center" id="custom_search" class="search-container" action="https://tuklas.up.edu.ph/Search/Results" method="get" target="_blank">
                     <div class="form-group">
-                        <input class="form-control" maxlength="60" size="60" name="lookfor" type="text" placeholder="Tuklas: Search anything">
+                        <input class="form-control" maxlength="60" size="60" name="lookfor" type="text" placeholder="Search anything in Tuklas">
                     </div>
                     <div class="form-group">
                         <button class="search" type="submit">Search</button>
                     </div>
                 </form>
+                <div class="search-help mt-5">
+                    <p class="search-help-text-title d-flex justify-content-center align-items-center flex-row gap-1 mt-5 fw-bold">Other UPD Local Collection</p>
+                    <ul class="search-help-text search-links d-flex flex-wrap justify-content-center mt-4">
+                        <li class="centered_link"><a href="https://digitalarchives.upd.edu.ph/" target="_blank">Digital Archives @ UPD</a></li>
+                        <li class="centered_link"><a href="https://repository.mainlib.upd.edu.ph/" target="_blank">Open Access Repository @ UPD</a></li>
+                        <li class="centered_link"><a href="https://journals.upd.edu.ph/" target="_blank">UPD Journals Online</a></li>
+                        <li class="centered_link"><a href="https://upd.edu.ph/research/journals/" target="_blank">List of UPD Journals</a></li>
+                        <li class="centered_link"><a href="https://www.elib.gov.ph/bsearch.php" target="_blank">Philippine eLib</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="tab-panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" aria-hidden="true">
                 <form align="center" id="custom_search" class="search-container" action="https://selib.upd.edu.ph/etdir/search?" method="get" target="_blank">
                     <div class="form-group">
-                        <input class="form-control" maxlength="100" size="60" name="query" type="text" placeholder="ETD: Search anything">
+                        <input class="form-control" maxlength="100" size="60" name="query" type="text" placeholder="Search anything in ETD-IR">
                     </div>
                     <div class="form-group">
                         <button class="search" type="submit">Search</button>
@@ -72,14 +82,37 @@
                 </form>
             </div>
             <div class="tab-panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" aria-hidden="true">
-                <form align="center" id="custom_search" class="search-container" action="https://research.ebsco.com/c/fk6kem/search/results?" method="get" target="_blank">
+                <form align="center" id="custom_search" class="search-container" action="https://ups.primo.exlibrisgroup.com/discovery/search"
+                    method="get" target="_blank">
                     <div class="form-group">
-                        <input class="form-control" maxlength="60" size="60" name="q" type="text" placeholder="EBSCO: Search anything">
+                        <input class="form-control" maxlength="60" size="60" name="q" type="text" id="q" placeholder="Search UPD e-Resources">
+                        <input type="hidden" name="institution" value="UPD">
+                        <input type="hidden" name="vid" value="63UPS_INST:UPD">
+                        <input type="hidden" name="query" id="query">
                     </div>
                     <div class="form-group">
-                        <button class="search" type="submit">Search</button>
+                        <button class="search" type="submit"
+                        onclick="document.getElementById('query').value=
+                                'any,contains,' + document.getElementById('q').value;">
+                            Search
+                        </button>
                     </div>
                 </form>
+                <div class="search-help mt-5">
+                    <p class="search-help-text-title d-flex justify-content-center align-items-center flex-row gap-1 mt-5 fw-bold">Other UPD e-Resources</p>
+                    <ul class="search-help-text search-help-text search-links d-flex flex-wrap justify-content-center mt-4">
+                        <li class="centered_link"><a href="https://mainlib.upd.edu.ph/?page_id=372#filipiniana" target="_blank">Filipiniana Multi-Disciplinary</a></li>
+                        <li class="centered_link"><a href="https://mainlib.upd.edu.ph/?page_id=372#international" target="_blank">International Multi-Disciplinary</a></li>
+                        <li class="centered_link"><a href="https://mainlib.upd.edu.ph/?page_id=372#arts-hum" target="_blank">Arts and Humanities</a></li>
+                        <li class="centered_link"><a href="https://mainlib.upd.edu.ph/?page_id=372#mgmt-econ" target="_blank">Management and Economics</a></li>
+                        <li class="centered_link"><a href="https://mainlib.upd.edu.ph/?page_id=372#sci-tech" target="_blank">Science and Technology</a></li>
+                        <li class="centered_link"><a href="https://mainlib.upd.edu.ph/?page_id=372#engg" target="_blank">Engineering</a></li>
+                        <li class="centered_link"><a href="https://mainlib.upd.edu.ph/?page_id=372#socsci-law" target="_blank">Social Sciences and Law</a></li>
+                        <li class="centered_link"><a href="https://mainlib.upd.edu.ph/?page_id=372#ebooks" target="_blank">Electronic Books</a></li>
+                    </ul>
+                
+                    
+                </div>
             </div>
         </div>
     </section>
