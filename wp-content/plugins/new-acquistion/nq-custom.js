@@ -156,4 +156,106 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add new entry button
     addEntryBtn?.addEventListener('click', createEntry);
+
+
+
+
+
+    /* =============================
+    LIGHTBOX WITH SWIPE SUPPORT
+    ============================= */
+
+    let currentIndex = 0;
+    let currentImages = [];
+
+    // Create lightbox
+    const lightbox = document.createElement('div');
+    lightbox.className = 'na-lightbox';
+
+    const lightboxImg = document.createElement('div');
+    lightboxImg.className = 'na-lightbox-img';
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'na-lightbox-close';
+    closeBtn.innerHTML = '&times;';
+
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'na-lightbox-prev';
+    prevBtn.innerHTML = '&#10094;'; // left arrow
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'na-lightbox-next';
+    nextBtn.innerHTML = '&#10095;'; // right arrow
+
+    lightbox.appendChild(lightboxImg);
+    lightbox.appendChild(closeBtn);
+    lightbox.appendChild(prevBtn);
+    lightbox.appendChild(nextBtn);
+    document.body.appendChild(lightbox);
+
+    // Open lightbox
+    document.addEventListener('click', (e) => {
+        const img = e.target.closest('.na-img');
+        if (!img) return;
+
+        const grid = img.closest('.na-grid');
+        currentImages = [...grid.querySelectorAll('.na-img')];
+        currentIndex = currentImages.indexOf(img);
+
+        showImage(currentIndex);
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Show image
+    function showImage(index) {
+        if (!currentImages.length) return;
+        currentIndex = (index + currentImages.length) % currentImages.length;
+        const bg = window.getComputedStyle(currentImages[currentIndex]).backgroundImage;
+        lightboxImg.style.backgroundImage = bg;
+    }
+
+    // Close lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close buttons & clicking outside image
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // Navigation buttons
+    prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
+    nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+        if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    });
+
+    // Mobile swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+    lightbox.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const diff = touchEndX - touchStartX;
+        if (Math.abs(diff) < 50) return;
+
+        if (diff < 0) showImage(currentIndex + 1); // swipe left → next
+        else showImage(currentIndex - 1); // swipe right → prev
+    }
+
 });

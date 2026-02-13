@@ -751,7 +751,8 @@
 }
 
 .gp-ds-content-two-custom .img-custom {
-    width: 80%;
+    max-width: 50%;
+    width: 100%;
     height: auto;
 }
 
@@ -2126,6 +2127,54 @@
 }
 
 /* End of Reference Service */
+
+/* Library Stats Counter */
+.ls-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 5rem auto;
+    font-family: system-ui, sans-serif;
+}
+
+.ls-title-one,
+.ls-title-two {
+    text-align: center;
+  
+}
+
+.ls-title-one {
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    color: var(--clr-primary-color);
+    font-weight: var(--fw-bold);
+}
+
+.ls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.ls-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ls-label {
+    font-size: var(--fs-reg);
+    font-weight: var(--fw-bold);
+    color: #000033;
+}
+
+.ls-value {
+    font-size: 3rem;
+    color: #000033;
+    font-weight: var(--fw-bold);
+}
+/* End of Library Stats Counter */
 
 /* Responsiveness */
 @media (min-width: 300px) {

@@ -1,7 +1,7 @@
 :root {
     /* Font-related variables */
     --font-primary: "TexGyreAdventor", sans-serif;
-    --font-secondary: "Poppins", sans-serif;
+    --font-secondary: "halyard-text", sans-serif;
     
     /* Text Size */
     --fs-xxsm: 0.5rem;

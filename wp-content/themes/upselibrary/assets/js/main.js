@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Global.init();
   NewAcquisitionToggle.init();
   setupPreloader();
+  LibraryStats.init();
 });
 
 // ====================================
@@ -509,4 +510,96 @@ const NewAcquisitionToggle = (() => {
   };
 
   return { init };
+})();
+
+
+// ====================================
+// MODULE: Library Counter 
+// ====================================
+const LibraryStats = (() => {
+
+  const format = new Intl.NumberFormat();
+
+  const data = [
+    { label: "Books", value: 15000 },
+    { label: "Journal", value: 43 },
+    { label: "e-Books", value: 11000 },
+    { label: "e-Journal", value: 2341 },
+    { label: "Periodicals", value: 394 },
+  ];
+
+  function randomRoll(el, duration = 800) {
+    const interval = 50;
+    let elapsed = 0;
+
+    const roller = setInterval(() => {
+      el.textContent = format.format(Math.floor(Math.random() * 20000));
+      elapsed += interval;
+      if (elapsed >= duration) clearInterval(roller);
+    }, interval);
+  }
+
+  function animateToTarget(el, target, duration = 1500) {
+    const start = performance.now();
+
+    function update(time) {
+      const progress = Math.min((time - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = format.format(Math.floor(ease * target));
+      if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  function startCounters(container) {
+    container.querySelectorAll(".ls-value")
+      .forEach((el, i) => {
+        const target = +el.dataset.value;
+
+        setTimeout(() => {
+          randomRoll(el);
+          setTimeout(() => {
+            animateToTarget(el, target);
+          }, 800);
+        }, i * 300);
+      });
+  }
+
+  function render(container) {
+    container.innerHTML = `
+      <div class="ls-container">
+        
+        <div class="ls-title-one">UPSE Library Snapshot</div>
+        <div class="ls-title-two">Step Inside the UPSE Library and Experience the Story Behind the Numbers.</div>
+        <div class="ls-grid">
+          ${data.map(item => `
+            <div class="ls-card">
+              <div class="ls-value" data-value="${item.value}">0</div>
+              <div class="ls-label">${item.label}</div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function init(selector = "#libraryStats") {
+    const container = document.querySelector(selector);
+    if (!container) return;
+
+    render(container);
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        startCounters(container);
+        observer.disconnect();
+      }
+    }, { threshold: 0.3 });
+
+    observer.observe(container);
+  }
+
+  return { init };
+
 })();

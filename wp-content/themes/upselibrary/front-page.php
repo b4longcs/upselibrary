@@ -205,6 +205,7 @@
             </a>
         </div>
     </section>
+    <div id="libraryStats" data-scrollreveal="enter bottom over 1s and move 30px"></div>
     <p class="databases-text">Unleashing the power of knowledge through our <span class="highlight-text">online databases</span></p>
     <section class="online-database">
         <div class="grid-item" data-scrollreveal="enter bottom over 0.8s and move 20px">

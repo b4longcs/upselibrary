@@ -317,7 +317,7 @@ Frontend Accordion Styles
 }
 
 .na-content.na-visible {
-    max-height: 1000px; /* accommodates images */
+    max-height: 100%; /* accommodates images */
     opacity: 1;
     visibility: visible;
 }
@@ -328,15 +328,100 @@ Frontend Accordion Styles
     column-gap: 1rem;
     row-gap: 1rem;
     padding-top: 1rem;
+    justify-content: center;
 }
 
 .na-img {
-    width: 162px;
-    height: 230px;
+    width: clamp(20rem, 6vw, 28rem);
+    height: 24rem;
     background: no-repeat center/cover;
     border: 1px solid var(--clr-primary-color);
     border-radius: 6px;
+    cursor: pointer;
 }
+
+/* Lightbox overlay */
+.na-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+/* Active state */
+.na-lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Lightbox image container */
+.na-lightbox-img {
+    width: 90vw;
+    height: 90vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: scale(0.9);
+    opacity: 0;
+    position: relative;
+}
+
+/* Animate in */
+.na-lightbox.active .na-lightbox-img {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Close button */
+.na-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+/* Navigation buttons */
+.na-lightbox-prev,
+.na-lightbox-next {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem ;
+    border-radius: 50%;
+    z-index: 10000;
+}
+
+.na-lightbox-prev { left: 20px; }
+.na-lightbox-next { right: 20px; }
+
+@media (hover: none) {
+    /* mobile: bigger buttons */
+    .na-lightbox-prev,
+    .na-lightbox-next {
+        font-size: 1.5rem;
+        padding: 0.25rem 0.85rem;
+        background: rgba(0,0,0,0.3);
+    }
+}
+
 
 /* ===================================
  Utility Styling
