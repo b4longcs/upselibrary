@@ -131,17 +131,92 @@ function gs_render_user_log_page() {
             pagination.innerHTML = '';
             if (pageCount <= 1) return;
 
-            for (let i = 1; i <= pageCount; i++) {
+            const container = document.createElement('div');
+            container.className = 'tablenav-pages';
+
+            function createButton(label, page, disabled = false) {
                 const btn = document.createElement('button');
-                btn.textContent = i;
-                btn.style.marginRight = '5px';
-                btn.disabled = (i === currentPage);
+                btn.className = 'button';
+                btn.textContent = label;
+                btn.disabled = disabled;
+
                 btn.addEventListener('click', () => {
-                    currentPage = i;
+                    currentPage = page;
                     renderTable();
                 });
-                pagination.appendChild(btn);
+
+                return btn;
             }
+
+            // FIRST <<
+            container.appendChild(
+                createButton('<<', 1, currentPage === 1)
+            );
+
+            // PREVIOUS <
+            container.appendChild(
+                createButton('<', currentPage - 1, currentPage === 1)
+            );
+
+            const pages = new Set();
+
+            // Always first 2
+            pages.add(1);
+            pages.add(2);
+
+            // Always last 2
+            pages.add(pageCount);
+            pages.add(pageCount - 1);
+
+            // Current ±2
+            for (let i = currentPage - 2; i <= currentPage + 2; i++) {
+                if (i > 0 && i <= pageCount) {
+                    pages.add(i);
+                }
+            }
+
+            const sortedPages = [...pages].sort((a, b) => a - b);
+
+            let lastPage = 0;
+
+            sortedPages.forEach(page => {
+
+                if (page - lastPage > 1) {
+                    const dots = document.createElement('span');
+                    dots.textContent = '...';
+                    dots.style.margin = '0 6px';
+                    container.appendChild(dots);
+                }
+
+                const btn = document.createElement('button');
+                btn.className = 'button';
+
+                if (page === currentPage) {
+                    btn.classList.add('button-primary');
+                }
+
+                btn.textContent = page;
+
+                btn.addEventListener('click', () => {
+                    currentPage = page;
+                    renderTable();
+                });
+
+                container.appendChild(btn);
+                lastPage = page;
+            });
+
+            // NEXT >
+            container.appendChild(
+                createButton('>', currentPage + 1, currentPage === pageCount)
+            );
+
+            // LAST >>
+            container.appendChild(
+                createButton('>>', pageCount, currentPage === pageCount)
+            );
+
+            pagination.appendChild(container);
         }
 
         function renderTable() {

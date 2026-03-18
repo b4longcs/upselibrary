@@ -6,7 +6,7 @@ add_action('wp_dashboard_setup', 'rrs_add_dashboard_widget');
 function rrs_add_dashboard_widget() {
     wp_add_dashboard_widget(
         'rrs_dashboard_widget',
-        '📅 Room Reservation Overview',
+        'Room Reservation Overview',
         'rrs_dashboard_widget_display'
     );
 }
@@ -196,7 +196,7 @@ function rrs_dashboard_widget_display() {
 
         <?php if (!empty($upcoming)): ?>
         <div class="rrs-upcoming">
-            <h4>📌 Upcoming Reservations</h4>
+            <h4>Upcoming Reservations</h4>
             <ul>
                 <?php foreach ($upcoming as $res): ?>
                     <li>

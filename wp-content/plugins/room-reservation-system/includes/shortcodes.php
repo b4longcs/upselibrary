@@ -18,6 +18,9 @@ add_shortcode('room_reservation_form', function () {
                 <input class="rrs-input my-1" type="text" name="course" placeholder="Course" required>
                 <input class="rrs-input my-1" type="email" name="email" placeholder="UP Email" required>
 
+                <!-- Date Picker -->
+                <input class="rrs-input my-1" type="text" name="date" id="rrs-date-picker" placeholder="Select a date" required>
+
                 <!-- Room & Time Selectors -->
                 <div class="select-container d-flex flex-row justify-content-between align-items-center gap-2 w-100">
 
@@ -37,8 +40,8 @@ add_shortcode('room_reservation_form', function () {
                         <?php for ($i = 8; $i <= 16; $i++): ?>
                             <?php
                                 $time_value      = sprintf('%02d:00', $i);
-                                $time_label_start = date('g A', strtotime($time_value));
-                                $time_label_end   = date('g A', strtotime(($i + 1) . ":00"));
+                                $time_label_start = date('g:i A', strtotime($time_value));
+                                $time_label_end   = date('g:i A', strtotime(($i + 1) . ":00"));
                                 $label = $time_label_start . ' - ' . $time_label_end;
                             ?>
                             <option value="<?php echo esc_attr($time_value); ?>">
@@ -46,11 +49,8 @@ add_shortcode('room_reservation_form', function () {
                             </option>
                         <?php endfor; ?>
                     </select>
-
                 </div>
-
-                <!-- Date Picker -->
-                <input class="rrs-input my-1" type="text" name="date" id="rrs-date-picker" placeholder="Select a date" required>
+                <textarea class="rrs-input my-1" name="notes" placeholder="Notes / Remarks (optional)" rows="3"></textarea>
 
                 <!-- Buttons -->
                 <div class="rrs-button-container d-flex justify-content-between align-items-center gap-2 flex-row my-3">

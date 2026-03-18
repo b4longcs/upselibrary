@@ -1,50 +1,83 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-// 🔒 Hide "Add New" from UI
+// Hide "Add New" in admin bar for reservation requests
 add_action('admin_bar_menu', function($bar) {
     if (sanitize_key($_GET['post_type'] ?? '') === 'reservation_request') {
         $bar->remove_node('new-reservation_request');
     }
 }, 999);
-// Remove "Add New" from admin menu
+
+// Remove "Add New" from admin menu and optionally hide menu
 add_action('admin_menu', function() {
     $pt = 'edit.php?post_type=reservation_request';
     remove_submenu_page($pt, 'post-new.php?post_type=reservation_request');
-    if (!current_user_can('edit_pages')) remove_menu_page($pt);
+    if (!current_user_can('edit_pages')) {
+        remove_menu_page($pt);
+    }
 }, 99);
-// Disable manual post creation
+
+// Prevent manual post creation
 add_action('load-post-new.php', function() {
     if (sanitize_key($_GET['post_type'] ?? '') === 'reservation_request') {
         wp_die('You are not allowed to add a reservation manually.');
     }
 });
-//  📋 Hide "Quick Edit" and "Trash"
+
+// Hide Quick Edit and Trash links, hide "Add New" buttons in list table
 add_action('admin_head', function() {
     global $typenow;
     if ($typenow !== 'reservation_request') return;
-    echo '<style>.page-title-action,.post-type-reservation_request .subsubsub .create{display:none!important}.row-actions{visibility:hidden}tr:hover .row-actions{visibility:visible}</style>';
+    echo '<style>
+        .page-title-action,
+        .post-type-reservation_request .subsubsub .create { display:none!important; }
+        .row-actions { visibility:hidden; }
+        tr:hover .row-actions { visibility:visible; }
+    </style>';
 });
 
-// 📋 Custom Columns
-add_filter('manage_edit-reservation_request_columns', fn($cols) => array_merge($cols, [
-    'reservation_datetime' => 'Date & Time',
-    'reservation_name'     => 'Name',
-    'reservation_email'    => 'Email',
-    'reservation_status'   => 'Status',
-    'reservation_action'   => 'Action'
-]));
-// Populate custom columns
+// Customize row actions
+add_filter('post_row_actions', function($actions, $post) {
+    if ($post->post_type !== 'reservation_request') return $actions;
+    unset($actions['edit'], $actions['inline'], $actions['inline hide-if-no-js']);
+    if (isset($actions['trash'])) {
+        $actions['trash'] = str_replace('Trash', 'Delete', $actions['trash']);
+    }
+    return $actions;
+}, 10, 2);
+
+
+//Custom Columns
+add_filter('manage_edit-reservation_request_columns', function($cols) {
+    return array_merge($cols, [
+        'reservation_datetime' => 'Date & Time',
+        'reservation_name'     => 'Name',
+        'reservation_email'    => 'Email',
+        'reservation_notes'    => 'Notes',
+        'reservation_status'   => 'Status',
+        'reservation_action'   => 'Action',
+    ]);
+});
+
+// Populate custom column content
 add_action('manage_reservation_request_posts_custom_column', function($col, $id) {
     $meta = fn($key) => esc_html(get_post_meta($id, $key, true));
+
     if ($col === 'reservation_datetime') {
         $dt = strtotime("{$meta('date')} {$meta('time')}");
         echo $dt ? date('M j, Y • g A', $dt) . ' - ' . date('g A', strtotime('+1 hour', $dt)) : '—';
-    } elseif (in_array($col, ['reservation_name', 'reservation_email', 'reservation_status'])) {
+    } elseif (in_array($col, ['reservation_name','reservation_email','reservation_status'])) {
         echo $meta(str_replace('reservation_', '', $col));
+    }elseif ($col === 'reservation_notes') {
+        $notes = esc_html(get_post_meta($id, 'notes', true));
+        echo $notes 
+            ? '<span title="' . $notes . '">' . wp_trim_words($notes, 10, '...') . '</span>' 
+            : '—';
     } elseif ($col === 'reservation_action') {
         $status = $meta('status');
-        $room = $meta('room'); $date = $meta('date'); $time = $meta('time');
+        $room   = $meta('room');
+        $date   = $meta('date');
+        $time   = $meta('time');
         global $wpdb;
 
         $conflict = $wpdb->get_var($wpdb->prepare("
@@ -62,38 +95,32 @@ add_action('manage_reservation_request_posts_custom_column', function($col, $id)
                 'rrs_approve_' . $id
             )) . '">Approve</a>';
         }
+
         if ($status !== 'denied') {
             echo ' <a class="button" href="' . esc_url(wp_nonce_url(
                 admin_url("admin-post.php?action=deny_reservation&post_id=$id"),
                 'rrs_deny_' . $id
             )) . '">Deny</a>';
         }
+
         if ($status !== 'approved' && $conflict) {
             echo '<span style="color:#c00; margin-left:8px;">Slot Taken</span>';
         }
     }
 }, 10, 2);
 
-// 🗑 Hide quick edit, rename Trash
-add_filter('post_row_actions', function($actions, $post) {
-    if ($post->post_type !== 'reservation_request') return $actions;
-    unset($actions['edit'], $actions['inline'], $actions['inline hide-if-no-js']);
-    if (isset($actions['trash'])) $actions['trash'] = str_replace('Trash', 'Delete', $actions['trash']);
-    return $actions;
-}, 10, 2);
-
-// 💾 Invalidate cache on delete
+//Cache Handling
 function rrs_clear_cache_on_delete($id) {
     if (get_post_type($id) === 'reservation_request') {
         $room = get_post_meta($id, 'room', true);
         if ($room) delete_transient('rrs_events_' . md5($room));
     }
 }
-// Clear cache on post delete or trash
 add_action('before_delete_post', 'rrs_clear_cache_on_delete');
 add_action('wp_trash_post', 'rrs_clear_cache_on_delete');
 
-// 📤 CSV Export Notice + Handler
+
+// CSV Export 
 add_action('admin_notices', function() {
     $screen = get_current_screen();
     if ($screen->post_type === 'reservation_request' && current_user_can('administrator')) {
@@ -101,24 +128,29 @@ add_action('admin_notices', function() {
         echo '<div class="notice notice-info is-dismissible"><p><a class="button button-primary" href="' . esc_url($url) . '">Export Report</a></p></div>';
     }
 });
-// Export approved reservations as CSV
+
 add_action('admin_post_export_approved_reservations_csv', function() {
     if (!current_user_can('administrator')) wp_die('Access denied.');
 
     header('Content-Type: text/csv');
     header('Content-Disposition: attachment; filename="room-reservation-report.csv"');
-    $output = fopen('php://output', 'w');
-    fputcsv($output, ['Name', 'Email', 'College', 'Course', 'Room', 'Date', 'Time Slot']);
 
-    foreach (get_posts([
-        'post_type' => 'reservation_request',
+    $output = fopen('php://output', 'w');
+    fputcsv($output, ['Name','Email','College','Course','Room','Date','Time Slot','Notes']);
+
+    $posts = get_posts([
+        'post_type'   => 'reservation_request',
         'post_status' => 'publish',
-        'meta_query' => [['key' => 'status', 'value' => 'approved']]
-    ]) as $post) {
+        'meta_query'  => [['key'=>'status','value'=>'approved']],
+        'numberposts' => -1
+    ]);
+
+    foreach ($posts as $post) {
         $date = get_post_meta($post->ID, 'date', true);
         $time = get_post_meta($post->ID, 'time', true);
         $start = strtotime("$date $time");
-        $end = strtotime('+1 hour', $start);
+        $end   = strtotime('+1 hour', $start);
+
         fputcsv($output, [
             get_post_meta($post->ID, 'name', true),
             get_post_meta($post->ID, 'email', true),
@@ -126,16 +158,20 @@ add_action('admin_post_export_approved_reservations_csv', function() {
             get_post_meta($post->ID, 'course', true),
             get_post_meta($post->ID, 'room', true),
             date('F j, Y', $start),
-            date('g:i A', $start) . ' - ' . date('g:i A', $end)
+            date('g:i A', $start) . ' - ' . date('g:i A', $end),
+            get_post_meta($post->ID, 'notes', true),
         ]);
     }
+
     fclose($output);
     exit;
 });
 
-// ✅ Approve/Deny Handlers
+
+// Reservation Approval / Denial 
 add_action('admin_post_approve_reservation', function() {
     if (!current_user_can('edit_others_posts')) wp_die('Permission denied');
+
     $id = intval($_GET['post_id'] ?? 0);
     if (!wp_verify_nonce($_GET['_wpnonce'] ?? '', 'rrs_approve_' . $id)) wp_die('Security check failed');
 
@@ -144,47 +180,55 @@ add_action('admin_post_approve_reservation', function() {
     $time = get_post_meta($id, 'time', true);
 
     $conflict = get_posts([
-        'post_type' => 'reservation_request', 'post_status' => 'publish', 'exclude' => [$id],
-        'meta_query' => [
-            ['key' => 'room', 'value' => $room],
-            ['key' => 'date', 'value' => $date],
-            ['key' => 'time', 'value' => $time],
-            ['key' => 'status', 'value' => 'approved']
+        'post_type'   => 'reservation_request',
+        'post_status' => 'publish',
+        'exclude'     => [$id],
+        'meta_query'  => [
+            ['key'=>'room','value'=>$room],
+            ['key'=>'date','value'=>$date],
+            ['key'=>'time','value'=>$time],
+            ['key'=>'status','value'=>'approved']
         ]
     ]);
+
     if ($conflict) {
-        wp_redirect(add_query_arg('rrs_error', 'slot_taken', admin_url('edit.php?post_type=reservation_request')));
+        wp_redirect(add_query_arg('rrs_error','slot_taken', admin_url('edit.php?post_type=reservation_request')));
         exit;
     }
 
     update_post_meta($id, 'status', 'approved');
-    rrs_send_approval_email($id, 'approved');
+    rrs_send_status_email($id, 'approved');
     delete_transient('rrs_events_' . md5($room));
 
-    foreach (get_posts([
-        'post_type' => 'reservation_request', 'exclude' => [$id],
+    // Deny conflicting pending requests
+    $pending = get_posts([
+        'post_type'  => 'reservation_request',
+        'exclude'    => [$id],
         'meta_query' => [
-            ['key' => 'room', 'value' => $room],
-            ['key' => 'date', 'value' => $date],
-            ['key' => 'time', 'value' => $time],
-            ['key' => 'status', 'value' => 'pending']
+            ['key'=>'room','value'=>$room],
+            ['key'=>'date','value'=>$date],
+            ['key'=>'time','value'=>$time],
+            ['key'=>'status','value'=>'pending']
         ]
-    ]) as $req) {
+    ]);
+
+    foreach ($pending as $req) {
         update_post_meta($req->ID, 'status', 'denied');
-        rrs_send_approval_email($req->ID, 'denied');
+        rrs_send_status_email($req->ID, 'denied');
     }
 
     wp_redirect(admin_url('edit.php?post_type=reservation_request'));
     exit;
 });
-// Deny reservation handler
+
 add_action('admin_post_deny_reservation', function() {
     if (!current_user_can('edit_others_posts')) wp_die('Permission denied');
+
     $id = intval($_GET['post_id'] ?? 0);
     if (!wp_verify_nonce($_GET['_wpnonce'] ?? '', 'rrs_deny_' . $id)) wp_die('Security check failed');
 
     update_post_meta($id, 'status', 'denied');
-    rrs_send_approval_email($id, 'denied');
+    rrs_send_status_email($id, 'denied');
 
     $room = get_post_meta($id, 'room', true);
     if ($room) delete_transient('rrs_events_' . md5($room));

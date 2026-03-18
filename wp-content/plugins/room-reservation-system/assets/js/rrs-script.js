@@ -134,12 +134,20 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       if (!res.ok) throw new Error('Network response was not ok');
 
-      const response = await res.json();
-      if (!response.success || !Array.isArray(response.data)) return;
+      const result = await res.json();
+      if (!result.success || !Array.isArray(result.data)) return;
 
-      const reservedTimes = response.data
-        .filter(event => event.start.startsWith(date))
-        .map(event => `${new Date(event.start).getHours()}:00`);
+      const selectedDateObj = new Date(date);
+
+      const reservedTimes = result.data
+        .filter(event => {
+          const eventDateStr = event.start.split('T')[0]; 
+          return eventDateStr === date; 
+        })
+        .map(event => {
+          const hh = String(new Date(event.start).getHours()).padStart(2, '0');
+          return `${hh}:00`;
+        });
 
       for (const option of timeDropdown.options) {
         const val = option.value;
@@ -175,17 +183,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!res.ok) throw new Error('Network response was not ok');
 
-      const response = await res.json();
+      const result = await res.json();
 
-      if (response.success) {
+      if (result.success) {
         await hideModal();
-        showSuccess(escapeHTML(response.data.message || 'Reservation successful.'));
+        showSuccess(escapeHTML(result.data.message || 'Reservation successful.'));
         form.reset();
         response.style.color = '';
         response.innerHTML = '';
       } else {
         response.style.color = 'red';
-        response.innerHTML = `<p>${escapeHTML(response.data.message || 'An error occurred.')}</p>`;
+        response.innerHTML = `<p>${escapeHTML(result.data.message || 'An error occurred.')}</p>`;
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -210,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay',
       },
-      hiddenDays: [0, 6],
+      hiddenDays: [0, 6], // hide Sundays & Saturdays
       nowIndicator: true,
       allDaySlot: false,
       slotMinTime: '08:00:00',
@@ -222,6 +230,18 @@ document.addEventListener('DOMContentLoaded', () => {
       selectable: false,
       showNonCurrentDates: false,
       fixedWeekCount: false,
+
+      // ✅ Mark past dates visually
+      dayCellClassNames: function(arg) {
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const cellDate = new Date(arg.date.getFullYear(), arg.date.getMonth(), arg.date.getDate());
+        if (cellDate < today) {
+          return ['past-date']; // add CSS class for styling
+        }
+        return [];
+      },
+
       views: {
         timeGridWeek: {
           titleFormat: { year: 'numeric', month: 'short', day: 'numeric' },
@@ -232,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
           slotLabelFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
         },
       },
+
       eventTimeFormat: {
         hour: 'numeric',
         minute: '2-digit',
@@ -239,6 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       eventDisplay: 'block',
       eventColor: '#4CAF50',
+
       events(fetchInfo, successCallback, failureCallback) {
         const params = new URLSearchParams({
           action: 'get_approved_reservations',
@@ -259,17 +281,41 @@ document.addEventListener('DOMContentLoaded', () => {
           })
           .catch(() => failureCallback());
       },
+
       dateClick(info) {
-        if (['timeGridDay', 'timeGridWeek'].includes(calendar.view.type)) {
-          const [selectedDate, selectedTime] = info.dateStr.split('T');
-          showModal();
-          form.querySelector('input[name="date"]').value = selectedDate || '';
-          form.querySelector('select[name="time"]').value = (selectedTime || '').substring(0, 5);
-          fetchReservedTimes(roomSelect.value, selectedDate);
-        } else {
-          calendar.changeView('timeGridDay', info.dateStr);
+        const clickedDate = new Date(info.dateStr);
+        const today = new Date();
+        today.setHours(0,0,0,0);
+
+        // ✅ Ignore clicks on past dates
+        if (clickedDate < today) return;
+
+        // Existing modal & form logic for future dates
+        const d = clickedDate;
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0'); 
+        const dd = String(d.getDate()).padStart(2, '0');
+        const selectedDate = `${yyyy}-${mm}-${dd}`;
+
+        const selectedTime = info.dateStr.includes('T')
+            ? info.dateStr.split('T')[1].substring(0,5)
+            : '';
+
+        const timeField = form.querySelector('select[name="time"]');
+
+        if (dateInput && dateInput._flatpickr) {
+          dateInput._flatpickr.setDate(selectedDate);
         }
-      },
+
+        if(selectedTime && timeField){
+          timeField.value = selectedTime;
+        } else if(timeField){
+          timeField.value = '';
+        }
+
+        showModal();
+        fetchReservedTimes(roomSelect.value, selectedDate);
+      }
     });
 
     calendar.render();

@@ -90,9 +90,7 @@ function enqueue_conditional_scripts() {
     if (is_front_page()) {
         wp_enqueue_script('popup-js', get_template_directory_uri() . '/assets/js/popup.js', [], null, true);
     }
-
 }
-
 
 // ====================================
 // Breadcrumbs Function
@@ -115,10 +113,8 @@ function custom_breadcrumb() {
     } elseif (is_category()) {
         echo '<li class="breadcrumb-item active" aria-current="page">' . single_cat_title('', false) . '</li>';
     }
-
     echo '</ol></nav>';
 }
-
 
 // ====================================
 // Filter Posts for CSA Page
@@ -215,7 +211,6 @@ function load_tags_ajax() {
 }
 add_action('wp_ajax_load_tags_ajax', 'load_tags_ajax');
 add_action('wp_ajax_nopriv_load_tags_ajax', 'load_tags_ajax');
-
 
 // ====================================
 // Scroll-to-Section on Paginated Click

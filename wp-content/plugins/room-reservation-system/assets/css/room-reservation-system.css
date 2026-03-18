@@ -84,12 +84,9 @@
 }
 
 
-
 /* ==========================================================================
    FORM ELEMENTS
 ========================================================================== */
-
-
 .rrs-dropdown {
     padding: 10px 40px 10px 20px !important; 
     border: 1px solid #ccc !important;
@@ -138,6 +135,12 @@
 }
 .rrs-submit-modal {
     background-color: var(--clr-primary-color);
+}
+
+.past-date {
+  background-color: #f9f9f9; 
+  color: #999;              
+  cursor: default;     
 }
 
 /* ==========================================================================
@@ -245,7 +248,7 @@ span.flatpickr-weekday {
     flex-wrap: wrap;
 }
 .fc .fc-toolbar-title {
-    font-size: clamp(3rem, 3.5vw, 5rem);
+    font-size: clamp(2.5rem, 3.5vw, 5rem);
     font-weight: 600;
     color: var(--clr-text-color);
 }
@@ -406,6 +409,7 @@ button:active {
 @media (max-width: 768px) {
     #rrs-calendar {
         padding: 10px;
+        height: 50rem;
     }
     .fc-toolbar {
         flex-direction: column;

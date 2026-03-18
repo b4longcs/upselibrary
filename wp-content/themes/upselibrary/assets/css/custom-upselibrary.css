@@ -1,7 +1,7 @@
 :root {
     /* Font-related variables */
     --font-primary: "TexGyreAdventor", sans-serif;
-    --font-secondary: "halyard-text", sans-serif;
+    --font-secondary: "Poppins", sans-serif;
     
     /* Text Size */
     --fs-xxsm: 0.5rem;
@@ -339,6 +339,12 @@ p, ul, li, a{
     cursor: default;
     text-decoration: none;
     color: inherit;
+}
+
+.footer-credits p{
+    font-size: var(--fs-sm);
+    color: var(--clr-text-color-two);
+    padding: 0 1rem !important;
 }
 /* END OF FOOTER */
 

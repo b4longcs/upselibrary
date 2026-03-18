@@ -147,6 +147,12 @@ defined('ABSPATH') || exit;
             </a>
             <p class="gs-social-text">selib.upd.edu.ph</p>
         </div>
+        <div class="bottom-div-two d-flex flex-row align-items-center justify-content-center links gap-1">
+            <a href="#" class="gs-social-icon">
+                <img class="web-svg" src="<?php echo get_template_directory_uri(); ?>/assets/images/email.svg" alt="Website">
+            </a>
+            <p class="gs-social-text">upselibrary.upd@up.edu.ph</p>
+        </div>
     </section>
     <?php wp_footer(); ?>
 </body>

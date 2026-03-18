@@ -21,21 +21,16 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('tex-gyre', 'https://fonts.cdnfonts.com/css/tex-gyre-adventor');
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
     
-    
-
-    if (is_page_template('page-gate-scanner.php')) {
+    if (is_page_template('page-gate-scanner.php') || is_page_template('page-gate-scanner-test.php')) {
         wp_enqueue_style('gs-frontend-style', plugin_dir_url(__FILE__) . 'assets/css/scanner.css');
-        wp_enqueue_script('chartjs', 'https://cdn.jsdelivr.net/npm/chart.js', [], null, true);
-        wp_enqueue_script('chartjs', 'https://cdn.jsdelivr.net/npm/chart.js', [], null, true);
         wp_enqueue_script('gs-frontend-script', plugin_dir_url(__FILE__) . 'assets/js/scanner.js', [], null, true);
         wp_localize_script('gs-frontend-script', 'gs_frontend', [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce'    => wp_create_nonce('gs_frontend_nonce'),
         ]);
-
-        // Enqueue the fullscreen helper script here
         wp_enqueue_script('gs-js', plugin_dir_url(__FILE__) . 'assets/js/gs-js.js', [], null, true);
     }
+
 });
 
 // Hide Gate Scanner page from search

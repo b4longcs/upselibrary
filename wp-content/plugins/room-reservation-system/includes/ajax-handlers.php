@@ -32,7 +32,7 @@ function rrs_handle_reservation() {
         wp_send_json_error(['message' => 'That time slot is already taken.']);
     }
 
-    wp_insert_post([
+    $post_id = wp_insert_post([
         'post_type'   => 'reservation_request',
         'post_title'  => "{$data['name']} - {$data['room']}",
         'post_status' => 'publish',
@@ -44,9 +44,15 @@ function rrs_handle_reservation() {
             'room'    => $data['room'],
             'date'    => $data['date'],
             'time'    => $data['time'],
+            'notes'   => $data['notes'] ?? '',
             'status'  => 'pending'
         ]
     ]);
+
+    // Send pending email immediately
+    if ($post_id) {
+        rrs_send_status_email($post_id, 'pending');
+    }
 
     delete_transient('rrs_events_' . md5($data['room']));
     wp_send_json_success(['message' => 'Reservation submitted and pending approval.']);
@@ -76,13 +82,12 @@ function rrs_get_approved_reservations() {
         $events = array_values(array_filter(array_map(function ($post) {
             $date = get_post_meta($post->ID, 'date', true);
             $time = get_post_meta($post->ID, 'time', true);
-            $name = get_post_meta($post->ID, 'name', true);
             if (!$date || !$time) return null;
 
             $start = date('Y-m-d\TH:i:s', strtotime("$date $time"));
             $end   = date('Y-m-d\TH:i:s', strtotime("$date $time +1 hour"));
 
-            return ['title' => "Reserved by $name", 'start' => $start, 'end' => $end];
+            return ['title' => 'Reserved', 'start' => $start, 'end' => $end];
         }, $posts)));
 
         set_transient($cache_key, $events, 5 * MINUTE_IN_SECONDS);
